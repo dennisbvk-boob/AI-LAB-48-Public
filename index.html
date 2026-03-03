@@ -3,90 +3,133 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>EV Verdict</title>
-    <style>
-      :root {
-        color-scheme: light;
-        --bg: #0f172a;
-        --card: #111827;
-        --text: #e5e7eb;
-        --muted: #9ca3af;
-        --accent: #22c55e;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        min-height: 100vh;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(180deg, var(--bg), #020617);
-        color: var(--text);
-        display: grid;
-        place-items: center;
-        padding: 24px;
-      }
-      main {
-        width: min(680px, 100%);
-        background: var(--card);
-        border: 1px solid #1f2937;
-        border-radius: 16px;
-        padding: 28px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-      }
-      h1 {
-        margin: 0 0 12px;
-        font-size: clamp(1.8rem, 4vw, 2.4rem);
-        line-height: 1.2;
-      }
-      p {
-        margin: 0 0 12px;
-        color: var(--muted);
-        line-height: 1.6;
-      }
-      .badge {
-        display: inline-block;
-        margin-top: 4px;
-        margin-bottom: 16px;
-        padding: 6px 10px;
-        border-radius: 999px;
-        background: rgba(34, 197, 94, 0.14);
-        color: #86efac;
-        font-weight: 700;
-        font-size: 0.85rem;
-        letter-spacing: 0.02em;
-      }
-      .status {
-        margin-top: 16px;
-        padding-top: 14px;
-        border-top: 1px solid #1f2937;
-        color: #d1d5db;
-        font-size: 0.95rem;
-      }
-      code {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-          "Liberation Mono", "Courier New", monospace;
-      }
-    </style>
+    <title>EV Verdict | Electric Car Review Aggregator</title>
+    <meta
+      name="description"
+      content="EV Verdict combines electric car reviews from YouTube, Carwow, Autoweek, Autoblog, TopGear and EVbase with key EV specifications."
+    />
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <main>
-      <span class="badge">EV Verdict</span>
-      <h1>Electric vehicle verdicts in one place</h1>
-      <p>
-        This public page is ready for GitHub Pages deployment and is accessible
-        on desktop and mobile.
-      </p>
-      <p>
-        The branch is intended to be published from
-        <code>AI-LAB-48-Public</code> with this <code>index.html</code> in the
-        repository root.
-      </p>
-      <p class="status">
-        If you expected additional private-source content, publish/sync that
-        code into this repository branch and it will automatically replace this
-        placeholder.
-      </p>
+    <header class="site-header">
+      <div class="container">
+        <p class="eyebrow">EV Verdict</p>
+        <h1>Your go-to webpage for electric car reviews</h1>
+        <p class="subtitle">
+          We combine expert reviews and EV specs so you can compare models with
+          one personal match score.
+        </p>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="panel controls">
+        <h2>Filter electric cars</h2>
+        <div class="control-grid">
+          <label class="control">
+            <span>Search by model</span>
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="e.g. Model Y, IONIQ 5, EX30"
+            />
+          </label>
+
+          <label class="control">
+            <span>Body type</span>
+            <select id="bodyTypeSelect">
+              <option value="all">All body types</option>
+            </select>
+          </label>
+
+          <label class="control">
+            <span>Review source</span>
+            <select id="sourceSelect">
+              <option value="all">All sources</option>
+            </select>
+          </label>
+
+          <label class="control range-control">
+            <span>Maximum price: <strong id="maxPriceValue"></strong></span>
+            <input id="maxPriceInput" type="range" min="25000" max="130000" step="1000" />
+          </label>
+
+          <label class="control range-control">
+            <span>Minimum range: <strong id="minRangeValue"></strong></span>
+            <input id="minRangeInput" type="range" min="250" max="700" step="10" />
+          </label>
+
+          <label class="control">
+            <span>Sort by</span>
+            <select id="sortSelect">
+              <option value="best-match">Best match</option>
+              <option value="expert-score">Expert score</option>
+              <option value="price-low-high">Price (low to high)</option>
+              <option value="range-high-low">Range (high to low)</option>
+              <option value="acceleration">0-100 km/h (fastest)</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel weights">
+        <div class="weights-header">
+          <h2>Personal match score</h2>
+          <button id="resetWeightsButton" type="button" class="button-secondary">
+            Reset weights
+          </button>
+        </div>
+        <p class="weights-copy">
+          Set what matters most to you. We combine your priorities with expert
+          review sentiment into one score per car.
+        </p>
+        <div class="weight-grid">
+          <label class="control">
+            <span>Value for money: <strong id="valueWeightValue"></strong></span>
+            <input id="valueWeightInput" type="range" min="0" max="10" step="1" value="7" />
+          </label>
+          <label class="control">
+            <span>Range: <strong id="rangeWeightValue"></strong></span>
+            <input id="rangeWeightInput" type="range" min="0" max="10" step="1" value="8" />
+          </label>
+          <label class="control">
+            <span>Performance: <strong id="performanceWeightValue"></strong></span>
+            <input id="performanceWeightInput" type="range" min="0" max="10" step="1" value="6" />
+          </label>
+          <label class="control">
+            <span>Practicality: <strong id="practicalityWeightValue"></strong></span>
+            <input id="practicalityWeightInput" type="range" min="0" max="10" step="1" value="7" />
+          </label>
+          <label class="control">
+            <span>Comfort: <strong id="comfortWeightValue"></strong></span>
+            <input id="comfortWeightInput" type="range" min="0" max="10" step="1" value="5" />
+          </label>
+        </div>
+      </section>
+
+      <section class="results-meta">
+        <p id="resultsSummary"></p>
+      </section>
+
+      <section id="resultsGrid" class="results-grid" aria-live="polite"></section>
     </main>
+
+    <template id="carCardTemplate">
+      <article class="car-card">
+        <header class="car-card-header">
+          <div>
+            <p class="car-brand"></p>
+            <h3 class="car-model"></h3>
+          </div>
+          <div class="score-pill"></div>
+        </header>
+        <ul class="metric-list"></ul>
+        <p class="segment-line"></p>
+        <div class="source-list"></div>
+      </article>
+    </template>
+
+    <script src="./data/evData.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>
