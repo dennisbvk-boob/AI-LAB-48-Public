@@ -8,22 +8,47 @@
       name="description"
       content="EV Verdict combines electric car reviews from YouTube, Carwow, Autoweek, Autoblog, TopGear and EVbase with key EV specifications."
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+
+    <!-- Animated aurora background -->
+    <div id="aurora" aria-hidden="true">
+      <div class="aurora-orb"></div>
+      <div class="aurora-orb"></div>
+      <div class="aurora-orb"></div>
+      <div class="aurora-orb"></div>
+    </div>
+
     <header class="site-header">
       <div class="container">
-        <p class="eyebrow">EV Verdict</p>
-        <h1>Your go-to webpage for electric car reviews</h1>
-        <p class="subtitle">
-          We combine expert reviews and EV specs so you can compare models with
-          one personal match score.
-        </p>
+        <div class="header-inner">
+          <div class="logo-row">
+            <div class="logo-icon" aria-hidden="true">⚡</div>
+            <p class="eyebrow">EV Verdict</p>
+          </div>
+          <h1>Your go-to page for<br>electric car reviews</h1>
+          <p class="subtitle">
+            We combine expert reviews and EV specs so you can compare models with
+            one personal match score.
+          </p>
+        </div>
       </div>
     </header>
 
     <main class="container">
-      <section class="panel controls">
+
+      <!-- Quick stats -->
+      <div class="stats-bar" id="statsBar">
+        <div class="stat-chip"><strong id="statCarCount">—</strong> electric cars</div>
+        <div class="stat-chip"><strong id="statSourceCount">—</strong> review sources</div>
+        <div class="stat-chip"><strong id="statBrandCount">—</strong> brands</div>
+      </div>
+
+      <!-- Filters panel -->
+      <section class="panel controls" aria-label="Filter controls">
         <h2>Filter electric cars</h2>
         <div class="control-grid">
           <label class="control">
@@ -32,6 +57,7 @@
               id="searchInput"
               type="search"
               placeholder="e.g. Model Y, IONIQ 5, EX30"
+              autocomplete="off"
             />
           </label>
 
@@ -72,7 +98,8 @@
         </div>
       </section>
 
-      <section class="panel weights">
+      <!-- Personal match score panel -->
+      <section class="panel weights" aria-label="Personal match score weights">
         <div class="weights-header">
           <h2>Personal match score</h2>
           <button id="resetWeightsButton" type="button" class="button-secondary">
@@ -107,13 +134,17 @@
         </div>
       </section>
 
-      <section class="results-meta">
+      <!-- Results summary -->
+      <section class="results-meta" aria-live="polite">
         <p id="resultsSummary"></p>
       </section>
 
-      <section id="resultsGrid" class="results-grid" aria-live="polite"></section>
+      <!-- Results grid -->
+      <section id="resultsGrid" class="results-grid" aria-live="polite" aria-label="Car results"></section>
+
     </main>
 
+    <!-- Card template -->
     <template id="carCardTemplate">
       <article class="car-card">
         <header class="car-card-header">
@@ -124,7 +155,7 @@
           <div class="score-pill"></div>
         </header>
         <ul class="metric-list"></ul>
-        <p class="segment-line"></p>
+        <div class="segment-line"></div>
         <div class="source-list"></div>
       </article>
     </template>
