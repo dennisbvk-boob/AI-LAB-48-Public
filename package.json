@@ -1,0 +1,23 @@
+{
+  "name": "cap-base-hello-world",
+  "version": "1.0.0",
+  "description": "Base SAP CAP project with a hello-world OData v4 service.",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^9"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2",
+    "@sap/cds-dk": "^9"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch": "cds watch",
+    "build": "cds build --production"
+  },
+  "cds": {
+    "odata": {
+      "version": "v4"
+    }
+  }
+}
