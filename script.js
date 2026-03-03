@@ -25,7 +25,10 @@
     performanceWeightValue: document.getElementById("performanceWeightValue"),
     practicalityWeightValue: document.getElementById("practicalityWeightValue"),
     comfortWeightValue: document.getElementById("comfortWeightValue"),
-    resetWeightsButton: document.getElementById("resetWeightsButton")
+    resetWeightsButton: document.getElementById("resetWeightsButton"),
+    statCarCount: document.getElementById("statCarCount"),
+    statSourceCount: document.getElementById("statSourceCount"),
+    statBrandCount: document.getElementById("statBrandCount")
   };
 
   const defaultWeights = {
@@ -46,6 +49,8 @@
     weights: { ...defaultWeights }
   };
 
+  // ── Formatters ──────────────────────────────────────────
+
   function formatCurrency(value) {
     return new Intl.NumberFormat("nl-NL", {
       style: "currency",
@@ -58,17 +63,15 @@
     return new Intl.NumberFormat("nl-NL", { maximumFractionDigits: 0 }).format(value);
   }
 
+  // ── Math helpers ────────────────────────────────────────
+
   function average(values) {
-    if (!values.length) {
-      return 0;
-    }
+    if (!values.length) return 0;
     return values.reduce((total, value) => total + value, 0) / values.length;
   }
 
   function normalize(value, min, max) {
-    if (max === min) {
-      return 0.5;
-    }
+    if (max === min) return 0.5;
     return (value - min) / (max - min);
   }
 
@@ -77,11 +80,10 @@
   }
 
   function getRange(values) {
-    return {
-      min: Math.min(...values),
-      max: Math.max(...values)
-    };
+    return { min: Math.min(...values), max: Math.max(...values) };
   }
+
+  // ── Populate selects ────────────────────────────────────
 
   function getAllBodyTypes() {
     return [...new Set(cars.map((car) => car.bodyType))].sort((a, b) =>
@@ -92,31 +94,28 @@
   function getAllSources() {
     const allSourceNames = [];
     cars.forEach((car) => {
-      car.sources.forEach((entry) => {
-        allSourceNames.push(entry.source);
-      });
+      car.sources.forEach((entry) => allSourceNames.push(entry.source));
     });
     return [...new Set(allSourceNames)].sort((a, b) => a.localeCompare(b));
   }
 
   function setupSelectOptions() {
-    const bodyTypes = getAllBodyTypes();
-    const sources = getAllSources();
-
-    bodyTypes.forEach((type) => {
+    getAllBodyTypes().forEach((type) => {
       const option = document.createElement("option");
       option.value = type;
       option.textContent = type;
       elements.bodyTypeSelect.append(option);
     });
 
-    sources.forEach((source) => {
+    getAllSources().forEach((source) => {
       const option = document.createElement("option");
       option.value = source;
       option.textContent = source;
       elements.sourceSelect.append(option);
     });
   }
+
+  // ── Range inputs ────────────────────────────────────────
 
   function setupRangeInputs() {
     const prices = cars.map((car) => car.priceEur);
@@ -138,9 +137,19 @@
     elements.minRangeInput.value = String(state.minRange);
   }
 
+  function updateRangeTrack(input) {
+    const min = Number(input.min);
+    const max = Number(input.max);
+    const val = Number(input.value);
+    const pct = ((val - min) / (max - min)) * 100;
+    input.style.background = `linear-gradient(to right, var(--cyan) 0%, var(--purple) ${pct}%, rgba(99,179,237,0.15) ${pct}%)`;
+  }
+
   function updateFilterLabelValues() {
     elements.maxPriceValue.textContent = formatCurrency(state.maxPrice);
     elements.minRangeValue.textContent = `${formatNumber(state.minRange)} km`;
+    updateRangeTrack(elements.maxPriceInput);
+    updateRangeTrack(elements.minRangeInput);
   }
 
   function updateWeightLabelValues() {
@@ -149,7 +158,29 @@
     elements.performanceWeightValue.textContent = String(state.weights.performance);
     elements.practicalityWeightValue.textContent = String(state.weights.practicality);
     elements.comfortWeightValue.textContent = String(state.weights.comfort);
+
+    [
+      elements.valueWeightInput,
+      elements.rangeWeightInput,
+      elements.performanceWeightInput,
+      elements.practicalityWeightInput,
+      elements.comfortWeightInput
+    ].forEach(updateRangeTrack);
   }
+
+  // ── Stats bar ───────────────────────────────────────────
+
+  function renderStatsBar() {
+    if (!elements.statCarCount) return;
+    const brands = new Set(cars.map((c) => c.brand));
+    const sources = new Set();
+    cars.forEach((c) => c.sources.forEach((s) => sources.add(s.source)));
+    elements.statCarCount.textContent = cars.length;
+    elements.statSourceCount.textContent = sources.size;
+    elements.statBrandCount.textContent = brands.size;
+  }
+
+  // ── Score computation ───────────────────────────────────
 
   function computeScoreMap() {
     const ranges = getRange(cars.map((car) => car.rangeKm));
@@ -194,7 +225,11 @@
           totalWeight;
       }
 
-      const finalScore = clamp(weightedPersonalScore * 0.8 + expertScoreNormalized * 0.2, 0, 1);
+      const finalScore = clamp(
+        weightedPersonalScore * 0.8 + expertScoreNormalized * 0.2,
+        0,
+        1
+      );
       scoreMap.set(car.id, {
         finalScore,
         valueForMoneyScore,
@@ -209,25 +244,21 @@
     return scoreMap;
   }
 
+  // ── Filtering & sorting ─────────────────────────────────
+
   function getFilteredCars() {
     const query = state.search.trim().toLowerCase();
-
     return cars.filter((car) => {
       const searchable = `${car.brand} ${car.model}`.toLowerCase();
-      const matchesSearch = !query || searchable.includes(query);
-      const matchesBodyType = state.bodyType === "all" || car.bodyType === state.bodyType;
-      const matchesSource =
-        state.source === "all" ||
-        car.sources.some((entry) => entry.source.toLowerCase() === state.source.toLowerCase());
-      const matchesPrice = car.priceEur <= state.maxPrice;
-      const matchesRange = car.rangeKm >= state.minRange;
-
       return (
-        matchesSearch &&
-        matchesBodyType &&
-        matchesSource &&
-        matchesPrice &&
-        matchesRange
+        (!query || searchable.includes(query)) &&
+        (state.bodyType === "all" || car.bodyType === state.bodyType) &&
+        (state.source === "all" ||
+          car.sources.some(
+            (entry) => entry.source.toLowerCase() === state.source.toLowerCase()
+          )) &&
+        car.priceEur <= state.maxPrice &&
+        car.rangeKm >= state.minRange
       );
     });
   }
@@ -253,6 +284,8 @@
     });
   }
 
+  // ── Card building ───────────────────────────────────────
+
   function buildMetricItem(label, value) {
     const li = document.createElement("li");
     li.className = "metric-item";
@@ -269,17 +302,24 @@
     return li;
   }
 
+  function scoreColor(score) {
+    if (score >= 80) return "#00ffa3";
+    if (score >= 60) return "#fbbf24";
+    return "#f87171";
+  }
+
+  // ── Rendering ───────────────────────────────────────────
+
   function renderSummary(filteredCars) {
     if (!filteredCars.length) {
       elements.resultsSummary.textContent =
         "No cars match the selected filters. Broaden your filters to compare more models.";
       return;
     }
-
     const averagePrice = average(filteredCars.map((car) => car.priceEur));
     const averageRange = average(filteredCars.map((car) => car.rangeKm));
     elements.resultsSummary.textContent =
-      `${filteredCars.length} car(s) found. Avg. price ${formatCurrency(averagePrice)} | Avg. WLTP range ${formatNumber(averageRange)} km.`;
+      `${filteredCars.length} car(s) found — Avg. price ${formatCurrency(averagePrice)} | Avg. WLTP range ${formatNumber(averageRange)} km`;
   }
 
   function renderCards(sortedCars, scoreMap) {
@@ -289,22 +329,30 @@
       const empty = document.createElement("article");
       empty.className = "empty-state";
       empty.textContent =
-        "No results available for the current selection. Try increasing max price or lowering min range.";
+        "No results for the current selection. Try increasing the max price or lowering the min range.";
       elements.resultsGrid.append(empty);
       return;
     }
 
     const fragment = document.createDocumentFragment();
-    sortedCars.forEach((car) => {
+
+    sortedCars.forEach((car, index) => {
       const card = template.content.firstElementChild.cloneNode(true);
       const cardScore = scoreMap.get(car.id);
+      const scorePercent = Math.round((cardScore?.finalScore ?? 0) * 100);
 
-      card.querySelector(".car-brand").textContent = `${car.brand} | ${car.year}`;
+      // Header
+      card.querySelector(".car-brand").textContent = `${car.brand} · ${car.year}`;
       card.querySelector(".car-model").textContent = car.model;
-      card.querySelector(".score-pill").textContent = `${Math.round(
-        (cardScore?.finalScore ?? 0) * 100
-      )} match`;
 
+      // Score pill
+      const pill = card.querySelector(".score-pill");
+      pill.textContent = `${scorePercent} match`;
+      pill.style.color = scoreColor(scorePercent);
+      pill.style.borderColor = `${scoreColor(scorePercent)}55`;
+      pill.style.background = `${scoreColor(scorePercent)}18`;
+
+      // Metrics
       const metrics = card.querySelector(".metric-list");
       metrics.append(
         buildMetricItem("Expert score", `${car.expertScore.toFixed(1)} / 10`),
@@ -315,9 +363,16 @@
         buildMetricItem("Fast charge", `${formatNumber(car.fastChargeKw)} kW`)
       );
 
-      card.querySelector(".segment-line").textContent =
-        `${car.bodyType} | ${car.seats} seats | Battery ${car.batteryKwh} kWh`;
+      // Segment tags (replacing the old paragraph)
+      const segmentLine = card.querySelector(".segment-line");
+      [car.bodyType, `${car.seats} seats`, `${car.batteryKwh} kWh`].forEach((tag) => {
+        const span = document.createElement("span");
+        span.className = "segment-tag";
+        span.textContent = tag;
+        segmentLine.append(span);
+      });
 
+      // Source links
       const sourceContainer = card.querySelector(".source-list");
       car.sources.forEach((entry) => {
         const link = document.createElement("a");
@@ -329,11 +384,32 @@
         sourceContainer.append(link);
       });
 
+      // Staggered entrance animation
+      card.style.transitionDelay = `${Math.min(index * 40, 400)}ms`;
       fragment.append(card);
     });
 
     elements.resultsGrid.append(fragment);
+
+    // Trigger entrance via IntersectionObserver
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.05, rootMargin: "0px 0px -20px 0px" }
+    );
+
+    elements.resultsGrid.querySelectorAll(".car-card").forEach((card) => {
+      observer.observe(card);
+    });
   }
+
+  // ── Main render ─────────────────────────────────────────
 
   function render() {
     const scoreMap = computeScoreMap();
@@ -343,50 +419,52 @@
     renderCards(sortedCars, scoreMap);
   }
 
+  // ── Events ──────────────────────────────────────────────
+
   function bindEvents() {
-    elements.searchInput.addEventListener("input", (event) => {
-      state.search = event.target.value;
+    elements.searchInput.addEventListener("input", (e) => {
+      state.search = e.target.value;
       render();
     });
 
-    elements.bodyTypeSelect.addEventListener("change", (event) => {
-      state.bodyType = event.target.value;
+    elements.bodyTypeSelect.addEventListener("change", (e) => {
+      state.bodyType = e.target.value;
       render();
     });
 
-    elements.sourceSelect.addEventListener("change", (event) => {
-      state.source = event.target.value;
+    elements.sourceSelect.addEventListener("change", (e) => {
+      state.source = e.target.value;
       render();
     });
 
-    elements.maxPriceInput.addEventListener("input", (event) => {
-      state.maxPrice = Number(event.target.value);
+    elements.maxPriceInput.addEventListener("input", (e) => {
+      state.maxPrice = Number(e.target.value);
       updateFilterLabelValues();
       render();
     });
 
-    elements.minRangeInput.addEventListener("input", (event) => {
-      state.minRange = Number(event.target.value);
+    elements.minRangeInput.addEventListener("input", (e) => {
+      state.minRange = Number(e.target.value);
       updateFilterLabelValues();
       render();
     });
 
-    elements.sortSelect.addEventListener("change", (event) => {
-      state.sortBy = event.target.value;
+    elements.sortSelect.addEventListener("change", (e) => {
+      state.sortBy = e.target.value;
       render();
     });
 
     const weightBindings = [
-      { key: "value", input: elements.valueWeightInput },
-      { key: "range", input: elements.rangeWeightInput },
-      { key: "performance", input: elements.performanceWeightInput },
+      { key: "value",        input: elements.valueWeightInput },
+      { key: "range",        input: elements.rangeWeightInput },
+      { key: "performance",  input: elements.performanceWeightInput },
       { key: "practicality", input: elements.practicalityWeightInput },
-      { key: "comfort", input: elements.comfortWeightInput }
+      { key: "comfort",      input: elements.comfortWeightInput }
     ];
 
-    weightBindings.forEach((binding) => {
-      binding.input.addEventListener("input", (event) => {
-        state.weights[binding.key] = Number(event.target.value);
+    weightBindings.forEach(({ key, input }) => {
+      input.addEventListener("input", (e) => {
+        state.weights[key] = Number(e.target.value);
         updateWeightLabelValues();
         render();
       });
@@ -394,15 +472,17 @@
 
     elements.resetWeightsButton.addEventListener("click", () => {
       state.weights = { ...defaultWeights };
-      elements.valueWeightInput.value = String(defaultWeights.value);
-      elements.rangeWeightInput.value = String(defaultWeights.range);
-      elements.performanceWeightInput.value = String(defaultWeights.performance);
+      elements.valueWeightInput.value        = String(defaultWeights.value);
+      elements.rangeWeightInput.value        = String(defaultWeights.range);
+      elements.performanceWeightInput.value  = String(defaultWeights.performance);
       elements.practicalityWeightInput.value = String(defaultWeights.practicality);
-      elements.comfortWeightInput.value = String(defaultWeights.comfort);
+      elements.comfortWeightInput.value      = String(defaultWeights.comfort);
       updateWeightLabelValues();
       render();
     });
   }
+
+  // ── Init ────────────────────────────────────────────────
 
   function initialize() {
     if (!cars.length) {
@@ -415,6 +495,7 @@
     setupRangeInputs();
     updateFilterLabelValues();
     updateWeightLabelValues();
+    renderStatsBar();
     bindEvents();
     render();
   }
