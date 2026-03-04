@@ -574,6 +574,27 @@ input[type="range"]::-moz-range-thumb {
 
 .car-card:hover::after { opacity: 1; }
 
+/* ── Card image ────────────────────────────────────────── */
+.car-image-frame {
+  margin: -1.1rem -1.1rem 0.95rem;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(99, 179, 237, 0.16);
+  background: linear-gradient(140deg, rgba(0, 229, 255, 0.18), rgba(168, 85, 247, 0.12));
+}
+
+.car-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.35s var(--ease-out);
+}
+
+.car-card:hover .car-image {
+  transform: scale(1.04);
+}
+
 /* ── Card header ───────────────────────────────────────── */
 .car-card-header {
   display: flex;
@@ -753,6 +774,9 @@ input[type="range"]::-moz-range-thumb {
   .control-grid,
   .weight-grid {
     grid-template-columns: 1fr;
+  }
+  .car-image-frame {
+    aspect-ratio: 4 / 3;
   }
   .weights-header {
     flex-direction: column;

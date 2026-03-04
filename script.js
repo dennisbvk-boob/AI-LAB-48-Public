@@ -39,6 +39,38 @@
     comfort: 5
   };
 
+  const fallbackCarImage = "./assets/car-placeholder.svg";
+  const carImageSources = {
+    "tesla-model-3-highland":
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/15-05-23-Berlin-Sachsendamm-Tesla-RalfR-N3S_7354.jpg/960px-15-05-23-Berlin-Sachsendamm-Tesla-RalfR-N3S_7354.jpg",
+    "tesla-model-y":
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Tesla_Model_Y_L_002.jpg/960px-Tesla_Model_Y_L_002.jpg",
+    "hyundai-ioniq-5":
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Hyundai_IONIQ_5_N_eN1_Cup_Car_%285%29.jpg/960px-Hyundai_IONIQ_5_N_eN1_Cup_Car_%285%29.jpg",
+    "kia-ev6":
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Kia_EV6_Auto_Zuerich_2021_IMG_0606.jpg/960px-Kia_EV6_Auto_Zuerich_2021_IMG_0606.jpg",
+    "bmw-i4-edrive40":
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/BMW_i4_Official_Car_of_MotoGP_IAA_2021_1X7A0003.jpg/960px-BMW_i4_Official_Car_of_MotoGP_IAA_2021_1X7A0003.jpg",
+    "vw-id7-pro":
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Volkswagen_ID.7_Auto_Zuerich_2023_1X7A1002.jpg/960px-Volkswagen_ID.7_Auto_Zuerich_2023_1X7A1002.jpg",
+    "volvo-ex30":
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Volvo_EX30_Auto_Zuerich_2023_1X7A0949.jpg/960px-Volvo_EX30_Auto_Zuerich_2023_1X7A0949.jpg",
+    "skoda-enyaq-85":
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/%C5%A0koda_Enyaq_IMG_1190_%28cropped%29.jpg/960px-%C5%A0koda_Enyaq_IMG_1190_%28cropped%29.jpg",
+    "mg4-long-range":
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/MG4_EV_Automesse_Ludwigsburg_2022_1X7A5920.jpg/960px-MG4_EV_Automesse_Ludwigsburg_2022_1X7A5920.jpg",
+    "polestar-2-long-range":
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Polestar_2_BST_Edition_230_Auto_Zuerich_2023_1X7A1303.jpg/960px-Polestar_2_BST_Edition_230_Auto_Zuerich_2023_1X7A1303.jpg",
+    "renault-scenic-etec":
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Renault_Sc%C3%A9nic_Vision_01.png/960px-Renault_Sc%C3%A9nic_Vision_01.png",
+    "mercedes-eqe-suv":
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Mercedes-AMG_EQE_SUV_43_%28X294%29_Auto_Zuerich_2023_1X7A0976.jpg/960px-Mercedes-AMG_EQE_SUV_43_%28X294%29_Auto_Zuerich_2023_1X7A0976.jpg",
+    "byd-seal":
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/BYD_Seal_007.jpg/960px-BYD_Seal_007.jpg",
+    "nissan-ariya":
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Nissan_Ariya_Nismo%2C_Auto_2024%2C_Zurich_%28PANA1011%29.jpg/960px-Nissan_Ariya_Nismo%2C_Auto_2024%2C_Zurich_%28PANA1011%29.jpg"
+  };
+
   const state = {
     search: "",
     bodyType: "all",
@@ -308,6 +340,17 @@
     return "#f87171";
   }
 
+  function setCardImage(card, car) {
+    const image = card.querySelector(".car-image");
+    if (!image) return;
+    image.alt = `${car.brand} ${car.model}`;
+    image.onerror = () => {
+      image.onerror = null;
+      image.src = fallbackCarImage;
+    };
+    image.src = carImageSources[car.id] || fallbackCarImage;
+  }
+
   // ── Rendering ───────────────────────────────────────────
 
   function renderSummary(filteredCars) {
@@ -340,6 +383,9 @@
       const card = template.content.firstElementChild.cloneNode(true);
       const cardScore = scoreMap.get(car.id);
       const scorePercent = Math.round((cardScore?.finalScore ?? 0) * 100);
+
+      // Hero image
+      setCardImage(card, car);
 
       // Header
       card.querySelector(".car-brand").textContent = `${car.brand} · ${car.year}`;
