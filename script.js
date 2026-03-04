@@ -129,6 +129,17 @@
   };
   const resolvedCarImageSources = new Map(Object.entries(carImageSources));
   const pendingCarImageRequests = new Map();
+  const modelVariantStripPatterns = [
+    /\s+(performance|quattro|turismo|scorpionissima|veloce|premium|business|launch\s+edition|limited\s+edition|comfort|design|plus|pro|max|ultra)$/i,
+    /\s+(single|dual)\s+motor$/i,
+    /\s+(standard|long|extended)\s+range$/i,
+    /\s+(awd|rwd|fwd|4matic|allrad)$/i,
+    /\s+(xdrive|edrive)\d+[a-z]*$/i,
+    /\s+m\d+\s*xdrive$/i,
+    /\s+\d+\s*xdrive$/i,
+    /\s+\d+\s*kwh$/i,
+    /\s+\d+\s*hp$/i
+  ];
 
   const state = {
     search: "",
@@ -140,8 +151,20 @@
     weights: { ...defaultWeights },
     activeCarId: null,
     triggerElement: null,
-    scoreMap: new Map()
+    scoreMap: new Map(),
+    selectedVariantByGroupId: new Map()
   };
+
+  const modelGroups = buildModelGroups(cars);
+  const groupByCarId = new Map();
+  modelGroups.forEach((group) => {
+    group.variants.forEach((variant) => {
+      groupByCarId.set(variant.id, group);
+    });
+    if (group.variants.length) {
+      state.selectedVariantByGroupId.set(group.id, group.variants[0].id);
+    }
+  });
 
   const marketAverages = {
     price: average(cars.map((car) => car.priceEur)),
@@ -180,6 +203,127 @@
 
   function getRange(values) {
     return { min: Math.min(...values), max: Math.max(...values) };
+  }
+
+  function formatRangeLabel(min, max, formatter, unit = "") {
+    if (min === max) return `${formatter(min)}${unit}`;
+    return `${formatter(min)}–${formatter(max)}${unit}`;
+  }
+
+  function formatSignedCurrency(value) {
+    if (value === 0) return formatCurrency(0);
+    const absolute = formatCurrency(Math.abs(value));
+    return `${value > 0 ? "+" : "-"}${absolute}`;
+  }
+
+  function formatSignedNumber(value, unit = "") {
+    const rounded = Number(value.toFixed(1));
+    if (rounded === 0) return `0${unit}`;
+    return `${rounded > 0 ? "+" : "-"}${Math.abs(rounded)}${unit}`;
+  }
+
+  function slugify(value) {
+    return String(value ?? "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
+  function normalizeModelForGrouping(model) {
+    let normalized = String(model ?? "")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    let changed = true;
+    while (changed && normalized.length > 0) {
+      changed = false;
+      modelVariantStripPatterns.forEach((pattern) => {
+        if (pattern.test(normalized)) {
+          normalized = normalized.replace(pattern, "").trim();
+          changed = true;
+        }
+      });
+    }
+
+    return normalized || String(model ?? "").trim();
+  }
+
+  function buildModelGroups(inputCars) {
+    const map = new Map();
+
+    inputCars.forEach((car) => {
+      const baseModel = normalizeModelForGrouping(car.model);
+      const groupId = `${slugify(car.brand)}-${slugify(baseModel)}`;
+      if (!map.has(groupId)) {
+        map.set(groupId, {
+          id: groupId,
+          brand: car.brand,
+          baseModel,
+          variants: []
+        });
+      }
+      map.get(groupId).variants.push(car);
+    });
+
+    return [...map.values()]
+      .map((group) => {
+        group.variants.sort((a, b) => {
+          if (a.priceEur !== b.priceEur) return a.priceEur - b.priceEur;
+          return a.model.localeCompare(b.model);
+        });
+        return group;
+      })
+      .sort((a, b) => {
+        if (a.brand !== b.brand) return a.brand.localeCompare(b.brand);
+        return a.baseModel.localeCompare(b.baseModel);
+      });
+  }
+
+  function getVariantLabel(group, car) {
+    const groupModel = group.baseModel.trim().toLowerCase();
+    const modelName = car.model.trim();
+    const modelNameLower = modelName.toLowerCase();
+
+    if (modelNameLower === groupModel) return "Standard";
+
+    if (modelNameLower.startsWith(`${groupModel} `)) {
+      const suffix = modelName.slice(group.baseModel.length).trim();
+      return suffix || "Standard";
+    }
+
+    return modelName;
+  }
+
+  function getYearLabel(variants) {
+    const years = variants.map((car) => car.year);
+    const { min, max } = getRange(years);
+    return min === max ? String(min) : `${min}-${max}`;
+  }
+
+  function getGroupRanges(variants) {
+    return {
+      price: getRange(variants.map((car) => car.priceEur)),
+      range: getRange(variants.map((car) => car.rangeKm)),
+      acceleration: getRange(variants.map((car) => car.accel0to100)),
+      charging: getRange(variants.map((car) => car.fastChargeKw))
+    };
+  }
+
+  function getSelectedCarForGroup(group, visibleVariants, scoreMap) {
+    if (!visibleVariants.length) return null;
+
+    const selectedId = state.selectedVariantByGroupId.get(group.id);
+    const selectedVisibleCar = visibleVariants.find((car) => car.id === selectedId);
+    if (selectedVisibleCar) return selectedVisibleCar;
+
+    const fallback =
+      state.sortBy === "best-match"
+        ? [...visibleVariants].sort(
+            (a, b) => (scoreMap.get(b.id)?.finalScore ?? 0) - (scoreMap.get(a.id)?.finalScore ?? 0)
+          )[0]
+        : visibleVariants[0];
+    state.selectedVariantByGroupId.set(group.id, fallback.id);
+    return fallback;
   }
 
   // ── Hash helpers ────────────────────────────────────────
@@ -293,7 +437,7 @@
     const brands = new Set(cars.map((car) => car.brand));
     const sources = new Set();
     cars.forEach((car) => car.sources.forEach((entry) => sources.add(entry.source)));
-    elements.statCarCount.textContent = cars.length;
+    elements.statCarCount.textContent = modelGroups.length;
     elements.statSourceCount.textContent = sources.size;
     elements.statBrandCount.textContent = brands.size;
   }
@@ -365,38 +509,52 @@
 
   // ── Filtering & sorting ─────────────────────────────────
 
-  function getFilteredCars() {
+  function getFilteredGroups() {
     const query = state.search.trim().toLowerCase();
-    return cars.filter((car) => {
-      const searchable = `${car.brand} ${car.model}`.toLowerCase();
-      return (
-        (!query || searchable.includes(query)) &&
-        (state.bodyType === "all" || car.bodyType === state.bodyType) &&
-        (state.source === "all" ||
-          car.sources.some(
-            (entry) => entry.source.toLowerCase() === state.source.toLowerCase()
-          )) &&
-        car.priceEur <= state.maxPrice &&
-        car.rangeKm >= state.minRange
-      );
-    });
+    return modelGroups
+      .map((group) => {
+        const matchingVariants = group.variants.filter((car) => {
+          const searchable = `${car.brand} ${group.baseModel} ${car.model}`.toLowerCase();
+          return (
+            (!query || searchable.includes(query)) &&
+            (state.bodyType === "all" || car.bodyType === state.bodyType) &&
+            (state.source === "all" ||
+              car.sources.some(
+                (entry) => entry.source.toLowerCase() === state.source.toLowerCase()
+              )) &&
+            car.priceEur <= state.maxPrice &&
+            car.rangeKm >= state.minRange
+          );
+        });
+
+        if (!matchingVariants.length) return null;
+        return {
+          group,
+          variants: matchingVariants
+        };
+      })
+      .filter(Boolean);
   }
 
-  function sortCars(filteredCars, scoreMap) {
-    return filteredCars.sort((a, b) => {
+  function sortGroups(filteredGroups, scoreMap) {
+    return filteredGroups.sort((a, b) => {
+      const carA = getSelectedCarForGroup(a.group, a.variants, scoreMap);
+      const carB = getSelectedCarForGroup(b.group, b.variants, scoreMap);
+      if (!carA || !carB) return 0;
+
       switch (state.sortBy) {
         case "expert-score":
-          return b.expertScore - a.expertScore;
+          return carB.expertScore - carA.expertScore;
         case "price-low-high":
-          return a.priceEur - b.priceEur;
+          return carA.priceEur - carB.priceEur;
         case "range-high-low":
-          return b.rangeKm - a.rangeKm;
+          return carB.rangeKm - carA.rangeKm;
         case "acceleration":
-          return a.accel0to100 - b.accel0to100;
+          return carA.accel0to100 - carB.accel0to100;
         case "best-match":
         default: {
-          const scoreA = scoreMap.get(a.id)?.finalScore ?? 0;
-          const scoreB = scoreMap.get(b.id)?.finalScore ?? 0;
+          const scoreA = scoreMap.get(carA.id)?.finalScore ?? 0;
+          const scoreB = scoreMap.get(carB.id)?.finalScore ?? 0;
           return scoreB - scoreA;
         }
       }
@@ -892,6 +1050,10 @@
   function openDetailModal(carId, { updateHash = true } = {}) {
     const car = carById.get(carId);
     if (!car || !elements.detailModal) return;
+    const carGroup = groupByCarId.get(car.id);
+    if (carGroup) {
+      state.selectedVariantByGroupId.set(carGroup.id, car.id);
+    }
 
     state.activeCarId = car.id;
     renderDetailModal(car);
@@ -950,6 +1112,11 @@
       return;
     }
 
+    const hashCarGroup = groupByCarId.get(hashCarId);
+    if (hashCarGroup) {
+      state.selectedVariantByGroupId.set(hashCarGroup.id, hashCarId);
+    }
+
     if (state.activeCarId === hashCarId) {
       renderDetailModal(carById.get(hashCarId));
       return;
@@ -988,83 +1155,177 @@
 
   // ── Rendering ───────────────────────────────────────────
 
-  function renderSummary(filteredCars) {
-    if (!filteredCars.length) {
+  function renderSummary(filteredGroups) {
+    if (!filteredGroups.length) {
       elements.resultsSummary.textContent =
-        "No cars match the selected filters. Broaden your filters to compare more models.";
+        "No model groups match the selected filters. Broaden your filters to compare more variants.";
       return;
     }
 
-    const averagePrice = average(filteredCars.map((car) => car.priceEur));
-    const averageRange = average(filteredCars.map((car) => car.rangeKm));
+    const selectedCars = filteredGroups
+      .map((entry) => getSelectedCarForGroup(entry.group, entry.variants, state.scoreMap))
+      .filter(Boolean);
+    const averagePrice = average(selectedCars.map((car) => car.priceEur));
+    const averageRange = average(selectedCars.map((car) => car.rangeKm));
     elements.resultsSummary.textContent =
-      `${filteredCars.length} car(s) found — Avg. price ${formatCurrency(averagePrice)} | Avg. WLTP range ${formatNumber(averageRange)} km`;
+      `${filteredGroups.length} model group(s) found — Avg. selected price ${formatCurrency(averagePrice)} | Avg. selected WLTP range ${formatNumber(averageRange)} km`;
   }
 
-  function renderCards(sortedCars, scoreMap) {
+  function renderCards(sortedGroups, scoreMap) {
     elements.resultsGrid.innerHTML = "";
 
-    if (!sortedCars.length) {
+    if (!sortedGroups.length) {
       const empty = document.createElement("article");
       empty.className = "empty-state";
       empty.textContent =
-        "No results for the current selection. Try increasing the max price or lowering the min range.";
+        "No model groups for the current selection. Try increasing the max price or lowering the min range.";
       elements.resultsGrid.append(empty);
       return;
     }
 
     const fragment = document.createDocumentFragment();
 
-    sortedCars.forEach((car, index) => {
+    sortedGroups.forEach((entry, index) => {
+      const { group, variants } = entry;
+      const selectedCar = getSelectedCarForGroup(group, variants, scoreMap);
+      if (!selectedCar) return;
+
       const card = template.content.firstElementChild.cloneNode(true);
-      const cardScore = scoreMap.get(car.id);
+      const cardScore = scoreMap.get(selectedCar.id);
       const scorePercent = Math.round((cardScore?.finalScore ?? 0) * 100);
+      const groupRanges = getGroupRanges(variants);
+      const variantLabel = getVariantLabel(group, selectedCar);
 
       // Hero image
-      setCardImage(card, car);
+      setCardImage(card, selectedCar);
 
       // Header
-      card.querySelector(".car-brand").textContent = `${car.brand} · ${car.year}`;
-      card.querySelector(".car-model").textContent = car.model;
+      card.querySelector(".car-brand").textContent = `${group.brand} · ${getYearLabel(variants)}`;
+      card.querySelector(".car-model").textContent = group.baseModel;
+
+      const activeVariantCopy = document.createElement("p");
+      activeVariantCopy.className = "car-variant-active";
+      activeVariantCopy.textContent =
+        variants.length > 1 ? `Selected variant: ${variantLabel}` : "Single variant";
+      card.querySelector(".car-card-header > div").append(activeVariantCopy);
 
       const pill = card.querySelector(".score-pill");
       pill.textContent = `${scorePercent} match`;
       setScorePillStyles(pill, scorePercent);
 
+      if (variants.length > 1) {
+        const variantPicker = document.createElement("label");
+        variantPicker.className = "variant-picker";
+
+        const variantLabelCopy = document.createElement("span");
+        variantLabelCopy.className = "variant-picker-label";
+        variantLabelCopy.textContent = "Variant";
+
+        const variantSelect = document.createElement("select");
+        variantSelect.className = "variant-select";
+
+        variants.forEach((variant) => {
+          const option = document.createElement("option");
+          option.value = variant.id;
+          option.textContent = `${getVariantLabel(group, variant)} · ${formatCurrency(variant.priceEur)} · ${formatNumber(variant.rangeKm)} km`;
+          variantSelect.append(option);
+        });
+
+        variantSelect.value = selectedCar.id;
+        ["click", "mousedown", "keydown"].forEach((eventName) => {
+          variantSelect.addEventListener(eventName, (event) => {
+            event.stopPropagation();
+          });
+        });
+        variantSelect.addEventListener("change", (event) => {
+          event.stopPropagation();
+          state.selectedVariantByGroupId.set(group.id, event.target.value);
+          render();
+        });
+
+        variantPicker.append(variantLabelCopy, variantSelect);
+        card.querySelector(".car-card-header").after(variantPicker);
+      }
+
       const metrics = card.querySelector(".metric-list");
       metrics.append(
-        buildMetricItem("Expert score", `${car.expertScore.toFixed(1)} / 10`),
-        buildMetricItem("Price", formatCurrency(car.priceEur)),
-        buildMetricItem("Range", `${formatNumber(car.rangeKm)} km`),
-        buildMetricItem("0-100 km/h", `${car.accel0to100.toFixed(1)} s`),
-        buildMetricItem("Trunk", `${formatNumber(car.trunkLiters)} L`),
-        buildMetricItem("Fast charge", `${formatNumber(car.fastChargeKw)} kW`)
+        buildMetricItem("Expert score", `${selectedCar.expertScore.toFixed(1)} / 10`),
+        buildMetricItem("Price", formatCurrency(selectedCar.priceEur)),
+        buildMetricItem("Range", `${formatNumber(selectedCar.rangeKm)} km`),
+        buildMetricItem("0-100 km/h", `${selectedCar.accel0to100.toFixed(1)} s`),
+        buildMetricItem("Trunk", `${formatNumber(selectedCar.trunkLiters)} L`),
+        buildMetricItem("Fast charge", `${formatNumber(selectedCar.fastChargeKw)} kW`)
       );
 
+      if (variants.length > 1) {
+        const diffBlock = document.createElement("div");
+        diffBlock.className = "variant-differences";
+
+        const rangeChipList = document.createElement("div");
+        rangeChipList.className = "variant-range-list";
+        [
+          ["Price range", formatRangeLabel(groupRanges.price.min, groupRanges.price.max, formatCurrency)],
+          [
+            "Range range",
+            formatRangeLabel(groupRanges.range.min, groupRanges.range.max, formatNumber, " km")
+          ],
+          [
+            "0-100 range",
+            formatRangeLabel(
+              groupRanges.acceleration.min,
+              groupRanges.acceleration.max,
+              (value) => value.toFixed(1),
+              " s"
+            )
+          ]
+        ].forEach(([label, value]) => {
+          const chip = document.createElement("span");
+          chip.className = "variant-range-chip";
+          chip.textContent = `${label}: ${value}`;
+          rangeChipList.append(chip);
+        });
+
+        const deltaCopy = document.createElement("p");
+        deltaCopy.className = "variant-delta-copy";
+        deltaCopy.textContent =
+          `Selected vs cheapest: ${formatSignedCurrency(selectedCar.priceEur - groupRanges.price.min)} · ` +
+          `vs shortest range: ${formatSignedNumber(selectedCar.rangeKm - groupRanges.range.min, " km")} · ` +
+          `vs quickest 0-100: ${formatSignedNumber(selectedCar.accel0to100 - groupRanges.acceleration.min, " s")}`;
+
+        diffBlock.append(rangeChipList, deltaCopy);
+        metrics.after(diffBlock);
+      }
+
       const segmentLine = card.querySelector(".segment-line");
-      [car.bodyType, `${car.seats} seats`, `${car.batteryKwh} kWh`].forEach((tag) => {
-        const span = document.createElement("span");
-        span.className = "segment-tag";
-        span.textContent = tag;
-        segmentLine.append(span);
-      });
+      [selectedCar.bodyType, `${selectedCar.seats} seats`, `${selectedCar.batteryKwh} kWh`].forEach(
+        (tag) => {
+          const span = document.createElement("span");
+          span.className = "segment-tag";
+          span.textContent = tag;
+          segmentLine.append(span);
+        }
+      );
 
       const sourceContainer = card.querySelector(".source-list");
-      car.sources.forEach((entry) => {
+      selectedCar.sources.forEach((entry) => {
         sourceContainer.append(buildSourceChip(entry));
       });
 
       card.setAttribute("role", "button");
       card.setAttribute("tabindex", "0");
-      card.setAttribute("aria-label", `Open details for ${car.brand} ${car.model}`);
+      card.setAttribute("aria-label", `Open details for ${group.brand} ${selectedCar.model}`);
 
       const openFromCard = () => {
         state.triggerElement = card;
-        openDetailModal(car.id);
+        openDetailModal(selectedCar.id);
       };
 
-      card.addEventListener("click", openFromCard);
+      card.addEventListener("click", (event) => {
+        if (event.target.closest(".variant-picker")) return;
+        openFromCard();
+      });
       card.addEventListener("keydown", (event) => {
+        if (event.target.closest(".variant-picker")) return;
         if (event.key === "Enter" || event.key === " " || event.key === "Spacebar") {
           event.preventDefault();
           openFromCard();
@@ -1099,10 +1360,10 @@
   function render() {
     const scoreMap = computeScoreMap();
     state.scoreMap = scoreMap;
-    const filteredCars = getFilteredCars();
-    const sortedCars = sortCars(filteredCars, scoreMap);
-    renderSummary(sortedCars);
-    renderCards(sortedCars, scoreMap);
+    const filteredGroups = getFilteredGroups();
+    const sortedGroups = sortGroups(filteredGroups, scoreMap);
+    renderSummary(sortedGroups);
+    renderCards(sortedGroups, scoreMap);
 
     if (state.activeCarId && carById.has(state.activeCarId)) {
       renderDetailModal(carById.get(state.activeCarId));
