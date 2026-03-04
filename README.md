@@ -50,3 +50,17 @@ python3 -m http.server 8080
 ```
 
 Ga daarna naar `http://localhost:8080`.
+
+## EV-Database dataset opnieuw genereren
+
+De EV-lijst in `data/evData.js` kan volledig worden vernieuwd met:
+
+```bash
+node scripts/refreshEvDataFromEvDatabase.mjs
+```
+
+Wat dit script doet:
+
+- haalt de actuele EV-Database lijst op vanaf `https://ev-database.org/`;
+- neemt alle modellen met status `current` en `upcoming` mee;
+- bouwt een consistente `window.evData` dataset opnieuw op (incl. EVbase source-link per auto).

@@ -67,6 +67,7 @@
   const fallbackCarImage = "./assets/car-placeholder.svg";
   const wikipediaSearchApi = "https://en.wikipedia.org/w/api.php";
   const imageCacheStoragePrefix = "ev-verdict-car-image-v1:";
+  const shouldResolveWikipediaImages = cars.length <= 180;
   const modelNoiseTokens = new Set([
     "long",
     "range",
@@ -648,6 +649,11 @@
     if (cachedFromStorage) {
       resolvedCarImageSources.set(car.id, cachedFromStorage);
       return Promise.resolve(cachedFromStorage);
+    }
+
+    // Avoid firing hundreds of parallel Wikipedia requests on very large datasets.
+    if (!shouldResolveWikipediaImages) {
+      return Promise.resolve(fallbackCarImage);
     }
 
     if (pendingCarImageRequests.has(car.id)) {
