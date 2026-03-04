@@ -144,6 +144,74 @@
 
     </main>
 
+    <!-- Car detail modal -->
+    <div id="carDetailModal" class="car-detail-modal" hidden aria-hidden="true">
+      <div class="car-detail-backdrop" id="carDetailBackdrop" data-close-detail></div>
+      <section
+        class="car-detail-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="detailTitle"
+      >
+        <header class="car-detail-header">
+          <button
+            id="detailBackButton"
+            type="button"
+            class="button-secondary detail-back-button"
+          >
+            ← Back to overview
+          </button>
+          <button
+            id="detailCloseButton"
+            type="button"
+            class="detail-close-button"
+            aria-label="Close detail view"
+          >
+            ✕
+          </button>
+        </header>
+
+        <div class="car-detail-content">
+          <p class="car-brand detail-brand" id="detailBrand"></p>
+          <h2 class="detail-title" id="detailTitle"></h2>
+
+          <div class="detail-score-row">
+            <div class="score-pill detail-score-pill" id="detailMatchScore"></div>
+            <p class="detail-score-copy" id="detailScoreCopy"></p>
+          </div>
+
+          <section class="detail-section" aria-labelledby="detailSpecsHeading">
+            <h3 id="detailSpecsHeading">Full specs</h3>
+            <dl class="detail-spec-grid" id="detailSpecs"></dl>
+          </section>
+
+          <section class="detail-section" aria-labelledby="detailBreakdownHeading">
+            <h3 id="detailBreakdownHeading">Matchscore breakdown</h3>
+            <div class="breakdown-list" id="detailBreakdown"></div>
+          </section>
+
+          <section class="detail-section" aria-labelledby="detailProsConsHeading">
+            <h3 id="detailProsConsHeading">Pros &amp; cons summary</h3>
+            <div class="pros-cons-grid">
+              <div class="pros-cons-block">
+                <h4>Pros</h4>
+                <ul id="detailPros"></ul>
+              </div>
+              <div class="pros-cons-block">
+                <h4>Cons</h4>
+                <ul id="detailCons"></ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="detail-section" aria-labelledby="detailSourcesHeading">
+            <h3 id="detailSourcesHeading">Review sources</h3>
+            <ul class="detail-source-list" id="detailSources"></ul>
+          </section>
+        </div>
+      </section>
+    </div>
+
     <!-- Card template -->
     <template id="carCardTemplate">
       <article class="car-card">
