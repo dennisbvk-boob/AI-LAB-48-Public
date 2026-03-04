@@ -634,6 +634,12 @@ input[type="range"]::-moz-range-thumb {
   letter-spacing: -0.01em;
 }
 
+.car-variant-active {
+  margin: 0.35rem 0 0;
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
 /* ── Score pill ────────────────────────────────────────── */
 .score-pill {
   background: linear-gradient(135deg, rgba(0,255,163,0.2), rgba(0,229,255,0.15));
@@ -677,6 +683,64 @@ input[type="range"]::-moz-range-thumb {
   list-style: none;
   display: grid;
   gap: 0;
+}
+
+.variant-picker {
+  margin-top: 0.75rem;
+  display: grid;
+  gap: 0.35rem;
+  cursor: default;
+}
+
+.variant-picker-label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.variant-select {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(99, 179, 237, 0.2);
+  background: rgba(4, 10, 25, 0.75);
+  color: var(--text);
+  padding: 0.5rem 0.7rem;
+  appearance: auto;
+}
+
+.variant-differences {
+  margin-top: 0.7rem;
+  border: 1px solid rgba(99, 179, 237, 0.14);
+  border-radius: var(--radius-sm);
+  background: rgba(0, 229, 255, 0.04);
+  padding: 0.5rem 0.58rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.variant-range-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.variant-range-chip {
+  font-size: 0.67rem;
+  color: #a5d8ff;
+  border-radius: 999px;
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  background: rgba(59, 130, 246, 0.08);
+  padding: 0.14rem 0.48rem;
+  white-space: nowrap;
+}
+
+.variant-delta-copy {
+  margin: 0;
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.45;
 }
 
 .metric-item {
