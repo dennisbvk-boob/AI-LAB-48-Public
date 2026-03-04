@@ -49,6 +49,62 @@
     weights: { ...defaultWeights }
   };
 
+  // Car photos from Wikimedia Commons (freely licensed/publicly available)
+  const carImageById = Object.freeze({
+    "tesla-model-3-highland":
+      "https://upload.wikimedia.org/wikipedia/commons/5/5a/2024_Tesla_Model_3_Performance_front_view_03.png",
+    "tesla-model-y":
+      "https://upload.wikimedia.org/wikipedia/commons/3/3d/2024_Tesla_Model_Y_RWD_front.jpg",
+    "hyundai-ioniq-5":
+      "https://upload.wikimedia.org/wikipedia/commons/8/85/Hyundai_Ioniq_5_AWD_Techniq-Paket_%E2%80%93_f_31122024.jpg",
+    "kia-ev6":
+      "https://upload.wikimedia.org/wikipedia/commons/d/d9/2021_Kia_EV6_GT-Line_S.jpg",
+    "bmw-i4-edrive40":
+      "https://upload.wikimedia.org/wikipedia/commons/a/ad/BMW_i4_IMG_6695.jpg",
+    "vw-id7-pro":
+      "https://upload.wikimedia.org/wikipedia/commons/8/86/Volkswagen_ID.7_DSC_7879_%28cropped%29.jpg",
+    "volvo-ex30":
+      "https://upload.wikimedia.org/wikipedia/commons/e/eb/Volvo_EX30_IMG_8923.jpg",
+    "skoda-enyaq-85":
+      "https://upload.wikimedia.org/wikipedia/commons/7/74/%C5%A0koda_Enyaq_IMG_1190.jpg",
+    "mg4-long-range":
+      "https://upload.wikimedia.org/wikipedia/commons/1/12/MG4_Electric_%E2%80%93_f_21042025.jpg",
+    "polestar-2-long-range":
+      "https://upload.wikimedia.org/wikipedia/commons/c/ca/Polestar_2_%E2%80%93_f_02042021.jpg",
+    "renault-scenic-etec":
+      "https://upload.wikimedia.org/wikipedia/commons/4/4f/Renault_Sc%C3%A9nic_E-Tech_IMG_9977.jpg",
+    "mercedes-eqe-suv":
+      "https://upload.wikimedia.org/wikipedia/commons/4/41/Mercedes-Benz_X294_IMG_8682.jpg",
+    "byd-seal":
+      "https://upload.wikimedia.org/wikipedia/commons/6/60/2022_BYD_Seal.jpg",
+    "nissan-ariya":
+      "https://upload.wikimedia.org/wikipedia/commons/e/eb/Nissan_Ariya_e-4ORCE_Evolve_Pack_%E2%80%93_f_31122024.jpg"
+  });
+
+  const fallbackCarImage =
+    "data:image/svg+xml;charset=UTF-8," +
+    encodeURIComponent(
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="No car image available">
+        <defs>
+          <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0%" stop-color="#090f20"/>
+            <stop offset="100%" stop-color="#111a34"/>
+          </linearGradient>
+        </defs>
+        <rect width="800" height="450" fill="url(#bg)"/>
+        <rect x="18" y="18" width="764" height="414" rx="18" ry="18" fill="none" stroke="#28406e" stroke-width="4"/>
+        <g fill="none" stroke="#7a8aaa" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M220 290h360l-34-82c-8-19-26-31-46-31H302c-21 0-39 12-47 31z"/>
+          <circle cx="300" cy="296" r="32"/>
+          <circle cx="500" cy="296" r="32"/>
+          <path d="M198 290h30m344 0h30"/>
+        </g>
+        <text x="400" y="380" text-anchor="middle" fill="#9fb3d9" font-family="Arial, sans-serif" font-size="30">
+          Image unavailable
+        </text>
+      </svg>`
+    );
+
   // ── Formatters ──────────────────────────────────────────
 
   function formatCurrency(value) {
@@ -308,6 +364,33 @@
     return "#f87171";
   }
 
+  function getCarImage(car) {
+    return carImageById[car.id] || fallbackCarImage;
+  }
+
+  function bindCarImage(card, car) {
+    const image = card.querySelector(".car-image");
+    if (!image) return;
+
+    const imageUrl = getCarImage(car);
+    image.src = imageUrl;
+    image.alt = `${car.brand} ${car.model}`;
+    image.referrerPolicy = "no-referrer";
+
+    if (imageUrl === fallbackCarImage) {
+      image.classList.add("is-fallback");
+    } else {
+      image.classList.remove("is-fallback");
+    }
+
+    image.addEventListener("error", () => {
+      if (image.dataset.fallbackApplied === "true") return;
+      image.dataset.fallbackApplied = "true";
+      image.classList.add("is-fallback");
+      image.src = fallbackCarImage;
+    });
+  }
+
   // ── Rendering ───────────────────────────────────────────
 
   function renderSummary(filteredCars) {
@@ -340,6 +423,9 @@
       const card = template.content.firstElementChild.cloneNode(true);
       const cardScore = scoreMap.get(car.id);
       const scorePercent = Math.round((cardScore?.finalScore ?? 0) * 100);
+
+      // Image
+      bindCarImage(card, car);
 
       // Header
       card.querySelector(".car-brand").textContent = `${car.brand} · ${car.year}`;
