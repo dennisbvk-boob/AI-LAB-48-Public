@@ -1,0 +1,30 @@
+name: Deploy Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages-sync
+  cancel-in-progress: true
+
+jobs:
+  sync-pages-branch:
+    name: Sync main to Pages source branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+
+      - name: Publish repository root to AI-LAB-48-Public branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: AI-LAB-48-Public
+          folder: .
+          clean: true
+          single-commit: true

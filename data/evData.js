@@ -3112,5 +3112,95 @@ window.evData.push(
         rating: 7.3
       }
     ]
+  },
+  {
+    id: "tesla-model-s-long-range",
+    brand: "Tesla",
+    model: "Model S Long Range",
+    year: 2024,
+    bodyType: "Sedan",
+    seats: 5,
+    priceEur: 109990,
+    rangeKm: 634,
+    accel0to100: 3.2,
+    trunkLiters: 793,
+    fastChargeKw: 250,
+    batteryKwh: 100,
+    comfortScore: 8.8,
+    expertScore: 8.7,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Tesla Model S review",
+        url: "https://www.carwow.co.uk/tesla/model-s",
+        rating: 8.6
+      },
+      {
+        source: "YouTube",
+        title: "Tesla Model S review videos",
+        url: "https://www.youtube.com/results?search_query=Tesla+Model+S+Long+Range+review",
+        rating: 8.7
+      }
+    ]
+  },
+  {
+    id: "rivian-r1t-dual",
+    brand: "Rivian",
+    model: "R1T Dual Motor",
+    year: 2025,
+    bodyType: "Pickup",
+    seats: 5,
+    priceEur: 89900,
+    rangeKm: 530,
+    accel0to100: 4.5,
+    trunkLiters: 314,
+    fastChargeKw: 220,
+    batteryKwh: 135,
+    comfortScore: 8.1,
+    expertScore: 8.0,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Rivian R1T review",
+        url: "https://www.carwow.co.uk/rivian/r1t",
+        rating: 8.0
+      },
+      {
+        source: "YouTube",
+        title: "Rivian R1T Dual Motor review videos",
+        url: "https://www.youtube.com/results?search_query=Rivian+R1T+Dual+Motor+review",
+        rating: 8.0
+      }
+    ]
+  },
+  {
+    id: "volvo-ex40-single-motor",
+    brand: "Volvo",
+    model: "EX40 Single Motor Extended Range",
+    year: 2025,
+    bodyType: "SUV",
+    seats: 5,
+    priceEur: 52995,
+    rangeKm: 575,
+    accel0to100: 7.3,
+    trunkLiters: 410,
+    fastChargeKw: 200,
+    batteryKwh: 82,
+    comfortScore: 8.4,
+    expertScore: 8.2,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Volvo EX40 review",
+        url: "https://www.carwow.co.uk/volvo/ex40",
+        rating: 8.2
+      },
+      {
+        source: "YouTube",
+        title: "Volvo EX40 review videos",
+        url: "https://www.youtube.com/results?search_query=Volvo+EX40+Single+Motor+review",
+        rating: 8.2
+      }
+    ]
   }
 );
