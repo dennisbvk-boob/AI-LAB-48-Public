@@ -65,6 +65,37 @@
   });
 
   const fallbackCarImage = "./assets/car-placeholder.svg";
+  const wikipediaSearchApi = "https://en.wikipedia.org/w/api.php";
+  const imageCacheStoragePrefix = "ev-verdict-car-image-v1:";
+  const modelNoiseTokens = new Set([
+    "long",
+    "range",
+    "single",
+    "dual",
+    "motor",
+    "extended",
+    "performance",
+    "quattro",
+    "plus",
+    "pro",
+    "design",
+    "comfort",
+    "suv",
+    "sedan",
+    "estate",
+    "hatchback",
+    "crossover",
+    "coupe",
+    "coupe",
+    "kwh",
+    "awd",
+    "rwd",
+    "4matic",
+    "xdrive50",
+    "edrive40",
+    "electric",
+    "ev"
+  ]);
   const carImageSources = {
     "tesla-model-3-highland":
       "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/15-05-23-Berlin-Sachsendamm-Tesla-RalfR-N3S_7354.jpg/960px-15-05-23-Berlin-Sachsendamm-Tesla-RalfR-N3S_7354.jpg",
@@ -95,6 +126,8 @@
     "nissan-ariya":
       "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Nissan_Ariya_Nismo%2C_Auto_2024%2C_Zurich_%28PANA1011%29.jpg/960px-Nissan_Ariya_Nismo%2C_Auto_2024%2C_Zurich_%28PANA1011%29.jpg"
   };
+  const resolvedCarImageSources = new Map(Object.entries(carImageSources));
+  const pendingCarImageRequests = new Map();
 
   const state = {
     search: "",
@@ -468,6 +501,180 @@
     return state.scoreMap.get(carId) ?? fallbackScoreDetails;
   }
 
+  function sanitizeForSearch(value) {
+    return String(value ?? "")
+      .toLowerCase()
+      .replace(/\+/g, " plus ")
+      .replace(/[#:/()]/g, " ")
+      .replace(/[^a-z0-9\s-]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function toSearchTokens(value) {
+    return sanitizeForSearch(value)
+      .split(" ")
+      .filter(Boolean);
+  }
+
+  function getCarImageCacheKey(carId) {
+    return `${imageCacheStoragePrefix}${carId}`;
+  }
+
+  function getCachedCarImageUrl(carId) {
+    try {
+      return window.localStorage.getItem(getCarImageCacheKey(carId));
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function setCachedCarImageUrl(carId, url) {
+    try {
+      window.localStorage.setItem(getCarImageCacheKey(carId), url);
+    } catch (error) {
+      // Ignore storage quota/security errors and keep rendering.
+    }
+  }
+
+  function clearCachedCarImageUrl(carId) {
+    try {
+      window.localStorage.removeItem(getCarImageCacheKey(carId));
+    } catch (error) {
+      // Ignore storage access errors.
+    }
+  }
+
+  function buildCarImageQueries(car) {
+    const modelTokens = toSearchTokens(car.model).filter(
+      (token) => !modelNoiseTokens.has(token) && !/^\d+$/.test(token)
+    );
+    const compactModel = modelTokens.slice(0, 3).join(" ");
+    const rawQueries = [
+      `${car.brand} ${car.model} electric car`,
+      compactModel ? `${car.brand} ${compactModel} electric car` : "",
+      compactModel ? `${car.brand} ${compactModel}` : "",
+      `${car.brand} electric car`
+    ];
+    return [...new Set(rawQueries.map((query) => query.trim()).filter((query) => query.length > 0))];
+  }
+
+  async function fetchWikipediaImageCandidates(query) {
+    const params = new URLSearchParams({
+      action: "query",
+      format: "json",
+      origin: "*",
+      generator: "search",
+      gsrsearch: query,
+      gsrlimit: "8",
+      gsrnamespace: "0",
+      prop: "pageimages|info",
+      piprop: "thumbnail",
+      pithumbsize: "960",
+      inprop: "url"
+    });
+    const response = await fetch(`${wikipediaSearchApi}?${params.toString()}`);
+    if (!response.ok) {
+      throw new Error(`Wikipedia image lookup failed for "${query}" (${response.status}).`);
+    }
+    const data = await response.json();
+    return Object.values(data.query?.pages ?? {}).filter(
+      (page) => page?.thumbnail?.source && page?.title
+    );
+  }
+
+  function scoreWikipediaCandidate(page, brandTokens, modelTokens) {
+    const title = sanitizeForSearch(page.title);
+    let score = 0;
+
+    brandTokens.forEach((token) => {
+      if (title.includes(token)) {
+        score += 3;
+      }
+    });
+    modelTokens.slice(0, 4).forEach((token, index) => {
+      if (title.includes(token)) {
+        score += index === 0 ? 4 : 2;
+      }
+    });
+
+    if (title.includes("disambiguation")) score -= 10;
+    if (title.includes("film") || title.includes("album")) score -= 8;
+    if (title.includes("concept")) score -= 2;
+
+    return score;
+  }
+
+  async function resolveWikipediaCarImage(car) {
+    const brandTokens = toSearchTokens(car.brand);
+    const modelTokens = toSearchTokens(car.model).filter(
+      (token) => !modelNoiseTokens.has(token) && !/^\d+$/.test(token)
+    );
+    const queries = buildCarImageQueries(car);
+    let bestCandidate = null;
+
+    for (const query of queries) {
+      let candidates = [];
+      try {
+        candidates = await fetchWikipediaImageCandidates(query);
+      } catch (error) {
+        continue;
+      }
+
+      candidates.forEach((candidate) => {
+        const score = scoreWikipediaCandidate(candidate, brandTokens, modelTokens);
+        if (!bestCandidate || score > bestCandidate.score) {
+          bestCandidate = {
+            score,
+            url: candidate.thumbnail.source
+          };
+        }
+      });
+
+      if (bestCandidate?.score >= 7) {
+        break;
+      }
+    }
+
+    return bestCandidate?.url ?? null;
+  }
+
+  function getCarImageUrl(car) {
+    if (resolvedCarImageSources.has(car.id)) {
+      return Promise.resolve(resolvedCarImageSources.get(car.id));
+    }
+
+    const cachedFromStorage = getCachedCarImageUrl(car.id);
+    if (cachedFromStorage) {
+      resolvedCarImageSources.set(car.id, cachedFromStorage);
+      return Promise.resolve(cachedFromStorage);
+    }
+
+    if (pendingCarImageRequests.has(car.id)) {
+      return pendingCarImageRequests.get(car.id);
+    }
+
+    const request = resolveWikipediaCarImage(car)
+      .then((resolvedUrl) => {
+        const finalUrl = resolvedUrl || fallbackCarImage;
+        resolvedCarImageSources.set(car.id, finalUrl);
+        if (resolvedUrl) {
+          setCachedCarImageUrl(car.id, resolvedUrl);
+        }
+        return finalUrl;
+      })
+      .catch(() => {
+        resolvedCarImageSources.set(car.id, fallbackCarImage);
+        return fallbackCarImage;
+      })
+      .finally(() => {
+        pendingCarImageRequests.delete(car.id);
+      });
+
+    pendingCarImageRequests.set(car.id, request);
+    return request;
+  }
+
   function setScorePillStyles(pillElement, scorePercent) {
     const color = scoreColor(scorePercent);
     pillElement.style.color = color;
@@ -748,12 +955,29 @@
   function setCardImage(card, car) {
     const image = card.querySelector(".car-image");
     if (!image) return;
+
+    image.dataset.carId = car.id;
     image.alt = `${car.brand} ${car.model}`;
     image.onerror = () => {
+      const failedCarId = image.dataset.carId;
       image.onerror = null;
       image.src = fallbackCarImage;
+      if (failedCarId) {
+        resolvedCarImageSources.delete(failedCarId);
+        clearCachedCarImageUrl(failedCarId);
+      }
     };
-    image.src = carImageSources[car.id] || fallbackCarImage;
+
+    const initialUrl = resolvedCarImageSources.get(car.id);
+    image.src = initialUrl || fallbackCarImage;
+    if (initialUrl) return;
+
+    getCarImageUrl(car).then((resolvedUrl) => {
+      if (image.dataset.carId !== car.id) return;
+      if (image.src !== resolvedUrl) {
+        image.src = resolvedUrl;
+      }
+    });
   }
 
   // ── Rendering ───────────────────────────────────────────
