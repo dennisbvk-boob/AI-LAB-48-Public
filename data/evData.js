@@ -586,5 +586,695 @@ window.evData = [
         rating: 7.8
       }
     ]
+  },
+  {
+    id: "tesla-model-s-long-range",
+    brand: "Tesla",
+    model: "Model S Long Range",
+    year: 2024,
+    bodyType: "Sedan",
+    seats: 5,
+    priceEur: 109990,
+    rangeKm: 634,
+    accel0to100: 3.2,
+    trunkLiters: 793,
+    fastChargeKw: 250,
+    batteryKwh: 100,
+    comfortScore: 8.8,
+    expertScore: 8.7,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Tesla Model S review",
+        url: "https://www.carwow.co.uk/tesla/model-s",
+        rating: 8.6
+      },
+      {
+        source: "YouTube",
+        title: "Tesla Model S review videos",
+        url: "https://www.youtube.com/results?search_query=Tesla+Model+S+Long+Range+review",
+        rating: 8.7
+      }
+    ]
+  },
+  {
+    id: "volkswagen-id4-pro",
+    brand: "Volkswagen",
+    model: "ID.4 Pro",
+    year: 2025,
+    bodyType: "SUV",
+    seats: 5,
+    priceEur: 46990,
+    rangeKm: 550,
+    accel0to100: 6.7,
+    trunkLiters: 543,
+    fastChargeKw: 175,
+    batteryKwh: 82,
+    comfortScore: 8.3,
+    expertScore: 8.1,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Volkswagen ID.4 review",
+        url: "https://www.carwow.co.uk/volkswagen/id4",
+        rating: 8.1
+      },
+      {
+        source: "YouTube",
+        title: "Volkswagen ID.4 review videos",
+        url: "https://www.youtube.com/results?search_query=Volkswagen+ID.4+Pro+review",
+        rating: 8.0
+      }
+    ]
+  },
+  {
+    id: "volkswagen-id3-pro-s",
+    brand: "Volkswagen",
+    model: "ID.3 Pro S",
+    year: 2025,
+    bodyType: "Hatchback",
+    seats: 5,
+    priceEur: 42990,
+    rangeKm: 556,
+    accel0to100: 7.1,
+    trunkLiters: 385,
+    fastChargeKw: 175,
+    batteryKwh: 79,
+    comfortScore: 7.9,
+    expertScore: 8.0,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Volkswagen ID.3 review",
+        url: "https://www.carwow.co.uk/volkswagen/id3",
+        rating: 8.0
+      },
+      {
+        source: "YouTube",
+        title: "Volkswagen ID.3 Pro S review videos",
+        url: "https://www.youtube.com/results?search_query=Volkswagen+ID.3+Pro+S+review",
+        rating: 7.9
+      }
+    ]
+  },
+  {
+    id: "bmw-ix1-edrive20",
+    brand: "BMW",
+    model: "iX1 eDrive20",
+    year: 2025,
+    bodyType: "SUV",
+    seats: 5,
+    priceEur: 49900,
+    rangeKm: 474,
+    accel0to100: 8.6,
+    trunkLiters: 490,
+    fastChargeKw: 130,
+    batteryKwh: 64.7,
+    comfortScore: 8.0,
+    expertScore: 7.8,
+    sources: [
+      {
+        source: "Carwow",
+        title: "BMW iX1 review",
+        url: "https://www.carwow.co.uk/bmw/ix1",
+        rating: 7.9
+      },
+      {
+        source: "YouTube",
+        title: "BMW iX1 eDrive20 review videos",
+        url: "https://www.youtube.com/results?search_query=BMW+iX1+eDrive20+review",
+        rating: 7.8
+      }
+    ]
+  },
+  {
+    id: "mercedes-eqa-250-plus",
+    brand: "Mercedes-Benz",
+    model: "EQA 250+",
+    year: 2024,
+    bodyType: "SUV",
+    seats: 5,
+    priceEur: 56990,
+    rangeKm: 560,
+    accel0to100: 8.6,
+    trunkLiters: 340,
+    fastChargeKw: 100,
+    batteryKwh: 70.5,
+    comfortScore: 8.4,
+    expertScore: 7.9,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Mercedes EQA review",
+        url: "https://www.carwow.co.uk/mercedes/eqa",
+        rating: 8.0
+      },
+      {
+        source: "YouTube",
+        title: "Mercedes EQA 250+ review videos",
+        url: "https://www.youtube.com/results?search_query=Mercedes+EQA+250%2B+review",
+        rating: 7.8
+      }
+    ]
+  },
+  {
+    id: "hyundai-kona-electric-long-range",
+    brand: "Hyundai",
+    model: "Kona Electric Long Range",
+    year: 2025,
+    bodyType: "SUV",
+    seats: 5,
+    priceEur: 39995,
+    rangeKm: 514,
+    accel0to100: 7.8,
+    trunkLiters: 466,
+    fastChargeKw: 102,
+    batteryKwh: 65.4,
+    comfortScore: 7.8,
+    expertScore: 8.0,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Hyundai Kona Electric review",
+        url: "https://www.carwow.co.uk/hyundai/kona-electric",
+        rating: 8.0
+      },
+      {
+        source: "YouTube",
+        title: "Hyundai Kona Electric review videos",
+        url: "https://www.youtube.com/results?search_query=Hyundai+Kona+Electric+Long+Range+review",
+        rating: 8.0
+      }
+    ]
+  },
+  {
+    id: "kia-ev3-long-range",
+    brand: "Kia",
+    model: "EV3 Long Range",
+    year: 2025,
+    bodyType: "SUV",
+    seats: 5,
+    priceEur: 41995,
+    rangeKm: 605,
+    accel0to100: 7.5,
+    trunkLiters: 460,
+    fastChargeKw: 128,
+    batteryKwh: 81.4,
+    comfortScore: 8.2,
+    expertScore: 8.3,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Kia EV3 review",
+        url: "https://www.carwow.co.uk/kia/ev3",
+        rating: 8.3
+      },
+      {
+        source: "YouTube",
+        title: "Kia EV3 Long Range review videos",
+        url: "https://www.youtube.com/results?search_query=Kia+EV3+Long+Range+review",
+        rating: 8.2
+      }
+    ]
+  },
+  {
+    id: "polestar-3-long-range-dual-motor",
+    brand: "Polestar",
+    model: "3 Long Range Dual Motor",
+    year: 2025,
+    bodyType: "SUV",
+    seats: 5,
+    priceEur: 88900,
+    rangeKm: 560,
+    accel0to100: 5.0,
+    trunkLiters: 484,
+    fastChargeKw: 250,
+    batteryKwh: 111,
+    comfortScore: 8.9,
+    expertScore: 8.4,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Polestar 3 review",
+        url: "https://www.carwow.co.uk/polestar/3",
+        rating: 8.4
+      },
+      {
+        source: "YouTube",
+        title: "Polestar 3 review videos",
+        url: "https://www.youtube.com/results?search_query=Polestar+3+Long+Range+Dual+Motor+review",
+        rating: 8.3
+      }
+    ]
+  },
+  {
+    id: "polestar-4-long-range-dual-motor",
+    brand: "Polestar",
+    model: "4 Long Range Dual Motor",
+    year: 2025,
+    bodyType: "Crossover",
+    seats: 5,
+    priceEur: 69900,
+    rangeKm: 590,
+    accel0to100: 3.8,
+    trunkLiters: 526,
+    fastChargeKw: 200,
+    batteryKwh: 100,
+    comfortScore: 8.6,
+    expertScore: 8.3,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Polestar 4 review",
+        url: "https://www.carwow.co.uk/polestar/4",
+        rating: 8.3
+      },
+      {
+        source: "YouTube",
+        title: "Polestar 4 review videos",
+        url: "https://www.youtube.com/results?search_query=Polestar+4+Long+Range+Dual+Motor+review",
+        rating: 8.3
+      }
+    ]
+  },
+  {
+    id: "rivian-r1t-dual",
+    brand: "Rivian",
+    model: "R1T Dual Motor",
+    year: 2025,
+    bodyType: "Pickup",
+    seats: 5,
+    priceEur: 89900,
+    rangeKm: 530,
+    accel0to100: 4.5,
+    trunkLiters: 314,
+    fastChargeKw: 220,
+    batteryKwh: 135,
+    comfortScore: 8.1,
+    expertScore: 8.0,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Rivian R1T review",
+        url: "https://www.carwow.co.uk/rivian/r1t",
+        rating: 8.0
+      },
+      {
+        source: "YouTube",
+        title: "Rivian R1T Dual Motor review videos",
+        url: "https://www.youtube.com/results?search_query=Rivian+R1T+Dual+Motor+review",
+        rating: 8.0
+      }
+    ]
+  },
+  {
+    id: "rivian-r1s-dual",
+    brand: "Rivian",
+    model: "R1S Dual Motor",
+    year: 2025,
+    bodyType: "SUV",
+    seats: 7,
+    priceEur: 95900,
+    rangeKm: 515,
+    accel0to100: 4.7,
+    trunkLiters: 316,
+    fastChargeKw: 220,
+    batteryKwh: 135,
+    comfortScore: 8.3,
+    expertScore: 8.1,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Rivian R1S review",
+        url: "https://www.carwow.co.uk/rivian/r1s",
+        rating: 8.1
+      },
+      {
+        source: "YouTube",
+        title: "Rivian R1S Dual Motor review videos",
+        url: "https://www.youtube.com/results?search_query=Rivian+R1S+Dual+Motor+review",
+        rating: 8.1
+      }
+    ]
+  },
+  {
+    id: "byd-atto-3-comfort",
+    brand: "BYD",
+    model: "Atto 3 Comfort",
+    year: 2025,
+    bodyType: "SUV",
+    seats: 5,
+    priceEur: 37990,
+    rangeKm: 420,
+    accel0to100: 7.3,
+    trunkLiters: 440,
+    fastChargeKw: 88,
+    batteryKwh: 60.5,
+    comfortScore: 7.4,
+    expertScore: 7.7,
+    sources: [
+      {
+        source: "Carwow",
+        title: "BYD Atto 3 review",
+        url: "https://www.carwow.co.uk/byd/atto-3",
+        rating: 7.8
+      },
+      {
+        source: "YouTube",
+        title: "BYD Atto 3 Comfort review videos",
+        url: "https://www.youtube.com/results?search_query=BYD+Atto+3+Comfort+review",
+        rating: 7.7
+      }
+    ]
+  },
+  {
+    id: "byd-dolphin-comfort",
+    brand: "BYD",
+    model: "Dolphin Comfort",
+    year: 2025,
+    bodyType: "Hatchback",
+    seats: 5,
+    priceEur: 30990,
+    rangeKm: 427,
+    accel0to100: 7.0,
+    trunkLiters: 345,
+    fastChargeKw: 88,
+    batteryKwh: 60.4,
+    comfortScore: 7.1,
+    expertScore: 7.5,
+    sources: [
+      {
+        source: "Carwow",
+        title: "BYD Dolphin review",
+        url: "https://www.carwow.co.uk/byd/dolphin",
+        rating: 7.5
+      },
+      {
+        source: "YouTube",
+        title: "BYD Dolphin Comfort review videos",
+        url: "https://www.youtube.com/results?search_query=BYD+Dolphin+Comfort+review",
+        rating: 7.4
+      }
+    ]
+  },
+  {
+    id: "renault-megane-etec-ev60",
+    brand: "Renault",
+    model: "Megane E-Tech EV60",
+    year: 2025,
+    bodyType: "Crossover",
+    seats: 5,
+    priceEur: 40990,
+    rangeKm: 470,
+    accel0to100: 7.4,
+    trunkLiters: 440,
+    fastChargeKw: 130,
+    batteryKwh: 60,
+    comfortScore: 8.0,
+    expertScore: 8.0,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Renault Megane E-Tech review",
+        url: "https://www.carwow.co.uk/renault/megane-e-tech-electric",
+        rating: 8.0
+      },
+      {
+        source: "YouTube",
+        title: "Renault Megane E-Tech EV60 review videos",
+        url: "https://www.youtube.com/results?search_query=Renault+Megane+E-Tech+EV60+review",
+        rating: 8.0
+      }
+    ]
+  },
+  {
+    id: "renault-5-etec-52kwh",
+    brand: "Renault",
+    model: "5 E-Tech 52 kWh",
+    year: 2025,
+    bodyType: "Hatchback",
+    seats: 5,
+    priceEur: 33990,
+    rangeKm: 410,
+    accel0to100: 8.0,
+    trunkLiters: 326,
+    fastChargeKw: 100,
+    batteryKwh: 52,
+    comfortScore: 7.6,
+    expertScore: 8.1,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Renault 5 E-Tech review",
+        url: "https://www.carwow.co.uk/renault/5-e-tech",
+        rating: 8.1
+      },
+      {
+        source: "YouTube",
+        title: "Renault 5 E-Tech 52 kWh review videos",
+        url: "https://www.youtube.com/results?search_query=Renault+5+E-Tech+52+kWh+review",
+        rating: 8.1
+      }
+    ]
+  },
+  {
+    id: "peugeot-e208",
+    brand: "Peugeot",
+    model: "E-208",
+    year: 2025,
+    bodyType: "Hatchback",
+    seats: 5,
+    priceEur: 35900,
+    rangeKm: 410,
+    accel0to100: 8.1,
+    trunkLiters: 309,
+    fastChargeKw: 100,
+    batteryKwh: 51,
+    comfortScore: 7.3,
+    expertScore: 7.8,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Peugeot E-208 review",
+        url: "https://www.carwow.co.uk/peugeot/e-208",
+        rating: 7.8
+      },
+      {
+        source: "YouTube",
+        title: "Peugeot E-208 review videos",
+        url: "https://www.youtube.com/results?search_query=Peugeot+E-208+review",
+        rating: 7.7
+      }
+    ]
+  },
+  {
+    id: "peugeot-e3008",
+    brand: "Peugeot",
+    model: "E-3008",
+    year: 2025,
+    bodyType: "SUV",
+    seats: 5,
+    priceEur: 48990,
+    rangeKm: 525,
+    accel0to100: 8.8,
+    trunkLiters: 520,
+    fastChargeKw: 160,
+    batteryKwh: 73,
+    comfortScore: 8.2,
+    expertScore: 8.1,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Peugeot E-3008 review",
+        url: "https://www.carwow.co.uk/peugeot/e-3008",
+        rating: 8.1
+      },
+      {
+        source: "YouTube",
+        title: "Peugeot E-3008 review videos",
+        url: "https://www.youtube.com/results?search_query=Peugeot+E-3008+review",
+        rating: 8.0
+      }
+    ]
+  },
+  {
+    id: "opel-corsa-electric",
+    brand: "Opel",
+    model: "Corsa Electric",
+    year: 2025,
+    bodyType: "Hatchback",
+    seats: 5,
+    priceEur: 33990,
+    rangeKm: 405,
+    accel0to100: 8.1,
+    trunkLiters: 267,
+    fastChargeKw: 100,
+    batteryKwh: 51,
+    comfortScore: 7.2,
+    expertScore: 7.6,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Vauxhall/Opel Corsa Electric review",
+        url: "https://www.carwow.co.uk/vauxhall/corsa-electric",
+        rating: 7.6
+      },
+      {
+        source: "YouTube",
+        title: "Opel Corsa Electric review videos",
+        url: "https://www.youtube.com/results?search_query=Opel+Corsa+Electric+review",
+        rating: 7.6
+      }
+    ]
+  },
+  {
+    id: "fiat-500e-42kwh",
+    brand: "Fiat",
+    model: "500e 42 kWh",
+    year: 2024,
+    bodyType: "City Car",
+    seats: 4,
+    priceEur: 32490,
+    rangeKm: 320,
+    accel0to100: 9.0,
+    trunkLiters: 185,
+    fastChargeKw: 85,
+    batteryKwh: 42,
+    comfortScore: 7.0,
+    expertScore: 7.4,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Fiat 500 Electric review",
+        url: "https://www.carwow.co.uk/fiat/500-electric",
+        rating: 7.4
+      },
+      {
+        source: "YouTube",
+        title: "Fiat 500e review videos",
+        url: "https://www.youtube.com/results?search_query=Fiat+500e+42+kWh+review",
+        rating: 7.3
+      }
+    ]
+  },
+  {
+    id: "jeep-avenger-electric",
+    brand: "Jeep",
+    model: "Avenger Electric",
+    year: 2025,
+    bodyType: "SUV",
+    seats: 5,
+    priceEur: 38990,
+    rangeKm: 400,
+    accel0to100: 9.0,
+    trunkLiters: 355,
+    fastChargeKw: 100,
+    batteryKwh: 54,
+    comfortScore: 7.5,
+    expertScore: 7.7,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Jeep Avenger Electric review",
+        url: "https://www.carwow.co.uk/jeep/avenger",
+        rating: 7.7
+      },
+      {
+        source: "YouTube",
+        title: "Jeep Avenger Electric review videos",
+        url: "https://www.youtube.com/results?search_query=Jeep+Avenger+Electric+review",
+        rating: 7.7
+      }
+    ]
+  },
+  {
+    id: "volvo-ex40-single-motor",
+    brand: "Volvo",
+    model: "EX40 Single Motor Extended Range",
+    year: 2025,
+    bodyType: "SUV",
+    seats: 5,
+    priceEur: 52995,
+    rangeKm: 575,
+    accel0to100: 7.3,
+    trunkLiters: 410,
+    fastChargeKw: 200,
+    batteryKwh: 82,
+    comfortScore: 8.4,
+    expertScore: 8.2,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Volvo EX40 review",
+        url: "https://www.carwow.co.uk/volvo/ex40",
+        rating: 8.2
+      },
+      {
+        source: "YouTube",
+        title: "Volvo EX40 review videos",
+        url: "https://www.youtube.com/results?search_query=Volvo+EX40+Single+Motor+review",
+        rating: 8.2
+      }
+    ]
+  },
+  {
+    id: "audi-q4-45-etron",
+    brand: "Audi",
+    model: "Q4 45 e-tron",
+    year: 2025,
+    bodyType: "SUV",
+    seats: 5,
+    priceEur: 57990,
+    rangeKm: 548,
+    accel0to100: 6.7,
+    trunkLiters: 520,
+    fastChargeKw: 175,
+    batteryKwh: 82,
+    comfortScore: 8.5,
+    expertScore: 8.3,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Audi Q4 e-tron review",
+        url: "https://www.carwow.co.uk/audi/q4-e-tron",
+        rating: 8.3
+      },
+      {
+        source: "YouTube",
+        title: "Audi Q4 45 e-tron review videos",
+        url: "https://www.youtube.com/results?search_query=Audi+Q4+45+e-tron+review",
+        rating: 8.2
+      }
+    ]
+  },
+  {
+    id: "audi-q6-etron-performance",
+    brand: "Audi",
+    model: "Q6 e-tron Performance",
+    year: 2025,
+    bodyType: "SUV",
+    seats: 5,
+    priceEur: 74990,
+    rangeKm: 625,
+    accel0to100: 6.6,
+    trunkLiters: 526,
+    fastChargeKw: 270,
+    batteryKwh: 100,
+    comfortScore: 8.8,
+    expertScore: 8.5,
+    sources: [
+      {
+        source: "Carwow",
+        title: "Audi Q6 e-tron review",
+        url: "https://www.carwow.co.uk/audi/q6-e-tron",
+        rating: 8.5
+      },
+      {
+        source: "YouTube",
+        title: "Audi Q6 e-tron Performance review videos",
+        url: "https://www.youtube.com/results?search_query=Audi+Q6+e-tron+Performance+review",
+        rating: 8.4
+      }
+    ]
   }
 ];
