@@ -2,6 +2,7 @@
   "use strict";
 
   const cars = Array.isArray(window.evData) ? window.evData : [];
+  const carMap = new Map(cars.map((car) => [car.id, car]));
   const template = document.getElementById("carCardTemplate");
 
   const elements = {
@@ -28,7 +29,19 @@
     resetWeightsButton: document.getElementById("resetWeightsButton"),
     statCarCount: document.getElementById("statCarCount"),
     statSourceCount: document.getElementById("statSourceCount"),
-    statBrandCount: document.getElementById("statBrandCount")
+    statBrandCount: document.getElementById("statBrandCount"),
+    carDetailModal: document.getElementById("carDetailModal"),
+    closeDetailButton: document.getElementById("closeDetailButton"),
+    detailBrand: document.getElementById("detailBrand"),
+    detailTitle: document.getElementById("detailTitle"),
+    detailSummary: document.getElementById("detailSummary"),
+    detailMatchPill: document.getElementById("detailMatchPill"),
+    detailSpecs: document.getElementById("detailSpecs"),
+    detailBreakdown: document.getElementById("detailBreakdown"),
+    detailPros: document.getElementById("detailPros"),
+    detailCons: document.getElementById("detailCons"),
+    detailSources: document.getElementById("detailSources"),
+    detailBackdrop: document.querySelector("[data-close-detail]")
   };
 
   const defaultWeights = {
@@ -46,7 +59,9 @@
     sortBy: "best-match",
     maxPrice: 0,
     minRange: 0,
-    weights: { ...defaultWeights }
+    weights: { ...defaultWeights },
+    scoreMap: new Map(),
+    activeCarId: null
   };
 
   // ── Formatters ──────────────────────────────────────────
@@ -61,6 +76,36 @@
 
   function formatNumber(value) {
     return new Intl.NumberFormat("nl-NL", { maximumFractionDigits: 0 }).format(value);
+  }
+
+  function formatPercent(value) {
+    return `${Math.round(clamp(value, 0, 1) * 100)}%`;
+  }
+
+  function getCarById(carId) {
+    return carMap.get(carId) ?? null;
+  }
+
+  function getSelectedCarIdFromUrl() {
+    const carId = new URL(window.location.href).searchParams.get("car");
+    return carId && carMap.has(carId) ? carId : null;
+  }
+
+  function updateUrlForSelectedCar(carId, { replace = false } = {}) {
+    const url = new URL(window.location.href);
+
+    if (carId) {
+      url.searchParams.set("car", carId);
+    } else {
+      url.searchParams.delete("car");
+    }
+
+    const nextUrl = `${url.pathname}${url.search}${url.hash}`;
+    const currentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+    if (nextUrl === currentUrl) return;
+
+    const method = replace ? "replaceState" : "pushState";
+    window.history[method]({ modalCarId: carId ?? null }, "", nextUrl);
   }
 
   // ── Math helpers ────────────────────────────────────────
@@ -308,6 +353,297 @@
     return "#f87171";
   }
 
+  function createDetailSpecItem(label, value) {
+    const wrapper = document.createElement("div");
+    const dt = document.createElement("dt");
+    const dd = document.createElement("dd");
+    dt.textContent = label;
+    dd.textContent = value;
+    wrapper.append(dt, dd);
+    return wrapper;
+  }
+
+  function buildProsAndCons(car, scoreData) {
+    const pros = [];
+    const cons = [];
+    const averagePrice = average(cars.map((entry) => entry.priceEur));
+    const averageTrunk = average(cars.map((entry) => entry.trunkLiters));
+
+    if (scoreData.rangeScore >= 0.7) {
+      pros.push("Excellent WLTP range for longer trips.");
+    }
+    if (scoreData.performanceScore >= 0.65) {
+      pros.push("Strong acceleration for confident overtakes.");
+    }
+    if (scoreData.practicalityScore >= 0.65) {
+      pros.push("Practical package with useful charging and space balance.");
+    }
+    if (scoreData.comfortScore >= 0.7) {
+      pros.push("Comfort score is above average for this segment.");
+    }
+    if (car.fastChargeKw >= 200) {
+      pros.push("Fast DC charging helps keep charging stops shorter.");
+    }
+    if (scoreData.valueForMoneyScore >= 0.65) {
+      pros.push("Solid value considering price, range and expert sentiment.");
+    }
+
+    if (car.priceEur > averagePrice * 1.12) {
+      cons.push("Price sits above the current dataset average.");
+    }
+    if (scoreData.rangeScore < 0.45) {
+      cons.push("WLTP range is below many alternatives in the list.");
+    }
+    if (scoreData.performanceScore < 0.45) {
+      cons.push("Acceleration is less sporty than top performers.");
+    }
+    if (car.fastChargeKw < 160) {
+      cons.push("Fast-charging peak is on the lower side.");
+    }
+    if (car.trunkLiters < averageTrunk * 0.9) {
+      cons.push("Cargo space is less generous than the average EV here.");
+    }
+    if (scoreData.comfortScore < 0.45) {
+      cons.push("Comfort score trails the segment leaders.");
+    }
+
+    const fallbackPros = [
+      "Balanced overall package with no major weak spots.",
+      "Good blend of EV specs and expert review sentiment.",
+      "Consistent all-round score against filtered competitors."
+    ];
+    const fallbackCons = [
+      "Not every spec category is class-leading.",
+      "Final fit still depends on your weighting priorities.",
+      "Real-world range and charging can vary by conditions."
+    ];
+
+    for (const item of fallbackPros) {
+      if (pros.length >= 3) break;
+      if (!pros.includes(item)) pros.push(item);
+    }
+    for (const item of fallbackCons) {
+      if (cons.length >= 3) break;
+      if (!cons.includes(item)) cons.push(item);
+    }
+
+    return {
+      pros: pros.slice(0, 3),
+      cons: cons.slice(0, 3)
+    };
+  }
+
+  function renderDetailBreakdown(scoreData) {
+    const entries = [
+      {
+        label: "Overall match score",
+        value: scoreData.finalScore,
+        helper: "Personal score + expert consensus"
+      },
+      {
+        label: "Value for money",
+        value: scoreData.valueForMoneyScore,
+        helper: `Weight ${state.weights.value}/10`
+      },
+      {
+        label: "Range priority",
+        value: scoreData.rangeScore,
+        helper: `Weight ${state.weights.range}/10`
+      },
+      {
+        label: "Performance priority",
+        value: scoreData.performanceScore,
+        helper: `Weight ${state.weights.performance}/10`
+      },
+      {
+        label: "Practicality priority",
+        value: scoreData.practicalityScore,
+        helper: `Weight ${state.weights.practicality}/10`
+      },
+      {
+        label: "Comfort priority",
+        value: scoreData.comfortScore,
+        helper: `Weight ${state.weights.comfort}/10`
+      },
+      {
+        label: "Expert consensus",
+        value: scoreData.expertScoreNormalized,
+        helper: "20% contribution to final score"
+      }
+    ];
+
+    elements.detailBreakdown.innerHTML = "";
+
+    entries.forEach((entry) => {
+      const li = document.createElement("li");
+      const row = document.createElement("div");
+      row.className = "detail-breakdown-row";
+
+      const label = document.createElement("span");
+      label.textContent = entry.label;
+
+      const percent = document.createElement("strong");
+      percent.textContent = formatPercent(entry.value);
+
+      const helper = document.createElement("p");
+      helper.className = "detail-breakdown-helper";
+      helper.textContent = entry.helper;
+
+      const track = document.createElement("div");
+      track.className = "detail-breakdown-track";
+      const fill = document.createElement("div");
+      fill.className = "detail-breakdown-fill";
+      fill.style.width = formatPercent(entry.value);
+
+      row.append(label, percent);
+      track.append(fill);
+      li.append(row, helper, track);
+      elements.detailBreakdown.append(li);
+    });
+  }
+
+  function renderCarDetail(car, scoreData) {
+    const matchPercent = Math.round((scoreData?.finalScore ?? 0) * 100);
+    const matchColor = scoreColor(matchPercent);
+
+    elements.detailBrand.textContent = `${car.brand} · ${car.year}`;
+    elements.detailTitle.textContent = car.model;
+    elements.detailSummary.textContent =
+      `${car.bodyType} · ${car.seats} seats · ${formatCurrency(car.priceEur)} · ${formatNumber(car.rangeKm)} km WLTP`;
+    elements.detailMatchPill.textContent = `${matchPercent}% personal match`;
+    elements.detailMatchPill.style.color = matchColor;
+    elements.detailMatchPill.style.borderColor = `${matchColor}66`;
+    elements.detailMatchPill.style.backgroundColor = `${matchColor}1a`;
+
+    const specItems = [
+      ["Brand", car.brand],
+      ["Model year", String(car.year)],
+      ["Body type", car.bodyType],
+      ["Seats", String(car.seats)],
+      ["Price", formatCurrency(car.priceEur)],
+      ["WLTP range", `${formatNumber(car.rangeKm)} km`],
+      ["0-100 km/h", `${car.accel0to100.toFixed(1)} s`],
+      ["Battery capacity", `${formatNumber(car.batteryKwh)} kWh`],
+      ["Fast charge peak", `${formatNumber(car.fastChargeKw)} kW`],
+      ["Trunk volume", `${formatNumber(car.trunkLiters)} L`],
+      ["Comfort score", `${car.comfortScore.toFixed(1)} / 10`],
+      ["Expert score", `${car.expertScore.toFixed(1)} / 10`]
+    ];
+
+    elements.detailSpecs.innerHTML = "";
+    specItems.forEach(([label, value]) => {
+      elements.detailSpecs.append(createDetailSpecItem(label, value));
+    });
+
+    renderDetailBreakdown(scoreData);
+
+    const summary = buildProsAndCons(car, scoreData);
+    elements.detailPros.innerHTML = "";
+    summary.pros.forEach((item) => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      elements.detailPros.append(li);
+    });
+    elements.detailCons.innerHTML = "";
+    summary.cons.forEach((item) => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      elements.detailCons.append(li);
+    });
+
+    elements.detailSources.innerHTML = "";
+    car.sources.forEach((entry) => {
+      const li = document.createElement("li");
+      const link = document.createElement("a");
+      link.className = "detail-source-link";
+      link.href = entry.url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+
+      const sourceHeader = document.createElement("div");
+      sourceHeader.className = "detail-source-header";
+      const sourceName = document.createElement("span");
+      sourceName.className = "detail-source-name";
+      sourceName.textContent = entry.source;
+      const sourceRating = document.createElement("span");
+      sourceRating.className = "detail-source-rating";
+      sourceRating.textContent = `${entry.rating.toFixed(1)} / 10`;
+      sourceHeader.append(sourceName, sourceRating);
+
+      const title = document.createElement("p");
+      title.className = "detail-source-title";
+      title.textContent = entry.title;
+
+      link.append(sourceHeader, title);
+      li.append(link);
+      elements.detailSources.append(li);
+    });
+  }
+
+  function openCarDetail(carId, { syncUrl = true, replaceHistory = false } = {}) {
+    const car = getCarById(carId);
+    if (!car || !elements.carDetailModal) return;
+
+    const scoreData = state.scoreMap.get(carId) ?? computeScoreMap().get(carId);
+    if (!scoreData) return;
+
+    state.activeCarId = carId;
+    renderCarDetail(car, scoreData);
+    elements.carDetailModal.hidden = false;
+    document.body.classList.add("modal-open");
+
+    if (syncUrl) {
+      updateUrlForSelectedCar(carId, { replace: replaceHistory });
+    }
+  }
+
+  function closeCarDetail({ syncUrl = true, replaceHistory = false } = {}) {
+    if (!elements.carDetailModal) return;
+
+    state.activeCarId = null;
+    elements.carDetailModal.hidden = true;
+    document.body.classList.remove("modal-open");
+
+    if (syncUrl) {
+      updateUrlForSelectedCar(null, { replace: replaceHistory });
+    }
+  }
+
+  function requestCloseCarDetail() {
+    const currentUrlCarId = getSelectedCarIdFromUrl();
+    if (
+      currentUrlCarId &&
+      window.history.state &&
+      window.history.state.modalCarId === currentUrlCarId
+    ) {
+      window.history.back();
+      return;
+    }
+
+    closeCarDetail({ syncUrl: Boolean(currentUrlCarId), replaceHistory: true });
+  }
+
+  function syncDetailViewWithUrl() {
+    const url = new URL(window.location.href);
+    const rawCarId = url.searchParams.get("car");
+    const selectedCarId = getSelectedCarIdFromUrl();
+
+    if (rawCarId && !selectedCarId) {
+      closeCarDetail({ syncUrl: false });
+      updateUrlForSelectedCar(null, { replace: true });
+      return;
+    }
+
+    if (!selectedCarId) {
+      if (state.activeCarId) {
+        closeCarDetail({ syncUrl: false });
+      }
+      return;
+    }
+
+    openCarDetail(selectedCarId, { syncUrl: false });
+  }
+
   // ── Rendering ───────────────────────────────────────────
 
   function renderSummary(filteredCars) {
@@ -340,6 +676,12 @@
       const card = template.content.firstElementChild.cloneNode(true);
       const cardScore = scoreMap.get(car.id);
       const scorePercent = Math.round((cardScore?.finalScore ?? 0) * 100);
+      card.tabIndex = 0;
+      card.setAttribute("role", "button");
+      card.setAttribute(
+        "aria-label",
+        `View details for ${car.brand} ${car.model}`
+      );
 
       // Header
       card.querySelector(".car-brand").textContent = `${car.brand} · ${car.year}`;
@@ -381,7 +723,23 @@
         link.target = "_blank";
         link.rel = "noopener noreferrer";
         link.textContent = `${entry.source} (${entry.rating.toFixed(1)})`;
+        link.addEventListener("click", (event) => {
+          event.stopPropagation();
+        });
         sourceContainer.append(link);
+      });
+
+      card.addEventListener("click", (event) => {
+        if (event.target.closest(".source-link")) return;
+        openCarDetail(car.id);
+      });
+
+      card.addEventListener("keydown", (event) => {
+        if (event.target !== card) return;
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openCarDetail(car.id);
+        }
       });
 
       // Staggered entrance animation
@@ -413,10 +771,19 @@
 
   function render() {
     const scoreMap = computeScoreMap();
+    state.scoreMap = scoreMap;
     const filteredCars = getFilteredCars();
     const sortedCars = sortCars(filteredCars, scoreMap);
     renderSummary(sortedCars);
     renderCards(sortedCars, scoreMap);
+
+    if (state.activeCarId) {
+      const activeCar = getCarById(state.activeCarId);
+      const activeScore = activeCar ? scoreMap.get(activeCar.id) : null;
+      if (activeCar && activeScore) {
+        renderCarDetail(activeCar, activeScore);
+      }
+    }
   }
 
   // ── Events ──────────────────────────────────────────────
@@ -480,6 +847,25 @@
       updateWeightLabelValues();
       render();
     });
+
+    if (elements.closeDetailButton) {
+      elements.closeDetailButton.addEventListener("click", requestCloseCarDetail);
+    }
+
+    if (elements.detailBackdrop) {
+      elements.detailBackdrop.addEventListener("click", requestCloseCarDetail);
+    }
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && state.activeCarId) {
+        event.preventDefault();
+        requestCloseCarDetail();
+      }
+    });
+
+    window.addEventListener("popstate", () => {
+      syncDetailViewWithUrl();
+    });
   }
 
   // ── Init ────────────────────────────────────────────────
@@ -498,6 +884,7 @@
     renderStatsBar();
     bindEvents();
     render();
+    syncDetailViewWithUrl();
   }
 
   initialize();

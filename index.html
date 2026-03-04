@@ -157,8 +157,69 @@
         <ul class="metric-list"></ul>
         <div class="segment-line"></div>
         <div class="source-list"></div>
+        <p class="card-hint">View full details</p>
       </article>
     </template>
+
+    <!-- Car detail modal -->
+    <section
+      id="carDetailModal"
+      class="car-detail-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="detailTitle"
+      hidden
+    >
+      <div class="car-detail-backdrop" data-close-detail></div>
+      <article class="car-detail-panel" role="document">
+        <button
+          id="closeDetailButton"
+          class="close-detail-button"
+          type="button"
+          aria-label="Close car details"
+        >
+          Close
+        </button>
+
+        <div class="car-detail-scroll">
+          <header class="car-detail-header">
+            <p id="detailBrand" class="detail-eyebrow"></p>
+            <h2 id="detailTitle"></h2>
+            <p id="detailSummary" class="detail-subtitle"></p>
+            <div id="detailMatchPill" class="detail-match-pill"></div>
+          </header>
+
+          <section class="detail-section">
+            <h3>Full specs</h3>
+            <dl id="detailSpecs" class="detail-specs-grid"></dl>
+          </section>
+
+          <section class="detail-section">
+            <h3>Matchscore breakdown</h3>
+            <ul id="detailBreakdown" class="detail-breakdown-list"></ul>
+          </section>
+
+          <section class="detail-section">
+            <h3>Pros &amp; cons summary</h3>
+            <div class="detail-pros-cons">
+              <div>
+                <h4>Pros</h4>
+                <ul id="detailPros"></ul>
+              </div>
+              <div>
+                <h4>Cons</h4>
+                <ul id="detailCons"></ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="detail-section">
+            <h3>All review sources</h3>
+            <ul id="detailSources" class="detail-source-list"></ul>
+          </section>
+        </div>
+      </article>
+    </section>
 
     <script src="./data/evData.js"></script>
     <script src="./script.js"></script>
