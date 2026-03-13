@@ -43,7 +43,9 @@
     detailBreakdown: document.getElementById("detailBreakdown"),
     detailPros: document.getElementById("detailPros"),
     detailCons: document.getElementById("detailCons"),
-    detailSources: document.getElementById("detailSources")
+    detailSources: document.getElementById("detailSources"),
+    evNewsTrack: document.getElementById("evNewsTrack"),
+    evNewsStatus: document.getElementById("evNewsStatus")
   };
 
   const defaultWeights = {
@@ -65,6 +67,32 @@
   });
 
   const fallbackCarImage = "./assets/car-placeholder.svg";
+  const rssToJsonApiBase = "https://api.rss2json.com/v1/api.json?rss_url=";
+  const newsRefreshIntervalMs = 30 * 60 * 1000;
+  const newsItemsPerSource = 4;
+  const evNewsSources = Object.freeze([
+    {
+      name: "InsideEVs",
+      slug: "insideevs",
+      icon: "IE",
+      feedUrls: ["https://insideevs.com/feed/"]
+    },
+    {
+      name: "Electrek",
+      slug: "electrek",
+      icon: "EL",
+      feedUrls: ["https://electrek.co/feed/"]
+    },
+    {
+      name: "Move Electric",
+      slug: "move-electric",
+      icon: "ME",
+      feedUrls: [
+        "https://www.moveelectric.com/feed",
+        "https://www.moveelectric.com/rss.xml"
+      ]
+    }
+  ]);
   const wikipediaSearchApi = "https://en.wikipedia.org/w/api.php";
   const imageCacheStoragePrefix = "ev-verdict-car-image-v1:";
   const shouldResolveWikipediaImages = cars.length <= 180;
@@ -140,7 +168,8 @@
     weights: { ...defaultWeights },
     activeCarId: null,
     triggerElement: null,
-    scoreMap: new Map()
+    scoreMap: new Map(),
+    newsRefreshTimer: null
   };
 
   const marketAverages = {
@@ -162,11 +191,250 @@
     return new Intl.NumberFormat("nl-NL", { maximumFractionDigits: 0 }).format(value);
   }
 
+  function formatRelativeTime(dateValue) {
+    const date = new Date(dateValue);
+    if (Number.isNaN(date.getTime())) return "Recently";
+
+    const elapsedMs = date.getTime() - Date.now();
+    const elapsedSeconds = Math.round(elapsedMs / 1000);
+    const formatter = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
+    const ranges = [
+      { unit: "year", seconds: 31536000 },
+      { unit: "month", seconds: 2592000 },
+      { unit: "week", seconds: 604800 },
+      { unit: "day", seconds: 86400 },
+      { unit: "hour", seconds: 3600 },
+      { unit: "minute", seconds: 60 }
+    ];
+
+    for (const { unit, seconds } of ranges) {
+      if (Math.abs(elapsedSeconds) >= seconds || unit === "minute") {
+        return formatter.format(Math.round(elapsedSeconds / seconds), unit);
+      }
+    }
+
+    return "Just now";
+  }
+
+  function truncateText(value, maxLength) {
+    const clean = String(value ?? "").trim();
+    if (clean.length <= maxLength) return clean;
+    return `${clean.slice(0, Math.max(maxLength - 3, 0)).trimEnd()}...`;
+  }
+
+  function stripHtml(value) {
+    const parser = new DOMParser();
+    const htmlDoc = parser.parseFromString(String(value ?? ""), "text/html");
+    return htmlDoc.body.textContent?.replace(/\s+/g, " ").trim() ?? "";
+  }
+
+  function formatNewsUpdatedAt() {
+    return new Intl.DateTimeFormat("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit"
+    }).format(new Date());
+  }
+
   // ── Math helpers ────────────────────────────────────────
 
   function average(values) {
     if (!values.length) return 0;
     return values.reduce((total, value) => total + value, 0) / values.length;
+  }
+
+  // ── EV news feed ────────────────────────────────────────
+
+  function createNewsSkeletonCard() {
+    const card = document.createElement("article");
+    card.className = "ev-news-card skeleton-card";
+    card.setAttribute("aria-hidden", "true");
+
+    const head = document.createElement("div");
+    head.className = "ev-news-card-head";
+    const sourceLine = document.createElement("div");
+    sourceLine.className = "ev-news-skeleton-line ev-news-skeleton-line--short skeleton";
+    const timeLine = document.createElement("div");
+    timeLine.className = "ev-news-skeleton-line ev-news-skeleton-line--short skeleton";
+    head.append(sourceLine, timeLine);
+
+    const titleA = document.createElement("div");
+    titleA.className = "ev-news-skeleton-line ev-news-skeleton-line--full skeleton";
+    const titleB = document.createElement("div");
+    titleB.className = "ev-news-skeleton-line ev-news-skeleton-line--medium skeleton";
+    const excerptA = document.createElement("div");
+    excerptA.className = "ev-news-skeleton-line ev-news-skeleton-line--full skeleton";
+    const excerptB = document.createElement("div");
+    excerptB.className = "ev-news-skeleton-line ev-news-skeleton-line--medium skeleton";
+
+    card.append(head, titleA, titleB, excerptA, excerptB);
+    return card;
+  }
+
+  function renderNewsSkeleton() {
+    if (!elements.evNewsTrack) return;
+    elements.evNewsTrack.innerHTML = "";
+    const fragment = document.createDocumentFragment();
+    for (let index = 0; index < 6; index += 1) {
+      fragment.append(createNewsSkeletonCard());
+    }
+    elements.evNewsTrack.append(fragment);
+  }
+
+  function buildNewsCard(item) {
+    const card = document.createElement("a");
+    card.className = "ev-news-card";
+    card.href = item.url;
+    card.target = "_blank";
+    card.rel = "noopener noreferrer";
+    card.setAttribute("role", "listitem");
+    card.setAttribute("aria-label", `Open EV news: ${item.title}`);
+
+    const head = document.createElement("div");
+    head.className = "ev-news-card-head";
+
+    const source = document.createElement("p");
+    source.className = "ev-news-source";
+    const icon = document.createElement("span");
+    icon.className = `ev-news-icon ev-news-icon--${item.sourceSlug}`;
+    icon.textContent = item.sourceIcon;
+    const sourceName = document.createElement("span");
+    sourceName.textContent = item.sourceName;
+    source.append(icon, sourceName);
+
+    const time = document.createElement("time");
+    time.className = "ev-news-time";
+    time.dateTime = item.publishedIso;
+    time.textContent = formatRelativeTime(item.publishedIso);
+
+    const title = document.createElement("h3");
+    title.className = "ev-news-title";
+    title.textContent = item.title;
+
+    const excerpt = document.createElement("p");
+    excerpt.className = "ev-news-excerpt";
+    excerpt.textContent = item.excerpt;
+
+    head.append(source, time);
+    card.append(head, title, excerpt);
+    return card;
+  }
+
+  function renderNewsFallback(message) {
+    if (!elements.evNewsTrack) return;
+    elements.evNewsTrack.innerHTML = "";
+    const fallback = document.createElement("article");
+    fallback.className = "ev-news-card ev-news-empty";
+    fallback.setAttribute("role", "listitem");
+
+    const title = document.createElement("h3");
+    title.className = "ev-news-title";
+    title.textContent = message;
+
+    fallback.append(title);
+    elements.evNewsTrack.append(fallback);
+  }
+
+  function normalizeNewsItem(item, source) {
+    const publishedAt = new Date(item.pubDate || item.isoDate || Date.now());
+    const excerptRaw = stripHtml(item.description || item.content || item.title || "");
+    return {
+      sourceName: source.name,
+      sourceSlug: source.slug,
+      sourceIcon: source.icon,
+      title: truncateText(stripHtml(item.title || "Untitled article"), 140),
+      excerpt: truncateText(excerptRaw, 120),
+      url: item.link,
+      publishedIso: Number.isNaN(publishedAt.getTime())
+        ? new Date().toISOString()
+        : publishedAt.toISOString()
+    };
+  }
+
+  async function fetchNewsSource(source) {
+    const urlsToTry = Array.isArray(source.feedUrls) ? source.feedUrls : [];
+    let lastError = null;
+
+    for (const feedUrl of urlsToTry) {
+      const endpoint = `${rssToJsonApiBase}${encodeURIComponent(feedUrl)}`;
+      try {
+        const response = await fetch(endpoint);
+        if (!response.ok) {
+          throw new Error(`${source.name} failed (${response.status})`);
+        }
+
+        const payload = await response.json();
+        const items = Array.isArray(payload.items) ? payload.items : [];
+        const normalizedItems = items
+          .filter((item) => item?.link && item?.title)
+          .slice(0, newsItemsPerSource)
+          .map((item) => normalizeNewsItem(item, source));
+
+        if (normalizedItems.length) {
+          return normalizedItems;
+        }
+      } catch (error) {
+        lastError = error;
+      }
+    }
+
+    throw lastError || new Error(`${source.name} feed is unavailable.`);
+  }
+
+  async function loadEvNews() {
+    if (!elements.evNewsTrack) return;
+
+    renderNewsSkeleton();
+    if (elements.evNewsStatus) {
+      elements.evNewsStatus.textContent = "Loading latest headlines...";
+    }
+
+    const responses = await Promise.allSettled(evNewsSources.map(fetchNewsSource));
+    const loadedItems = [];
+    let successfulSources = 0;
+
+    responses.forEach((response) => {
+      if (response.status === "fulfilled") {
+        successfulSources += 1;
+        loadedItems.push(...response.value);
+      }
+    });
+
+    loadedItems.sort(
+      (left, right) => new Date(right.publishedIso).getTime() - new Date(left.publishedIso).getTime()
+    );
+
+    if (!loadedItems.length) {
+      renderNewsFallback("No EV headlines available right now. Please try again later.");
+      if (elements.evNewsStatus) {
+        elements.evNewsStatus.textContent = "All feeds unavailable";
+      }
+      return;
+    }
+
+    elements.evNewsTrack.innerHTML = "";
+    const fragment = document.createDocumentFragment();
+    loadedItems.forEach((item) => {
+      fragment.append(buildNewsCard(item));
+    });
+    elements.evNewsTrack.append(fragment);
+
+    if (elements.evNewsStatus) {
+      const sourceLabel =
+        successfulSources === evNewsSources.length
+          ? "All sources live"
+          : `${successfulSources}/${evNewsSources.length} sources live`;
+      elements.evNewsStatus.textContent = `Updated ${formatNewsUpdatedAt()} · ${sourceLabel}`;
+    }
+  }
+
+  function initializeEvNews() {
+    if (!elements.evNewsTrack) return;
+
+    loadEvNews();
+    if (state.newsRefreshTimer) {
+      window.clearInterval(state.newsRefreshTimer);
+    }
+    state.newsRefreshTimer = window.setInterval(loadEvNews, newsRefreshIntervalMs);
   }
 
   function normalize(value, min, max) {
@@ -1193,6 +1461,8 @@
   // ── Init ────────────────────────────────────────────────
 
   function initialize() {
+    initializeEvNews();
+
     if (!cars.length) {
       elements.resultsSummary.textContent =
         "No EV data found. Add entries to data/evData.js to show results.";
