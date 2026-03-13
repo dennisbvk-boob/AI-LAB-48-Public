@@ -37,6 +37,7 @@
     detailCloseButton: document.getElementById("detailCloseButton"),
     detailBrand: document.getElementById("detailBrand"),
     detailTitle: document.getElementById("detailTitle"),
+    detailVariantSelector: document.getElementById("detailVariantSelector"),
     detailMatchScore: document.getElementById("detailMatchScore"),
     detailScoreCopy: document.getElementById("detailScoreCopy"),
     detailSpecs: document.getElementById("detailSpecs"),
@@ -139,8 +140,11 @@
     minRange: 0,
     weights: { ...defaultWeights },
     activeCarId: null,
+    activeVariantIndex: 0,
     triggerElement: null,
-    scoreMap: new Map()
+    scoreMap: new Map(),
+    scoreRanges: null,
+    totalWeight: 0
   };
 
   const marketAverages = {
@@ -300,67 +304,101 @@
 
   // ── Score computation ───────────────────────────────────
 
-  function computeScoreMap() {
-    const ranges = getRange(cars.map((car) => car.rangeKm));
-    const prices = getRange(cars.map((car) => car.priceEur));
-    const accelerations = getRange(cars.map((car) => car.accel0to100));
-    const trunks = getRange(cars.map((car) => car.trunkLiters));
-    const charging = getRange(cars.map((car) => car.fastChargeKw));
-    const comfort = getRange(cars.map((car) => car.comfortScore));
-    const expert = getRange(cars.map((car) => car.expertScore));
+  function getCarVariants(car) {
+    if (!Array.isArray(car?.variants)) return [];
+    return car.variants.filter((variant) => variant && typeof variant === "object");
+  }
 
-    const totalWeight =
+  function applyVariantToCar(car, variant) {
+    return variant ? { ...car, ...variant } : car;
+  }
+
+  function getScoreRanges() {
+    const scoreCars = cars.flatMap((car) => {
+      const variants = getCarVariants(car);
+      if (!variants.length) return [car];
+      return variants.map((variant) => applyVariantToCar(car, variant));
+    });
+
+    return {
+      ranges: getRange(scoreCars.map((car) => car.rangeKm)),
+      prices: getRange(scoreCars.map((car) => car.priceEur)),
+      accelerations: getRange(scoreCars.map((car) => car.accel0to100)),
+      trunks: getRange(scoreCars.map((car) => car.trunkLiters)),
+      charging: getRange(scoreCars.map((car) => car.fastChargeKw)),
+      comfort: getRange(scoreCars.map((car) => car.comfortScore)),
+      expert: getRange(scoreCars.map((car) => car.expertScore))
+    };
+  }
+
+  function getTotalWeight() {
+    return (
       state.weights.value +
       state.weights.range +
       state.weights.performance +
       state.weights.practicality +
-      state.weights.comfort;
+      state.weights.comfort
+    );
+  }
+
+  function computeScoreDetailsForCar(car, scoreRanges, totalWeight) {
+    const { ranges, prices, accelerations, trunks, charging, comfort, expert } = scoreRanges;
+    const priceScore = 1 - normalize(car.priceEur, prices.min, prices.max);
+    const rangeScore = normalize(car.rangeKm, ranges.min, ranges.max);
+    const performanceScore =
+      1 - normalize(car.accel0to100, accelerations.min, accelerations.max);
+    const practicalityScore = average([
+      normalize(car.trunkLiters, trunks.min, trunks.max),
+      normalize(car.fastChargeKw, charging.min, charging.max),
+      normalize(car.seats, 2, 7)
+    ]);
+    const comfortScore = normalize(car.comfortScore, comfort.min, comfort.max);
+    const expertScoreNormalized = normalize(car.expertScore, expert.min, expert.max);
+    const valueForMoneyScore = average([priceScore, rangeScore, expertScoreNormalized]);
+
+    let weightedPersonalScore = 0.5;
+    if (totalWeight > 0) {
+      weightedPersonalScore =
+        (valueForMoneyScore * state.weights.value +
+          rangeScore * state.weights.range +
+          performanceScore * state.weights.performance +
+          practicalityScore * state.weights.practicality +
+          comfortScore * state.weights.comfort) /
+        totalWeight;
+    }
+
+    const finalScore = clamp(
+      weightedPersonalScore * 0.8 + expertScoreNormalized * 0.2,
+      0,
+      1
+    );
+
+    return {
+      finalScore,
+      valueForMoneyScore,
+      rangeScore,
+      performanceScore,
+      practicalityScore,
+      comfortScore,
+      expertScoreNormalized
+    };
+  }
+
+  function computeScoreMap() {
+    const scoreRanges = getScoreRanges();
+    const totalWeight = getTotalWeight();
 
     const scoreMap = new Map();
 
     cars.forEach((car) => {
-      const priceScore = 1 - normalize(car.priceEur, prices.min, prices.max);
-      const rangeScore = normalize(car.rangeKm, ranges.min, ranges.max);
-      const performanceScore =
-        1 - normalize(car.accel0to100, accelerations.min, accelerations.max);
-      const practicalityScore = average([
-        normalize(car.trunkLiters, trunks.min, trunks.max),
-        normalize(car.fastChargeKw, charging.min, charging.max),
-        normalize(car.seats, 2, 7)
-      ]);
-      const comfortScore = normalize(car.comfortScore, comfort.min, comfort.max);
-      const expertScoreNormalized = normalize(car.expertScore, expert.min, expert.max);
-      const valueForMoneyScore = average([priceScore, rangeScore, expertScoreNormalized]);
-
-      let weightedPersonalScore = 0.5;
-      if (totalWeight > 0) {
-        weightedPersonalScore =
-          (valueForMoneyScore * state.weights.value +
-            rangeScore * state.weights.range +
-            performanceScore * state.weights.performance +
-            practicalityScore * state.weights.practicality +
-            comfortScore * state.weights.comfort) /
-          totalWeight;
-      }
-
-      const finalScore = clamp(
-        weightedPersonalScore * 0.8 + expertScoreNormalized * 0.2,
-        0,
-        1
-      );
-
-      scoreMap.set(car.id, {
-        finalScore,
-        valueForMoneyScore,
-        rangeScore,
-        performanceScore,
-        practicalityScore,
-        comfortScore,
-        expertScoreNormalized
-      });
+      scoreMap.set(car.id, computeScoreDetailsForCar(car, scoreRanges, totalWeight));
     });
 
-    return scoreMap;
+    return {
+      scoreMap,
+      scoreRanges,
+      totalWeight
+    };
   }
 
   // ── Filtering & sorting ─────────────────────────────────
@@ -492,6 +530,50 @@
     return item;
   }
 
+  function renderDetailVariantSelector(car, variants, activeIndex) {
+    if (!elements.detailVariantSelector) return;
+
+    elements.detailVariantSelector.innerHTML = "";
+
+    if (variants.length <= 1) {
+      elements.detailVariantSelector.hidden = true;
+      return;
+    }
+
+    elements.detailVariantSelector.hidden = false;
+
+    variants.forEach((variant, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "detail-variant-pill";
+      button.setAttribute("role", "tab");
+      button.setAttribute("aria-selected", String(index === activeIndex));
+      button.setAttribute("tabindex", index === activeIndex ? "0" : "-1");
+      button.textContent = variant.name || `Variant ${index + 1}`;
+
+      button.addEventListener("click", () => {
+        if (state.activeVariantIndex === index) return;
+        state.activeVariantIndex = index;
+        renderDetailModal(car);
+      });
+
+      button.addEventListener("keydown", (event) => {
+        if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+        event.preventDefault();
+        const direction = event.key === "ArrowRight" ? 1 : -1;
+        const nextIndex = (index + direction + variants.length) % variants.length;
+        state.activeVariantIndex = nextIndex;
+        renderDetailModal(car);
+        const nextButton = elements.detailVariantSelector?.querySelectorAll(".detail-variant-pill")[
+          nextIndex
+        ];
+        nextButton?.focus();
+      });
+
+      elements.detailVariantSelector.append(button);
+    });
+  }
+
   function scoreColor(score) {
     if (score >= 80) return "#00ffa3";
     if (score >= 60) return "#fbbf24";
@@ -500,6 +582,13 @@
 
   function getScoreDetails(carId) {
     return state.scoreMap.get(carId) ?? fallbackScoreDetails;
+  }
+
+  function getVariantScoreDetails(car, variant) {
+    const scoreRanges = state.scoreRanges ?? getScoreRanges();
+    const totalWeight = state.totalWeight || getTotalWeight();
+    const configuredCar = applyVariantToCar(car, variant);
+    return computeScoreDetailsForCar(configuredCar, scoreRanges, totalWeight);
   }
 
   function sanitizeForSearch(value) {
@@ -795,28 +884,39 @@
   function renderDetailModal(car) {
     if (!elements.detailModal) return;
 
-    const scoreDetails = getScoreDetails(car.id);
+    const variants = getCarVariants(car);
+    const hasMultipleVariants = variants.length > 1;
+    const activeVariantIndex = hasMultipleVariants
+      ? clamp(state.activeVariantIndex, 0, variants.length - 1)
+      : 0;
+    const activeVariant = hasMultipleVariants ? variants[activeVariantIndex] : null;
+    const displayCar = applyVariantToCar(car, activeVariant);
+    const scoreDetails = activeVariant
+      ? getVariantScoreDetails(car, activeVariant)
+      : getScoreDetails(car.id);
     const scorePercent = Math.round(scoreDetails.finalScore * 100);
     const averageSourceRating = average(car.sources.map((entry) => entry.rating));
 
-    elements.detailBrand.textContent = `${car.brand} · ${car.year}`;
+    renderDetailVariantSelector(car, variants, activeVariantIndex);
+
+    elements.detailBrand.textContent = `${car.brand} · ${displayCar.year}`;
     elements.detailTitle.textContent = car.model;
     elements.detailMatchScore.textContent = `${scorePercent} match`;
     setScorePillStyles(elements.detailMatchScore, scorePercent);
     elements.detailScoreCopy.textContent =
-      `${car.sources.length} sources · Avg review ${averageSourceRating.toFixed(1)} / 10 · Expert score ${car.expertScore.toFixed(1)} / 10`;
+      `${car.sources.length} sources · Avg review ${averageSourceRating.toFixed(1)} / 10 · Expert score ${displayCar.expertScore.toFixed(1)} / 10`;
 
     const specs = [
-      ["Price", formatCurrency(car.priceEur)],
-      ["WLTP range", `${formatNumber(car.rangeKm)} km`],
-      ["0-100 km/h", `${car.accel0to100.toFixed(1)} s`],
-      ["Battery", `${formatNumber(car.batteryKwh)} kWh`],
-      ["Fast charging", `${formatNumber(car.fastChargeKw)} kW`],
-      ["Trunk space", `${formatNumber(car.trunkLiters)} L`],
-      ["Seats", String(car.seats)],
-      ["Body type", car.bodyType],
-      ["Comfort score", `${car.comfortScore.toFixed(1)} / 10`],
-      ["Expert score", `${car.expertScore.toFixed(1)} / 10`]
+      ["Price", formatCurrency(displayCar.priceEur)],
+      ["WLTP range", `${formatNumber(displayCar.rangeKm)} km`],
+      ["0-100 km/h", `${displayCar.accel0to100.toFixed(1)} s`],
+      ["Battery", `${formatNumber(displayCar.batteryKwh)} kWh`],
+      ["Fast charging", `${formatNumber(displayCar.fastChargeKw)} kW`],
+      ["Trunk space", `${formatNumber(displayCar.trunkLiters)} L`],
+      ["Seats", String(displayCar.seats)],
+      ["Body type", displayCar.bodyType],
+      ["Comfort score", `${displayCar.comfortScore.toFixed(1)} / 10`],
+      ["Expert score", `${displayCar.expertScore.toFixed(1)} / 10`]
     ];
 
     elements.detailSpecs.innerHTML = "";
@@ -868,7 +968,7 @@
       );
     });
 
-    const summary = buildProsConsSummary(car, scoreDetails);
+    const summary = buildProsConsSummary(displayCar, scoreDetails);
     elements.detailPros.innerHTML = "";
     summary.pros.forEach((entry) => {
       const li = document.createElement("li");
@@ -894,6 +994,7 @@
     if (!car || !elements.detailModal) return;
 
     state.activeCarId = car.id;
+    state.activeVariantIndex = 0;
     renderDetailModal(car);
 
     elements.detailModal.hidden = false;
@@ -914,6 +1015,7 @@
     if (!elements.detailModal) return;
 
     state.activeCarId = null;
+    state.activeVariantIndex = 0;
     elements.detailModal.hidden = true;
     elements.detailModal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
@@ -1097,8 +1199,10 @@
   // ── Main render ─────────────────────────────────────────
 
   function render() {
-    const scoreMap = computeScoreMap();
+    const { scoreMap, scoreRanges, totalWeight } = computeScoreMap();
     state.scoreMap = scoreMap;
+    state.scoreRanges = scoreRanges;
+    state.totalWeight = totalWeight;
     const filteredCars = getFilteredCars();
     const sortedCars = sortCars(filteredCars, scoreMap);
     renderSummary(sortedCars);

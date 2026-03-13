@@ -410,7 +410,7 @@ window.evData = [
   {
     "id": "audi-q4-e-tron-40",
     "brand": "Audi",
-    "model": "Q4 e-tron 40",
+    "model": "Q4 e-tron",
     "year": 2025,
     "bodyType": "SUV",
     "seats": 5,
@@ -428,6 +428,60 @@ window.evData = [
         "title": "Audi Q4 e-tron 40 specs",
         "url": "https://ev-database.org/car/3148/Audi-Q4-e-tron-40",
         "rating": 7.7
+      }
+    ],
+    "variants": [
+      {
+        "name": "40",
+        "year": 2025,
+        "priceEur": 48247,
+        "rangeKm": 325,
+        "accel0to100": 8.1,
+        "batteryKwh": 59,
+        "fastChargeKw": 110,
+        "trunkLiters": 520,
+        "seats": 5,
+        "comfortScore": 7.3,
+        "expertScore": 7.7
+      },
+      {
+        "name": "45",
+        "year": 2023,
+        "priceEur": 53982,
+        "rangeKm": 420,
+        "accel0to100": 6.7,
+        "batteryKwh": 77,
+        "fastChargeKw": 120,
+        "trunkLiters": 520,
+        "seats": 5,
+        "comfortScore": 7.5,
+        "expertScore": 8.1
+      },
+      {
+        "name": "45 quattro",
+        "year": 2023,
+        "priceEur": 56197,
+        "rangeKm": 395,
+        "accel0to100": 6.6,
+        "batteryKwh": 77,
+        "fastChargeKw": 120,
+        "trunkLiters": 520,
+        "seats": 5,
+        "comfortScore": 7.5,
+        "expertScore": 8
+      },
+      {
+        "name": "55 quattro",
+        "year": 2023,
+        "priceEur": 63322,
+        "rangeKm": 395,
+        "accel0to100": 5.4,
+        "batteryKwh": 77,
+        "fastChargeKw": 120,
+        "trunkLiters": 520,
+        "seats": 5,
+        "comfortScore": 7.5,
+        "expertScore": 8.1
       }
     ]
   },
@@ -914,7 +968,7 @@ window.evData = [
   {
     "id": "bmw-i4-edrive35",
     "brand": "BMW",
-    "model": "i4 eDrive35",
+    "model": "i4",
     "year": 2025,
     "bodyType": "Liftback",
     "seats": 5,
@@ -932,6 +986,60 @@ window.evData = [
         "title": "BMW i4 eDrive35 specs",
         "url": "https://ev-database.org/car/3204/BMW-i4-eDrive35",
         "rating": 8
+      }
+    ],
+    "variants": [
+      {
+        "name": "eDrive35",
+        "year": 2025,
+        "priceEur": 59263,
+        "rangeKm": 435,
+        "accel0to100": 6,
+        "batteryKwh": 67.1,
+        "fastChargeKw": 95,
+        "trunkLiters": 470,
+        "seats": 5,
+        "comfortScore": 7.4,
+        "expertScore": 8
+      },
+      {
+        "name": "eDrive40",
+        "year": 2025,
+        "priceEur": 64438,
+        "rangeKm": 525,
+        "accel0to100": 5.6,
+        "batteryKwh": 81.3,
+        "fastChargeKw": 130,
+        "trunkLiters": 470,
+        "seats": 5,
+        "comfortScore": 7.6,
+        "expertScore": 8.4
+      },
+      {
+        "name": "xDrive40",
+        "year": 2025,
+        "priceEur": 65485,
+        "rangeKm": 495,
+        "accel0to100": 5.1,
+        "batteryKwh": 81.3,
+        "fastChargeKw": 130,
+        "trunkLiters": 470,
+        "seats": 5,
+        "comfortScore": 7.6,
+        "expertScore": 8.3
+      },
+      {
+        "name": "M60 xDrive",
+        "year": 2025,
+        "priceEur": 77840,
+        "rangeKm": 465,
+        "accel0to100": 3.7,
+        "batteryKwh": 81.3,
+        "fastChargeKw": 130,
+        "trunkLiters": 470,
+        "seats": 5,
+        "comfortScore": 7.5,
+        "expertScore": 8.3
       }
     ]
   },
@@ -4202,7 +4310,7 @@ window.evData = [
   {
     "id": "hyundai-ioniq-6-63-kwh-rwd",
     "brand": "Hyundai",
-    "model": "IONIQ 6 63 kWh RWD",
+    "model": "IONIQ 6",
     "year": 2026,
     "bodyType": "Sedan",
     "seats": 5,
@@ -4220,6 +4328,60 @@ window.evData = [
         "title": "Hyundai IONIQ 6 63 kWh RWD specs",
         "url": "https://ev-database.org/car/3438/Hyundai-IONIQ-6-63-kWh-RWD",
         "rating": 8
+      }
+    ],
+    "variants": [
+      {
+        "name": "63 kWh RWD",
+        "year": 2026,
+        "priceEur": 45550,
+        "rangeKm": 420,
+        "accel0to100": 8.3,
+        "batteryKwh": 60,
+        "fastChargeKw": 150,
+        "trunkLiters": 446,
+        "seats": 5,
+        "comfortScore": 7.4,
+        "expertScore": 8
+      },
+      {
+        "name": "84 kWh RWD",
+        "year": 2026,
+        "priceEur": 55300,
+        "rangeKm": 545,
+        "accel0to100": 7.4,
+        "batteryKwh": 80,
+        "fastChargeKw": 196,
+        "trunkLiters": 446,
+        "seats": 5,
+        "comfortScore": 7.6,
+        "expertScore": 8.5
+      },
+      {
+        "name": "84 kWh AWD",
+        "year": 2026,
+        "priceEur": 61550,
+        "rangeKm": 520,
+        "accel0to100": 5.1,
+        "batteryKwh": 80,
+        "fastChargeKw": 196,
+        "trunkLiters": 416,
+        "seats": 5,
+        "comfortScore": 7.5,
+        "expertScore": 8.6
+      },
+      {
+        "name": "N",
+        "year": 2026,
+        "priceEur": 75670,
+        "rangeKm": 440,
+        "accel0to100": 3.2,
+        "batteryKwh": 80,
+        "fastChargeKw": 196,
+        "trunkLiters": 371,
+        "seats": 5,
+        "comfortScore": 7.4,
+        "expertScore": 8.5
       }
     ]
   },
@@ -4898,7 +5060,7 @@ window.evData = [
   {
     "id": "kia-ev6-standard-range-2wd",
     "brand": "Kia",
-    "model": "EV6 Standard Range 2WD",
+    "model": "EV6",
     "year": 2024,
     "bodyType": "SUV",
     "seats": 5,
@@ -4916,6 +5078,60 @@ window.evData = [
         "title": "Kia EV6 Standard Range 2WD specs",
         "url": "https://ev-database.org/car/3030/Kia-EV6-Standard-Range-2WD",
         "rating": 7.8
+      }
+    ],
+    "variants": [
+      {
+        "name": "Standard Range 2WD",
+        "year": 2024,
+        "priceEur": 45035,
+        "rangeKm": 345,
+        "accel0to100": 8.7,
+        "batteryKwh": 60,
+        "fastChargeKw": 150,
+        "trunkLiters": 542,
+        "seats": 5,
+        "comfortScore": 7.3,
+        "expertScore": 7.8
+      },
+      {
+        "name": "Long Range 2WD",
+        "year": 2024,
+        "priceEur": 50635,
+        "rangeKm": 455,
+        "accel0to100": 7.3,
+        "batteryKwh": 80,
+        "fastChargeKw": 205,
+        "trunkLiters": 542,
+        "seats": 5,
+        "comfortScore": 7.6,
+        "expertScore": 8.3
+      },
+      {
+        "name": "Long Range AWD",
+        "year": 2024,
+        "priceEur": 56460,
+        "rangeKm": 440,
+        "accel0to100": 5.2,
+        "batteryKwh": 80,
+        "fastChargeKw": 205,
+        "trunkLiters": 510,
+        "seats": 5,
+        "comfortScore": 7.5,
+        "expertScore": 8.4
+      },
+      {
+        "name": "GT",
+        "year": 2025,
+        "priceEur": 69155,
+        "rangeKm": 395,
+        "accel0to100": 3.5,
+        "batteryKwh": 80,
+        "fastChargeKw": 205,
+        "trunkLiters": 500,
+        "seats": 5,
+        "comfortScore": 7.4,
+        "expertScore": 8.4
       }
     ]
   },
@@ -8882,7 +9098,7 @@ window.evData = [
   {
     "id": "polestar-2-standard-range-single-motor",
     "brand": "Polestar",
-    "model": "2 Standard Range Single Motor",
+    "model": "2",
     "year": 2025,
     "bodyType": "Liftback",
     "seats": 5,
@@ -8900,6 +9116,60 @@ window.evData = [
         "title": "Polestar 2 Standard Range Single Motor specs",
         "url": "https://ev-database.org/car/3150/Polestar-2-Standard-Range-Single-Motor",
         "rating": 8
+      }
+    ],
+    "variants": [
+      {
+        "name": "Standard Range Single Motor",
+        "year": 2025,
+        "priceEur": 48624,
+        "rangeKm": 405,
+        "accel0to100": 6.4,
+        "batteryKwh": 67,
+        "fastChargeKw": 100,
+        "trunkLiters": 448,
+        "seats": 5,
+        "comfortScore": 7.4,
+        "expertScore": 8
+      },
+      {
+        "name": "Long Range Single Motor",
+        "year": 2025,
+        "priceEur": 53474,
+        "rangeKm": 475,
+        "accel0to100": 6.2,
+        "batteryKwh": 79,
+        "fastChargeKw": 110,
+        "trunkLiters": 448,
+        "seats": 5,
+        "comfortScore": 7.5,
+        "expertScore": 8.2
+      },
+      {
+        "name": "Long Range Dual Motor",
+        "year": 2025,
+        "priceEur": 57774,
+        "rangeKm": 455,
+        "accel0to100": 4.5,
+        "batteryKwh": 79,
+        "fastChargeKw": 110,
+        "trunkLiters": 448,
+        "seats": 5,
+        "comfortScore": 7.5,
+        "expertScore": 8.2
+      },
+      {
+        "name": "Long Range Performance",
+        "year": 2025,
+        "priceEur": 64024,
+        "rangeKm": 450,
+        "accel0to100": 4.2,
+        "batteryKwh": 79,
+        "fastChargeKw": 110,
+        "trunkLiters": 448,
+        "seats": 5,
+        "comfortScore": 7.5,
+        "expertScore": 8.2
       }
     ]
   },
@@ -11186,7 +11456,7 @@ window.evData = [
   {
     "id": "tesla-model-3-rwd-highland",
     "brand": "Tesla",
-    "model": "Model 3 RWD (Highland)",
+    "model": "Model 3",
     "year": 2025,
     "bodyType": "Sedan",
     "seats": 5,
@@ -11204,6 +11474,60 @@ window.evData = [
         "title": "Tesla Model 3 RWD (Highland) specs",
         "url": "https://ev-database.org/car/3403/Tesla-Model-3-RWD",
         "rating": 8.1
+      }
+    ],
+    "variants": [
+      {
+        "name": "RWD",
+        "year": 2025,
+        "priceEur": 39549,
+        "rangeKm": 445,
+        "accel0to100": 6.2,
+        "batteryKwh": 60,
+        "fastChargeKw": 110,
+        "trunkLiters": 682,
+        "seats": 5,
+        "comfortScore": 7.6,
+        "expertScore": 8.1
+      },
+      {
+        "name": "Premium RWD",
+        "year": 2025,
+        "priceEur": 47899,
+        "rangeKm": 580,
+        "accel0to100": 5.2,
+        "batteryKwh": 79,
+        "fastChargeKw": 125,
+        "trunkLiters": 682,
+        "seats": 5,
+        "comfortScore": 7.9,
+        "expertScore": 8.5
+      },
+      {
+        "name": "Premium AWD",
+        "year": 2025,
+        "priceEur": 53149,
+        "rangeKm": 555,
+        "accel0to100": 4.4,
+        "batteryKwh": 79,
+        "fastChargeKw": 125,
+        "trunkLiters": 682,
+        "seats": 5,
+        "comfortScore": 7.8,
+        "expertScore": 8.5
+      },
+      {
+        "name": "Performance",
+        "year": 2025,
+        "priceEur": 62316,
+        "rangeKm": 515,
+        "accel0to100": 3.4,
+        "batteryKwh": 79,
+        "fastChargeKw": 125,
+        "trunkLiters": 682,
+        "seats": 5,
+        "comfortScore": 7.8,
+        "expertScore": 8.5
       }
     ]
   },
@@ -11426,7 +11750,7 @@ window.evData = [
   {
     "id": "tesla-model-y-rwd-juniper",
     "brand": "Tesla",
-    "model": "Model Y RWD (Juniper)",
+    "model": "Model Y",
     "year": 2025,
     "bodyType": "SUV",
     "seats": 5,
@@ -11444,6 +11768,73 @@ window.evData = [
         "title": "Tesla Model Y RWD (Juniper) specs",
         "url": "https://ev-database.org/car/3362/Tesla-Model-Y-RWD",
         "rating": 7.9
+      }
+    ],
+    "variants": [
+      {
+        "name": "RWD",
+        "year": 2025,
+        "priceEur": 43082,
+        "rangeKm": 380,
+        "accel0to100": 7.2,
+        "batteryKwh": 60,
+        "fastChargeKw": 110,
+        "trunkLiters": 952,
+        "seats": 5,
+        "comfortScore": 7.8,
+        "expertScore": 7.9
+      },
+      {
+        "name": "Long Range RWD",
+        "year": 2025,
+        "priceEur": 48899,
+        "rangeKm": 490,
+        "accel0to100": 7.2,
+        "batteryKwh": 77,
+        "fastChargeKw": 130,
+        "trunkLiters": 952,
+        "seats": 5,
+        "comfortScore": 8,
+        "expertScore": 8.2
+      },
+      {
+        "name": "Premium RWD",
+        "year": 2025,
+        "priceEur": 51232,
+        "rangeKm": 495,
+        "accel0to100": 5.6,
+        "batteryKwh": 79,
+        "fastChargeKw": 125,
+        "trunkLiters": 971,
+        "seats": 5,
+        "comfortScore": 8,
+        "expertScore": 8.3
+      },
+      {
+        "name": "Premium AWD",
+        "year": 2025,
+        "priceEur": 55916,
+        "rangeKm": 475,
+        "accel0to100": 4.8,
+        "batteryKwh": 79,
+        "fastChargeKw": 125,
+        "trunkLiters": 971,
+        "seats": 7,
+        "comfortScore": 8.3,
+        "expertScore": 8.3
+      },
+      {
+        "name": "Performance",
+        "year": 2025,
+        "priceEur": 65749,
+        "rangeKm": 460,
+        "accel0to100": 3.8,
+        "batteryKwh": 79,
+        "fastChargeKw": 125,
+        "trunkLiters": 971,
+        "seats": 5,
+        "comfortScore": 8,
+        "expertScore": 8.3
       }
     ]
   },
@@ -12674,7 +13065,7 @@ window.evData = [
   {
     "id": "volkswagen-id-4-pure",
     "brand": "Volkswagen",
-    "model": "ID.4 Pure",
+    "model": "ID.4",
     "year": 2025,
     "bodyType": "SUV",
     "seats": 5,
@@ -12692,6 +13083,60 @@ window.evData = [
         "title": "Volkswagen ID.4 Pure specs",
         "url": "https://ev-database.org/car/3249/Volkswagen-ID4-Pure",
         "rating": 7.5
+      }
+    ],
+    "variants": [
+      {
+        "name": "Pure",
+        "year": 2025,
+        "priceEur": 40381,
+        "rangeKm": 285,
+        "accel0to100": 9,
+        "batteryKwh": 52,
+        "fastChargeKw": 87,
+        "trunkLiters": 543,
+        "seats": 5,
+        "comfortScore": 7.2,
+        "expertScore": 7.5
+      },
+      {
+        "name": "Pro",
+        "year": 2025,
+        "priceEur": 44048,
+        "rangeKm": 445,
+        "accel0to100": 6.7,
+        "batteryKwh": 77,
+        "fastChargeKw": 120,
+        "trunkLiters": 543,
+        "seats": 5,
+        "comfortScore": 7.5,
+        "expertScore": 8.1
+      },
+      {
+        "name": "Pro 4MOTION",
+        "year": 2025,
+        "priceEur": 50682,
+        "rangeKm": 435,
+        "accel0to100": 6.6,
+        "batteryKwh": 77,
+        "fastChargeKw": 120,
+        "trunkLiters": 543,
+        "seats": 5,
+        "comfortScore": 7.5,
+        "expertScore": 8.1
+      },
+      {
+        "name": "GTX",
+        "year": 2025,
+        "priceEur": 56108,
+        "rangeKm": 435,
+        "accel0to100": 5.4,
+        "batteryKwh": 79,
+        "fastChargeKw": 135,
+        "trunkLiters": 543,
+        "seats": 5,
+        "comfortScore": 7.5,
+        "expertScore": 8.2
       }
     ]
   },
