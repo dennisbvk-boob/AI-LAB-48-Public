@@ -14232,3 +14232,139 @@ window.evData = [
     ]
   }
 ];
+
+(function attachWikipediaSlugsToEvData() {
+  const wikipediaTrimTokens = new Set([
+    "standard",
+    "long",
+    "range",
+    "single",
+    "dual",
+    "motor",
+    "extended",
+    "performance",
+    "quattro",
+    "plus",
+    "pro",
+    "design",
+    "comfort",
+    "core",
+    "privilege",
+    "ultimate",
+    "launch",
+    "edition",
+    "line",
+    "sport",
+    "gt",
+    "gts",
+    "awd",
+    "rwd",
+    "fwd",
+    "kwh",
+    "kw",
+    "hp",
+    "electric",
+    "ev"
+  ]);
+
+  const brandSlugAliases = {
+    VW: "Volkswagen",
+    "Mercedes-AMG": "Mercedes-Benz",
+    Mercedes: "Mercedes-Benz"
+  };
+
+  const modelSlugAliases = [
+    { test: /\bmodel\s*3\b/i, slug: "Model_3" },
+    { test: /\bmodel\s*y\b/i, slug: "Model_Y" },
+    { test: /\bmodel\s*s\b/i, slug: "Model_S" },
+    { test: /\bmodel\s*x\b/i, slug: "Model_X" },
+    { test: /\bioniq\s*5\b/i, slug: "Ioniq_5" },
+    { test: /\bioniq\s*6\b/i, slug: "Ioniq_6" },
+    { test: /\bev\s*6\b/i, slug: "EV6" },
+    { test: /\bev\s*3\b/i, slug: "EV3" },
+    { test: /\bev\s*9\b/i, slug: "EV9" },
+    { test: /\bi4\b/i, slug: "i4" },
+    { test: /\bid\.?\s*7\b/i, slug: "ID.7" },
+    { test: /\benyaq\b/i, slug: "Enyaq" },
+    { test: /\bmg\s*4\b|\bmg4\b/i, slug: "MG4_EV" },
+    { test: /\bpolestar\s*2\b/i, slug: "2" },
+    { test: /\bscenic\b/i, slug: "Scenic_E-Tech" },
+    { test: /\beqe\b/i, slug: "EQE_SUV" },
+    { test: /\bseal\b/i, slug: "Seal" },
+    { test: /\bariya\b/i, slug: "Ariya" }
+  ];
+
+  const carIdWikipediaSlugOverrides = {
+    "tesla-model-3-highland": "Tesla_Model_3",
+    "tesla-model-y": "Tesla_Model_Y",
+    "hyundai-ioniq-5": "Hyundai_Ioniq_5",
+    "kia-ev6": "Kia_EV6",
+    "bmw-i4-edrive40": "BMW_i4",
+    "vw-id7-pro": "Volkswagen_ID.7",
+    "volvo-ex30": "Volvo_EX30",
+    "skoda-enyaq-85": "Skoda_Enyaq",
+    "mg4-long-range": "MG4_EV",
+    "polestar-2-long-range": "Polestar_2",
+    "renault-scenic-etec": "Renault_Scenic_E-Tech",
+    "mercedes-eqe-suv": "Mercedes-Benz_EQE_SUV",
+    "byd-seal": "BYD_Seal",
+    "nissan-ariya": "Nissan_Ariya"
+  };
+
+  function normalizeSlugPart(value) {
+    return String(value ?? "")
+      .normalize("NFKD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/&/g, " and ")
+      .replace(/\+/g, " plus ")
+      .replace(/[(),/]/g, " ")
+      .replace(/[^a-zA-Z0-9.\s-]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function toSlugTokens(value) {
+    return normalizeSlugPart(value)
+      .toLowerCase()
+      .split(" ")
+      .filter(Boolean);
+  }
+
+  function slugifyPart(value) {
+    return normalizeSlugPart(value).replace(/\s+/g, "_");
+  }
+
+  function getModelAlias(model) {
+    for (const rule of modelSlugAliases) {
+      if (rule.test.test(model)) {
+        return rule.slug;
+      }
+    }
+    return null;
+  }
+
+  function buildWikipediaSlug(car) {
+    const override = carIdWikipediaSlugOverrides[car.id];
+    if (override) return override;
+
+    const brandPart = brandSlugAliases[car.brand] || slugifyPart(car.brand);
+    const aliasedModel = getModelAlias(car.model);
+    if (aliasedModel) {
+      return `${brandPart}_${aliasedModel}`;
+    }
+
+    const modelTokens = toSlugTokens(car.model).filter((token) => {
+      if (wikipediaTrimTokens.has(token)) return false;
+      return !/^\d{2,4}(kwh|kw|hp)?$/.test(token);
+    });
+
+    const modelPart = modelTokens.slice(0, 4).join("_");
+    if (!modelPart) return brandPart;
+    return `${brandPart}_${modelPart}`;
+  }
+
+  window.evData = window.evData.map((car) => ({
+    ...car,
+    wikipediaSlug: car.wikipediaSlug || buildWikipediaSlug(car)
+  }));
+})();
