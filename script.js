@@ -101,6 +101,26 @@
     "electric",
     "ev"
   ]);
+  const wikipediaVehicleContextTokens = new Set([
+    "car",
+    "cars",
+    "automobile",
+    "vehicle",
+    "electric",
+    "battery",
+    "suv",
+    "crossover",
+    "hatchback",
+    "sedan",
+    "saloon",
+    "wagon",
+    "liftback",
+    "coupe",
+    "pickup",
+    "truck",
+    "van",
+    "mpv"
+  ]);
   const resolvedCarImageSources = new Map();
   const pendingCarImageRequests = new Map();
   const wikipediaSummaryBySlug = new Map();
@@ -504,6 +524,23 @@
     return sanitizeForSlug(value).replace(/\s+/g, "_");
   }
 
+  function getWikipediaModelTokens(car) {
+    return toSlugTokens(car.model).filter((token) => {
+      if (wikipediaModelTrimTokens.has(token)) return false;
+      if (/^\d{2,4}(kwh|kw|hp)?$/.test(token)) return false;
+      if (/^(xdrive|edrive|4matic|my\d+)$/.test(token)) return false;
+      return true;
+    });
+  }
+
+  function getWikipediaBrandTokens(car) {
+    return toSlugTokens(car.brand);
+  }
+
+  function normalizeWikipediaTitleToSlug(title) {
+    return String(title ?? "").trim().replace(/\s+/g, "_");
+  }
+
   function getCarImageCacheKey(carId) {
     return `${imageCacheStoragePrefix}${carId}`;
   }
@@ -607,10 +644,7 @@
     pushCandidate(`${car.brand}_${car.model}`);
 
     const brandSlug = buildSlugFromRawText(car.brand);
-    const modelTokens = toSlugTokens(car.model).filter((token) => {
-      if (wikipediaModelTrimTokens.has(token)) return false;
-      return !/^\d{2,4}(kwh|kw|hp)?$/.test(token);
-    });
+    const modelTokens = getWikipediaModelTokens(car);
 
     if (brandSlug && modelTokens.length) {
       pushCandidate(`${brandSlug}_${modelTokens.slice(0, 4).join("_")}`);
@@ -623,10 +657,7 @@
   }
 
   function buildWikipediaSearchQueries(car) {
-    const modelTokens = toSlugTokens(car.model).filter((token) => {
-      if (wikipediaModelTrimTokens.has(token)) return false;
-      return !/^\d{2,4}(kwh|kw|hp)?$/.test(token);
-    });
+    const modelTokens = getWikipediaModelTokens(car);
     const compactModel = modelTokens.slice(0, 3).join(" ");
     const queries = [
       `${car.brand} ${car.model} electric car`,
@@ -691,39 +722,39 @@
     if (normalizedTitle.includes("concept")) score -= 3;
     if (normalizedTitle.includes("film")) score -= 8;
     if (normalizedTitle.includes("album")) score -= 8;
+    if (normalizedTitle.includes("song")) score -= 8;
     return score;
   }
 
-  async function resolveWikipediaSlugViaSearch(car) {
-    const brandTokens = toSlugTokens(car.brand);
-    const modelTokens = toSlugTokens(car.model).filter((token) => {
-      if (wikipediaModelTrimTokens.has(token)) return false;
-      return !/^\d{2,4}(kwh|kw|hp)?$/.test(token);
-    });
-
-    let bestTitle = null;
-    let bestScore = -Infinity;
+  async function resolveWikipediaSlugsViaSearch(car) {
+    const brandTokens = getWikipediaBrandTokens(car);
+    const modelTokens = getWikipediaModelTokens(car);
+    const rankedMatches = [];
+    const seenSlugs = new Set();
     const queries = buildWikipediaSearchQueries(car);
+
     for (const query of queries) {
       const titles = await fetchWikipediaSearchCandidates(query);
+
       titles.forEach((title) => {
         const score = scoreWikipediaSearchTitle(title, brandTokens, modelTokens);
-        if (score > bestScore) {
-          bestScore = score;
-          bestTitle = title;
-        }
+        if (score < 3) return;
+        const slug = normalizeWikipediaTitleToSlug(title);
+        const slugKey = slug.toLowerCase();
+        if (!slug || seenSlugs.has(slugKey)) return;
+        seenSlugs.add(slugKey);
+        rankedMatches.push({ slug, score });
       });
 
-      if (bestScore >= 9) {
+      if (rankedMatches.some((entry) => entry.score >= 9) && rankedMatches.length >= 4) {
         break;
       }
     }
 
-    if (!bestTitle || bestScore < 3) return null;
-    return String(bestTitle).replace(/\s+/g, "_");
+    return rankedMatches.sort((a, b) => b.score - a.score).slice(0, 8);
   }
 
-  async function fetchWikipediaSummaryImage(slug) {
+  async function fetchWikipediaSummaryData(slug) {
     const normalizedSlug = String(slug ?? "").trim().replace(/\s+/g, "_");
     if (!normalizedSlug) return null;
 
@@ -740,7 +771,12 @@
         if (!payload || payload.type === "disambiguation") return null;
         const imageUrl = payload.thumbnail?.source || payload.originalimage?.source || null;
         if (!imageUrl || !/^https?:\/\//i.test(imageUrl)) return null;
-        return imageUrl;
+        return {
+          slug: normalizedSlug,
+          title: payload.title ?? "",
+          description: payload.description ?? "",
+          imageUrl
+        };
       })
       .catch(() => null);
 
@@ -748,17 +784,72 @@
     return request;
   }
 
+  function scoreWikipediaSummaryForCar(car, summary, searchScore = 0) {
+    const brandTokens = getWikipediaBrandTokens(car);
+    const modelTokens = getWikipediaModelTokens(car);
+    const titleTokens = toSlugTokens(summary.title);
+    const descriptionTokens = toSlugTokens(summary.description);
+    const combinedTokens = new Set([...titleTokens, ...descriptionTokens]);
+    let score = 0;
+
+    brandTokens.forEach((token) => {
+      if (titleTokens.includes(token)) {
+        score += 3;
+      } else if (combinedTokens.has(token)) {
+        score += 2;
+      }
+    });
+
+    modelTokens.slice(0, 4).forEach((token, index) => {
+      if (titleTokens.includes(token)) {
+        score += index === 0 ? 7 : 3;
+      } else if (combinedTokens.has(token)) {
+        score += index === 0 ? 5 : 2;
+      }
+    });
+
+    if ([...wikipediaVehicleContextTokens].some((token) => combinedTokens.has(token))) {
+      score += 2;
+    }
+
+    if (modelTokens.length && !modelTokens.some((token) => combinedTokens.has(token))) {
+      score -= 8;
+    }
+
+    const normalizedSummaryText = `${summary.title} ${summary.description}`.toLowerCase();
+    if (/disambiguation/.test(normalizedSummaryText)) score -= 10;
+    if (/\b(concept|film|album|song)\b/.test(normalizedSummaryText)) score -= 8;
+
+    // Search relevance still matters, but should never overpower model mismatch checks.
+    score += Math.min(Math.max(searchScore, 0), 4);
+    return score;
+  }
+
   async function resolveWikipediaCarImage(car) {
+    const minimumSearchMatchScore = 6;
     const candidates = buildWikipediaSlugCandidates(car);
     for (const slug of candidates) {
-      const imageUrl = await fetchWikipediaSummaryImage(slug);
-      if (imageUrl) return imageUrl;
+      const summary = await fetchWikipediaSummaryData(slug);
+      if (summary?.imageUrl) {
+        return summary.imageUrl;
+      }
     }
-    const searchedSlug = await resolveWikipediaSlugViaSearch(car);
-    if (searchedSlug) {
-      const searchedImage = await fetchWikipediaSummaryImage(searchedSlug);
-      if (searchedImage) return searchedImage;
+
+    const searchedMatches = await resolveWikipediaSlugsViaSearch(car);
+    let bestSearchMatch = null;
+    for (const match of searchedMatches) {
+      const summary = await fetchWikipediaSummaryData(match.slug);
+      if (!summary) continue;
+      const relevanceScore = scoreWikipediaSummaryForCar(car, summary, match.score);
+      if (!bestSearchMatch || relevanceScore > bestSearchMatch.relevanceScore) {
+        bestSearchMatch = { ...summary, relevanceScore };
+      }
     }
+
+    if (bestSearchMatch && bestSearchMatch.relevanceScore >= minimumSearchMatchScore) {
+      return bestSearchMatch.imageUrl;
+    }
+
     return null;
   }
 
