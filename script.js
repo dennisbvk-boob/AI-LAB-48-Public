@@ -67,7 +67,7 @@
   const fallbackCarImage = "./assets/car-placeholder.svg";
   const wikipediaSummaryApi = "https://en.wikipedia.org/api/rest_v1/page/summary/";
   const wikipediaSearchApi = "https://en.wikipedia.org/w/api.php";
-  const imageCacheStoragePrefix = "ev-verdict-car-image-v2:";
+  const imageCacheStoragePrefix = "ev-verdict-car-image-v3:";
   const wikipediaModelTrimTokens = new Set([
     "standard",
     "long",
@@ -738,7 +738,8 @@
       })
       .then((payload) => {
         if (!payload || payload.type === "disambiguation") return null;
-        const imageUrl = payload.thumbnail?.source || payload.originalimage?.source || null;
+        // Prefer the full-resolution image for higher-quality tiles.
+        const imageUrl = payload.originalimage?.source || payload.thumbnail?.source || null;
         if (!imageUrl || !/^https?:\/\//i.test(imageUrl)) return null;
         return imageUrl;
       })
