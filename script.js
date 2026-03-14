@@ -70,6 +70,7 @@
   const rssToJsonApiBase = "https://api.rss2json.com/v1/api.json?rss_url=";
   const newsRefreshIntervalMs = 30 * 60 * 1000;
   const newsItemsPerSource = 4;
+  const newsRequestTimeoutMs = 15000;
   const evNewsSources = Object.freeze([
     {
       name: "InsideEVs",
@@ -93,6 +94,7 @@
       ]
     }
   ]);
+  const maxNewsCardsTotal = newsItemsPerSource * evNewsSources.length;
   const wikipediaSearchApi = "https://en.wikipedia.org/w/api.php";
   const imageCacheStoragePrefix = "ev-verdict-car-image-v1:";
   const shouldResolveWikipediaImages = cars.length <= 180;
@@ -342,12 +344,27 @@
       sourceSlug: source.slug,
       sourceIcon: source.icon,
       title: truncateText(stripHtml(item.title || "Untitled article"), 140),
-      excerpt: truncateText(excerptRaw, 120),
+      excerpt: truncateText(excerptRaw || "Open article to read more.", 120),
       url: item.link,
       publishedIso: Number.isNaN(publishedAt.getTime())
         ? new Date().toISOString()
         : publishedAt.toISOString()
     };
+  }
+
+  async function fetchJsonWithTimeout(url, timeoutMs) {
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), timeoutMs);
+
+    try {
+      const response = await fetch(url, { signal: controller.signal });
+      if (!response.ok) {
+        throw new Error(`Feed request failed (${response.status})`);
+      }
+      return await response.json();
+    } finally {
+      window.clearTimeout(timeoutId);
+    }
   }
 
   async function fetchNewsSource(source) {
@@ -357,12 +374,7 @@
     for (const feedUrl of urlsToTry) {
       const endpoint = `${rssToJsonApiBase}${encodeURIComponent(feedUrl)}`;
       try {
-        const response = await fetch(endpoint);
-        if (!response.ok) {
-          throw new Error(`${source.name} failed (${response.status})`);
-        }
-
-        const payload = await response.json();
+        const payload = await fetchJsonWithTimeout(endpoint, newsRequestTimeoutMs);
         const items = Array.isArray(payload.items) ? payload.items : [];
         const normalizedItems = items
           .filter((item) => item?.link && item?.title)
@@ -413,7 +425,7 @@
 
     elements.evNewsTrack.innerHTML = "";
     const fragment = document.createDocumentFragment();
-    loadedItems.forEach((item) => {
+    loadedItems.slice(0, maxNewsCardsTotal).forEach((item) => {
       fragment.append(buildNewsCard(item));
     });
     elements.evNewsTrack.append(fragment);
