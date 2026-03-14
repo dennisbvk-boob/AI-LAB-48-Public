@@ -22,16 +22,7 @@ window.evData = [
         "rating": 7.3
       }
     ],
-    "wikipediaSlug": "Abarth_500e_convertible",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 38541,
-        "rangeKm": 225,
-        "accel0to100": 7,
-        "batteryKwh": 37.3
-      }
-    ]
+    "wikipediaSlug": "Abarth_500e_convertible"
   },
   {
     "id": "abarth-500e-hatchback",
@@ -56,16 +47,7 @@ window.evData = [
         "rating": 7.3
       }
     ],
-    "wikipediaSlug": "Abarth_500e_hatchback",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 35558,
-        "rangeKm": 225,
-        "accel0to100": 7,
-        "batteryKwh": 37.3
-      }
-    ]
+    "wikipediaSlug": "Abarth_500e_hatchback"
   },
   {
     "id": "abarth-600e-scorpionissima",
@@ -339,10 +321,17 @@ window.evData = [
     "wikipediaSlug": "Alpine_a390",
     "variants": [
       {
-        "name": "Standard",
+        "name": "GT",
         "priceEur": 68699,
         "rangeKm": 470,
         "accel0to100": 4.8,
+        "batteryKwh": 89
+      },
+      {
+        "name": "GTS",
+        "priceEur": 78932,
+        "rangeKm": 470,
+        "accel0to100": 3.9,
         "batteryKwh": 89
       }
     ]
@@ -373,7 +362,14 @@ window.evData = [
     "wikipediaSlug": "Alpine_a390",
     "variants": [
       {
-        "name": "Standard",
+        "name": "GT",
+        "priceEur": 68699,
+        "rangeKm": 470,
+        "accel0to100": 4.8,
+        "batteryKwh": 89
+      },
+      {
+        "name": "GTS",
         "priceEur": 78932,
         "rangeKm": 470,
         "accel0to100": 3.9,
@@ -692,16 +688,7 @@ window.evData = [
         "rating": 8.9
       }
     ],
-    "wikipediaSlug": "Audi_e-tron",
-    "variants": [
-      {
-        "name": "quattro",
-        "priceEur": 103576,
-        "rangeKm": 540,
-        "accel0to100": 4,
-        "batteryKwh": 97
-      }
-    ]
+    "wikipediaSlug": "Audi_e-tron"
   },
   {
     "id": "audi-q4-e-tron-40",
@@ -729,11 +716,32 @@ window.evData = [
     "wikipediaSlug": "Audi_q4_e-tron",
     "variants": [
       {
-        "name": "Standard",
+        "name": "40",
         "priceEur": 48247,
         "rangeKm": 325,
         "accel0to100": 8.1,
         "batteryKwh": 59
+      },
+      {
+        "name": "45",
+        "priceEur": 53982,
+        "rangeKm": 420,
+        "accel0to100": 6.7,
+        "batteryKwh": 77
+      },
+      {
+        "name": "45 quattro",
+        "priceEur": 56197,
+        "rangeKm": 395,
+        "accel0to100": 6.6,
+        "batteryKwh": 77
+      },
+      {
+        "name": "55 quattro",
+        "priceEur": 63322,
+        "rangeKm": 395,
+        "accel0to100": 5.4,
+        "batteryKwh": 77
       }
     ]
   },
@@ -763,17 +771,31 @@ window.evData = [
     "wikipediaSlug": "Audi_q4_e-tron",
     "variants": [
       {
-        "name": "Standard",
+        "name": "40",
+        "priceEur": 48247,
+        "rangeKm": 325,
+        "accel0to100": 8.1,
+        "batteryKwh": 59
+      },
+      {
+        "name": "45",
         "priceEur": 53982,
         "rangeKm": 420,
         "accel0to100": 6.7,
         "batteryKwh": 77
       },
       {
-        "name": "quattro",
+        "name": "45 quattro",
         "priceEur": 56197,
         "rangeKm": 395,
         "accel0to100": 6.6,
+        "batteryKwh": 77
+      },
+      {
+        "name": "55 quattro",
+        "priceEur": 63322,
+        "rangeKm": 395,
+        "accel0to100": 5.4,
         "batteryKwh": 77
       }
     ]
@@ -804,17 +826,31 @@ window.evData = [
     "wikipediaSlug": "Audi_q4_e-tron",
     "variants": [
       {
-        "name": "Standard",
+        "name": "40",
+        "priceEur": 48247,
+        "rangeKm": 325,
+        "accel0to100": 8.1,
+        "batteryKwh": 59
+      },
+      {
+        "name": "45",
         "priceEur": 53982,
         "rangeKm": 420,
         "accel0to100": 6.7,
         "batteryKwh": 77
       },
       {
-        "name": "quattro",
+        "name": "45 quattro",
         "priceEur": 56197,
         "rangeKm": 395,
         "accel0to100": 6.6,
+        "batteryKwh": 77
+      },
+      {
+        "name": "55 quattro",
+        "priceEur": 63322,
+        "rangeKm": 395,
+        "accel0to100": 5.4,
         "batteryKwh": 77
       }
     ]
@@ -845,7 +881,28 @@ window.evData = [
     "wikipediaSlug": "Audi_q4_e-tron",
     "variants": [
       {
-        "name": "quattro",
+        "name": "40",
+        "priceEur": 48247,
+        "rangeKm": 325,
+        "accel0to100": 8.1,
+        "batteryKwh": 59
+      },
+      {
+        "name": "45",
+        "priceEur": 53982,
+        "rangeKm": 420,
+        "accel0to100": 6.7,
+        "batteryKwh": 77
+      },
+      {
+        "name": "45 quattro",
+        "priceEur": 56197,
+        "rangeKm": 395,
+        "accel0to100": 6.6,
+        "batteryKwh": 77
+      },
+      {
+        "name": "55 quattro",
         "priceEur": 63322,
         "rangeKm": 395,
         "accel0to100": 5.4,
@@ -879,11 +936,32 @@ window.evData = [
     "wikipediaSlug": "Audi_q4_sportback_e-tron",
     "variants": [
       {
-        "name": "Standard",
+        "name": "40",
         "priceEur": 50155,
         "rangeKm": 340,
         "accel0to100": 8.1,
         "batteryKwh": 59
+      },
+      {
+        "name": "45",
+        "priceEur": 55890,
+        "rangeKm": 435,
+        "accel0to100": 6.7,
+        "batteryKwh": 77
+      },
+      {
+        "name": "45 quattro",
+        "priceEur": 58105,
+        "rangeKm": 410,
+        "accel0to100": 6.6,
+        "batteryKwh": 77
+      },
+      {
+        "name": "55 quattro",
+        "priceEur": 65247,
+        "rangeKm": 415,
+        "accel0to100": 5.4,
+        "batteryKwh": 77
       }
     ]
   },
@@ -913,17 +991,31 @@ window.evData = [
     "wikipediaSlug": "Audi_q4_sportback_e-tron",
     "variants": [
       {
-        "name": "Standard",
+        "name": "40",
+        "priceEur": 50155,
+        "rangeKm": 340,
+        "accel0to100": 8.1,
+        "batteryKwh": 59
+      },
+      {
+        "name": "45",
         "priceEur": 55890,
         "rangeKm": 435,
         "accel0to100": 6.7,
         "batteryKwh": 77
       },
       {
-        "name": "quattro",
+        "name": "45 quattro",
         "priceEur": 58105,
         "rangeKm": 410,
         "accel0to100": 6.6,
+        "batteryKwh": 77
+      },
+      {
+        "name": "55 quattro",
+        "priceEur": 65247,
+        "rangeKm": 415,
+        "accel0to100": 5.4,
         "batteryKwh": 77
       }
     ]
@@ -954,17 +1046,31 @@ window.evData = [
     "wikipediaSlug": "Audi_q4_sportback_e-tron",
     "variants": [
       {
-        "name": "Standard",
+        "name": "40",
+        "priceEur": 50155,
+        "rangeKm": 340,
+        "accel0to100": 8.1,
+        "batteryKwh": 59
+      },
+      {
+        "name": "45",
         "priceEur": 55890,
         "rangeKm": 435,
         "accel0to100": 6.7,
         "batteryKwh": 77
       },
       {
-        "name": "quattro",
+        "name": "45 quattro",
         "priceEur": 58105,
         "rangeKm": 410,
         "accel0to100": 6.6,
+        "batteryKwh": 77
+      },
+      {
+        "name": "55 quattro",
+        "priceEur": 65247,
+        "rangeKm": 415,
+        "accel0to100": 5.4,
         "batteryKwh": 77
       }
     ]
@@ -995,7 +1101,28 @@ window.evData = [
     "wikipediaSlug": "Audi_q4_sportback_e-tron",
     "variants": [
       {
-        "name": "quattro",
+        "name": "40",
+        "priceEur": 50155,
+        "rangeKm": 340,
+        "accel0to100": 8.1,
+        "batteryKwh": 59
+      },
+      {
+        "name": "45",
+        "priceEur": 55890,
+        "rangeKm": 435,
+        "accel0to100": 6.7,
+        "batteryKwh": 77
+      },
+      {
+        "name": "45 quattro",
+        "priceEur": 58105,
+        "rangeKm": 410,
+        "accel0to100": 6.6,
+        "batteryKwh": 77
+      },
+      {
+        "name": "55 quattro",
         "priceEur": 65247,
         "rangeKm": 415,
         "accel0to100": 5.4,
@@ -1317,14 +1444,14 @@ window.evData = [
     "wikipediaSlug": "Audi_rs_e-tron",
     "variants": [
       {
-        "name": "Standard",
+        "name": "GT",
         "priceEur": 148292,
         "rangeKm": 525,
         "accel0to100": 2.8,
         "batteryKwh": 97
       },
       {
-        "name": "performance",
+        "name": "GT performance",
         "priceEur": 163284,
         "rangeKm": 525,
         "accel0to100": 2.5,
@@ -1358,14 +1485,14 @@ window.evData = [
     "wikipediaSlug": "Audi_rs_e-tron",
     "variants": [
       {
-        "name": "Standard",
+        "name": "GT",
         "priceEur": 148292,
         "rangeKm": 525,
         "accel0to100": 2.8,
         "batteryKwh": 97
       },
       {
-        "name": "performance",
+        "name": "GT performance",
         "priceEur": 163284,
         "rangeKm": 525,
         "accel0to100": 2.5,
@@ -1396,16 +1523,7 @@ window.evData = [
         "rating": 8.9
       }
     ],
-    "wikipediaSlug": "Audi_s_e-tron",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 126662,
-        "rangeKm": 540,
-        "accel0to100": 3.4,
-        "batteryKwh": 97
-      }
-    ]
+    "wikipediaSlug": "Audi_s_e-tron"
   },
   {
     "id": "audi-s6-avant-e-tron",
@@ -1430,16 +1548,7 @@ window.evData = [
         "rating": 8.6
       }
     ],
-    "wikipediaSlug": "Audi_s6_avant_e-tron",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 105627,
-        "rangeKm": 530,
-        "accel0to100": 3.9,
-        "batteryKwh": 94.9
-      }
-    ]
+    "wikipediaSlug": "Audi_s6_avant_e-tron"
   },
   {
     "id": "audi-s6-sportback-e-tron",
@@ -1464,16 +1573,7 @@ window.evData = [
         "rating": 8.7
       }
     ],
-    "wikipediaSlug": "Audi_s6_sportback_e-tron",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 103887,
-        "rangeKm": 555,
-        "accel0to100": 3.9,
-        "batteryKwh": 94.9
-      }
-    ]
+    "wikipediaSlug": "Audi_s6_sportback_e-tron"
   },
   {
     "id": "audi-sq6-sportback-e-tron",
@@ -1498,16 +1598,7 @@ window.evData = [
         "rating": 8.5
       }
     ],
-    "wikipediaSlug": "Audi_sq6_sportback_e-tron",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 102652,
-        "rangeKm": 495,
-        "accel0to100": 4.3,
-        "batteryKwh": 94.9
-      }
-    ]
+    "wikipediaSlug": "Audi_sq6_sportback_e-tron"
   },
   {
     "id": "audi-sq6-suv-e-tron",
@@ -1532,16 +1623,7 @@ window.evData = [
         "rating": 8.5
       }
     ],
-    "wikipediaSlug": "Audi_sq6_suv_e-tron",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 100697,
-        "rangeKm": 470,
-        "accel0to100": 4.3,
-        "batteryKwh": 94.9
-      }
-    ]
+    "wikipediaSlug": "Audi_sq6_suv_e-tron"
   },
   {
     "id": "bmw-i4-edrive35",
@@ -1786,16 +1868,7 @@ window.evData = [
         "rating": 8.2
       }
     ],
-    "wikipediaSlug": "BMW_i5_edrive40_sedan",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 75556,
-        "rangeKm": 480,
-        "accel0to100": 6,
-        "batteryKwh": 81.2
-      }
-    ]
+    "wikipediaSlug": "BMW_i5_edrive40_sedan"
   },
   {
     "id": "bmw-i5-edrive40-touring",
@@ -1820,16 +1893,7 @@ window.evData = [
         "rating": 8.2
       }
     ],
-    "wikipediaSlug": "BMW_i5_edrive40_touring",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 77771,
-        "rangeKm": 465,
-        "accel0to100": 6.1,
-        "batteryKwh": 81.2
-      }
-    ]
+    "wikipediaSlug": "BMW_i5_edrive40_touring"
   },
   {
     "id": "bmw-i5-m60-xdrive-sedan",
@@ -1854,16 +1918,7 @@ window.evData = [
         "rating": 8.2
       }
     ],
-    "wikipediaSlug": "BMW_i5_m60_xdrive_sedan",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 107127,
-        "rangeKm": 430,
-        "accel0to100": 3.8,
-        "batteryKwh": 81.2
-      }
-    ]
+    "wikipediaSlug": "BMW_i5_m60_xdrive_sedan"
   },
   {
     "id": "bmw-i5-m60-xdrive-touring",
@@ -1888,16 +1943,7 @@ window.evData = [
         "rating": 8.2
       }
     ],
-    "wikipediaSlug": "BMW_i5_m60_xdrive_touring",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 109341,
-        "rangeKm": 425,
-        "accel0to100": 3.9,
-        "batteryKwh": 81.2
-      }
-    ]
+    "wikipediaSlug": "BMW_i5_m60_xdrive_touring"
   },
   {
     "id": "bmw-i5-xdrive40-sedan",
@@ -1922,16 +1968,7 @@ window.evData = [
         "rating": 8.2
       }
     ],
-    "wikipediaSlug": "BMW_i5_xdrive40_sedan",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 78435,
-        "rangeKm": 465,
-        "accel0to100": 5.4,
-        "batteryKwh": 81.2
-      }
-    ]
+    "wikipediaSlug": "BMW_i5_xdrive40_sedan"
   },
   {
     "id": "bmw-i5-xdrive40-touring",
@@ -1956,16 +1993,7 @@ window.evData = [
         "rating": 8.2
       }
     ],
-    "wikipediaSlug": "BMW_i5_xdrive40_touring",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 80463,
-        "rangeKm": 450,
-        "accel0to100": 5.5,
-        "batteryKwh": 81.2
-      }
-    ]
+    "wikipediaSlug": "BMW_i5_xdrive40_touring"
   },
   {
     "id": "bmw-i7-edrive50",
@@ -2442,16 +2470,7 @@ window.evData = [
         "rating": 9
       }
     ],
-    "wikipediaSlug": "BMW_ix3_xdrive",
-    "variants": [
-      {
-        "name": "50 xDrive",
-        "priceEur": 69656,
-        "rangeKm": 610,
-        "accel0to100": 4.9,
-        "batteryKwh": 108.7
-      }
-    ]
+    "wikipediaSlug": "BMW_ix3_xdrive"
   },
   {
     "id": "byd-atto-2",
@@ -2484,6 +2503,13 @@ window.evData = [
         "rangeKm": 245,
         "accel0to100": 7.9,
         "batteryKwh": 45.1
+      },
+      {
+        "name": "64.8 kWh",
+        "priceEur": 39624,
+        "rangeKm": 305,
+        "accel0to100": 7.9,
+        "batteryKwh": 58
       }
     ]
   },
@@ -2514,6 +2540,13 @@ window.evData = [
     "variants": [
       {
         "name": "Standard",
+        "priceEur": 33052,
+        "rangeKm": 245,
+        "accel0to100": 7.9,
+        "batteryKwh": 45.1
+      },
+      {
+        "name": "64.8 kWh",
         "priceEur": 39624,
         "rangeKm": 305,
         "accel0to100": 7.9,
@@ -2544,16 +2577,7 @@ window.evData = [
         "rating": 7.7
       }
     ],
-    "wikipediaSlug": "BYD_atto_3",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 41023,
-        "rangeKm": 340,
-        "accel0to100": 7.3,
-        "batteryKwh": 60.5
-      }
-    ]
+    "wikipediaSlug": "BYD_atto_3"
   },
   {
     "id": "byd-atto-3-evo-awd-excellence",
@@ -2578,16 +2602,7 @@ window.evData = [
         "rating": 8.2
       }
     ],
-    "wikipediaSlug": "BYD_atto_3_evo_excellence",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 48299,
-        "rangeKm": 400,
-        "accel0to100": 3.9,
-        "batteryKwh": 74.8
-      }
-    ]
+    "wikipediaSlug": "BYD_atto_3_evo_excellence"
   },
   {
     "id": "byd-atto-3-evo-rwd-design",
@@ -2612,16 +2627,7 @@ window.evData = [
         "rating": 8.2
       }
     ],
-    "wikipediaSlug": "BYD_atto_3_evo",
-    "variants": [
-      {
-        "name": "RWD Design",
-        "priceEur": 46000,
-        "rangeKm": 415,
-        "accel0to100": 5.5,
-        "batteryKwh": 74.8
-      }
-    ]
+    "wikipediaSlug": "BYD_atto_3_evo"
   },
   {
     "id": "byd-dolphin-60-4-kwh",
@@ -2646,16 +2652,7 @@ window.evData = [
         "rating": 7.7
       }
     ],
-    "wikipediaSlug": "BYD_dolphin_60.4",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 35521,
-        "rangeKm": 350,
-        "accel0to100": 7,
-        "batteryKwh": 60.5
-      }
-    ]
+    "wikipediaSlug": "BYD_dolphin_60.4"
   },
   {
     "id": "byd-dolphin-surf-30-kwh-active",
@@ -2680,16 +2677,7 @@ window.evData = [
         "rating": 7
       }
     ],
-    "wikipediaSlug": "BYD_dolphin_surf_active",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 22475,
-        "rangeKm": 190,
-        "accel0to100": 11.1,
-        "batteryKwh": 30
-      }
-    ]
+    "wikipediaSlug": "BYD_dolphin_surf_active"
   },
   {
     "id": "byd-dolphin-surf-43-2-kwh-boost",
@@ -2714,16 +2702,7 @@ window.evData = [
         "rating": 7.2
       }
     ],
-    "wikipediaSlug": "BYD_dolphin_surf_43.2_boost",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 25740,
-        "rangeKm": 270,
-        "accel0to100": 12.1,
-        "batteryKwh": 43.2
-      }
-    ]
+    "wikipediaSlug": "BYD_dolphin_surf_43.2_boost"
   },
   {
     "id": "byd-dolphin-surf-43-2-kwh-comfort",
@@ -2748,16 +2727,7 @@ window.evData = [
         "rating": 7.3
       }
     ],
-    "wikipediaSlug": "BYD_dolphin_surf_43.2",
-    "variants": [
-      {
-        "name": "Comfort",
-        "priceEur": 28407,
-        "rangeKm": 265,
-        "accel0to100": 9.1,
-        "batteryKwh": 43.2
-      }
-    ]
+    "wikipediaSlug": "BYD_dolphin_surf_43.2"
   },
   {
     "id": "byd-seal-61-4-kwh-rwd-comfort",
@@ -2785,11 +2755,18 @@ window.evData = [
     "wikipediaSlug": "BYD_Seal",
     "variants": [
       {
-        "name": "RWD Comfort",
+        "name": "61.4 kWh RWD Comfort",
         "priceEur": 44340,
         "rangeKm": 365,
         "accel0to100": 7.5,
         "batteryKwh": 61.4
+      },
+      {
+        "name": "82.5 kWh RWD Design",
+        "priceEur": 50076,
+        "rangeKm": 480,
+        "accel0to100": 5.9,
+        "batteryKwh": 82.5
       }
     ]
   },
@@ -2816,16 +2793,7 @@ window.evData = [
         "rating": 8.2
       }
     ],
-    "wikipediaSlug": "BYD_Seal",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 54226,
-        "rangeKm": 445,
-        "accel0to100": 3.8,
-        "batteryKwh": 82.5
-      }
-    ]
+    "wikipediaSlug": "BYD_Seal"
   },
   {
     "id": "byd-seal-82-5-kwh-rwd-design",
@@ -2853,7 +2821,14 @@ window.evData = [
     "wikipediaSlug": "BYD_Seal",
     "variants": [
       {
-        "name": "RWD Design",
+        "name": "61.4 kWh RWD Comfort",
+        "priceEur": 44340,
+        "rangeKm": 365,
+        "accel0to100": 7.5,
+        "batteryKwh": 61.4
+      },
+      {
+        "name": "82.5 kWh RWD Design",
         "priceEur": 50076,
         "rangeKm": 480,
         "accel0to100": 5.9,
@@ -2887,11 +2862,18 @@ window.evData = [
     "wikipediaSlug": "BYD_Seal",
     "variants": [
       {
-        "name": "Comfort",
+        "name": "71.8 kWh Comfort",
         "priceEur": 42490,
         "rangeKm": 360,
         "accel0to100": 9.3,
         "batteryKwh": 71.8
+      },
+      {
+        "name": "87 kWh Design",
+        "priceEur": 45490,
+        "rangeKm": 425,
+        "accel0to100": 9.6,
+        "batteryKwh": 87
       }
     ]
   },
@@ -2920,6 +2902,13 @@ window.evData = [
     ],
     "wikipediaSlug": "BYD_Seal",
     "variants": [
+      {
+        "name": "71.8 kWh Comfort",
+        "priceEur": 42490,
+        "rangeKm": 360,
+        "accel0to100": 9.3,
+        "batteryKwh": 71.8
+      },
       {
         "name": "87 kWh Design",
         "priceEur": 45490,
@@ -2955,14 +2944,14 @@ window.evData = [
     "wikipediaSlug": "BYD_sealion_7_82.5",
     "variants": [
       {
-        "name": "RWD Comfort",
+        "name": "82.5 kWh RWD Comfort",
         "priceEur": 50906,
         "rangeKm": 420,
         "accel0to100": 6.7,
         "batteryKwh": 82.5
       },
       {
-        "name": "AWD Design",
+        "name": "82.5 kWh AWD Design",
         "priceEur": 55822,
         "rangeKm": 405,
         "accel0to100": 4.5,
@@ -2996,14 +2985,14 @@ window.evData = [
     "wikipediaSlug": "BYD_sealion_7_82.5",
     "variants": [
       {
-        "name": "RWD Comfort",
+        "name": "82.5 kWh RWD Comfort",
         "priceEur": 50906,
         "rangeKm": 420,
         "accel0to100": 6.7,
         "batteryKwh": 82.5
       },
       {
-        "name": "AWD Design",
+        "name": "82.5 kWh AWD Design",
         "priceEur": 55822,
         "rangeKm": 405,
         "accel0to100": 4.5,
@@ -3034,16 +3023,7 @@ window.evData = [
         "rating": 8.4
       }
     ],
-    "wikipediaSlug": "BYD_sealion_7_91.3_excellence",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 61672,
-        "rangeKm": 440,
-        "accel0to100": 4.5,
-        "batteryKwh": 91.3
-      }
-    ]
+    "wikipediaSlug": "BYD_sealion_7_91.3_excellence"
   },
   {
     "id": "byd-tang-flagship",
@@ -3068,16 +3048,7 @@ window.evData = [
         "rating": 8.3
       }
     ],
-    "wikipediaSlug": "BYD_tang_flagship",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 68502,
-        "rangeKm": 460,
-        "accel0to100": 4.9,
-        "batteryKwh": 108.8
-      }
-    ]
+    "wikipediaSlug": "BYD_tang_flagship"
   },
   {
     "id": "cadillac-lyriq-600-e4",
@@ -3102,16 +3073,7 @@ window.evData = [
         "rating": 8.4
       }
     ],
-    "wikipediaSlug": "Cadillac_lyriq_e4",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 83000,
-        "rangeKm": 460,
-        "accel0to100": 5.3,
-        "batteryKwh": 102
-      }
-    ]
+    "wikipediaSlug": "Cadillac_lyriq_e4"
   },
   {
     "id": "cadillac-lyriq-v",
@@ -3136,16 +3098,7 @@ window.evData = [
         "rating": 8.1
       }
     ],
-    "wikipediaSlug": "Cadillac_lyriq-v",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 99640,
-        "rangeKm": 400,
-        "accel0to100": 3.3,
-        "batteryKwh": 91
-      }
-    ]
+    "wikipediaSlug": "Cadillac_lyriq-v"
   },
   {
     "id": "cadillac-optiq-500-e4",
@@ -3170,16 +3123,7 @@ window.evData = [
         "rating": 7.8
       }
     ],
-    "wikipediaSlug": "Cadillac_optiq_e4",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 65000,
-        "rangeKm": 365,
-        "accel0to100": 6.7,
-        "batteryKwh": 75
-      }
-    ]
+    "wikipediaSlug": "Cadillac_optiq_e4"
   },
   {
     "id": "cadillac-vistiq-900-e4",
@@ -3204,16 +3148,7 @@ window.evData = [
         "rating": 8
       }
     ],
-    "wikipediaSlug": "Cadillac_vistiq_e4",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 108809,
-        "rangeKm": 375,
-        "accel0to100": 4.1,
-        "batteryKwh": 91
-      }
-    ]
+    "wikipediaSlug": "Cadillac_vistiq_e4"
   },
   {
     "id": "changan-deepal-s05-4wd-max",
@@ -3241,7 +3176,14 @@ window.evData = [
     "wikipediaSlug": "Changan_deepal_s05_4wd_max",
     "variants": [
       {
-        "name": "Max",
+        "name": "RWD",
+        "priceEur": 40556,
+        "rangeKm": 385,
+        "accel0to100": 7.5,
+        "batteryKwh": 68
+      },
+      {
+        "name": "4WD Max",
         "priceEur": 45322,
         "rangeKm": 365,
         "accel0to100": 5.5,
@@ -3280,6 +3222,13 @@ window.evData = [
         "rangeKm": 385,
         "accel0to100": 7.5,
         "batteryKwh": 68
+      },
+      {
+        "name": "4WD Max",
+        "priceEur": 45322,
+        "rangeKm": 365,
+        "accel0to100": 5.5,
+        "batteryKwh": 68
       }
     ]
   },
@@ -3306,16 +3255,7 @@ window.evData = [
         "rating": 7.8
       }
     ],
-    "wikipediaSlug": "Changan_deepal_s07",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 45656,
-        "rangeKm": 410,
-        "accel0to100": 7.9,
-        "batteryKwh": 78
-      }
-    ]
+    "wikipediaSlug": "Changan_deepal_s07"
   },
   {
     "id": "citroen-c5-aircross-comfort-range",
@@ -3340,16 +3280,7 @@ window.evData = [
         "rating": 7.8
       }
     ],
-    "wikipediaSlug": "Citroen_c5_aircross",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 38980,
-        "rangeKm": 375,
-        "accel0to100": 8.9,
-        "batteryKwh": 73.7
-      }
-    ]
+    "wikipediaSlug": "Citroen_c5_aircross"
   },
   {
     "id": "citroen-c5-aircross-long-range",
@@ -3374,16 +3305,7 @@ window.evData = [
         "rating": 8.2
       }
     ],
-    "wikipediaSlug": "Citroen_c5_aircross",
-    "variants": [
-      {
-        "name": "Long Range",
-        "priceEur": 41437,
-        "rangeKm": 485,
-        "accel0to100": 8.8,
-        "batteryKwh": 96.9
-      }
-    ]
+    "wikipediaSlug": "Citroen_c5_aircross"
   },
   {
     "id": "citroen-e-berlingo-m-50-kwh",
@@ -3408,16 +3330,7 @@ window.evData = [
         "rating": 7.2
       }
     ],
-    "wikipediaSlug": "Citroen_e-berlingo_m",
-    "variants": [
-      {
-        "name": "50 kWh",
-        "priceEur": 37499,
-        "rangeKm": 235,
-        "accel0to100": 11.7,
-        "batteryKwh": 50
-      }
-    ]
+    "wikipediaSlug": "Citroen_e-berlingo_m"
   },
   {
     "id": "citroen-e-berlingo-xl-50-kwh",
@@ -3442,16 +3355,7 @@ window.evData = [
         "rating": 7.2
       }
     ],
-    "wikipediaSlug": "Citroen_e-berlingo_xl",
-    "variants": [
-      {
-        "name": "50 kWh",
-        "priceEur": 38784,
-        "rangeKm": 230,
-        "accel0to100": 11.7,
-        "batteryKwh": 50
-      }
-    ]
+    "wikipediaSlug": "Citroen_e-berlingo_xl"
   },
   {
     "id": "citroen-e-c3-aircross-comfort-range-44-kwh",
@@ -3476,16 +3380,7 @@ window.evData = [
         "rating": 7.1
       }
     ],
-    "wikipediaSlug": "Citroen_e-c3_aircross",
-    "variants": [
-      {
-        "name": "44 kWh",
-        "priceEur": 26374,
-        "rangeKm": 240,
-        "accel0to100": 12.9,
-        "batteryKwh": 43.8
-      }
-    ]
+    "wikipediaSlug": "Citroen_e-c3_aircross"
   },
   {
     "id": "citroen-e-c3-aircross-extended-range-54-kwh",
@@ -3510,16 +3405,7 @@ window.evData = [
         "rating": 7.2
       }
     ],
-    "wikipediaSlug": "Citroen_e-c3_aircross",
-    "variants": [
-      {
-        "name": "Extended Range 54 kWh",
-        "priceEur": 29169,
-        "rangeKm": 290,
-        "accel0to100": 13,
-        "batteryKwh": 53.5
-      }
-    ]
+    "wikipediaSlug": "Citroen_e-c3_aircross"
   },
   {
     "id": "citroen-e-c3-standard-range-44-kwh",
@@ -3544,16 +3430,7 @@ window.evData = [
         "rating": 7.2
       }
     ],
-    "wikipediaSlug": "Citroen_e-c3",
-    "variants": [
-      {
-        "name": "Standard Range 44 kWh",
-        "priceEur": 24546,
-        "rangeKm": 255,
-        "accel0to100": 11.5,
-        "batteryKwh": 43.8
-      }
-    ]
+    "wikipediaSlug": "Citroen_e-c3"
   },
   {
     "id": "citroen-e-c3-urban-range-30-kwh",
@@ -3578,16 +3455,7 @@ window.evData = [
         "rating": 6.9
       }
     ],
-    "wikipediaSlug": "Citroen_e-c3_urban",
-    "variants": [
-      {
-        "name": "30 kWh",
-        "priceEur": 20749,
-        "rangeKm": 175,
-        "accel0to100": 11.6,
-        "batteryKwh": 29.8
-      }
-    ]
+    "wikipediaSlug": "Citroen_e-c3_urban"
   },
   {
     "id": "citroen-e-c4",
@@ -3940,16 +3808,7 @@ window.evData = [
         "rating": 7.8
       }
     ],
-    "wikipediaSlug": "CUPRA_born_-",
-    "variants": [
-      {
-        "name": "59 kWh",
-        "priceEur": 36220,
-        "rangeKm": 360,
-        "accel0to100": 7.7,
-        "batteryKwh": 59
-      }
-    ]
+    "wikipediaSlug": "CUPRA_born_-"
   },
   {
     "id": "cupra-born-170-kw-59-kwh",
@@ -4056,16 +3915,7 @@ window.evData = [
         "rating": 8.3
       }
     ],
-    "wikipediaSlug": "CUPRA_born_vz",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 51467,
-        "rangeKm": 465,
-        "accel0to100": 5.6,
-        "batteryKwh": 79
-      }
-    ]
+    "wikipediaSlug": "CUPRA_born_vz"
   },
   {
     "id": "cupra-tavascan-endurance",
@@ -4090,16 +3940,7 @@ window.evData = [
         "rating": 8.1
       }
     ],
-    "wikipediaSlug": "CUPRA_tavascan_endurance",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 53213,
-        "rangeKm": 445,
-        "accel0to100": 6.8,
-        "batteryKwh": 77
-      }
-    ]
+    "wikipediaSlug": "CUPRA_tavascan_endurance"
   },
   {
     "id": "cupra-tavascan-vz",
@@ -4124,16 +3965,7 @@ window.evData = [
         "rating": 8.1
       }
     ],
-    "wikipediaSlug": "CUPRA_tavascan_vz",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 61365,
-        "rangeKm": 425,
-        "accel0to100": 5.5,
-        "batteryKwh": 77
-      }
-    ]
+    "wikipediaSlug": "CUPRA_tavascan_vz"
   },
   {
     "id": "dacia-spring-electric-100",
@@ -4158,16 +3990,7 @@ window.evData = [
         "rating": 7
       }
     ],
-    "wikipediaSlug": "Dacia_spring",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 19679,
-        "rangeKm": 160,
-        "accel0to100": 9.6,
-        "batteryKwh": 24
-      }
-    ]
+    "wikipediaSlug": "Dacia_spring"
   },
   {
     "id": "dacia-spring-electric-70",
@@ -4192,16 +4015,7 @@ window.evData = [
         "rating": 6.8
       }
     ],
-    "wikipediaSlug": "Dacia_spring",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 17762,
-        "rangeKm": 165,
-        "accel0to100": 12.3,
-        "batteryKwh": 24
-      }
-    ]
+    "wikipediaSlug": "Dacia_spring"
   },
   {
     "id": "dongfeng-box-31-4-kwh",
@@ -4229,11 +4043,18 @@ window.evData = [
     "wikipediaSlug": "Dongfeng_box_31.4",
     "variants": [
       {
-        "name": "Standard",
+        "name": "31.4 kWh",
         "priceEur": 23499,
         "rangeKm": 190,
         "accel0to100": 12.5,
         "batteryKwh": 29
+      },
+      {
+        "name": "42.3 kWh",
+        "priceEur": 24499,
+        "rangeKm": 255,
+        "accel0to100": 12.5,
+        "batteryKwh": 40
       }
     ]
   },
@@ -4263,7 +4084,14 @@ window.evData = [
     "wikipediaSlug": "Dongfeng_box_42.3",
     "variants": [
       {
-        "name": "Standard",
+        "name": "31.4 kWh",
+        "priceEur": 23499,
+        "rangeKm": 190,
+        "accel0to100": 12.5,
+        "batteryKwh": 29
+      },
+      {
+        "name": "42.3 kWh",
         "priceEur": 24499,
         "rangeKm": 255,
         "accel0to100": 12.5,
@@ -4294,16 +4122,7 @@ window.evData = [
         "rating": 7.5
       }
     ],
-    "wikipediaSlug": "DS_Automobiles_ds_3_e-tense",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 40399,
-        "rangeKm": 300,
-        "accel0to100": 9,
-        "batteryKwh": 50.8
-      }
-    ]
+    "wikipediaSlug": "DS_Automobiles_ds_3_e-tense"
   },
   {
     "id": "ds-automobiles-n-4-e-tense",
@@ -4328,16 +4147,7 @@ window.evData = [
         "rating": 7.7
       }
     ],
-    "wikipediaSlug": "DS_Automobiles_n_4_e-tense",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 42603,
-        "rangeKm": 350,
-        "accel0to100": 7.1,
-        "batteryKwh": 58.3
-      }
-    ]
+    "wikipediaSlug": "DS_Automobiles_n_4_e-tense"
   },
   {
     "id": "ds-automobiles-n-8-awd-long-range",
@@ -4506,16 +4316,7 @@ window.evData = [
         "rating": 7.7
       }
     ],
-    "wikipediaSlug": "Elaris_beo",
-    "variants": [
-      {
-        "name": "86 kWh",
-        "priceEur": 53090,
-        "rangeKm": 390,
-        "accel0to100": 9.5,
-        "batteryKwh": 81
-      }
-    ]
+    "wikipediaSlug": "Elaris_beo"
   },
   {
     "id": "fiat-500e-3-1-42-kwh",
@@ -4540,16 +4341,7 @@ window.evData = [
         "rating": 7.3
       }
     ],
-    "wikipediaSlug": "Fiat_500e_3_1",
-    "variants": [
-      {
-        "name": "42 kWh",
-        "priceEur": 34244,
-        "rangeKm": 235,
-        "accel0to100": 9,
-        "batteryKwh": 37.3
-      }
-    ]
+    "wikipediaSlug": "Fiat_500e_3_1"
   },
   {
     "id": "fiat-500e-cabrio-24-kwh",
@@ -4738,16 +4530,7 @@ window.evData = [
         "rating": 7.5
       }
     ],
-    "wikipediaSlug": "Fiat_600e",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 32083,
-        "rangeKm": 310,
-        "accel0to100": 9,
-        "batteryKwh": 50.8
-      }
-    ]
+    "wikipediaSlug": "Fiat_600e"
   },
   {
     "id": "fiat-grande-panda",
@@ -4772,16 +4555,7 @@ window.evData = [
         "rating": 7.2
       }
     ],
-    "wikipediaSlug": "Fiat_grande_panda",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 24711,
-        "rangeKm": 260,
-        "accel0to100": 11,
-        "batteryKwh": 43.8
-      }
-    ]
+    "wikipediaSlug": "Fiat_grande_panda"
   },
   {
     "id": "firefly-firefly",
@@ -4806,16 +4580,7 @@ window.evData = [
         "rating": 7.3
       }
     ],
-    "wikipediaSlug": "firefly_firefly",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 29900,
-        "rangeKm": 240,
-        "accel0to100": 8.1,
-        "batteryKwh": 41.2
-      }
-    ]
+    "wikipediaSlug": "firefly_firefly"
   },
   {
     "id": "ford-capri-extended-range-awd",
@@ -4984,16 +4749,7 @@ window.evData = [
         "rating": 7.1
       }
     ],
-    "wikipediaSlug": "Ford_e-tourneo_courier",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 35215,
-        "rangeKm": 200,
-        "accel0to100": 11,
-        "batteryKwh": 43.6
-      }
-    ]
+    "wikipediaSlug": "Ford_e-tourneo_courier"
   },
   {
     "id": "ford-e-tourneo-custom-l1-160-kw-awd",
@@ -5713,14 +5469,14 @@ window.evData = [
     "wikipediaSlug": "Ford_mustang_mach-e",
     "variants": [
       {
-        "name": "Standard",
+        "name": "GT",
         "priceEur": 73200,
         "rangeKm": 435,
         "accel0to100": 3.8,
         "batteryKwh": 91
       },
       {
-        "name": "Standard",
+        "name": "GT",
         "priceEur": 74460,
         "rangeKm": 425,
         "accel0to100": 3.8,
@@ -5754,14 +5510,14 @@ window.evData = [
     "wikipediaSlug": "Ford_mustang_mach-e",
     "variants": [
       {
-        "name": "Standard",
+        "name": "GT",
         "priceEur": 73200,
         "rangeKm": 435,
         "accel0to100": 3.8,
         "batteryKwh": 91
       },
       {
-        "name": "Standard",
+        "name": "GT",
         "priceEur": 74460,
         "rangeKm": 425,
         "accel0to100": 3.8,
@@ -5956,16 +5712,7 @@ window.evData = [
         "rating": 7.5
       }
     ],
-    "wikipediaSlug": "Ford_puma_gen-e",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 34192,
-        "rangeKm": 275,
-        "accel0to100": 8,
-        "batteryKwh": 43.6
-      }
-    ]
+    "wikipediaSlug": "Ford_puma_gen-e"
   },
   {
     "id": "geely-ex5",
@@ -5990,16 +5737,7 @@ window.evData = [
         "rating": 7.8
       }
     ],
-    "wikipediaSlug": "Geely_ex5",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 36788,
-        "rangeKm": 330,
-        "accel0to100": 6.9,
-        "batteryKwh": 60.2
-      }
-    ]
+    "wikipediaSlug": "Geely_ex5"
   },
   {
     "id": "genesis-g80-electrified",
@@ -6024,16 +5762,7 @@ window.evData = [
         "rating": 8.4
       }
     ],
-    "wikipediaSlug": "Genesis_g80_electrified",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 81568,
-        "rangeKm": 490,
-        "accel0to100": 5.1,
-        "batteryKwh": 90
-      }
-    ]
+    "wikipediaSlug": "Genesis_g80_electrified"
   },
   {
     "id": "genesis-gv60-performance",
@@ -6060,6 +5789,13 @@ window.evData = [
     ],
     "wikipediaSlug": "Genesis_gv60",
     "variants": [
+      {
+        "name": "Pure",
+        "priceEur": 58456,
+        "rangeKm": 425,
+        "accel0to100": 7.8,
+        "batteryKwh": 80
+      },
       {
         "name": "Performance",
         "priceEur": 76176,
@@ -6095,10 +5831,17 @@ window.evData = [
     "wikipediaSlug": "Genesis_gv60_pure",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Pure",
         "priceEur": 58456,
         "rangeKm": 425,
         "accel0to100": 7.8,
+        "batteryKwh": 80
+      },
+      {
+        "name": "Performance",
+        "priceEur": 76176,
+        "rangeKm": 400,
+        "accel0to100": 4,
         "batteryKwh": 80
       }
     ]
@@ -6126,16 +5869,7 @@ window.evData = [
         "rating": 8.3
       }
     ],
-    "wikipediaSlug": "Genesis_gv60",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 65936,
-        "rangeKm": 410,
-        "accel0to100": 5.5,
-        "batteryKwh": 80
-      }
-    ]
+    "wikipediaSlug": "Genesis_gv60"
   },
   {
     "id": "genesis-gv70-electrified",
@@ -6160,16 +5894,7 @@ window.evData = [
         "rating": 8.3
       }
     ],
-    "wikipediaSlug": "Genesis_gv70_electrified",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 73016,
-        "rangeKm": 385,
-        "accel0to100": 4.4,
-        "batteryKwh": 80
-      }
-    ]
+    "wikipediaSlug": "Genesis_gv70_electrified"
   },
   {
     "id": "gwm-ora-03-48-kwh",
@@ -6207,6 +5932,13 @@ window.evData = [
         "name": "63 kWh",
         "priceEur": 36367,
         "rangeKm": 340,
+        "accel0to100": 8.2,
+        "batteryKwh": 59.3
+      },
+      {
+        "name": "GT",
+        "priceEur": 37490,
+        "rangeKm": 325,
         "accel0to100": 8.2,
         "batteryKwh": 59.3
       }
@@ -6250,6 +5982,13 @@ window.evData = [
         "rangeKm": 340,
         "accel0to100": 8.2,
         "batteryKwh": 59.3
+      },
+      {
+        "name": "GT",
+        "priceEur": 37490,
+        "rangeKm": 325,
+        "accel0to100": 8.2,
+        "batteryKwh": 59.3
       }
     ]
   },
@@ -6279,7 +6018,21 @@ window.evData = [
     "wikipediaSlug": "GWM_ora",
     "variants": [
       {
-        "name": "Standard",
+        "name": "48 kWh",
+        "priceEur": 31892,
+        "rangeKm": 260,
+        "accel0to100": 8.3,
+        "batteryKwh": 45.4
+      },
+      {
+        "name": "63 kWh",
+        "priceEur": 36367,
+        "rangeKm": 340,
+        "accel0to100": 8.2,
+        "batteryKwh": 59.3
+      },
+      {
+        "name": "GT",
         "priceEur": 37490,
         "rangeKm": 325,
         "accel0to100": 8.2,
@@ -6313,7 +6066,21 @@ window.evData = [
     "wikipediaSlug": "GWM_ora",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Pure",
+        "priceEur": 41990,
+        "rangeKm": 350,
+        "accel0to100": 8.2,
+        "batteryKwh": 64.3
+      },
+      {
+        "name": "Pro",
+        "priceEur": 44490,
+        "rangeKm": 350,
+        "accel0to100": 8.2,
+        "batteryKwh": 64.3
+      },
+      {
+        "name": "GT",
         "priceEur": 53490,
         "rangeKm": 430,
         "accel0to100": 4.5,
@@ -6347,11 +6114,25 @@ window.evData = [
     "wikipediaSlug": "GWM_ora",
     "variants": [
       {
+        "name": "Pure",
+        "priceEur": 41990,
+        "rangeKm": 350,
+        "accel0to100": 8.2,
+        "batteryKwh": 64.3
+      },
+      {
         "name": "Pro",
         "priceEur": 44490,
         "rangeKm": 350,
         "accel0to100": 8.2,
         "batteryKwh": 64.3
+      },
+      {
+        "name": "GT",
+        "priceEur": 53490,
+        "rangeKm": 430,
+        "accel0to100": 4.5,
+        "batteryKwh": 83.5
       }
     ]
   },
@@ -6381,11 +6162,25 @@ window.evData = [
     "wikipediaSlug": "GWM_ora_pure",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Pure",
         "priceEur": 41990,
         "rangeKm": 350,
         "accel0to100": 8.2,
         "batteryKwh": 64.3
+      },
+      {
+        "name": "Pro",
+        "priceEur": 44490,
+        "rangeKm": 350,
+        "accel0to100": 8.2,
+        "batteryKwh": 64.3
+      },
+      {
+        "name": "GT",
+        "priceEur": 53490,
+        "rangeKm": 430,
+        "accel0to100": 4.5,
+        "batteryKwh": 83.5
       }
     ]
   },
@@ -6412,16 +6207,7 @@ window.evData = [
         "rating": 7.6
       }
     ],
-    "wikipediaSlug": "Honda_e_ny1",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 43711,
-        "rangeKm": 335,
-        "accel0to100": 7.6,
-        "batteryKwh": 61.9
-      }
-    ]
+    "wikipediaSlug": "Honda_e_ny1"
   },
   {
     "id": "hongqi-e-hs7-111-kwh-awd-pro",
@@ -6672,16 +6458,7 @@ window.evData = [
         "rating": 8.7
       }
     ],
-    "wikipediaSlug": "Hongqi_eh7",
-    "variants": [
-      {
-        "name": "111 kWh Long Range",
-        "priceEur": 58995,
-        "rangeKm": 550,
-        "accel0to100": 5.8,
-        "batteryKwh": 95.3
-      }
-    ]
+    "wikipediaSlug": "Hongqi_eh7"
   },
   {
     "id": "hyundai-inster-long-range",
@@ -6810,6 +6587,13 @@ window.evData = [
         "rangeKm": 445,
         "accel0to100": 5.3,
         "batteryKwh": 80
+      },
+      {
+        "name": "N",
+        "priceEur": 74548,
+        "rangeKm": 390,
+        "accel0to100": 3.4,
+        "batteryKwh": 80
       }
     ]
   },
@@ -6857,6 +6641,13 @@ window.evData = [
         "priceEur": 59776,
         "rangeKm": 445,
         "accel0to100": 5.3,
+        "batteryKwh": 80
+      },
+      {
+        "name": "N",
+        "priceEur": 74548,
+        "rangeKm": 390,
+        "accel0to100": 3.4,
         "batteryKwh": 80
       }
     ]
@@ -6906,6 +6697,13 @@ window.evData = [
         "rangeKm": 445,
         "accel0to100": 5.3,
         "batteryKwh": 80
+      },
+      {
+        "name": "N",
+        "priceEur": 74548,
+        "rangeKm": 390,
+        "accel0to100": 3.4,
+        "batteryKwh": 80
       }
     ]
   },
@@ -6935,7 +6733,28 @@ window.evData = [
     "wikipediaSlug": "Hyundai_Ioniq_5",
     "variants": [
       {
-        "name": "Standard",
+        "name": "63 kWh RWD",
+        "priceEur": 44260,
+        "rangeKm": 345,
+        "accel0to100": 8.5,
+        "batteryKwh": 60
+      },
+      {
+        "name": "84 kWh RWD",
+        "priceEur": 49518,
+        "rangeKm": 450,
+        "accel0to100": 7.5,
+        "batteryKwh": 80
+      },
+      {
+        "name": "84 kWh AWD",
+        "priceEur": 59776,
+        "rangeKm": 445,
+        "accel0to100": 5.3,
+        "batteryKwh": 80
+      },
+      {
+        "name": "N",
         "priceEur": 74548,
         "rangeKm": 390,
         "accel0to100": 3.4,
@@ -6969,11 +6788,25 @@ window.evData = [
     "wikipediaSlug": "Hyundai_Ioniq_6",
     "variants": [
       {
+        "name": "Standard Range 2WD (MY23-25)",
+        "priceEur": 44897,
+        "rangeKm": 335,
+        "accel0to100": 8.8,
+        "batteryKwh": 50
+      },
+      {
         "name": "63 kWh RWD",
         "priceEur": 45550,
         "rangeKm": 420,
         "accel0to100": 8.3,
         "batteryKwh": 60
+      },
+      {
+        "name": "Long Range 2WD (MY23-25)",
+        "priceEur": 53000,
+        "rangeKm": 495,
+        "accel0to100": 7.4,
+        "batteryKwh": 74
       },
       {
         "name": "84 kWh RWD",
@@ -6983,10 +6816,24 @@ window.evData = [
         "batteryKwh": 80
       },
       {
+        "name": "Long Range AWD (MY23-25)",
+        "priceEur": 59542,
+        "rangeKm": 440,
+        "accel0to100": 5.1,
+        "batteryKwh": 74
+      },
+      {
         "name": "84 kWh AWD",
         "priceEur": 61550,
         "rangeKm": 520,
         "accel0to100": 5.1,
+        "batteryKwh": 80
+      },
+      {
+        "name": "N",
+        "priceEur": 75670,
+        "rangeKm": 440,
+        "accel0to100": 3.2,
         "batteryKwh": 80
       }
     ]
@@ -7017,11 +6864,25 @@ window.evData = [
     "wikipediaSlug": "Hyundai_Ioniq_6",
     "variants": [
       {
+        "name": "Standard Range 2WD (MY23-25)",
+        "priceEur": 44897,
+        "rangeKm": 335,
+        "accel0to100": 8.8,
+        "batteryKwh": 50
+      },
+      {
         "name": "63 kWh RWD",
         "priceEur": 45550,
         "rangeKm": 420,
         "accel0to100": 8.3,
         "batteryKwh": 60
+      },
+      {
+        "name": "Long Range 2WD (MY23-25)",
+        "priceEur": 53000,
+        "rangeKm": 495,
+        "accel0to100": 7.4,
+        "batteryKwh": 74
       },
       {
         "name": "84 kWh RWD",
@@ -7031,10 +6892,24 @@ window.evData = [
         "batteryKwh": 80
       },
       {
+        "name": "Long Range AWD (MY23-25)",
+        "priceEur": 59542,
+        "rangeKm": 440,
+        "accel0to100": 5.1,
+        "batteryKwh": 74
+      },
+      {
         "name": "84 kWh AWD",
         "priceEur": 61550,
         "rangeKm": 520,
         "accel0to100": 5.1,
+        "batteryKwh": 80
+      },
+      {
+        "name": "N",
+        "priceEur": 75670,
+        "rangeKm": 440,
+        "accel0to100": 3.2,
         "batteryKwh": 80
       }
     ]
@@ -7065,11 +6940,25 @@ window.evData = [
     "wikipediaSlug": "Hyundai_Ioniq_6",
     "variants": [
       {
+        "name": "Standard Range 2WD (MY23-25)",
+        "priceEur": 44897,
+        "rangeKm": 335,
+        "accel0to100": 8.8,
+        "batteryKwh": 50
+      },
+      {
         "name": "63 kWh RWD",
         "priceEur": 45550,
         "rangeKm": 420,
         "accel0to100": 8.3,
         "batteryKwh": 60
+      },
+      {
+        "name": "Long Range 2WD (MY23-25)",
+        "priceEur": 53000,
+        "rangeKm": 495,
+        "accel0to100": 7.4,
+        "batteryKwh": 74
       },
       {
         "name": "84 kWh RWD",
@@ -7079,10 +6968,24 @@ window.evData = [
         "batteryKwh": 80
       },
       {
+        "name": "Long Range AWD (MY23-25)",
+        "priceEur": 59542,
+        "rangeKm": 440,
+        "accel0to100": 5.1,
+        "batteryKwh": 74
+      },
+      {
         "name": "84 kWh AWD",
         "priceEur": 61550,
         "rangeKm": 520,
         "accel0to100": 5.1,
+        "batteryKwh": 80
+      },
+      {
+        "name": "N",
+        "priceEur": 75670,
+        "rangeKm": 440,
+        "accel0to100": 3.2,
         "batteryKwh": 80
       }
     ]
@@ -7113,11 +7016,53 @@ window.evData = [
     "wikipediaSlug": "Hyundai_Ioniq_6",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Standard Range 2WD (MY23-25)",
+        "priceEur": 44897,
+        "rangeKm": 335,
+        "accel0to100": 8.8,
+        "batteryKwh": 50
+      },
+      {
+        "name": "63 kWh RWD",
+        "priceEur": 45550,
+        "rangeKm": 420,
+        "accel0to100": 8.3,
+        "batteryKwh": 60
+      },
+      {
+        "name": "Long Range 2WD (MY23-25)",
         "priceEur": 53000,
         "rangeKm": 495,
         "accel0to100": 7.4,
         "batteryKwh": 74
+      },
+      {
+        "name": "84 kWh RWD",
+        "priceEur": 55300,
+        "rangeKm": 545,
+        "accel0to100": 7.4,
+        "batteryKwh": 80
+      },
+      {
+        "name": "Long Range AWD (MY23-25)",
+        "priceEur": 59542,
+        "rangeKm": 440,
+        "accel0to100": 5.1,
+        "batteryKwh": 74
+      },
+      {
+        "name": "84 kWh AWD",
+        "priceEur": 61550,
+        "rangeKm": 520,
+        "accel0to100": 5.1,
+        "batteryKwh": 80
+      },
+      {
+        "name": "N",
+        "priceEur": 75670,
+        "rangeKm": 440,
+        "accel0to100": 3.2,
+        "batteryKwh": 80
       }
     ]
   },
@@ -7147,11 +7092,53 @@ window.evData = [
     "wikipediaSlug": "Hyundai_Ioniq_6",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Standard Range 2WD (MY23-25)",
+        "priceEur": 44897,
+        "rangeKm": 335,
+        "accel0to100": 8.8,
+        "batteryKwh": 50
+      },
+      {
+        "name": "63 kWh RWD",
+        "priceEur": 45550,
+        "rangeKm": 420,
+        "accel0to100": 8.3,
+        "batteryKwh": 60
+      },
+      {
+        "name": "Long Range 2WD (MY23-25)",
+        "priceEur": 53000,
+        "rangeKm": 495,
+        "accel0to100": 7.4,
+        "batteryKwh": 74
+      },
+      {
+        "name": "84 kWh RWD",
+        "priceEur": 55300,
+        "rangeKm": 545,
+        "accel0to100": 7.4,
+        "batteryKwh": 80
+      },
+      {
+        "name": "Long Range AWD (MY23-25)",
         "priceEur": 59542,
         "rangeKm": 440,
         "accel0to100": 5.1,
         "batteryKwh": 74
+      },
+      {
+        "name": "84 kWh AWD",
+        "priceEur": 61550,
+        "rangeKm": 520,
+        "accel0to100": 5.1,
+        "batteryKwh": 80
+      },
+      {
+        "name": "N",
+        "priceEur": 75670,
+        "rangeKm": 440,
+        "accel0to100": 3.2,
+        "batteryKwh": 80
       }
     ]
   },
@@ -7181,7 +7168,49 @@ window.evData = [
     "wikipediaSlug": "Hyundai_Ioniq_6",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Standard Range 2WD (MY23-25)",
+        "priceEur": 44897,
+        "rangeKm": 335,
+        "accel0to100": 8.8,
+        "batteryKwh": 50
+      },
+      {
+        "name": "63 kWh RWD",
+        "priceEur": 45550,
+        "rangeKm": 420,
+        "accel0to100": 8.3,
+        "batteryKwh": 60
+      },
+      {
+        "name": "Long Range 2WD (MY23-25)",
+        "priceEur": 53000,
+        "rangeKm": 495,
+        "accel0to100": 7.4,
+        "batteryKwh": 74
+      },
+      {
+        "name": "84 kWh RWD",
+        "priceEur": 55300,
+        "rangeKm": 545,
+        "accel0to100": 7.4,
+        "batteryKwh": 80
+      },
+      {
+        "name": "Long Range AWD (MY23-25)",
+        "priceEur": 59542,
+        "rangeKm": 440,
+        "accel0to100": 5.1,
+        "batteryKwh": 74
+      },
+      {
+        "name": "84 kWh AWD",
+        "priceEur": 61550,
+        "rangeKm": 520,
+        "accel0to100": 5.1,
+        "batteryKwh": 80
+      },
+      {
+        "name": "N",
         "priceEur": 75670,
         "rangeKm": 440,
         "accel0to100": 3.2,
@@ -7215,11 +7244,53 @@ window.evData = [
     "wikipediaSlug": "Hyundai_Ioniq_6",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Standard Range 2WD (MY23-25)",
         "priceEur": 44897,
         "rangeKm": 335,
         "accel0to100": 8.8,
         "batteryKwh": 50
+      },
+      {
+        "name": "63 kWh RWD",
+        "priceEur": 45550,
+        "rangeKm": 420,
+        "accel0to100": 8.3,
+        "batteryKwh": 60
+      },
+      {
+        "name": "Long Range 2WD (MY23-25)",
+        "priceEur": 53000,
+        "rangeKm": 495,
+        "accel0to100": 7.4,
+        "batteryKwh": 74
+      },
+      {
+        "name": "84 kWh RWD",
+        "priceEur": 55300,
+        "rangeKm": 545,
+        "accel0to100": 7.4,
+        "batteryKwh": 80
+      },
+      {
+        "name": "Long Range AWD (MY23-25)",
+        "priceEur": 59542,
+        "rangeKm": 440,
+        "accel0to100": 5.1,
+        "batteryKwh": 74
+      },
+      {
+        "name": "84 kWh AWD",
+        "priceEur": 61550,
+        "rangeKm": 520,
+        "accel0to100": 5.1,
+        "batteryKwh": 80
+      },
+      {
+        "name": "N",
+        "priceEur": 75670,
+        "rangeKm": 440,
+        "accel0to100": 3.2,
+        "batteryKwh": 80
       }
     ]
   },
@@ -7393,11 +7464,25 @@ window.evData = [
     "wikipediaSlug": "Hyundai_kona_48.6",
     "variants": [
       {
-        "name": "Standard",
+        "name": "48.6 kWh",
         "priceEur": 37667,
         "rangeKm": 295,
         "accel0to100": 9.9,
         "batteryKwh": 48.6
+      },
+      {
+        "name": "64.8 kWh",
+        "priceEur": 40667,
+        "rangeKm": 385,
+        "accel0to100": 8.1,
+        "batteryKwh": 64.8
+      },
+      {
+        "name": "65 kWh (MY24-25)",
+        "priceEur": 41903,
+        "rangeKm": 390,
+        "accel0to100": 7.8,
+        "batteryKwh": 65.4
       }
     ]
   },
@@ -7427,11 +7512,25 @@ window.evData = [
     "wikipediaSlug": "Hyundai_kona_64.8",
     "variants": [
       {
-        "name": "Standard",
+        "name": "48.6 kWh",
+        "priceEur": 37667,
+        "rangeKm": 295,
+        "accel0to100": 9.9,
+        "batteryKwh": 48.6
+      },
+      {
+        "name": "64.8 kWh",
         "priceEur": 40667,
         "rangeKm": 385,
         "accel0to100": 8.1,
         "batteryKwh": 64.8
+      },
+      {
+        "name": "65 kWh (MY24-25)",
+        "priceEur": 41903,
+        "rangeKm": 390,
+        "accel0to100": 7.8,
+        "batteryKwh": 65.4
       }
     ]
   },
@@ -7461,7 +7560,21 @@ window.evData = [
     "wikipediaSlug": "Hyundai_kona_my24-25",
     "variants": [
       {
-        "name": "Standard",
+        "name": "48.6 kWh",
+        "priceEur": 37667,
+        "rangeKm": 295,
+        "accel0to100": 9.9,
+        "batteryKwh": 48.6
+      },
+      {
+        "name": "64.8 kWh",
+        "priceEur": 40667,
+        "rangeKm": 385,
+        "accel0to100": 8.1,
+        "batteryKwh": 64.8
+      },
+      {
+        "name": "65 kWh (MY24-25)",
         "priceEur": 41903,
         "rangeKm": 390,
         "accel0to100": 7.8,
@@ -7492,16 +7605,7 @@ window.evData = [
         "rating": 7.7
       }
     ],
-    "wikipediaSlug": "Jaecoo_5",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 31260,
-        "rangeKm": 325,
-        "accel0to100": 7.7,
-        "batteryKwh": 58.9
-      }
-    ]
+    "wikipediaSlug": "Jaecoo_5"
   },
   {
     "id": "jeep-avenger-electric",
@@ -7526,16 +7630,7 @@ window.evData = [
         "rating": 7.5
       }
     ],
-    "wikipediaSlug": "Jeep_avenger",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 37838,
-        "rangeKm": 310,
-        "accel0to100": 9,
-        "batteryKwh": 50.8
-      }
-    ]
+    "wikipediaSlug": "Jeep_avenger"
   },
   {
     "id": "jeep-compass-electric-74-kwh",
@@ -7560,16 +7655,7 @@ window.evData = [
         "rating": 7.8
       }
     ],
-    "wikipediaSlug": "Jeep_compass",
-    "variants": [
-      {
-        "name": "74 kWh",
-        "priceEur": 45981,
-        "rangeKm": 370,
-        "accel0to100": 8.5,
-        "batteryKwh": 73.7
-      }
-    ]
+    "wikipediaSlug": "Jeep_compass"
   },
   {
     "id": "kgm-musso-ev-2wd",
@@ -7597,10 +7683,17 @@ window.evData = [
     "wikipediaSlug": "KGM_musso_2wd",
     "variants": [
       {
-        "name": "Standard",
+        "name": "2WD",
         "priceEur": 43024,
         "rangeKm": 365,
         "accel0to100": 9.2,
+        "batteryKwh": 80.6
+      },
+      {
+        "name": "4WD",
+        "priceEur": 47142,
+        "rangeKm": 360,
+        "accel0to100": 8,
         "batteryKwh": 80.6
       }
     ]
@@ -7631,7 +7724,14 @@ window.evData = [
     "wikipediaSlug": "KGM_musso_4wd",
     "variants": [
       {
-        "name": "Standard",
+        "name": "2WD",
+        "priceEur": 43024,
+        "rangeKm": 365,
+        "accel0to100": 9.2,
+        "batteryKwh": 80.6
+      },
+      {
+        "name": "4WD",
         "priceEur": 47142,
         "rangeKm": 360,
         "accel0to100": 8,
@@ -7665,7 +7765,14 @@ window.evData = [
     "wikipediaSlug": "KGM_torres_evx_my24-25",
     "variants": [
       {
-        "name": "Standard",
+        "name": "80.6 kWh",
+        "priceEur": 41250,
+        "rangeKm": 400,
+        "accel0to100": 8.2,
+        "batteryKwh": 79
+      },
+      {
+        "name": "(MY24-25)",
         "priceEur": 41928,
         "rangeKm": 370,
         "accel0to100": 8.1,
@@ -7699,11 +7806,18 @@ window.evData = [
     "wikipediaSlug": "KGM_torres_evx_80.6",
     "variants": [
       {
-        "name": "Standard",
+        "name": "80.6 kWh",
         "priceEur": 41250,
         "rangeKm": 400,
         "accel0to100": 8.2,
         "batteryKwh": 79
+      },
+      {
+        "name": "(MY24-25)",
+        "priceEur": 41928,
+        "rangeKm": 370,
+        "accel0to100": 8.1,
+        "batteryKwh": 72
       }
     ]
   },
@@ -7812,16 +7926,7 @@ window.evData = [
         "rating": 8.1
       }
     ],
-    "wikipediaSlug": "Kia_ev4_fastback_81.4",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 45679,
-        "rangeKm": 495,
-        "accel0to100": 7.7,
-        "batteryKwh": 78
-      }
-    ]
+    "wikipediaSlug": "Kia_ev4_fastback_81.4"
   },
   {
     "id": "kia-ev4-hatchback-58-3-kwh",
@@ -7849,11 +7954,18 @@ window.evData = [
     "wikipediaSlug": "Kia_ev4_hatchback_58.3",
     "variants": [
       {
-        "name": "Standard",
+        "name": "58.3 kWh",
         "priceEur": 37819,
         "rangeKm": 340,
         "accel0to100": 7.4,
         "batteryKwh": 55
+      },
+      {
+        "name": "81.4 kWh",
+        "priceEur": 42019,
+        "rangeKm": 475,
+        "accel0to100": 7.7,
+        "batteryKwh": 78
       }
     ]
   },
@@ -7883,7 +7995,14 @@ window.evData = [
     "wikipediaSlug": "Kia_ev4_hatchback_81.4",
     "variants": [
       {
-        "name": "Standard",
+        "name": "58.3 kWh",
+        "priceEur": 37819,
+        "rangeKm": 340,
+        "accel0to100": 7.4,
+        "batteryKwh": 55
+      },
+      {
+        "name": "81.4 kWh",
         "priceEur": 42019,
         "rangeKm": 475,
         "accel0to100": 7.7,
@@ -7914,16 +8033,7 @@ window.evData = [
         "rating": 7.9
       }
     ],
-    "wikipediaSlug": "Kia_ev5_81.4",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 45224,
-        "rangeKm": 400,
-        "accel0to100": 8.4,
-        "batteryKwh": 78
-      }
-    ]
+    "wikipediaSlug": "Kia_ev5_81.4"
   },
   {
     "id": "kia-ev6-gt",
@@ -7951,7 +8061,28 @@ window.evData = [
     "wikipediaSlug": "Kia_EV6",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Standard Range 2WD",
+        "priceEur": 45035,
+        "rangeKm": 345,
+        "accel0to100": 8.7,
+        "batteryKwh": 60
+      },
+      {
+        "name": "Long Range 2WD",
+        "priceEur": 50635,
+        "rangeKm": 455,
+        "accel0to100": 7.3,
+        "batteryKwh": 80
+      },
+      {
+        "name": "Long Range AWD",
+        "priceEur": 56460,
+        "rangeKm": 440,
+        "accel0to100": 5.2,
+        "batteryKwh": 80
+      },
+      {
+        "name": "GT",
         "priceEur": 69155,
         "rangeKm": 395,
         "accel0to100": 3.5,
@@ -7985,10 +8116,31 @@ window.evData = [
     "wikipediaSlug": "Kia_EV6",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Standard Range 2WD",
+        "priceEur": 45035,
+        "rangeKm": 345,
+        "accel0to100": 8.7,
+        "batteryKwh": 60
+      },
+      {
+        "name": "Long Range 2WD",
         "priceEur": 50635,
         "rangeKm": 455,
         "accel0to100": 7.3,
+        "batteryKwh": 80
+      },
+      {
+        "name": "Long Range AWD",
+        "priceEur": 56460,
+        "rangeKm": 440,
+        "accel0to100": 5.2,
+        "batteryKwh": 80
+      },
+      {
+        "name": "GT",
+        "priceEur": 69155,
+        "rangeKm": 395,
+        "accel0to100": 3.5,
         "batteryKwh": 80
       }
     ]
@@ -8019,10 +8171,31 @@ window.evData = [
     "wikipediaSlug": "Kia_EV6",
     "variants": [
       {
+        "name": "Standard Range 2WD",
+        "priceEur": 45035,
+        "rangeKm": 345,
+        "accel0to100": 8.7,
+        "batteryKwh": 60
+      },
+      {
+        "name": "Long Range 2WD",
+        "priceEur": 50635,
+        "rangeKm": 455,
+        "accel0to100": 7.3,
+        "batteryKwh": 80
+      },
+      {
         "name": "Long Range AWD",
         "priceEur": 56460,
         "rangeKm": 440,
         "accel0to100": 5.2,
+        "batteryKwh": 80
+      },
+      {
+        "name": "GT",
+        "priceEur": 69155,
+        "rangeKm": 395,
+        "accel0to100": 3.5,
         "batteryKwh": 80
       }
     ]
@@ -8053,11 +8226,32 @@ window.evData = [
     "wikipediaSlug": "Kia_EV6",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Standard Range 2WD",
         "priceEur": 45035,
         "rangeKm": 345,
         "accel0to100": 8.7,
         "batteryKwh": 60
+      },
+      {
+        "name": "Long Range 2WD",
+        "priceEur": 50635,
+        "rangeKm": 455,
+        "accel0to100": 7.3,
+        "batteryKwh": 80
+      },
+      {
+        "name": "Long Range AWD",
+        "priceEur": 56460,
+        "rangeKm": 440,
+        "accel0to100": 5.2,
+        "batteryKwh": 80
+      },
+      {
+        "name": "GT",
+        "priceEur": 69155,
+        "rangeKm": 395,
+        "accel0to100": 3.5,
+        "batteryKwh": 80
       }
     ]
   },
@@ -8087,11 +8281,39 @@ window.evData = [
     "wikipediaSlug": "Kia_EV9",
     "variants": [
       {
-        "name": "RWD",
+        "name": "76.1 kWh RWD",
         "priceEur": 60992,
         "rangeKm": 350,
         "accel0to100": 8.5,
         "batteryKwh": 73
+      },
+      {
+        "name": "99.8 kWh RWD",
+        "priceEur": 69525,
+        "rangeKm": 450,
+        "accel0to100": 9.4,
+        "batteryKwh": 96
+      },
+      {
+        "name": "99.8 kWh AWD",
+        "priceEur": 70642,
+        "rangeKm": 435,
+        "accel0to100": 6,
+        "batteryKwh": 96
+      },
+      {
+        "name": "99.8 kWh AWD GT-Line",
+        "priceEur": 81817,
+        "rangeKm": 425,
+        "accel0to100": 5.3,
+        "batteryKwh": 96
+      },
+      {
+        "name": "99.8 kWh AWD GT",
+        "priceEur": 91099,
+        "rangeKm": 420,
+        "accel0to100": 4.6,
+        "batteryKwh": 96
       }
     ]
   },
@@ -8121,17 +8343,38 @@ window.evData = [
     "wikipediaSlug": "Kia_EV9",
     "variants": [
       {
-        "name": "RWD",
+        "name": "76.1 kWh RWD",
+        "priceEur": 60992,
+        "rangeKm": 350,
+        "accel0to100": 8.5,
+        "batteryKwh": 73
+      },
+      {
+        "name": "99.8 kWh RWD",
         "priceEur": 69525,
         "rangeKm": 450,
         "accel0to100": 9.4,
         "batteryKwh": 96
       },
       {
-        "name": "AWD",
+        "name": "99.8 kWh AWD",
         "priceEur": 70642,
         "rangeKm": 435,
         "accel0to100": 6,
+        "batteryKwh": 96
+      },
+      {
+        "name": "99.8 kWh AWD GT-Line",
+        "priceEur": 81817,
+        "rangeKm": 425,
+        "accel0to100": 5.3,
+        "batteryKwh": 96
+      },
+      {
+        "name": "99.8 kWh AWD GT",
+        "priceEur": 91099,
+        "rangeKm": 420,
+        "accel0to100": 4.6,
         "batteryKwh": 96
       }
     ]
@@ -8162,7 +8405,35 @@ window.evData = [
     "wikipediaSlug": "Kia_EV9",
     "variants": [
       {
-        "name": "Standard",
+        "name": "76.1 kWh RWD",
+        "priceEur": 60992,
+        "rangeKm": 350,
+        "accel0to100": 8.5,
+        "batteryKwh": 73
+      },
+      {
+        "name": "99.8 kWh RWD",
+        "priceEur": 69525,
+        "rangeKm": 450,
+        "accel0to100": 9.4,
+        "batteryKwh": 96
+      },
+      {
+        "name": "99.8 kWh AWD",
+        "priceEur": 70642,
+        "rangeKm": 435,
+        "accel0to100": 6,
+        "batteryKwh": 96
+      },
+      {
+        "name": "99.8 kWh AWD GT-Line",
+        "priceEur": 81817,
+        "rangeKm": 425,
+        "accel0to100": 5.3,
+        "batteryKwh": 96
+      },
+      {
+        "name": "99.8 kWh AWD GT",
         "priceEur": 91099,
         "rangeKm": 420,
         "accel0to100": 4.6,
@@ -8196,10 +8467,38 @@ window.evData = [
     "wikipediaSlug": "Kia_EV9",
     "variants": [
       {
-        "name": "Standard",
+        "name": "76.1 kWh RWD",
+        "priceEur": 60992,
+        "rangeKm": 350,
+        "accel0to100": 8.5,
+        "batteryKwh": 73
+      },
+      {
+        "name": "99.8 kWh RWD",
+        "priceEur": 69525,
+        "rangeKm": 450,
+        "accel0to100": 9.4,
+        "batteryKwh": 96
+      },
+      {
+        "name": "99.8 kWh AWD",
+        "priceEur": 70642,
+        "rangeKm": 435,
+        "accel0to100": 6,
+        "batteryKwh": 96
+      },
+      {
+        "name": "99.8 kWh AWD GT-Line",
         "priceEur": 81817,
         "rangeKm": 425,
         "accel0to100": 5.3,
+        "batteryKwh": 96
+      },
+      {
+        "name": "99.8 kWh AWD GT",
+        "priceEur": 91099,
+        "rangeKm": 420,
+        "accel0to100": 4.6,
         "batteryKwh": 96
       }
     ]
@@ -8230,17 +8529,38 @@ window.evData = [
     "wikipediaSlug": "Kia_EV9",
     "variants": [
       {
-        "name": "RWD",
+        "name": "76.1 kWh RWD",
+        "priceEur": 60992,
+        "rangeKm": 350,
+        "accel0to100": 8.5,
+        "batteryKwh": 73
+      },
+      {
+        "name": "99.8 kWh RWD",
         "priceEur": 69525,
         "rangeKm": 450,
         "accel0to100": 9.4,
         "batteryKwh": 96
       },
       {
-        "name": "AWD",
+        "name": "99.8 kWh AWD",
         "priceEur": 70642,
         "rangeKm": 435,
         "accel0to100": 6,
+        "batteryKwh": 96
+      },
+      {
+        "name": "99.8 kWh AWD GT-Line",
+        "priceEur": 81817,
+        "rangeKm": 425,
+        "accel0to100": 5.3,
+        "batteryKwh": 96
+      },
+      {
+        "name": "99.8 kWh AWD GT",
+        "priceEur": 91099,
+        "rangeKm": 420,
+        "accel0to100": 4.6,
         "batteryKwh": 96
       }
     ]
@@ -8271,11 +8591,18 @@ window.evData = [
     "wikipediaSlug": "Kia_pv5_passenger_51.5",
     "variants": [
       {
-        "name": "Standard",
+        "name": "51.5 kWh",
         "priceEur": 38168,
         "rangeKm": 230,
         "accel0to100": 12.8,
         "batteryKwh": 48
+      },
+      {
+        "name": "71.2 kWh",
+        "priceEur": 41984,
+        "rangeKm": 315,
+        "accel0to100": 10.6,
+        "batteryKwh": 67
       }
     ]
   },
@@ -8305,7 +8632,14 @@ window.evData = [
     "wikipediaSlug": "Kia_pv5_passenger_71.2",
     "variants": [
       {
-        "name": "Standard",
+        "name": "51.5 kWh",
+        "priceEur": 38168,
+        "rangeKm": 230,
+        "accel0to100": 12.8,
+        "batteryKwh": 48
+      },
+      {
+        "name": "71.2 kWh",
         "priceEur": 41984,
         "rangeKm": 315,
         "accel0to100": 10.6,
@@ -8336,16 +8670,7 @@ window.evData = [
         "rating": 7.6
       }
     ],
-    "wikipediaSlug": "Lancia_ypsilon",
-    "variants": [
-      {
-        "name": "54 kWh",
-        "priceEur": 33700,
-        "rangeKm": 325,
-        "accel0to100": 8.2,
-        "batteryKwh": 50.8
-      }
-    ]
+    "wikipediaSlug": "Lancia_ypsilon"
   },
   {
     "id": "lancia-ypsilon-54-kwh-hf",
@@ -8370,16 +8695,7 @@ window.evData = [
         "rating": 7.7
       }
     ],
-    "wikipediaSlug": "Lancia_ypsilon_hf",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 40950,
-        "rangeKm": 305,
-        "accel0to100": 5.6,
-        "batteryKwh": 50.8
-      }
-    ]
+    "wikipediaSlug": "Lancia_ypsilon_hf"
   },
   {
     "id": "leapmotor-b10-56-2-kwh",
@@ -8407,11 +8723,18 @@ window.evData = [
     "wikipediaSlug": "Leapmotor_b10_56.2",
     "variants": [
       {
-        "name": "Standard",
+        "name": "56.2 kWh",
         "priceEur": 28947,
         "rangeKm": 305,
         "accel0to100": 8,
         "batteryKwh": 55
+      },
+      {
+        "name": "67.1 kWh",
+        "priceEur": 33371,
+        "rangeKm": 360,
+        "accel0to100": 8,
+        "batteryKwh": 65
       }
     ]
   },
@@ -8441,7 +8764,14 @@ window.evData = [
     "wikipediaSlug": "Leapmotor_b10_67.1",
     "variants": [
       {
-        "name": "Standard",
+        "name": "56.2 kWh",
+        "priceEur": 28947,
+        "rangeKm": 305,
+        "accel0to100": 8,
+        "batteryKwh": 55
+      },
+      {
+        "name": "67.1 kWh",
         "priceEur": 33371,
         "rangeKm": 360,
         "accel0to100": 8,
@@ -8475,7 +8805,21 @@ window.evData = [
     "wikipediaSlug": "Leapmotor_c10_81.9",
     "variants": [
       {
-        "name": "Standard",
+        "name": "RWD 69.9 kWh",
+        "priceEur": 38104,
+        "rangeKm": 355,
+        "accel0to100": 7.5,
+        "batteryKwh": 69.9
+      },
+      {
+        "name": "RWD 81.9 kWh",
+        "priceEur": 42225,
+        "rangeKm": 410,
+        "accel0to100": 6.6,
+        "batteryKwh": 81.9
+      },
+      {
+        "name": "AWD 81.9 kWh",
         "priceEur": 44975,
         "rangeKm": 380,
         "accel0to100": 4,
@@ -8509,11 +8853,25 @@ window.evData = [
     "wikipediaSlug": "Leapmotor_c10_69.9",
     "variants": [
       {
-        "name": "Standard",
+        "name": "RWD 69.9 kWh",
         "priceEur": 38104,
         "rangeKm": 355,
         "accel0to100": 7.5,
         "batteryKwh": 69.9
+      },
+      {
+        "name": "RWD 81.9 kWh",
+        "priceEur": 42225,
+        "rangeKm": 410,
+        "accel0to100": 6.6,
+        "batteryKwh": 81.9
+      },
+      {
+        "name": "AWD 81.9 kWh",
+        "priceEur": 44975,
+        "rangeKm": 380,
+        "accel0to100": 4,
+        "batteryKwh": 81.9
       }
     ]
   },
@@ -8543,10 +8901,24 @@ window.evData = [
     "wikipediaSlug": "Leapmotor_c10_81.9",
     "variants": [
       {
-        "name": "Standard",
+        "name": "RWD 69.9 kWh",
+        "priceEur": 38104,
+        "rangeKm": 355,
+        "accel0to100": 7.5,
+        "batteryKwh": 69.9
+      },
+      {
+        "name": "RWD 81.9 kWh",
         "priceEur": 42225,
         "rangeKm": 410,
         "accel0to100": 6.6,
+        "batteryKwh": 81.9
+      },
+      {
+        "name": "AWD 81.9 kWh",
+        "priceEur": 44975,
+        "rangeKm": 380,
+        "accel0to100": 4,
         "batteryKwh": 81.9
       }
     ]
@@ -8574,16 +8946,7 @@ window.evData = [
         "rating": 7
       }
     ],
-    "wikipediaSlug": "Leapmotor_t03",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 18506,
-        "rangeKm": 225,
-        "accel0to100": 12.7,
-        "batteryKwh": 36
-      }
-    ]
+    "wikipediaSlug": "Leapmotor_t03"
   },
   {
     "id": "lexus-rz-350e",
@@ -8608,16 +8971,7 @@ window.evData = [
         "rating": 7.9
       }
     ],
-    "wikipediaSlug": "Lexus_rz_350e",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 57729,
-        "rangeKm": 400,
-        "accel0to100": 7.5,
-        "batteryKwh": 72
-      }
-    ]
+    "wikipediaSlug": "Lexus_rz_350e"
   },
   {
     "id": "lexus-rz-500e",
@@ -8642,16 +8996,7 @@ window.evData = [
         "rating": 8.1
       }
     ],
-    "wikipediaSlug": "Lexus_rz_500e",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 65626,
-        "rangeKm": 395,
-        "accel0to100": 4.6,
-        "batteryKwh": 72
-      }
-    ]
+    "wikipediaSlug": "Lexus_rz_500e"
   },
   {
     "id": "lexus-rz-550e-f-sport",
@@ -8676,16 +9021,7 @@ window.evData = [
         "rating": 8
       }
     ],
-    "wikipediaSlug": "Lexus_rz_550e_f",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 77053,
-        "rangeKm": 390,
-        "accel0to100": 4.4,
-        "batteryKwh": 72
-      }
-    ]
+    "wikipediaSlug": "Lexus_rz_550e_f"
   },
   {
     "id": "lotus-eletre-600",
@@ -8710,16 +9046,7 @@ window.evData = [
         "rating": 8.7
       }
     ],
-    "wikipediaSlug": "Lotus_eletre",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 100507,
-        "rangeKm": 495,
-        "accel0to100": 4.5,
-        "batteryKwh": 109
-      }
-    ]
+    "wikipediaSlug": "Lotus_eletre"
   },
   {
     "id": "lotus-eletre-900",
@@ -8744,16 +9071,7 @@ window.evData = [
         "rating": 8.7
       }
     ],
-    "wikipediaSlug": "Lotus_eletre",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 148691,
-        "rangeKm": 455,
-        "accel0to100": 2.9,
-        "batteryKwh": 109
-      }
-    ]
+    "wikipediaSlug": "Lotus_eletre"
   },
   {
     "id": "lotus-emeya-600",
@@ -8778,16 +9096,7 @@ window.evData = [
         "rating": 9
       }
     ],
-    "wikipediaSlug": "Lotus_emeya",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 105907,
-        "rangeKm": 520,
-        "accel0to100": 4.2,
-        "batteryKwh": 98.9
-      }
-    ]
+    "wikipediaSlug": "Lotus_emeya"
   },
   {
     "id": "lotus-emeya-900",
@@ -8812,16 +9121,7 @@ window.evData = [
         "rating": 8.9
       }
     ],
-    "wikipediaSlug": "Lotus_emeya",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 148691,
-        "rangeKm": 465,
-        "accel0to100": 2.8,
-        "batteryKwh": 98.9
-      }
-    ]
+    "wikipediaSlug": "Lotus_emeya"
   },
   {
     "id": "lucid-air-grand-touring-my25-26",
@@ -8846,16 +9146,7 @@ window.evData = [
         "rating": 9.1
       }
     ],
-    "wikipediaSlug": "Lucid_air_grand_touring_my25-26",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 132400,
-        "rangeKm": 720,
-        "accel0to100": 3.2,
-        "batteryKwh": 117
-      }
-    ]
+    "wikipediaSlug": "Lucid_air_grand_touring_my25-26"
   },
   {
     "id": "lucid-air-pure-rwd",
@@ -8880,16 +9171,7 @@ window.evData = [
         "rating": 8.6
       }
     ],
-    "wikipediaSlug": "Lucid_air_pure",
-    "variants": [
-      {
-        "name": "RWD",
-        "priceEur": 87400,
-        "rangeKm": 580,
-        "accel0to100": 4.7,
-        "batteryKwh": 88
-      }
-    ]
+    "wikipediaSlug": "Lucid_air_pure"
   },
   {
     "id": "lucid-air-sapphire-my25-26",
@@ -8914,16 +9196,7 @@ window.evData = [
         "rating": 8.8
       }
     ],
-    "wikipediaSlug": "Lucid_air_sapphire_my25-26",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 252500,
-        "rangeKm": 610,
-        "accel0to100": 2,
-        "batteryKwh": 118
-      }
-    ]
+    "wikipediaSlug": "Lucid_air_sapphire_my25-26"
   },
   {
     "id": "lucid-air-touring",
@@ -8948,16 +9221,7 @@ window.evData = [
         "rating": 8.7
       }
     ],
-    "wikipediaSlug": "Lucid_air_touring",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 101400,
-        "rangeKm": 600,
-        "accel0to100": 3.6,
-        "batteryKwh": 96
-      }
-    ]
+    "wikipediaSlug": "Lucid_air_touring"
   },
   {
     "id": "lucid-gravity-grand-touring",
@@ -8982,16 +9246,7 @@ window.evData = [
         "rating": 9
       }
     ],
-    "wikipediaSlug": "Lucid_gravity_grand_touring",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 118400,
-        "rangeKm": 615,
-        "accel0to100": 3.6,
-        "batteryKwh": 123
-      }
-    ]
+    "wikipediaSlug": "Lucid_gravity_grand_touring"
   },
   {
     "id": "lucid-gravity-touring",
@@ -9016,16 +9271,7 @@ window.evData = [
         "rating": 8.4
       }
     ],
-    "wikipediaSlug": "Lucid_gravity_touring",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 101400,
-        "rangeKm": 460,
-        "accel0to100": 4.2,
-        "batteryKwh": 89
-      }
-    ]
+    "wikipediaSlug": "Lucid_gravity_touring"
   },
   {
     "id": "lynk-co-02",
@@ -9050,16 +9296,7 @@ window.evData = [
         "rating": 7.9
       }
     ],
-    "wikipediaSlug": "Lynk_and_Co",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 34995,
-        "rangeKm": 355,
-        "accel0to100": 5.5,
-        "batteryKwh": 62
-      }
-    ]
+    "wikipediaSlug": "Lynk_and_Co"
   },
   {
     "id": "maserati-grancabrio-folgore",
@@ -9084,16 +9321,7 @@ window.evData = [
         "rating": 8.2
       }
     ],
-    "wikipediaSlug": "Maserati_grancabrio_folgore",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 209471,
-        "rangeKm": 395,
-        "accel0to100": 2.8,
-        "batteryKwh": 83
-      }
-    ]
+    "wikipediaSlug": "Maserati_grancabrio_folgore"
   },
   {
     "id": "maserati-granturismo-folgore",
@@ -9118,16 +9346,7 @@ window.evData = [
         "rating": 8.3
       }
     ],
-    "wikipediaSlug": "Maserati_granturismo_folgore",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 201468,
-        "rangeKm": 420,
-        "accel0to100": 2.7,
-        "batteryKwh": 83
-      }
-    ]
+    "wikipediaSlug": "Maserati_granturismo_folgore"
   },
   {
     "id": "maserati-grecale-folgore",
@@ -9152,16 +9371,7 @@ window.evData = [
         "rating": 8.2
       }
     ],
-    "wikipediaSlug": "Maserati_grecale_folgore",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 111300,
-        "rangeKm": 450,
-        "accel0to100": 4.1,
-        "batteryKwh": 98.6
-      }
-    ]
+    "wikipediaSlug": "Maserati_grecale_folgore"
   },
   {
     "id": "maxus-mifa-9",
@@ -9186,16 +9396,7 @@ window.evData = [
         "rating": 7.7
       }
     ],
-    "wikipediaSlug": "Maxus_mifa_9",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 72036,
-        "rangeKm": 360,
-        "accel0to100": 9.2,
-        "batteryKwh": 84
-      }
-    ]
+    "wikipediaSlug": "Maxus_mifa_9"
   },
   {
     "id": "mazda-6e-68-8-kwh",
@@ -9223,11 +9424,25 @@ window.evData = [
     "wikipediaSlug": "Mazda_6e_68.8",
     "variants": [
       {
-        "name": "Standard",
+        "name": "78 kWh",
+        "priceEur": 44844,
+        "rangeKm": 470,
+        "accel0to100": 7.9,
+        "batteryKwh": 77
+      },
+      {
+        "name": "68.8 kWh",
         "priceEur": 44900,
         "rangeKm": 420,
         "accel0to100": 7.6,
         "batteryKwh": 68
+      },
+      {
+        "name": "Long Range 80 kWh",
+        "priceEur": 46545,
+        "rangeKm": 480,
+        "accel0to100": 7.8,
+        "batteryKwh": 78
       }
     ]
   },
@@ -9262,6 +9477,13 @@ window.evData = [
         "rangeKm": 470,
         "accel0to100": 7.9,
         "batteryKwh": 77
+      },
+      {
+        "name": "68.8 kWh",
+        "priceEur": 44900,
+        "rangeKm": 420,
+        "accel0to100": 7.6,
+        "batteryKwh": 68
       },
       {
         "name": "Long Range 80 kWh",
@@ -9305,6 +9527,13 @@ window.evData = [
         "batteryKwh": 77
       },
       {
+        "name": "68.8 kWh",
+        "priceEur": 44900,
+        "rangeKm": 420,
+        "accel0to100": 7.6,
+        "batteryKwh": 68
+      },
+      {
         "name": "Long Range 80 kWh",
         "priceEur": 46545,
         "rangeKm": 480,
@@ -9336,16 +9565,7 @@ window.evData = [
         "rating": 7.9
       }
     ],
-    "wikipediaSlug": "Mercedes-Benz_cla",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 48765,
-        "rangeKm": 400,
-        "accel0to100": 7.5,
-        "batteryKwh": 58
-      }
-    ]
+    "wikipediaSlug": "Mercedes-Benz_cla"
   },
   {
     "id": "mercedes-benz-cla-250-3473",
@@ -9370,16 +9590,7 @@ window.evData = [
         "rating": 8.3
       }
     ],
-    "wikipediaSlug": "Mercedes-Benz_cla",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 52003,
-        "rangeKm": 490,
-        "accel0to100": 6.7,
-        "batteryKwh": 71
-      }
-    ]
+    "wikipediaSlug": "Mercedes-Benz_cla"
   },
   {
     "id": "mercedes-benz-cla-250",
@@ -9404,16 +9615,7 @@ window.evData = [
         "rating": 8.7
       }
     ],
-    "wikipediaSlug": "Mercedes-Benz_cla",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 53913,
-        "rangeKm": 585,
-        "accel0to100": 6.7,
-        "batteryKwh": 85
-      }
-    ]
+    "wikipediaSlug": "Mercedes-Benz_cla"
   },
   {
     "id": "mercedes-benz-cla-350-4matic",
@@ -9438,16 +9640,7 @@ window.evData = [
         "rating": 8.7
       }
     ],
-    "wikipediaSlug": "Mercedes-Benz_cla_4matic",
-    "variants": [
-      {
-        "name": "4MATIC",
-        "priceEur": 62316,
-        "rangeKm": 575,
-        "accel0to100": 4.9,
-        "batteryKwh": 85
-      }
-    ]
+    "wikipediaSlug": "Mercedes-Benz_cla_4matic"
   },
   {
     "id": "mercedes-benz-cla-shooting-brake-250",
@@ -9472,16 +9665,7 @@ window.evData = [
         "rating": 8.7
       }
     ],
-    "wikipediaSlug": "Mercedes-Benz_cla_shooting_brake",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 55664,
-        "rangeKm": 565,
-        "accel0to100": 6.8,
-        "batteryKwh": 85
-      }
-    ]
+    "wikipediaSlug": "Mercedes-Benz_cla_shooting_brake"
   },
   {
     "id": "mercedes-benz-cla-shooting-brake-350-4matic",
@@ -9506,16 +9690,7 @@ window.evData = [
         "rating": 8.7
       }
     ],
-    "wikipediaSlug": "Mercedes-Benz_cla_shooting_brake_4matic",
-    "variants": [
-      {
-        "name": "4MATIC",
-        "priceEur": 64333,
-        "rangeKm": 555,
-        "accel0to100": 5,
-        "batteryKwh": 85
-      }
-    ]
+    "wikipediaSlug": "Mercedes-Benz_cla_shooting_brake_4matic"
   },
   {
     "id": "mercedes-benz-eqa-250",
@@ -9543,10 +9718,31 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_eqa",
     "variants": [
       {
-        "name": "Standard",
+        "name": "250",
         "priceEur": 50777,
         "rangeKm": 395,
         "accel0to100": 8.6,
+        "batteryKwh": 66.5
+      },
+      {
+        "name": "250+",
+        "priceEur": 52784,
+        "rangeKm": 420,
+        "accel0to100": 8.6,
+        "batteryKwh": 70.5
+      },
+      {
+        "name": "300 4MATIC",
+        "priceEur": 57941,
+        "rangeKm": 350,
+        "accel0to100": 7.7,
+        "batteryKwh": 66.5
+      },
+      {
+        "name": "350 4MATIC",
+        "priceEur": 62267,
+        "rangeKm": 350,
+        "accel0to100": 6,
         "batteryKwh": 66.5
       }
     ]
@@ -9577,11 +9773,32 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_eqa",
     "variants": [
       {
-        "name": "Standard",
+        "name": "250",
+        "priceEur": 50777,
+        "rangeKm": 395,
+        "accel0to100": 8.6,
+        "batteryKwh": 66.5
+      },
+      {
+        "name": "250+",
         "priceEur": 52784,
         "rangeKm": 420,
         "accel0to100": 8.6,
         "batteryKwh": 70.5
+      },
+      {
+        "name": "300 4MATIC",
+        "priceEur": 57941,
+        "rangeKm": 350,
+        "accel0to100": 7.7,
+        "batteryKwh": 66.5
+      },
+      {
+        "name": "350 4MATIC",
+        "priceEur": 62267,
+        "rangeKm": 350,
+        "accel0to100": 6,
+        "batteryKwh": 66.5
       }
     ]
   },
@@ -9611,10 +9828,31 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_eqa_4matic",
     "variants": [
       {
-        "name": "4MATIC",
+        "name": "250",
+        "priceEur": 50777,
+        "rangeKm": 395,
+        "accel0to100": 8.6,
+        "batteryKwh": 66.5
+      },
+      {
+        "name": "250+",
+        "priceEur": 52784,
+        "rangeKm": 420,
+        "accel0to100": 8.6,
+        "batteryKwh": 70.5
+      },
+      {
+        "name": "300 4MATIC",
         "priceEur": 57941,
         "rangeKm": 350,
         "accel0to100": 7.7,
+        "batteryKwh": 66.5
+      },
+      {
+        "name": "350 4MATIC",
+        "priceEur": 62267,
+        "rangeKm": 350,
+        "accel0to100": 6,
         "batteryKwh": 66.5
       }
     ]
@@ -9645,7 +9883,28 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_eqa_4matic",
     "variants": [
       {
-        "name": "4MATIC",
+        "name": "250",
+        "priceEur": 50777,
+        "rangeKm": 395,
+        "accel0to100": 8.6,
+        "batteryKwh": 66.5
+      },
+      {
+        "name": "250+",
+        "priceEur": 52784,
+        "rangeKm": 420,
+        "accel0to100": 8.6,
+        "batteryKwh": 70.5
+      },
+      {
+        "name": "300 4MATIC",
+        "priceEur": 57941,
+        "rangeKm": 350,
+        "accel0to100": 7.7,
+        "batteryKwh": 66.5
+      },
+      {
+        "name": "350 4MATIC",
         "priceEur": 62267,
         "rangeKm": 350,
         "accel0to100": 6,
@@ -9679,11 +9938,32 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_EQE_SUV",
     "variants": [
       {
-        "name": "Standard",
+        "name": "300",
         "priceEur": 67307,
         "rangeKm": 525,
         "accel0to100": 6.9,
         "batteryKwh": 89
+      },
+      {
+        "name": "350+",
+        "priceEur": 73231,
+        "rangeKm": 555,
+        "accel0to100": 6.1,
+        "batteryKwh": 96
+      },
+      {
+        "name": "350 4MATIC",
+        "priceEur": 77331,
+        "rangeKm": 515,
+        "accel0to100": 5.9,
+        "batteryKwh": 90.6
+      },
+      {
+        "name": "500 4MATIC",
+        "priceEur": 88691,
+        "rangeKm": 505,
+        "accel0to100": 4.4,
+        "batteryKwh": 90.6
       }
     ]
   },
@@ -9713,10 +9993,31 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_EQE_SUV",
     "variants": [
       {
-        "name": "4MATIC",
+        "name": "300",
+        "priceEur": 67307,
+        "rangeKm": 525,
+        "accel0to100": 6.9,
+        "batteryKwh": 89
+      },
+      {
+        "name": "350+",
+        "priceEur": 73231,
+        "rangeKm": 555,
+        "accel0to100": 6.1,
+        "batteryKwh": 96
+      },
+      {
+        "name": "350 4MATIC",
         "priceEur": 77331,
         "rangeKm": 515,
         "accel0to100": 5.9,
+        "batteryKwh": 90.6
+      },
+      {
+        "name": "500 4MATIC",
+        "priceEur": 88691,
+        "rangeKm": 505,
+        "accel0to100": 4.4,
         "batteryKwh": 90.6
       }
     ]
@@ -9747,11 +10048,32 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_EQE_SUV",
     "variants": [
       {
-        "name": "Standard",
+        "name": "300",
+        "priceEur": 67307,
+        "rangeKm": 525,
+        "accel0to100": 6.9,
+        "batteryKwh": 89
+      },
+      {
+        "name": "350+",
         "priceEur": 73231,
         "rangeKm": 555,
         "accel0to100": 6.1,
         "batteryKwh": 96
+      },
+      {
+        "name": "350 4MATIC",
+        "priceEur": 77331,
+        "rangeKm": 515,
+        "accel0to100": 5.9,
+        "batteryKwh": 90.6
+      },
+      {
+        "name": "500 4MATIC",
+        "priceEur": 88691,
+        "rangeKm": 505,
+        "accel0to100": 4.4,
+        "batteryKwh": 90.6
       }
     ]
   },
@@ -9781,7 +10103,28 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_EQE_SUV",
     "variants": [
       {
-        "name": "4MATIC",
+        "name": "300",
+        "priceEur": 67307,
+        "rangeKm": 525,
+        "accel0to100": 6.9,
+        "batteryKwh": 89
+      },
+      {
+        "name": "350+",
+        "priceEur": 73231,
+        "rangeKm": 555,
+        "accel0to100": 6.1,
+        "batteryKwh": 96
+      },
+      {
+        "name": "350 4MATIC",
+        "priceEur": 77331,
+        "rangeKm": 515,
+        "accel0to100": 5.9,
+        "batteryKwh": 90.6
+      },
+      {
+        "name": "500 4MATIC",
         "priceEur": 88691,
         "rangeKm": 505,
         "accel0to100": 4.4,
@@ -9812,16 +10155,7 @@ window.evData = [
         "rating": 8.3
       }
     ],
-    "wikipediaSlug": "Mercedes-Benz_EQE_SUV",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 120660,
-        "rangeKm": 450,
-        "accel0to100": 3.5,
-        "batteryKwh": 90.6
-      }
-    ]
+    "wikipediaSlug": "Mercedes-Benz_EQE_SUV"
   },
   {
     "id": "mercedes-benz-eqe-suv-300",
@@ -9849,11 +10183,32 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_EQE_SUV",
     "variants": [
       {
-        "name": "Standard",
+        "name": "300",
         "priceEur": 82653,
         "rangeKm": 450,
         "accel0to100": 7.1,
         "batteryKwh": 90.6
+      },
+      {
+        "name": "350+",
+        "priceEur": 87979,
+        "rangeKm": 475,
+        "accel0to100": 6.4,
+        "batteryKwh": 96
+      },
+      {
+        "name": "350 4MATIC",
+        "priceEur": 91426,
+        "rangeKm": 435,
+        "accel0to100": 6,
+        "batteryKwh": 90.6
+      },
+      {
+        "name": "500 4MATIC",
+        "priceEur": 101122,
+        "rangeKm": 455,
+        "accel0to100": 4.7,
+        "batteryKwh": 96
       }
     ]
   },
@@ -9883,11 +10238,32 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_EQE_SUV",
     "variants": [
       {
-        "name": "4MATIC",
+        "name": "300",
+        "priceEur": 82653,
+        "rangeKm": 450,
+        "accel0to100": 7.1,
+        "batteryKwh": 90.6
+      },
+      {
+        "name": "350+",
+        "priceEur": 87979,
+        "rangeKm": 475,
+        "accel0to100": 6.4,
+        "batteryKwh": 96
+      },
+      {
+        "name": "350 4MATIC",
         "priceEur": 91426,
         "rangeKm": 435,
         "accel0to100": 6,
         "batteryKwh": 90.6
+      },
+      {
+        "name": "500 4MATIC",
+        "priceEur": 101122,
+        "rangeKm": 455,
+        "accel0to100": 4.7,
+        "batteryKwh": 96
       }
     ]
   },
@@ -9917,10 +10293,31 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_EQE_SUV",
     "variants": [
       {
-        "name": "Standard",
+        "name": "300",
+        "priceEur": 82653,
+        "rangeKm": 450,
+        "accel0to100": 7.1,
+        "batteryKwh": 90.6
+      },
+      {
+        "name": "350+",
         "priceEur": 87979,
         "rangeKm": 475,
         "accel0to100": 6.4,
+        "batteryKwh": 96
+      },
+      {
+        "name": "350 4MATIC",
+        "priceEur": 91426,
+        "rangeKm": 435,
+        "accel0to100": 6,
+        "batteryKwh": 90.6
+      },
+      {
+        "name": "500 4MATIC",
+        "priceEur": 101122,
+        "rangeKm": 455,
+        "accel0to100": 4.7,
         "batteryKwh": 96
       }
     ]
@@ -9951,7 +10348,28 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_EQE_SUV",
     "variants": [
       {
-        "name": "4MATIC",
+        "name": "300",
+        "priceEur": 82653,
+        "rangeKm": 450,
+        "accel0to100": 7.1,
+        "batteryKwh": 90.6
+      },
+      {
+        "name": "350+",
+        "priceEur": 87979,
+        "rangeKm": 475,
+        "accel0to100": 6.4,
+        "batteryKwh": 96
+      },
+      {
+        "name": "350 4MATIC",
+        "priceEur": 91426,
+        "rangeKm": 435,
+        "accel0to100": 6,
+        "batteryKwh": 90.6
+      },
+      {
+        "name": "500 4MATIC",
         "priceEur": 101122,
         "rangeKm": 455,
         "accel0to100": 4.7,
@@ -9982,16 +10400,7 @@ window.evData = [
         "rating": 8.2
       }
     ],
-    "wikipediaSlug": "Mercedes-Benz_EQE_SUV",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 140797,
-        "rangeKm": 420,
-        "accel0to100": 3.7,
-        "batteryKwh": 90.6
-      }
-    ]
+    "wikipediaSlug": "Mercedes-Benz_EQE_SUV"
   },
   {
     "id": "mercedes-benz-eqs-350",
@@ -10019,11 +10428,39 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_eqs",
     "variants": [
       {
-        "name": "Standard",
+        "name": "350",
         "priceEur": 106844,
         "rangeKm": 570,
         "accel0to100": 6.7,
         "batteryKwh": 96
+      },
+      {
+        "name": "450+",
+        "priceEur": 117483,
+        "rangeKm": 685,
+        "accel0to100": 6.2,
+        "batteryKwh": 118
+      },
+      {
+        "name": "450 4MATIC",
+        "priceEur": 121429,
+        "rangeKm": 655,
+        "accel0to100": 5.7,
+        "batteryKwh": 118
+      },
+      {
+        "name": "500 4MATIC",
+        "priceEur": 135717,
+        "rangeKm": 640,
+        "accel0to100": 4.9,
+        "batteryKwh": 118
+      },
+      {
+        "name": "580 4MATIC",
+        "priceEur": 156888,
+        "rangeKm": 640,
+        "accel0to100": 4.4,
+        "batteryKwh": 118
       }
     ]
   },
@@ -10053,10 +10490,38 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_eqs_4matic",
     "variants": [
       {
-        "name": "4MATIC",
+        "name": "350",
+        "priceEur": 106844,
+        "rangeKm": 570,
+        "accel0to100": 6.7,
+        "batteryKwh": 96
+      },
+      {
+        "name": "450+",
+        "priceEur": 117483,
+        "rangeKm": 685,
+        "accel0to100": 6.2,
+        "batteryKwh": 118
+      },
+      {
+        "name": "450 4MATIC",
         "priceEur": 121429,
         "rangeKm": 655,
         "accel0to100": 5.7,
+        "batteryKwh": 118
+      },
+      {
+        "name": "500 4MATIC",
+        "priceEur": 135717,
+        "rangeKm": 640,
+        "accel0to100": 4.9,
+        "batteryKwh": 118
+      },
+      {
+        "name": "580 4MATIC",
+        "priceEur": 156888,
+        "rangeKm": 640,
+        "accel0to100": 4.4,
         "batteryKwh": 118
       }
     ]
@@ -10087,10 +10552,38 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_eqs",
     "variants": [
       {
-        "name": "Standard",
+        "name": "350",
+        "priceEur": 106844,
+        "rangeKm": 570,
+        "accel0to100": 6.7,
+        "batteryKwh": 96
+      },
+      {
+        "name": "450+",
         "priceEur": 117483,
         "rangeKm": 685,
         "accel0to100": 6.2,
+        "batteryKwh": 118
+      },
+      {
+        "name": "450 4MATIC",
+        "priceEur": 121429,
+        "rangeKm": 655,
+        "accel0to100": 5.7,
+        "batteryKwh": 118
+      },
+      {
+        "name": "500 4MATIC",
+        "priceEur": 135717,
+        "rangeKm": 640,
+        "accel0to100": 4.9,
+        "batteryKwh": 118
+      },
+      {
+        "name": "580 4MATIC",
+        "priceEur": 156888,
+        "rangeKm": 640,
+        "accel0to100": 4.4,
         "batteryKwh": 118
       }
     ]
@@ -10121,10 +10614,38 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_eqs_4matic",
     "variants": [
       {
-        "name": "4MATIC",
+        "name": "350",
+        "priceEur": 106844,
+        "rangeKm": 570,
+        "accel0to100": 6.7,
+        "batteryKwh": 96
+      },
+      {
+        "name": "450+",
+        "priceEur": 117483,
+        "rangeKm": 685,
+        "accel0to100": 6.2,
+        "batteryKwh": 118
+      },
+      {
+        "name": "450 4MATIC",
+        "priceEur": 121429,
+        "rangeKm": 655,
+        "accel0to100": 5.7,
+        "batteryKwh": 118
+      },
+      {
+        "name": "500 4MATIC",
         "priceEur": 135717,
         "rangeKm": 640,
         "accel0to100": 4.9,
+        "batteryKwh": 118
+      },
+      {
+        "name": "580 4MATIC",
+        "priceEur": 156888,
+        "rangeKm": 640,
+        "accel0to100": 4.4,
         "batteryKwh": 118
       }
     ]
@@ -10155,7 +10676,35 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_eqs_4matic",
     "variants": [
       {
-        "name": "4MATIC",
+        "name": "350",
+        "priceEur": 106844,
+        "rangeKm": 570,
+        "accel0to100": 6.7,
+        "batteryKwh": 96
+      },
+      {
+        "name": "450+",
+        "priceEur": 117483,
+        "rangeKm": 685,
+        "accel0to100": 6.2,
+        "batteryKwh": 118
+      },
+      {
+        "name": "450 4MATIC",
+        "priceEur": 121429,
+        "rangeKm": 655,
+        "accel0to100": 5.7,
+        "batteryKwh": 118
+      },
+      {
+        "name": "500 4MATIC",
+        "priceEur": 135717,
+        "rangeKm": 640,
+        "accel0to100": 4.9,
+        "batteryKwh": 118
+      },
+      {
+        "name": "580 4MATIC",
         "priceEur": 156888,
         "rangeKm": 640,
         "accel0to100": 4.4,
@@ -10189,10 +10738,38 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_eqs_suv_4matic",
     "variants": [
       {
-        "name": "4MATIC",
+        "name": "450+",
+        "priceEur": 118113,
+        "rangeKm": 540,
+        "accel0to100": 6.8,
+        "batteryKwh": 118
+      },
+      {
+        "name": "450 4MATIC",
         "priceEur": 131057,
         "rangeKm": 530,
         "accel0to100": 6.1,
+        "batteryKwh": 118
+      },
+      {
+        "name": "500 4MATIC",
+        "priceEur": 136359,
+        "rangeKm": 530,
+        "accel0to100": 5.3,
+        "batteryKwh": 118
+      },
+      {
+        "name": "580 4MATIC",
+        "priceEur": 160716,
+        "rangeKm": 530,
+        "accel0to100": 4.7,
+        "batteryKwh": 118
+      },
+      {
+        "name": "Maybach 680",
+        "priceEur": 216138,
+        "rangeKm": 490,
+        "accel0to100": 4.4,
         "batteryKwh": 118
       }
     ]
@@ -10223,10 +10800,38 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_eqs_suv",
     "variants": [
       {
-        "name": "Standard",
+        "name": "450+",
         "priceEur": 118113,
         "rangeKm": 540,
         "accel0to100": 6.8,
+        "batteryKwh": 118
+      },
+      {
+        "name": "450 4MATIC",
+        "priceEur": 131057,
+        "rangeKm": 530,
+        "accel0to100": 6.1,
+        "batteryKwh": 118
+      },
+      {
+        "name": "500 4MATIC",
+        "priceEur": 136359,
+        "rangeKm": 530,
+        "accel0to100": 5.3,
+        "batteryKwh": 118
+      },
+      {
+        "name": "580 4MATIC",
+        "priceEur": 160716,
+        "rangeKm": 530,
+        "accel0to100": 4.7,
+        "batteryKwh": 118
+      },
+      {
+        "name": "Maybach 680",
+        "priceEur": 216138,
+        "rangeKm": 490,
+        "accel0to100": 4.4,
         "batteryKwh": 118
       }
     ]
@@ -10257,10 +10862,38 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_eqs_suv_4matic",
     "variants": [
       {
-        "name": "4MATIC",
+        "name": "450+",
+        "priceEur": 118113,
+        "rangeKm": 540,
+        "accel0to100": 6.8,
+        "batteryKwh": 118
+      },
+      {
+        "name": "450 4MATIC",
+        "priceEur": 131057,
+        "rangeKm": 530,
+        "accel0to100": 6.1,
+        "batteryKwh": 118
+      },
+      {
+        "name": "500 4MATIC",
         "priceEur": 136359,
         "rangeKm": 530,
         "accel0to100": 5.3,
+        "batteryKwh": 118
+      },
+      {
+        "name": "580 4MATIC",
+        "priceEur": 160716,
+        "rangeKm": 530,
+        "accel0to100": 4.7,
+        "batteryKwh": 118
+      },
+      {
+        "name": "Maybach 680",
+        "priceEur": 216138,
+        "rangeKm": 490,
+        "accel0to100": 4.4,
         "batteryKwh": 118
       }
     ]
@@ -10291,10 +10924,38 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_eqs_suv_4matic",
     "variants": [
       {
-        "name": "4MATIC",
+        "name": "450+",
+        "priceEur": 118113,
+        "rangeKm": 540,
+        "accel0to100": 6.8,
+        "batteryKwh": 118
+      },
+      {
+        "name": "450 4MATIC",
+        "priceEur": 131057,
+        "rangeKm": 530,
+        "accel0to100": 6.1,
+        "batteryKwh": 118
+      },
+      {
+        "name": "500 4MATIC",
+        "priceEur": 136359,
+        "rangeKm": 530,
+        "accel0to100": 5.3,
+        "batteryKwh": 118
+      },
+      {
+        "name": "580 4MATIC",
         "priceEur": 160716,
         "rangeKm": 530,
         "accel0to100": 4.7,
+        "batteryKwh": 118
+      },
+      {
+        "name": "Maybach 680",
+        "priceEur": 216138,
+        "rangeKm": 490,
+        "accel0to100": 4.4,
         "batteryKwh": 118
       }
     ]
@@ -10325,7 +10986,35 @@ window.evData = [
     "wikipediaSlug": "Mercedes-Benz_eqs_suv_maybach",
     "variants": [
       {
-        "name": "Standard",
+        "name": "450+",
+        "priceEur": 118113,
+        "rangeKm": 540,
+        "accel0to100": 6.8,
+        "batteryKwh": 118
+      },
+      {
+        "name": "450 4MATIC",
+        "priceEur": 131057,
+        "rangeKm": 530,
+        "accel0to100": 6.1,
+        "batteryKwh": 118
+      },
+      {
+        "name": "500 4MATIC",
+        "priceEur": 136359,
+        "rangeKm": 530,
+        "accel0to100": 5.3,
+        "batteryKwh": 118
+      },
+      {
+        "name": "580 4MATIC",
+        "priceEur": 160716,
+        "rangeKm": 530,
+        "accel0to100": 4.7,
+        "batteryKwh": 118
+      },
+      {
+        "name": "Maybach 680",
         "priceEur": 216138,
         "rangeKm": 490,
         "accel0to100": 4.4,
@@ -10356,16 +11045,7 @@ window.evData = [
         "rating": 6.9
       }
     ],
-    "wikipediaSlug": "Mercedes-Benz_eqt",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 46969,
-        "rangeKm": 220,
-        "accel0to100": 13.3,
-        "batteryKwh": 45
-      }
-    ]
+    "wikipediaSlug": "Mercedes-Benz_eqt"
   },
   {
     "id": "mercedes-benz-eqt-200-standard",
@@ -10390,16 +11070,7 @@ window.evData = [
         "rating": 7
       }
     ],
-    "wikipediaSlug": "Mercedes-Benz_eqt",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 44925,
-        "rangeKm": 225,
-        "accel0to100": 12.6,
-        "batteryKwh": 45
-      }
-    ]
+    "wikipediaSlug": "Mercedes-Benz_eqt"
   },
   {
     "id": "mercedes-benz-eqv-250-extra-long",
@@ -10424,16 +11095,7 @@ window.evData = [
         "rating": 7
       }
     ],
-    "wikipediaSlug": "Mercedes-Benz_eqv_extra-long",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 59363,
-        "rangeKm": 210,
-        "accel0to100": 12,
-        "batteryKwh": 60
-      }
-    ]
+    "wikipediaSlug": "Mercedes-Benz_eqv_extra-long"
   },
   {
     "id": "mercedes-benz-eqv-250-long",
@@ -10458,16 +11120,7 @@ window.evData = [
         "rating": 7
       }
     ],
-    "wikipediaSlug": "Mercedes-Benz_eqv",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 58488,
-        "rangeKm": 215,
-        "accel0to100": 12,
-        "batteryKwh": 60
-      }
-    ]
+    "wikipediaSlug": "Mercedes-Benz_eqv"
   },
   {
     "id": "mercedes-benz-eqv-300-extra-long",
@@ -10492,16 +11145,7 @@ window.evData = [
         "rating": 7.4
       }
     ],
-    "wikipediaSlug": "Mercedes-Benz_eqv_extra-long",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 86874,
-        "rangeKm": 315,
-        "accel0to100": 12.2,
-        "batteryKwh": 90
-      }
-    ]
+    "wikipediaSlug": "Mercedes-Benz_eqv_extra-long"
   },
   {
     "id": "mercedes-benz-eqv-300-long",
@@ -10526,16 +11170,7 @@ window.evData = [
         "rating": 7.4
       }
     ],
-    "wikipediaSlug": "Mercedes-Benz_eqv",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 85576,
-        "rangeKm": 320,
-        "accel0to100": 12.1,
-        "batteryKwh": 90
-      }
-    ]
+    "wikipediaSlug": "Mercedes-Benz_eqv"
   },
   {
     "id": "mercedes-benz-evito-tourer-extra-long-60-kwh",
@@ -10560,16 +11195,7 @@ window.evData = [
         "rating": 7
       }
     ],
-    "wikipediaSlug": "Mercedes-Benz_evito_tourer_extra-long",
-    "variants": [
-      {
-        "name": "60 kWh",
-        "priceEur": 69309,
-        "rangeKm": 215,
-        "accel0to100": 12,
-        "batteryKwh": 60
-      }
-    ]
+    "wikipediaSlug": "Mercedes-Benz_evito_tourer_extra-long"
   },
   {
     "id": "mercedes-benz-evito-tourer-long-60-kwh",
@@ -10676,16 +11302,7 @@ window.evData = [
         "rating": 8.1
       }
     ],
-    "wikipediaSlug": "Mercedes-Benz_g",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 183638,
-        "rangeKm": 395,
-        "accel0to100": 4.7,
-        "batteryKwh": 116
-      }
-    ]
+    "wikipediaSlug": "Mercedes-Benz_g"
   },
   {
     "id": "mercedes-benz-glb-250",
@@ -10710,16 +11327,7 @@ window.evData = [
         "rating": 8.4
       }
     ],
-    "wikipediaSlug": "Mercedes-Benz_glb",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 56415,
-        "rangeKm": 465,
-        "accel0to100": 7.4,
-        "batteryKwh": 85
-      }
-    ]
+    "wikipediaSlug": "Mercedes-Benz_glb"
   },
   {
     "id": "mercedes-benz-glb-350-4matic",
@@ -10744,16 +11352,7 @@ window.evData = [
         "rating": 8.5
       }
     ],
-    "wikipediaSlug": "Mercedes-Benz_glb_4matic",
-    "variants": [
-      {
-        "name": "4MATIC",
-        "priceEur": 64781,
-        "rangeKm": 460,
-        "accel0to100": 5.5,
-        "batteryKwh": 85
-      }
-    ]
+    "wikipediaSlug": "Mercedes-Benz_glb_4matic"
   },
   {
     "id": "mercedes-benz-glc-400-4matic",
@@ -10778,16 +11377,7 @@ window.evData = [
         "rating": 8.6
       }
     ],
-    "wikipediaSlug": "Mercedes-Benz_glc_4matic",
-    "variants": [
-      {
-        "name": "4MATIC",
-        "priceEur": 71104,
-        "rangeKm": 500,
-        "accel0to100": 4.3,
-        "batteryKwh": 94
-      }
-    ]
+    "wikipediaSlug": "Mercedes-Benz_glc_4matic"
   },
   {
     "id": "mg-cyberster-gt",
@@ -10812,16 +11402,7 @@ window.evData = [
         "rating": 8.1
       }
     ],
-    "wikipediaSlug": "MG_cyberster",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 70043,
-        "rangeKm": 395,
-        "accel0to100": 3.2,
-        "batteryKwh": 74.4
-      }
-    ]
+    "wikipediaSlug": "MG_cyberster"
   },
   {
     "id": "mg-cyberster-trophy",
@@ -10846,16 +11427,7 @@ window.evData = [
         "rating": 8
       }
     ],
-    "wikipediaSlug": "MG_cyberster_trophy",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 64960,
-        "rangeKm": 425,
-        "accel0to100": 5,
-        "batteryKwh": 74.4
-      }
-    ]
+    "wikipediaSlug": "MG_cyberster_trophy"
   },
   {
     "id": "mg-im5-long-range",
@@ -11109,11 +11681,25 @@ window.evData = [
     "wikipediaSlug": "MG_MG4_EV",
     "variants": [
       {
-        "name": "Standard",
+        "name": "51 kWh (MY22-25)",
         "priceEur": 33430,
         "rangeKm": 300,
         "accel0to100": 7.7,
         "batteryKwh": 50.8
+      },
+      {
+        "name": "64 kWh (MY22-25)",
+        "priceEur": 37255,
+        "rangeKm": 360,
+        "accel0to100": 7.9,
+        "batteryKwh": 61.7
+      },
+      {
+        "name": "77 kWh (MY23-25)",
+        "priceEur": 43738,
+        "rangeKm": 425,
+        "accel0to100": 6.5,
+        "batteryKwh": 74.4
       }
     ]
   },
@@ -11143,11 +11729,25 @@ window.evData = [
     "wikipediaSlug": "MG_MG4_EV",
     "variants": [
       {
-        "name": "Standard",
+        "name": "51 kWh (MY22-25)",
+        "priceEur": 33430,
+        "rangeKm": 300,
+        "accel0to100": 7.7,
+        "batteryKwh": 50.8
+      },
+      {
+        "name": "64 kWh (MY22-25)",
         "priceEur": 37255,
         "rangeKm": 360,
         "accel0to100": 7.9,
         "batteryKwh": 61.7
+      },
+      {
+        "name": "77 kWh (MY23-25)",
+        "priceEur": 43738,
+        "rangeKm": 425,
+        "accel0to100": 6.5,
+        "batteryKwh": 74.4
       }
     ]
   },
@@ -11177,7 +11777,21 @@ window.evData = [
     "wikipediaSlug": "MG_MG4_EV",
     "variants": [
       {
-        "name": "Standard",
+        "name": "51 kWh (MY22-25)",
+        "priceEur": 33430,
+        "rangeKm": 300,
+        "accel0to100": 7.7,
+        "batteryKwh": 50.8
+      },
+      {
+        "name": "64 kWh (MY22-25)",
+        "priceEur": 37255,
+        "rangeKm": 360,
+        "accel0to100": 7.9,
+        "batteryKwh": 61.7
+      },
+      {
+        "name": "77 kWh (MY23-25)",
         "priceEur": 43738,
         "rangeKm": 425,
         "accel0to100": 6.5,
@@ -11208,16 +11822,7 @@ window.evData = [
         "rating": 7.9
       }
     ],
-    "wikipediaSlug": "MG_MG4_EV",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 44405,
-        "rangeKm": 320,
-        "accel0to100": 3.8,
-        "batteryKwh": 61.7
-      }
-    ]
+    "wikipediaSlug": "MG_MG4_EV"
   },
   {
     "id": "mg-mg4-premium-extended-range",
@@ -11468,16 +12073,7 @@ window.evData = [
         "rating": 7.9
       }
     ],
-    "wikipediaSlug": "MG_MG4_EV",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 39094,
-        "rangeKm": 325,
-        "accel0to100": 3.8,
-        "batteryKwh": 61.7
-      }
-    ]
+    "wikipediaSlug": "MG_MG4_EV"
   },
   {
     "id": "mg-mgs5-ev-49-kwh",
@@ -11666,16 +12262,7 @@ window.evData = [
         "rating": 7.3
       }
     ],
-    "wikipediaSlug": "Mini_aceman_e",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 36820,
-        "rangeKm": 230,
-        "accel0to100": 7.9,
-        "batteryKwh": 38.5
-      }
-    ]
+    "wikipediaSlug": "Mini_aceman_e"
   },
   {
     "id": "mini-aceman-jcw",
@@ -11700,16 +12287,7 @@ window.evData = [
         "rating": 7.5
       }
     ],
-    "wikipediaSlug": "Mini_aceman_jcw",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 47520,
-        "rangeKm": 280,
-        "accel0to100": 6.4,
-        "batteryKwh": 49.2
-      }
-    ]
+    "wikipediaSlug": "Mini_aceman_jcw"
   },
   {
     "id": "mini-aceman-se",
@@ -11734,16 +12312,7 @@ window.evData = [
         "rating": 7.5
       }
     ],
-    "wikipediaSlug": "Mini_aceman_se",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 40761,
-        "rangeKm": 290,
-        "accel0to100": 7.1,
-        "batteryKwh": 49.2
-      }
-    ]
+    "wikipediaSlug": "Mini_aceman_se"
   },
   {
     "id": "mini-cooper-e",
@@ -11768,16 +12337,7 @@ window.evData = [
         "rating": 7.4
       }
     ],
-    "wikipediaSlug": "Mini_cooper_e",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 34463,
-        "rangeKm": 250,
-        "accel0to100": 7.3,
-        "batteryKwh": 36.6
-      }
-    ]
+    "wikipediaSlug": "Mini_cooper_e"
   },
   {
     "id": "mini-cooper-jcw",
@@ -11802,16 +12362,7 @@ window.evData = [
         "rating": 7.6
       }
     ],
-    "wikipediaSlug": "Mini_cooper_jcw",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 45330,
-        "rangeKm": 290,
-        "accel0to100": 5.9,
-        "batteryKwh": 49.2
-      }
-    ]
+    "wikipediaSlug": "Mini_cooper_jcw"
   },
   {
     "id": "mini-cooper-se",
@@ -11836,16 +12387,7 @@ window.evData = [
         "rating": 7.7
       }
     ],
-    "wikipediaSlug": "Mini_cooper_se",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 38521,
-        "rangeKm": 330,
-        "accel0to100": 6.7,
-        "batteryKwh": 49.2
-      }
-    ]
+    "wikipediaSlug": "Mini_cooper_se"
   },
   {
     "id": "mini-countryman-e",
@@ -11870,16 +12412,7 @@ window.evData = [
         "rating": 7.8
       }
     ],
-    "wikipediaSlug": "Mini_countryman_e",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 37584,
-        "rangeKm": 400,
-        "accel0to100": 8.6,
-        "batteryKwh": 65.2
-      }
-    ]
+    "wikipediaSlug": "Mini_countryman_e"
   },
   {
     "id": "mini-countryman-se-all4",
@@ -11904,16 +12437,7 @@ window.evData = [
         "rating": 7.9
       }
     ],
-    "wikipediaSlug": "Mini_countryman_se_all4",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 42159,
-        "rangeKm": 385,
-        "accel0to100": 5.6,
-        "batteryKwh": 65.2
-      }
-    ]
+    "wikipediaSlug": "Mini_countryman_se_all4"
   },
   {
     "id": "mitsubishi-eclipse-cross-87-kwh",
@@ -11938,16 +12462,7 @@ window.evData = [
         "rating": 8.1
       }
     ],
-    "wikipediaSlug": "Mitsubishi_eclipse_cross",
-    "variants": [
-      {
-        "name": "87 kWh",
-        "priceEur": 46840,
-        "rangeKm": 480,
-        "accel0to100": 7.9,
-        "batteryKwh": 87
-      }
-    ]
+    "wikipediaSlug": "Mitsubishi_eclipse_cross"
   },
   {
     "id": "nio-el6-long-range",
@@ -12300,16 +12815,7 @@ window.evData = [
         "rating": 8
       }
     ],
-    "wikipediaSlug": "Nissan_Ariya",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 55168,
-        "rangeKm": 405,
-        "accel0to100": 5.7,
-        "batteryKwh": 87
-      }
-    ]
+    "wikipediaSlug": "Nissan_Ariya"
   },
   {
     "id": "nissan-ariya-e-4orce-87kwh-320-kw-nismo",
@@ -12334,16 +12840,7 @@ window.evData = [
         "rating": 8
       }
     ],
-    "wikipediaSlug": "Nissan_Ariya",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 63434,
-        "rangeKm": 385,
-        "accel0to100": 5,
-        "batteryKwh": 87
-      }
-    ]
+    "wikipediaSlug": "Nissan_Ariya"
   },
   {
     "id": "nissan-leaf-extended-range-75-kwh",
@@ -12532,16 +13029,7 @@ window.evData = [
         "rating": 7
       }
     ],
-    "wikipediaSlug": "Nissan_townstar_passenger",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 39990,
-        "rangeKm": 225,
-        "accel0to100": 12.6,
-        "batteryKwh": 45
-      }
-    ]
+    "wikipediaSlug": "Nissan_townstar_passenger"
   },
   {
     "id": "nissan-townstar-ev-passenger-l2",
@@ -12566,16 +13054,7 @@ window.evData = [
         "rating": 6.9
       }
     ],
-    "wikipediaSlug": "Nissan_townstar_passenger_l2",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 42790,
-        "rangeKm": 220,
-        "accel0to100": 13.3,
-        "batteryKwh": 45
-      }
-    ]
+    "wikipediaSlug": "Nissan_townstar_passenger_l2"
   },
   {
     "id": "omoda-e5",
@@ -12600,16 +13079,7 @@ window.evData = [
         "rating": 7.7
       }
     ],
-    "wikipediaSlug": "Omoda_e5",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 34001,
-        "rangeKm": 330,
-        "accel0to100": 7.6,
-        "batteryKwh": 58.9
-      }
-    ]
+    "wikipediaSlug": "Omoda_e5"
   },
   {
     "id": "opel-astra-electric-58-kwh",
@@ -12634,16 +13104,7 @@ window.evData = [
         "rating": 7.6
       }
     ],
-    "wikipediaSlug": "Opel_astra",
-    "variants": [
-      {
-        "name": "58 kWh",
-        "priceEur": 37244,
-        "rangeKm": 345,
-        "accel0to100": 9.3,
-        "batteryKwh": 55.4
-      }
-    ]
+    "wikipediaSlug": "Opel_astra"
   },
   {
     "id": "opel-astra-sports-tourer-electric-58-kwh",
@@ -12668,16 +13129,7 @@ window.evData = [
         "rating": 7.5
       }
     ],
-    "wikipediaSlug": "Opel_astra_sports_tourer",
-    "variants": [
-      {
-        "name": "58 kWh",
-        "priceEur": 38494,
-        "rangeKm": 335,
-        "accel0to100": 9.5,
-        "batteryKwh": 55.4
-      }
-    ]
+    "wikipediaSlug": "Opel_astra_sports_tourer"
   },
   {
     "id": "opel-combo-electric-50-kwh",
@@ -12702,16 +13154,7 @@ window.evData = [
         "rating": 7.2
       }
     ],
-    "wikipediaSlug": "Opel_combo",
-    "variants": [
-      {
-        "name": "50 kWh",
-        "priceEur": 38885,
-        "rangeKm": 235,
-        "accel0to100": 11.3,
-        "batteryKwh": 50
-      }
-    ]
+    "wikipediaSlug": "Opel_combo"
   },
   {
     "id": "opel-combo-electric-xl-50-kwh",
@@ -12736,16 +13179,7 @@ window.evData = [
         "rating": 7.2
       }
     ],
-    "wikipediaSlug": "Opel_combo_xl",
-    "variants": [
-      {
-        "name": "50 kWh",
-        "priceEur": 40170,
-        "rangeKm": 230,
-        "accel0to100": 11.3,
-        "batteryKwh": 50
-      }
-    ]
+    "wikipediaSlug": "Opel_combo_xl"
   },
   {
     "id": "opel-corsa-electric-50-kwh",
@@ -13078,16 +13512,7 @@ window.evData = [
         "rating": 7.5
       }
     ],
-    "wikipediaSlug": "Opel_mokka",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 35464,
-        "rangeKm": 285,
-        "accel0to100": 9,
-        "batteryKwh": 50.8
-      }
-    ]
+    "wikipediaSlug": "Opel_mokka"
   },
   {
     "id": "opel-mokka-electric-gse",
@@ -13112,16 +13537,7 @@ window.evData = [
         "rating": 7.6
       }
     ],
-    "wikipediaSlug": "Opel_mokka_gse",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 44039,
-        "rangeKm": 280,
-        "accel0to100": 5.9,
-        "batteryKwh": 50.8
-      }
-    ]
+    "wikipediaSlug": "Opel_mokka_gse"
   },
   {
     "id": "opel-zafira-electric-50-kwh",
@@ -13310,16 +13726,7 @@ window.evData = [
         "rating": 7.5
       }
     ],
-    "wikipediaSlug": "Peugeot_e-2008",
-    "variants": [
-      {
-        "name": "54 kWh",
-        "priceEur": 38745,
-        "rangeKm": 300,
-        "accel0to100": 9.1,
-        "batteryKwh": 50.8
-      }
-    ]
+    "wikipediaSlug": "Peugeot_e-2008"
   },
   {
     "id": "peugeot-e-208-50-kwh",
@@ -13570,16 +13977,7 @@ window.evData = [
         "rating": 7.6
       }
     ],
-    "wikipediaSlug": "Peugeot_e-308",
-    "variants": [
-      {
-        "name": "58 kWh",
-        "priceEur": 37768,
-        "rangeKm": 345,
-        "accel0to100": 9.3,
-        "batteryKwh": 55.4
-      }
-    ]
+    "wikipediaSlug": "Peugeot_e-308"
   },
   {
     "id": "peugeot-e-308-sw-58-kwh",
@@ -13604,16 +14002,7 @@ window.evData = [
         "rating": 7.5
       }
     ],
-    "wikipediaSlug": "Peugeot_e-308_sw",
-    "variants": [
-      {
-        "name": "58 kWh",
-        "priceEur": 38994,
-        "rangeKm": 340,
-        "accel0to100": 9.5,
-        "batteryKwh": 55.4
-      }
-    ]
+    "wikipediaSlug": "Peugeot_e-308_sw"
   },
   {
     "id": "peugeot-e-408-58-kwh",
@@ -13864,16 +14253,7 @@ window.evData = [
         "rating": 7.2
       }
     ],
-    "wikipediaSlug": "Peugeot_e-rifter_m",
-    "variants": [
-      {
-        "name": "50 kWh",
-        "priceEur": 38945,
-        "rangeKm": 235,
-        "accel0to100": 11.7,
-        "batteryKwh": 50
-      }
-    ]
+    "wikipediaSlug": "Peugeot_e-rifter_m"
   },
   {
     "id": "peugeot-e-rifter-xl-50-kwh",
@@ -13898,16 +14278,7 @@ window.evData = [
         "rating": 7.1
       }
     ],
-    "wikipediaSlug": "Peugeot_e-rifter_xl",
-    "variants": [
-      {
-        "name": "50 kWh",
-        "priceEur": 40230,
-        "rangeKm": 230,
-        "accel0to100": 11.7,
-        "batteryKwh": 50
-      }
-    ]
+    "wikipediaSlug": "Peugeot_e-rifter_xl"
   },
   {
     "id": "peugeot-e-traveller-l2-50-kwh",
@@ -14319,11 +14690,32 @@ window.evData = [
     "wikipediaSlug": "Polestar_3",
     "variants": [
       {
+        "name": "Long Range Single motor (MY23-25)",
+        "priceEur": 79641,
+        "rangeKm": 530,
+        "accel0to100": 7.8,
+        "batteryKwh": 107
+      },
+      {
+        "name": "Long Range Dual motor (MY23-25)",
+        "priceEur": 86608,
+        "rangeKm": 515,
+        "accel0to100": 5,
+        "batteryKwh": 107
+      },
+      {
         "name": "Dual Motor",
         "priceEur": 89688,
         "rangeKm": 500,
         "accel0to100": 4.7,
         "batteryKwh": 102
+      },
+      {
+        "name": "Long Range Performance (MY23-25)",
+        "priceEur": 93155,
+        "rangeKm": 480,
+        "accel0to100": 4.7,
+        "batteryKwh": 107
       },
       {
         "name": "Performance",
@@ -14360,11 +14752,39 @@ window.evData = [
     "wikipediaSlug": "Polestar_3_my23-25",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Long Range Single motor (MY23-25)",
+        "priceEur": 79641,
+        "rangeKm": 530,
+        "accel0to100": 7.8,
+        "batteryKwh": 107
+      },
+      {
+        "name": "Long Range Dual motor (MY23-25)",
         "priceEur": 86608,
         "rangeKm": 515,
         "accel0to100": 5,
         "batteryKwh": 107
+      },
+      {
+        "name": "Dual Motor",
+        "priceEur": 89688,
+        "rangeKm": 500,
+        "accel0to100": 4.7,
+        "batteryKwh": 102
+      },
+      {
+        "name": "Long Range Performance (MY23-25)",
+        "priceEur": 93155,
+        "rangeKm": 480,
+        "accel0to100": 4.7,
+        "batteryKwh": 107
+      },
+      {
+        "name": "Performance",
+        "priceEur": 105788,
+        "rangeKm": 460,
+        "accel0to100": 3.9,
+        "batteryKwh": 102
       }
     ]
   },
@@ -14394,11 +14814,39 @@ window.evData = [
     "wikipediaSlug": "Polestar_3_my23-25",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Long Range Single motor (MY23-25)",
+        "priceEur": 79641,
+        "rangeKm": 530,
+        "accel0to100": 7.8,
+        "batteryKwh": 107
+      },
+      {
+        "name": "Long Range Dual motor (MY23-25)",
+        "priceEur": 86608,
+        "rangeKm": 515,
+        "accel0to100": 5,
+        "batteryKwh": 107
+      },
+      {
+        "name": "Dual Motor",
+        "priceEur": 89688,
+        "rangeKm": 500,
+        "accel0to100": 4.7,
+        "batteryKwh": 102
+      },
+      {
+        "name": "Long Range Performance (MY23-25)",
         "priceEur": 93155,
         "rangeKm": 480,
         "accel0to100": 4.7,
         "batteryKwh": 107
+      },
+      {
+        "name": "Performance",
+        "priceEur": 105788,
+        "rangeKm": 460,
+        "accel0to100": 3.9,
+        "batteryKwh": 102
       }
     ]
   },
@@ -14428,11 +14876,39 @@ window.evData = [
     "wikipediaSlug": "Polestar_3_my23-25",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Long Range Single motor (MY23-25)",
         "priceEur": 79641,
         "rangeKm": 530,
         "accel0to100": 7.8,
         "batteryKwh": 107
+      },
+      {
+        "name": "Long Range Dual motor (MY23-25)",
+        "priceEur": 86608,
+        "rangeKm": 515,
+        "accel0to100": 5,
+        "batteryKwh": 107
+      },
+      {
+        "name": "Dual Motor",
+        "priceEur": 89688,
+        "rangeKm": 500,
+        "accel0to100": 4.7,
+        "batteryKwh": 102
+      },
+      {
+        "name": "Long Range Performance (MY23-25)",
+        "priceEur": 93155,
+        "rangeKm": 480,
+        "accel0to100": 4.7,
+        "batteryKwh": 107
+      },
+      {
+        "name": "Performance",
+        "priceEur": 105788,
+        "rangeKm": 460,
+        "accel0to100": 3.9,
+        "batteryKwh": 102
       }
     ]
   },
@@ -14462,11 +14938,32 @@ window.evData = [
     "wikipediaSlug": "Polestar_3",
     "variants": [
       {
+        "name": "Long Range Single motor (MY23-25)",
+        "priceEur": 79641,
+        "rangeKm": 530,
+        "accel0to100": 7.8,
+        "batteryKwh": 107
+      },
+      {
+        "name": "Long Range Dual motor (MY23-25)",
+        "priceEur": 86608,
+        "rangeKm": 515,
+        "accel0to100": 5,
+        "batteryKwh": 107
+      },
+      {
         "name": "Dual Motor",
         "priceEur": 89688,
         "rangeKm": 500,
         "accel0to100": 4.7,
         "batteryKwh": 102
+      },
+      {
+        "name": "Long Range Performance (MY23-25)",
+        "priceEur": 93155,
+        "rangeKm": 480,
+        "accel0to100": 4.7,
+        "batteryKwh": 107
       },
       {
         "name": "Performance",
@@ -14500,16 +14997,7 @@ window.evData = [
         "rating": 8.2
       }
     ],
-    "wikipediaSlug": "Polestar_3_rear",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 80488,
-        "rangeKm": 440,
-        "accel0to100": 6.5,
-        "batteryKwh": 88
-      }
-    ]
+    "wikipediaSlug": "Polestar_3_rear"
   },
   {
     "id": "polestar-4-long-range-dual-motor",
@@ -14698,16 +15186,7 @@ window.evData = [
         "rating": 8.9
       }
     ],
-    "wikipediaSlug": "Porsche_cayenne",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 103667,
-        "rangeKm": 520,
-        "accel0to100": 4.8,
-        "batteryKwh": 108
-      }
-    ]
+    "wikipediaSlug": "Porsche_cayenne"
   },
   {
     "id": "porsche-cayenne-turbo-electric",
@@ -14732,16 +15211,7 @@ window.evData = [
         "rating": 8.9
       }
     ],
-    "wikipediaSlug": "Porsche_cayenne_turbo",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 162585,
-        "rangeKm": 495,
-        "accel0to100": 2.5,
-        "batteryKwh": 108
-      }
-    ]
+    "wikipediaSlug": "Porsche_cayenne_turbo"
   },
   {
     "id": "porsche-macan-4-electric",
@@ -14766,16 +15236,7 @@ window.evData = [
         "rating": 8.5
       }
     ],
-    "wikipediaSlug": "Porsche_macan_4",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 85628,
-        "rangeKm": 470,
-        "accel0to100": 5.2,
-        "batteryKwh": 94.9
-      }
-    ]
+    "wikipediaSlug": "Porsche_macan_4"
   },
   {
     "id": "porsche-macan-4s-electric",
@@ -14800,16 +15261,7 @@ window.evData = [
         "rating": 8.5
       }
     ],
-    "wikipediaSlug": "Porsche_macan_4s",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 92188,
-        "rangeKm": 470,
-        "accel0to100": 4.1,
-        "batteryKwh": 94.9
-      }
-    ]
+    "wikipediaSlug": "Porsche_macan_4s"
   },
   {
     "id": "porsche-macan-electric",
@@ -14834,16 +15286,7 @@ window.evData = [
         "rating": 8.5
       }
     ],
-    "wikipediaSlug": "Porsche_macan",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 82030,
-        "rangeKm": 495,
-        "accel0to100": 5.7,
-        "batteryKwh": 94.9
-      }
-    ]
+    "wikipediaSlug": "Porsche_macan"
   },
   {
     "id": "porsche-macan-gts-electric",
@@ -14868,16 +15311,7 @@ window.evData = [
         "rating": 8.5
       }
     ],
-    "wikipediaSlug": "Porsche_macan",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 105416,
-        "rangeKm": 465,
-        "accel0to100": 3.8,
-        "batteryKwh": 94.9
-      }
-    ]
+    "wikipediaSlug": "Porsche_macan"
   },
   {
     "id": "porsche-macan-turbo-electric",
@@ -14902,16 +15336,7 @@ window.evData = [
         "rating": 8.5
       }
     ],
-    "wikipediaSlug": "Porsche_macan_turbo",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 116441,
-        "rangeKm": 465,
-        "accel0to100": 3.3,
-        "batteryKwh": 94.9
-      }
-    ]
+    "wikipediaSlug": "Porsche_macan_turbo"
   },
   {
     "id": "porsche-taycan",
@@ -14950,6 +15375,13 @@ window.evData = [
         "priceEur": 107232,
         "rangeKm": 575,
         "accel0to100": 4.8,
+        "batteryKwh": 97
+      },
+      {
+        "name": "GTS",
+        "priceEur": 145954,
+        "rangeKm": 535,
+        "accel0to100": 3.3,
         "batteryKwh": 97
       }
     ]
@@ -15018,16 +15450,7 @@ window.evData = [
         "rating": 8.8
       }
     ],
-    "wikipediaSlug": "Porsche_taycan_4_cross_turismo",
-    "variants": [
-      {
-        "name": "Turismo",
-        "priceEur": 114606,
-        "rangeKm": 510,
-        "accel0to100": 4.7,
-        "batteryKwh": 97
-      }
-    ]
+    "wikipediaSlug": "Porsche_taycan_4_cross_turismo"
   },
   {
     "id": "porsche-taycan-4-plus",
@@ -15134,16 +15557,7 @@ window.evData = [
         "rating": 8.8
       }
     ],
-    "wikipediaSlug": "Porsche_taycan_4s_cross_turismo",
-    "variants": [
-      {
-        "name": "Turismo",
-        "priceEur": 124360,
-        "rangeKm": 510,
-        "accel0to100": 3.8,
-        "batteryKwh": 97
-      }
-    ]
+    "wikipediaSlug": "Porsche_taycan_4s_cross_turismo"
   },
   {
     "id": "porsche-taycan-4s-plus",
@@ -15209,16 +15623,7 @@ window.evData = [
         "rating": 8.8
       }
     ],
-    "wikipediaSlug": "Porsche_taycan_4s_turismo",
-    "variants": [
-      {
-        "name": "Turismo",
-        "priceEur": 124244,
-        "rangeKm": 510,
-        "accel0to100": 3.7,
-        "batteryKwh": 97
-      }
-    ]
+    "wikipediaSlug": "Porsche_taycan_4s_turismo"
   },
   {
     "id": "porsche-taycan-4s-sport-turismo",
@@ -15243,16 +15648,7 @@ window.evData = [
         "rating": 8.4
       }
     ],
-    "wikipediaSlug": "Porsche_taycan_4s_turismo",
-    "variants": [
-      {
-        "name": "Turismo",
-        "priceEur": 120268,
-        "rangeKm": 440,
-        "accel0to100": 3.7,
-        "batteryKwh": 82.3
-      }
-    ]
+    "wikipediaSlug": "Porsche_taycan_4s_turismo"
   },
   {
     "id": "porsche-taycan-gts",
@@ -15281,6 +15677,20 @@ window.evData = [
     "variants": [
       {
         "name": "Standard",
+        "priceEur": 102658,
+        "rangeKm": 495,
+        "accel0to100": 4.8,
+        "batteryKwh": 82.3
+      },
+      {
+        "name": "Plus",
+        "priceEur": 107232,
+        "rangeKm": 575,
+        "accel0to100": 4.8,
+        "batteryKwh": 97
+      },
+      {
+        "name": "GTS",
         "priceEur": 145954,
         "rangeKm": 535,
         "accel0to100": 3.3,
@@ -15311,16 +15721,7 @@ window.evData = [
         "rating": 8.8
       }
     ],
-    "wikipediaSlug": "Porsche_taycan_turismo",
-    "variants": [
-      {
-        "name": "Turismo",
-        "priceEur": 146971,
-        "rangeKm": 505,
-        "accel0to100": 3.3,
-        "batteryKwh": 97
-      }
-    ]
+    "wikipediaSlug": "Porsche_taycan_turismo"
   },
   {
     "id": "porsche-taycan-plus",
@@ -15360,6 +15761,13 @@ window.evData = [
         "rangeKm": 575,
         "accel0to100": 4.8,
         "batteryKwh": 97
+      },
+      {
+        "name": "GTS",
+        "priceEur": 145954,
+        "rangeKm": 535,
+        "accel0to100": 3.3,
+        "batteryKwh": 97
       }
     ]
   },
@@ -15386,16 +15794,7 @@ window.evData = [
         "rating": 8.8
       }
     ],
-    "wikipediaSlug": "Porsche_taycan_turismo",
-    "variants": [
-      {
-        "name": "Turismo",
-        "priceEur": 108282,
-        "rangeKm": 530,
-        "accel0to100": 4.8,
-        "batteryKwh": 97
-      }
-    ]
+    "wikipediaSlug": "Porsche_taycan_turismo"
   },
   {
     "id": "porsche-taycan-sport-turismo",
@@ -15420,16 +15819,7 @@ window.evData = [
         "rating": 8.4
       }
     ],
-    "wikipediaSlug": "Porsche_taycan_turismo",
-    "variants": [
-      {
-        "name": "Turismo",
-        "priceEur": 103631,
-        "rangeKm": 460,
-        "accel0to100": 4.8,
-        "batteryKwh": 82.3
-      }
-    ]
+    "wikipediaSlug": "Porsche_taycan_turismo"
   },
   {
     "id": "porsche-taycan-turbo",
@@ -15462,6 +15852,13 @@ window.evData = [
         "rangeKm": 535,
         "accel0to100": 2.7,
         "batteryKwh": 97
+      },
+      {
+        "name": "GT",
+        "priceEur": 235826,
+        "rangeKm": 475,
+        "accel0to100": 2.3,
+        "batteryKwh": 97
       }
     ]
   },
@@ -15488,16 +15885,7 @@ window.evData = [
         "rating": 8.8
       }
     ],
-    "wikipediaSlug": "Porsche_taycan_turbo_cross_turismo",
-    "variants": [
-      {
-        "name": "Turismo",
-        "priceEur": 173476,
-        "rangeKm": 495,
-        "accel0to100": 2.8,
-        "batteryKwh": 97
-      }
-    ]
+    "wikipediaSlug": "Porsche_taycan_turbo_cross_turismo"
   },
   {
     "id": "porsche-taycan-turbo-gt",
@@ -15526,6 +15914,13 @@ window.evData = [
     "variants": [
       {
         "name": "Standard",
+        "priceEur": 171360,
+        "rangeKm": 535,
+        "accel0to100": 2.7,
+        "batteryKwh": 97
+      },
+      {
+        "name": "GT",
         "priceEur": 235826,
         "rangeKm": 475,
         "accel0to100": 2.3,
@@ -15556,16 +15951,7 @@ window.evData = [
         "rating": 8.6
       }
     ],
-    "wikipediaSlug": "Porsche_taycan_turbo_weissach",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 235826,
-        "rangeKm": 475,
-        "accel0to100": 2.2,
-        "batteryKwh": 97
-      }
-    ]
+    "wikipediaSlug": "Porsche_taycan_turbo_weissach"
   },
   {
     "id": "porsche-taycan-turbo-s",
@@ -15590,16 +15976,7 @@ window.evData = [
         "rating": 8.8
       }
     ],
-    "wikipediaSlug": "Porsche_taycan_turbo_s",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 205110,
-        "rangeKm": 525,
-        "accel0to100": 2.4,
-        "batteryKwh": 97
-      }
-    ]
+    "wikipediaSlug": "Porsche_taycan_turbo_s"
   },
   {
     "id": "porsche-taycan-turbo-s-cross-turismo",
@@ -15624,16 +16001,7 @@ window.evData = [
         "rating": 8.7
       }
     ],
-    "wikipediaSlug": "Porsche_taycan_turbo_s_cross",
-    "variants": [
-      {
-        "name": "Turismo",
-        "priceEur": 207226,
-        "rangeKm": 485,
-        "accel0to100": 2.5,
-        "batteryKwh": 97
-      }
-    ]
+    "wikipediaSlug": "Porsche_taycan_turbo_s_cross"
   },
   {
     "id": "porsche-taycan-turbo-s-sport-turismo",
@@ -15658,16 +16026,7 @@ window.evData = [
         "rating": 8.8
       }
     ],
-    "wikipediaSlug": "Porsche_taycan_turbo_s_turismo",
-    "variants": [
-      {
-        "name": "Turismo",
-        "priceEur": 206126,
-        "rangeKm": 505,
-        "accel0to100": 2.4,
-        "batteryKwh": 97
-      }
-    ]
+    "wikipediaSlug": "Porsche_taycan_turbo_s_turismo"
   },
   {
     "id": "porsche-taycan-turbo-sport-turismo",
@@ -15692,16 +16051,7 @@ window.evData = [
         "rating": 8.8
       }
     ],
-    "wikipediaSlug": "Porsche_taycan_turbo_turismo",
-    "variants": [
-      {
-        "name": "Turismo",
-        "priceEur": 172410,
-        "rangeKm": 505,
-        "accel0to100": 2.7,
-        "batteryKwh": 97
-      }
-    ]
+    "wikipediaSlug": "Porsche_taycan_turbo_turismo"
   },
   {
     "id": "renault-4-e-tech-40kwh-120hp",
@@ -15955,10 +16305,17 @@ window.evData = [
     "wikipediaSlug": "Renault_megane_e-tech_ev60_tu2025",
     "variants": [
       {
-        "name": "Standard",
+        "name": "130hp (TU2025)",
         "priceEur": 36490,
         "rangeKm": 380,
         "accel0to100": 10.5,
+        "batteryKwh": 60
+      },
+      {
+        "name": "220hp (TU2025)",
+        "priceEur": 38323,
+        "rangeKm": 380,
+        "accel0to100": 7.4,
         "batteryKwh": 60
       }
     ]
@@ -15989,7 +16346,14 @@ window.evData = [
     "wikipediaSlug": "Renault_megane_e-tech_ev60_tu2025",
     "variants": [
       {
-        "name": "Standard",
+        "name": "130hp (TU2025)",
+        "priceEur": 36490,
+        "rangeKm": 380,
+        "accel0to100": 10.5,
+        "batteryKwh": 60
+      },
+      {
+        "name": "220hp (TU2025)",
         "priceEur": 38323,
         "rangeKm": 380,
         "accel0to100": 7.4,
@@ -16020,16 +16384,7 @@ window.evData = [
         "rating": 7.6
       }
     ],
-    "wikipediaSlug": "Renault_Scenic_E-Tech",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 39945,
-        "rangeKm": 340,
-        "accel0to100": 8.6,
-        "batteryKwh": 60
-      }
-    ]
+    "wikipediaSlug": "Renault_Scenic_E-Tech"
   },
   {
     "id": "renault-scenic-e-tech-ev87-220hp-tu2025",
@@ -16054,16 +16409,7 @@ window.evData = [
         "rating": 8.1
       }
     ],
-    "wikipediaSlug": "Renault_Scenic_E-Tech",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 44669,
-        "rangeKm": 480,
-        "accel0to100": 7.9,
-        "batteryKwh": 87
-      }
-    ]
+    "wikipediaSlug": "Renault_Scenic_E-Tech"
   },
   {
     "id": "renault-twingo-e-tech-27-5-kwh",
@@ -16088,16 +16434,7 @@ window.evData = [
         "rating": 6.9
       }
     ],
-    "wikipediaSlug": "Renault_twingo_e-tech_27.5",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 20730,
-        "rangeKm": 185,
-        "accel0to100": 12.1,
-        "batteryKwh": 27.5
-      }
-    ]
+    "wikipediaSlug": "Renault_twingo_e-tech_27.5"
   },
   {
     "id": "rolls-royce-spectre",
@@ -16122,16 +16459,7 @@ window.evData = [
         "rating": 7.9
       }
     ],
-    "wikipediaSlug": "Rolls-Royce_spectre",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 384930,
-        "rangeKm": 465,
-        "accel0to100": 4.5,
-        "batteryKwh": 102
-      }
-    ]
+    "wikipediaSlug": "Rolls-Royce_spectre"
   },
   {
     "id": "skoda-elroq-50",
@@ -16156,16 +16484,7 @@ window.evData = [
         "rating": 7.5
       }
     ],
-    "wikipediaSlug": "Skoda_elroq",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 34543,
-        "rangeKm": 310,
-        "accel0to100": 9,
-        "batteryKwh": 52
-      }
-    ]
+    "wikipediaSlug": "Skoda_elroq"
   },
   {
     "id": "skoda-elroq-60",
@@ -16190,16 +16509,7 @@ window.evData = [
         "rating": 7.7
       }
     ],
-    "wikipediaSlug": "Skoda_elroq",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 37846,
-        "rangeKm": 350,
-        "accel0to100": 8.5,
-        "batteryKwh": 59
-      }
-    ]
+    "wikipediaSlug": "Skoda_elroq"
   },
   {
     "id": "skoda-elroq-85",
@@ -16224,16 +16534,7 @@ window.evData = [
         "rating": 8.1
       }
     ],
-    "wikipediaSlug": "Skoda_elroq",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 43021,
-        "rangeKm": 450,
-        "accel0to100": 6.6,
-        "batteryKwh": 77
-      }
-    ]
+    "wikipediaSlug": "Skoda_elroq"
   },
   {
     "id": "skoda-elroq-85x",
@@ -16258,16 +16559,7 @@ window.evData = [
         "rating": 8.1
       }
     ],
-    "wikipediaSlug": "Skoda_elroq_85x",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 46450,
-        "rangeKm": 445,
-        "accel0to100": 6.6,
-        "batteryKwh": 77
-      }
-    ]
+    "wikipediaSlug": "Skoda_elroq_85x"
   },
   {
     "id": "skoda-elroq-rs",
@@ -16292,16 +16584,7 @@ window.evData = [
         "rating": 8.3
       }
     ],
-    "wikipediaSlug": "Skoda_elroq_rs",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 53028,
-        "rangeKm": 455,
-        "accel0to100": 5.4,
-        "batteryKwh": 79
-      }
-    ]
+    "wikipediaSlug": "Skoda_elroq_rs"
   },
   {
     "id": "skoda-enyaq-60",
@@ -16326,16 +16609,7 @@ window.evData = [
         "rating": 7.8
       }
     ],
-    "wikipediaSlug": "Skoda_Enyaq",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 43508,
-        "rangeKm": 360,
-        "accel0to100": 8.1,
-        "batteryKwh": 59
-      }
-    ]
+    "wikipediaSlug": "Skoda_Enyaq"
   },
   {
     "id": "skoda-enyaq-85",
@@ -16360,16 +16634,7 @@ window.evData = [
         "rating": 8.1
       }
     ],
-    "wikipediaSlug": "Skoda_Enyaq",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 47147,
-        "rangeKm": 455,
-        "accel0to100": 6.7,
-        "batteryKwh": 77
-      }
-    ]
+    "wikipediaSlug": "Skoda_Enyaq"
   },
   {
     "id": "skoda-enyaq-85x",
@@ -16476,16 +16741,7 @@ window.evData = [
         "rating": 7.8
       }
     ],
-    "wikipediaSlug": "Skoda_Enyaq",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 45920,
-        "rangeKm": 370,
-        "accel0to100": 8.1,
-        "batteryKwh": 59
-      }
-    ]
+    "wikipediaSlug": "Skoda_Enyaq"
   },
   {
     "id": "skoda-enyaq-coupe-85",
@@ -16510,16 +16766,7 @@ window.evData = [
         "rating": 8.2
       }
     ],
-    "wikipediaSlug": "Skoda_Enyaq",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 50185,
-        "rangeKm": 470,
-        "accel0to100": 6.7,
-        "batteryKwh": 77
-      }
-    ]
+    "wikipediaSlug": "Skoda_Enyaq"
   },
   {
     "id": "skoda-enyaq-coupe-85x",
@@ -16626,16 +16873,7 @@ window.evData = [
         "rating": 8.3
       }
     ],
-    "wikipediaSlug": "Skoda_Enyaq",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 59426,
-        "rangeKm": 470,
-        "accel0to100": 5.4,
-        "batteryKwh": 79
-      }
-    ]
+    "wikipediaSlug": "Skoda_Enyaq"
   },
   {
     "id": "skoda-enyaq-rs",
@@ -16660,16 +16898,7 @@ window.evData = [
         "rating": 8.3
       }
     ],
-    "wikipediaSlug": "Skoda_Enyaq",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 57281,
-        "rangeKm": 460,
-        "accel0to100": 5.4,
-        "batteryKwh": 79
-      }
-    ]
+    "wikipediaSlug": "Skoda_Enyaq"
   },
   {
     "id": "skywell-be11-long-range",
@@ -16776,16 +17005,7 @@ window.evData = [
         "rating": 7.9
       }
     ],
-    "wikipediaSlug": "Smart_1_brabus",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 49398,
-        "rangeKm": 325,
-        "accel0to100": 3.9,
-        "batteryKwh": 62
-      }
-    ]
+    "wikipediaSlug": "Smart_1_brabus"
   },
   {
     "id": "smart-1-premium",
@@ -16812,6 +17032,13 @@ window.evData = [
     ],
     "wikipediaSlug": "Smart_1_premium",
     "variants": [
+      {
+        "name": "Pure",
+        "priceEur": 33814,
+        "rangeKm": 250,
+        "accel0to100": 6.7,
+        "batteryKwh": 47
+      },
       {
         "name": "Pro",
         "priceEur": 36631,
@@ -16854,6 +17081,13 @@ window.evData = [
     "wikipediaSlug": "Smart_1",
     "variants": [
       {
+        "name": "Pure",
+        "priceEur": 33814,
+        "rangeKm": 250,
+        "accel0to100": 6.7,
+        "batteryKwh": 47
+      },
+      {
         "name": "Pro",
         "priceEur": 36631,
         "rangeKm": 250,
@@ -16892,16 +17126,7 @@ window.evData = [
         "rating": 7.8
       }
     ],
-    "wikipediaSlug": "Smart_1",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 41498,
-        "rangeKm": 335,
-        "accel0to100": 6.7,
-        "batteryKwh": 62
-      }
-    ]
+    "wikipediaSlug": "Smart_1"
   },
   {
     "id": "smart-1-pulse",
@@ -16926,16 +17151,7 @@ window.evData = [
         "rating": 7.9
       }
     ],
-    "wikipediaSlug": "Smart_1_pulse",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 44495,
-        "rangeKm": 325,
-        "accel0to100": 4.5,
-        "batteryKwh": 62
-      }
-    ]
+    "wikipediaSlug": "Smart_1_pulse"
   },
   {
     "id": "smart-1-pure",
@@ -16963,11 +17179,25 @@ window.evData = [
     "wikipediaSlug": "Smart_1_pure",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Pure",
         "priceEur": 33814,
         "rangeKm": 250,
         "accel0to100": 6.7,
         "batteryKwh": 47
+      },
+      {
+        "name": "Pro",
+        "priceEur": 36631,
+        "rangeKm": 250,
+        "accel0to100": 6.7,
+        "batteryKwh": 47
+      },
+      {
+        "name": "Premium",
+        "priceEur": 44366,
+        "rangeKm": 335,
+        "accel0to100": 6.7,
+        "batteryKwh": 62
       }
     ]
   },
@@ -16994,16 +17224,7 @@ window.evData = [
         "rating": 7.8
       }
     ],
-    "wikipediaSlug": "Smart_1_pure",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 38495,
-        "rangeKm": 335,
-        "accel0to100": 6.7,
-        "batteryKwh": 62
-      }
-    ]
+    "wikipediaSlug": "Smart_1_pure"
   },
   {
     "id": "smart-3-brabus",
@@ -17028,16 +17249,7 @@ window.evData = [
         "rating": 8
       }
     ],
-    "wikipediaSlug": "Smart_3_brabus",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 50804,
-        "rangeKm": 350,
-        "accel0to100": 3.7,
-        "batteryKwh": 62
-      }
-    ]
+    "wikipediaSlug": "Smart_3_brabus"
   },
   {
     "id": "smart-3-premium",
@@ -17144,16 +17356,7 @@ window.evData = [
         "rating": 7.9
       }
     ],
-    "wikipediaSlug": "Smart_3",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 42546,
-        "rangeKm": 355,
-        "accel0to100": 5.8,
-        "batteryKwh": 62
-      }
-    ]
+    "wikipediaSlug": "Smart_3"
   },
   {
     "id": "smart-5-brabus",
@@ -17178,16 +17381,7 @@ window.evData = [
         "rating": 8.7
       }
     ],
-    "wikipediaSlug": "Smart_5_brabus",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 61303,
-        "rangeKm": 460,
-        "accel0to100": 3.8,
-        "batteryKwh": 96
-      }
-    ]
+    "wikipediaSlug": "Smart_5_brabus"
   },
   {
     "id": "smart-5-premium",
@@ -17294,16 +17488,7 @@ window.evData = [
         "rating": 8.6
       }
     ],
-    "wikipediaSlug": "Smart_5",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 51570,
-        "rangeKm": 475,
-        "accel0to100": 6.5,
-        "batteryKwh": 96
-      }
-    ]
+    "wikipediaSlug": "Smart_5"
   },
   {
     "id": "smart-5-pulse",
@@ -17328,16 +17513,7 @@ window.evData = [
         "rating": 8.6
       }
     ],
-    "wikipediaSlug": "Smart_5_pulse",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 55911,
-        "rangeKm": 465,
-        "accel0to100": 4.9,
-        "batteryKwh": 96
-      }
-    ]
+    "wikipediaSlug": "Smart_5_pulse"
   },
   {
     "id": "smart-5-summit-edition",
@@ -17362,16 +17538,7 @@ window.evData = [
         "rating": 8.6
       }
     ],
-    "wikipediaSlug": "Smart_5_summit",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 57486,
-        "rangeKm": 460,
-        "accel0to100": 4.9,
-        "batteryKwh": 96
-      }
-    ]
+    "wikipediaSlug": "Smart_5_summit"
   },
   {
     "id": "subaru-solterra-awd-my22-25",
@@ -17399,7 +17566,14 @@ window.evData = [
     "wikipediaSlug": "Subaru_solterra_my22-25",
     "variants": [
       {
-        "name": "Standard",
+        "name": "AWD 73.1 kWh",
+        "priceEur": 48900,
+        "rangeKm": 370,
+        "accel0to100": 5.1,
+        "batteryKwh": 69
+      },
+      {
+        "name": "AWD (MY22-25)",
         "priceEur": 55993,
         "rangeKm": 320,
         "accel0to100": 6.9,
@@ -17433,11 +17607,18 @@ window.evData = [
     "wikipediaSlug": "Subaru_solterra_73.1",
     "variants": [
       {
-        "name": "Standard",
+        "name": "AWD 73.1 kWh",
         "priceEur": 48900,
         "rangeKm": 370,
         "accel0to100": 5.1,
         "batteryKwh": 69
+      },
+      {
+        "name": "AWD (MY22-25)",
+        "priceEur": 55993,
+        "rangeKm": 320,
+        "accel0to100": 6.9,
+        "batteryKwh": 64
       }
     ]
   },
@@ -17467,11 +17648,25 @@ window.evData = [
     "wikipediaSlug": "Subaru_uncharted_57.7",
     "variants": [
       {
-        "name": "Standard",
+        "name": "57.7 kWh",
         "priceEur": 37900,
         "rangeKm": 320,
         "accel0to100": 8.4,
         "batteryKwh": 54
+      },
+      {
+        "name": "77 kWh",
+        "priceEur": 42900,
+        "rangeKm": 420,
+        "accel0to100": 7.3,
+        "batteryKwh": 72
+      },
+      {
+        "name": "77 kWh AWD",
+        "priceEur": 48900,
+        "rangeKm": 375,
+        "accel0to100": 5.1,
+        "batteryKwh": 72
       }
     ]
   },
@@ -17500,6 +17695,13 @@ window.evData = [
     ],
     "wikipediaSlug": "Subaru_uncharted",
     "variants": [
+      {
+        "name": "57.7 kWh",
+        "priceEur": 37900,
+        "rangeKm": 320,
+        "accel0to100": 8.4,
+        "batteryKwh": 54
+      },
       {
         "name": "77 kWh",
         "priceEur": 42900,
@@ -17542,6 +17744,13 @@ window.evData = [
     "wikipediaSlug": "Subaru_uncharted",
     "variants": [
       {
+        "name": "57.7 kWh",
+        "priceEur": 37900,
+        "rangeKm": 320,
+        "accel0to100": 8.4,
+        "batteryKwh": 54
+      },
+      {
         "name": "77 kWh",
         "priceEur": 42900,
         "rangeKm": 420,
@@ -17583,11 +17792,18 @@ window.evData = [
     "wikipediaSlug": "Suzuki_e_vitara_2wd",
     "variants": [
       {
-        "name": "Standard",
+        "name": "49 kWh 2WD",
         "priceEur": 32161,
         "rangeKm": 270,
         "accel0to100": 9.6,
         "batteryKwh": 47.8
+      },
+      {
+        "name": "61 kWh 2WD",
+        "priceEur": 36577,
+        "rangeKm": 330,
+        "accel0to100": 8.7,
+        "batteryKwh": 59.8
       }
     ]
   },
@@ -17617,7 +17833,14 @@ window.evData = [
     "wikipediaSlug": "Suzuki_e_vitara_2wd",
     "variants": [
       {
-        "name": "Standard",
+        "name": "49 kWh 2WD",
+        "priceEur": 32161,
+        "rangeKm": 270,
+        "accel0to100": 9.6,
+        "batteryKwh": 47.8
+      },
+      {
+        "name": "61 kWh 2WD",
         "priceEur": 36577,
         "rangeKm": 330,
         "accel0to100": 8.7,
@@ -17648,16 +17871,7 @@ window.evData = [
         "rating": 7.6
       }
     ],
-    "wikipediaSlug": "Suzuki_e_vitara_4wd_allgrip",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 38911,
-        "rangeKm": 310,
-        "accel0to100": 7.4,
-        "batteryKwh": 59.8
-      }
-    ]
+    "wikipediaSlug": "Suzuki_e_vitara_4wd_allgrip"
   },
   {
     "id": "tesla-model-3-performance-highland",
@@ -17685,7 +17899,28 @@ window.evData = [
     "wikipediaSlug": "Tesla_Model_3",
     "variants": [
       {
-        "name": "Standard",
+        "name": "RWD (Highland)",
+        "priceEur": 39549,
+        "rangeKm": 445,
+        "accel0to100": 6.2,
+        "batteryKwh": 60
+      },
+      {
+        "name": "Premium RWD (Highland)",
+        "priceEur": 47899,
+        "rangeKm": 580,
+        "accel0to100": 5.2,
+        "batteryKwh": 79
+      },
+      {
+        "name": "Premium AWD (Highland)",
+        "priceEur": 53149,
+        "rangeKm": 555,
+        "accel0to100": 4.4,
+        "batteryKwh": 79
+      },
+      {
+        "name": "Performance (Highland)",
         "priceEur": 62316,
         "rangeKm": 515,
         "accel0to100": 3.4,
@@ -17719,10 +17954,31 @@ window.evData = [
     "wikipediaSlug": "Tesla_Model_3",
     "variants": [
       {
-        "name": "Standard",
+        "name": "RWD (Highland)",
+        "priceEur": 39549,
+        "rangeKm": 445,
+        "accel0to100": 6.2,
+        "batteryKwh": 60
+      },
+      {
+        "name": "Premium RWD (Highland)",
+        "priceEur": 47899,
+        "rangeKm": 580,
+        "accel0to100": 5.2,
+        "batteryKwh": 79
+      },
+      {
+        "name": "Premium AWD (Highland)",
         "priceEur": 53149,
         "rangeKm": 555,
         "accel0to100": 4.4,
+        "batteryKwh": 79
+      },
+      {
+        "name": "Performance (Highland)",
+        "priceEur": 62316,
+        "rangeKm": 515,
+        "accel0to100": 3.4,
         "batteryKwh": 79
       }
     ]
@@ -17753,10 +18009,31 @@ window.evData = [
     "wikipediaSlug": "Tesla_Model_3",
     "variants": [
       {
-        "name": "Standard",
+        "name": "RWD (Highland)",
+        "priceEur": 39549,
+        "rangeKm": 445,
+        "accel0to100": 6.2,
+        "batteryKwh": 60
+      },
+      {
+        "name": "Premium RWD (Highland)",
         "priceEur": 47899,
         "rangeKm": 580,
         "accel0to100": 5.2,
+        "batteryKwh": 79
+      },
+      {
+        "name": "Premium AWD (Highland)",
+        "priceEur": 53149,
+        "rangeKm": 555,
+        "accel0to100": 4.4,
+        "batteryKwh": 79
+      },
+      {
+        "name": "Performance (Highland)",
+        "priceEur": 62316,
+        "rangeKm": 515,
+        "accel0to100": 3.4,
         "batteryKwh": 79
       }
     ]
@@ -17787,11 +18064,32 @@ window.evData = [
     "wikipediaSlug": "Tesla_Model_3",
     "variants": [
       {
-        "name": "Standard",
+        "name": "RWD (Highland)",
         "priceEur": 39549,
         "rangeKm": 445,
         "accel0to100": 6.2,
         "batteryKwh": 60
+      },
+      {
+        "name": "Premium RWD (Highland)",
+        "priceEur": 47899,
+        "rangeKm": 580,
+        "accel0to100": 5.2,
+        "batteryKwh": 79
+      },
+      {
+        "name": "Premium AWD (Highland)",
+        "priceEur": 53149,
+        "rangeKm": 555,
+        "accel0to100": 4.4,
+        "batteryKwh": 79
+      },
+      {
+        "name": "Performance (Highland)",
+        "priceEur": 62316,
+        "rangeKm": 515,
+        "accel0to100": 3.4,
+        "batteryKwh": 79
       }
     ]
   },
@@ -17826,6 +18124,13 @@ window.evData = [
         "rangeKm": 590,
         "accel0to100": 3.2,
         "batteryKwh": 95
+      },
+      {
+        "name": "Plaid",
+        "priceEur": 120980,
+        "rangeKm": 565,
+        "accel0to100": 2.4,
+        "batteryKwh": 95
       }
     ]
   },
@@ -17855,7 +18160,14 @@ window.evData = [
     "wikipediaSlug": "Tesla_Model_S",
     "variants": [
       {
-        "name": "Standard",
+        "name": "AWD",
+        "priceEur": 110980,
+        "rangeKm": 590,
+        "accel0to100": 3.2,
+        "batteryKwh": 95
+      },
+      {
+        "name": "Plaid",
         "priceEur": 120980,
         "rangeKm": 565,
         "accel0to100": 2.4,
@@ -17894,6 +18206,13 @@ window.evData = [
         "rangeKm": 490,
         "accel0to100": 3.9,
         "batteryKwh": 95
+      },
+      {
+        "name": "Plaid",
+        "priceEur": 125980,
+        "rangeKm": 475,
+        "accel0to100": 2.9,
+        "batteryKwh": 95
       }
     ]
   },
@@ -17923,7 +18242,14 @@ window.evData = [
     "wikipediaSlug": "Tesla_Model_X",
     "variants": [
       {
-        "name": "Standard",
+        "name": "AWD",
+        "priceEur": 115980,
+        "rangeKm": 490,
+        "accel0to100": 3.9,
+        "batteryKwh": 95
+      },
+      {
+        "name": "Plaid",
         "priceEur": 125980,
         "rangeKm": 475,
         "accel0to100": 2.9,
@@ -17957,11 +18283,46 @@ window.evData = [
     "wikipediaSlug": "Tesla_Model_Y",
     "variants": [
       {
-        "name": "Standard",
+        "name": "RWD (Juniper)",
+        "priceEur": 43082,
+        "rangeKm": 380,
+        "accel0to100": 7.2,
+        "batteryKwh": 60
+      },
+      {
+        "name": "Long Range RWD (Juniper)",
         "priceEur": 48899,
         "rangeKm": 490,
         "accel0to100": 7.2,
         "batteryKwh": 77
+      },
+      {
+        "name": "Premium RWD (Juniper)",
+        "priceEur": 51232,
+        "rangeKm": 495,
+        "accel0to100": 5.6,
+        "batteryKwh": 79
+      },
+      {
+        "name": "Premium RWD (Juniper)",
+        "priceEur": 52766,
+        "rangeKm": 470,
+        "accel0to100": 5.6,
+        "batteryKwh": 75
+      },
+      {
+        "name": "Premium AWD (Juniper)",
+        "priceEur": 55916,
+        "rangeKm": 475,
+        "accel0to100": 4.8,
+        "batteryKwh": 79
+      },
+      {
+        "name": "Performance (Juniper)",
+        "priceEur": 65749,
+        "rangeKm": 460,
+        "accel0to100": 3.8,
+        "batteryKwh": 79
       }
     ]
   },
@@ -17991,7 +18352,42 @@ window.evData = [
     "wikipediaSlug": "Tesla_Model_Y",
     "variants": [
       {
-        "name": "Standard",
+        "name": "RWD (Juniper)",
+        "priceEur": 43082,
+        "rangeKm": 380,
+        "accel0to100": 7.2,
+        "batteryKwh": 60
+      },
+      {
+        "name": "Long Range RWD (Juniper)",
+        "priceEur": 48899,
+        "rangeKm": 490,
+        "accel0to100": 7.2,
+        "batteryKwh": 77
+      },
+      {
+        "name": "Premium RWD (Juniper)",
+        "priceEur": 51232,
+        "rangeKm": 495,
+        "accel0to100": 5.6,
+        "batteryKwh": 79
+      },
+      {
+        "name": "Premium RWD (Juniper)",
+        "priceEur": 52766,
+        "rangeKm": 470,
+        "accel0to100": 5.6,
+        "batteryKwh": 75
+      },
+      {
+        "name": "Premium AWD (Juniper)",
+        "priceEur": 55916,
+        "rangeKm": 475,
+        "accel0to100": 4.8,
+        "batteryKwh": 79
+      },
+      {
+        "name": "Performance (Juniper)",
         "priceEur": 65749,
         "rangeKm": 460,
         "accel0to100": 3.8,
@@ -18025,10 +18421,45 @@ window.evData = [
     "wikipediaSlug": "Tesla_Model_Y",
     "variants": [
       {
-        "name": "Standard",
+        "name": "RWD (Juniper)",
+        "priceEur": 43082,
+        "rangeKm": 380,
+        "accel0to100": 7.2,
+        "batteryKwh": 60
+      },
+      {
+        "name": "Long Range RWD (Juniper)",
+        "priceEur": 48899,
+        "rangeKm": 490,
+        "accel0to100": 7.2,
+        "batteryKwh": 77
+      },
+      {
+        "name": "Premium RWD (Juniper)",
+        "priceEur": 51232,
+        "rangeKm": 495,
+        "accel0to100": 5.6,
+        "batteryKwh": 79
+      },
+      {
+        "name": "Premium RWD (Juniper)",
+        "priceEur": 52766,
+        "rangeKm": 470,
+        "accel0to100": 5.6,
+        "batteryKwh": 75
+      },
+      {
+        "name": "Premium AWD (Juniper)",
         "priceEur": 55916,
         "rangeKm": 475,
         "accel0to100": 4.8,
+        "batteryKwh": 79
+      },
+      {
+        "name": "Performance (Juniper)",
+        "priceEur": 65749,
+        "rangeKm": 460,
+        "accel0to100": 3.8,
         "batteryKwh": 79
       }
     ]
@@ -18059,18 +18490,46 @@ window.evData = [
     "wikipediaSlug": "Tesla_Model_Y",
     "variants": [
       {
-        "name": "Standard",
+        "name": "RWD (Juniper)",
+        "priceEur": 43082,
+        "rangeKm": 380,
+        "accel0to100": 7.2,
+        "batteryKwh": 60
+      },
+      {
+        "name": "Long Range RWD (Juniper)",
+        "priceEur": 48899,
+        "rangeKm": 490,
+        "accel0to100": 7.2,
+        "batteryKwh": 77
+      },
+      {
+        "name": "Premium RWD (Juniper)",
         "priceEur": 51232,
         "rangeKm": 495,
         "accel0to100": 5.6,
         "batteryKwh": 79
       },
       {
-        "name": "Standard",
+        "name": "Premium RWD (Juniper)",
         "priceEur": 52766,
         "rangeKm": 470,
         "accel0to100": 5.6,
         "batteryKwh": 75
+      },
+      {
+        "name": "Premium AWD (Juniper)",
+        "priceEur": 55916,
+        "rangeKm": 475,
+        "accel0to100": 4.8,
+        "batteryKwh": 79
+      },
+      {
+        "name": "Performance (Juniper)",
+        "priceEur": 65749,
+        "rangeKm": 460,
+        "accel0to100": 3.8,
+        "batteryKwh": 79
       }
     ]
   },
@@ -18100,18 +18559,46 @@ window.evData = [
     "wikipediaSlug": "Tesla_Model_Y",
     "variants": [
       {
-        "name": "Standard",
+        "name": "RWD (Juniper)",
+        "priceEur": 43082,
+        "rangeKm": 380,
+        "accel0to100": 7.2,
+        "batteryKwh": 60
+      },
+      {
+        "name": "Long Range RWD (Juniper)",
+        "priceEur": 48899,
+        "rangeKm": 490,
+        "accel0to100": 7.2,
+        "batteryKwh": 77
+      },
+      {
+        "name": "Premium RWD (Juniper)",
         "priceEur": 51232,
         "rangeKm": 495,
         "accel0to100": 5.6,
         "batteryKwh": 79
       },
       {
-        "name": "Standard",
+        "name": "Premium RWD (Juniper)",
         "priceEur": 52766,
         "rangeKm": 470,
         "accel0to100": 5.6,
         "batteryKwh": 75
+      },
+      {
+        "name": "Premium AWD (Juniper)",
+        "priceEur": 55916,
+        "rangeKm": 475,
+        "accel0to100": 4.8,
+        "batteryKwh": 79
+      },
+      {
+        "name": "Performance (Juniper)",
+        "priceEur": 65749,
+        "rangeKm": 460,
+        "accel0to100": 3.8,
+        "batteryKwh": 79
       }
     ]
   },
@@ -18141,11 +18628,46 @@ window.evData = [
     "wikipediaSlug": "Tesla_Model_Y",
     "variants": [
       {
-        "name": "Standard",
+        "name": "RWD (Juniper)",
         "priceEur": 43082,
         "rangeKm": 380,
         "accel0to100": 7.2,
         "batteryKwh": 60
+      },
+      {
+        "name": "Long Range RWD (Juniper)",
+        "priceEur": 48899,
+        "rangeKm": 490,
+        "accel0to100": 7.2,
+        "batteryKwh": 77
+      },
+      {
+        "name": "Premium RWD (Juniper)",
+        "priceEur": 51232,
+        "rangeKm": 495,
+        "accel0to100": 5.6,
+        "batteryKwh": 79
+      },
+      {
+        "name": "Premium RWD (Juniper)",
+        "priceEur": 52766,
+        "rangeKm": 470,
+        "accel0to100": 5.6,
+        "batteryKwh": 75
+      },
+      {
+        "name": "Premium AWD (Juniper)",
+        "priceEur": 55916,
+        "rangeKm": 475,
+        "accel0to100": 4.8,
+        "batteryKwh": 79
+      },
+      {
+        "name": "Performance (Juniper)",
+        "priceEur": 65749,
+        "rangeKm": 460,
+        "accel0to100": 3.8,
+        "batteryKwh": 79
       }
     ]
   },
@@ -18463,7 +18985,21 @@ window.evData = [
     "wikipediaSlug": "Toyota_bz4x_73.1",
     "variants": [
       {
-        "name": "Standard",
+        "name": "FWD 57.7 kWh",
+        "priceEur": 43253,
+        "rangeKm": 305,
+        "accel0to100": 8.6,
+        "batteryKwh": 54
+      },
+      {
+        "name": "FWD 73.1 kWh",
+        "priceEur": 49253,
+        "rangeKm": 385,
+        "accel0to100": 7.4,
+        "batteryKwh": 69
+      },
+      {
+        "name": "AWD 73.1 kWh",
         "priceEur": 53123,
         "rangeKm": 375,
         "accel0to100": 5.1,
@@ -18497,11 +19033,25 @@ window.evData = [
     "wikipediaSlug": "Toyota_bz4x_57.7",
     "variants": [
       {
-        "name": "Standard",
+        "name": "FWD 57.7 kWh",
         "priceEur": 43253,
         "rangeKm": 305,
         "accel0to100": 8.6,
         "batteryKwh": 54
+      },
+      {
+        "name": "FWD 73.1 kWh",
+        "priceEur": 49253,
+        "rangeKm": 385,
+        "accel0to100": 7.4,
+        "batteryKwh": 69
+      },
+      {
+        "name": "AWD 73.1 kWh",
+        "priceEur": 53123,
+        "rangeKm": 375,
+        "accel0to100": 5.1,
+        "batteryKwh": 69
       }
     ]
   },
@@ -18531,10 +19081,24 @@ window.evData = [
     "wikipediaSlug": "Toyota_bz4x_73.1",
     "variants": [
       {
-        "name": "Standard",
+        "name": "FWD 57.7 kWh",
+        "priceEur": 43253,
+        "rangeKm": 305,
+        "accel0to100": 8.6,
+        "batteryKwh": 54
+      },
+      {
+        "name": "FWD 73.1 kWh",
         "priceEur": 49253,
         "rangeKm": 385,
         "accel0to100": 7.4,
+        "batteryKwh": 69
+      },
+      {
+        "name": "AWD 73.1 kWh",
+        "priceEur": 53123,
+        "rangeKm": 375,
+        "accel0to100": 5.1,
         "batteryKwh": 69
       }
     ]
@@ -18565,7 +19129,14 @@ window.evData = [
     "wikipediaSlug": "Toyota_bz4x_touring_74.7",
     "variants": [
       {
-        "name": "Standard",
+        "name": "FWD 74.7 kWh",
+        "priceEur": 48995,
+        "rangeKm": 400,
+        "accel0to100": 7.2,
+        "batteryKwh": 71
+      },
+      {
+        "name": "AWD 74.7 kWh",
         "priceEur": 52995,
         "rangeKm": 385,
         "accel0to100": 4.4,
@@ -18599,10 +19170,17 @@ window.evData = [
     "wikipediaSlug": "Toyota_bz4x_touring_74.7",
     "variants": [
       {
-        "name": "Standard",
+        "name": "FWD 74.7 kWh",
         "priceEur": 48995,
         "rangeKm": 400,
         "accel0to100": 7.2,
+        "batteryKwh": 71
+      },
+      {
+        "name": "AWD 74.7 kWh",
+        "priceEur": 52995,
+        "rangeKm": 385,
+        "accel0to100": 4.4,
         "batteryKwh": 71
       }
     ]
@@ -18633,11 +19211,25 @@ window.evData = [
     "wikipediaSlug": "Toyota_c-hr_57.7",
     "variants": [
       {
-        "name": "Standard",
+        "name": "57.7 kWh",
         "priceEur": 39884,
         "rangeKm": 330,
         "accel0to100": 8.3,
         "batteryKwh": 54
+      },
+      {
+        "name": "77 kWh",
+        "priceEur": 44427,
+        "rangeKm": 430,
+        "accel0to100": 7.3,
+        "batteryKwh": 72
+      },
+      {
+        "name": "77 kWh AWD",
+        "priceEur": 52492,
+        "rangeKm": 385,
+        "accel0to100": 5.2,
+        "batteryKwh": 72
       }
     ]
   },
@@ -18666,6 +19258,13 @@ window.evData = [
     ],
     "wikipediaSlug": "Toyota_c-hr",
     "variants": [
+      {
+        "name": "57.7 kWh",
+        "priceEur": 39884,
+        "rangeKm": 330,
+        "accel0to100": 8.3,
+        "batteryKwh": 54
+      },
       {
         "name": "77 kWh",
         "priceEur": 44427,
@@ -18708,6 +19307,13 @@ window.evData = [
     "wikipediaSlug": "Toyota_c-hr",
     "variants": [
       {
+        "name": "57.7 kWh",
+        "priceEur": 39884,
+        "rangeKm": 330,
+        "accel0to100": 8.3,
+        "batteryKwh": 54
+      },
+      {
         "name": "77 kWh",
         "priceEur": 44427,
         "rangeKm": 430,
@@ -18746,16 +19352,7 @@ window.evData = [
         "rating": 7.2
       }
     ],
-    "wikipediaSlug": "Toyota_proace_city_verso_l1",
-    "variants": [
-      {
-        "name": "50 kWh",
-        "priceEur": 39206,
-        "rangeKm": 235,
-        "accel0to100": 11.7,
-        "batteryKwh": 50
-      }
-    ]
+    "wikipediaSlug": "Toyota_proace_city_verso_l1"
   },
   {
     "id": "toyota-proace-city-verso-l2-50-kwh",
@@ -18780,16 +19377,7 @@ window.evData = [
         "rating": 7.1
       }
     ],
-    "wikipediaSlug": "Toyota_proace_city_verso_l2",
-    "variants": [
-      {
-        "name": "50 kWh",
-        "priceEur": 41235,
-        "rangeKm": 230,
-        "accel0to100": 11.7,
-        "batteryKwh": 50
-      }
-    ]
+    "wikipediaSlug": "Toyota_proace_city_verso_l2"
   },
   {
     "id": "toyota-proace-verso-l-75-kwh",
@@ -18814,16 +19402,7 @@ window.evData = [
         "rating": 7.1
       }
     ],
-    "wikipediaSlug": "Toyota_proace_verso_l",
-    "variants": [
-      {
-        "name": "75 kWh",
-        "priceEur": 57949,
-        "rangeKm": 265,
-        "accel0to100": 13.3,
-        "batteryKwh": 69
-      }
-    ]
+    "wikipediaSlug": "Toyota_proace_verso_l"
   },
   {
     "id": "toyota-proace-verso-m-50-kwh",
@@ -18933,11 +19512,25 @@ window.evData = [
     "wikipediaSlug": "Toyota_urban_cruiser_48.8",
     "variants": [
       {
-        "name": "Standard",
+        "name": "48.8 kWh",
         "priceEur": 33159,
         "rangeKm": 270,
         "accel0to100": 9.6,
         "batteryKwh": 47.8
+      },
+      {
+        "name": "61.1 kWh",
+        "priceEur": 38138,
+        "rangeKm": 330,
+        "accel0to100": 8.7,
+        "batteryKwh": 59.8
+      },
+      {
+        "name": "61.1 kWh AWD",
+        "priceEur": 42037,
+        "rangeKm": 310,
+        "accel0to100": 7.4,
+        "batteryKwh": 59.8
       }
     ]
   },
@@ -18967,14 +19560,21 @@ window.evData = [
     "wikipediaSlug": "Toyota_urban_cruiser_61.1",
     "variants": [
       {
-        "name": "Standard",
+        "name": "48.8 kWh",
+        "priceEur": 33159,
+        "rangeKm": 270,
+        "accel0to100": 9.6,
+        "batteryKwh": 47.8
+      },
+      {
+        "name": "61.1 kWh",
         "priceEur": 38138,
         "rangeKm": 330,
         "accel0to100": 8.7,
         "batteryKwh": 59.8
       },
       {
-        "name": "AWD",
+        "name": "61.1 kWh AWD",
         "priceEur": 42037,
         "rangeKm": 310,
         "accel0to100": 7.4,
@@ -19008,14 +19608,21 @@ window.evData = [
     "wikipediaSlug": "Toyota_urban_cruiser_61.1",
     "variants": [
       {
-        "name": "Standard",
+        "name": "48.8 kWh",
+        "priceEur": 33159,
+        "rangeKm": 270,
+        "accel0to100": 9.6,
+        "batteryKwh": 47.8
+      },
+      {
+        "name": "61.1 kWh",
         "priceEur": 38138,
         "rangeKm": 330,
         "accel0to100": 8.7,
         "batteryKwh": 59.8
       },
       {
-        "name": "AWD",
+        "name": "61.1 kWh AWD",
         "priceEur": 42037,
         "rangeKm": 310,
         "accel0to100": 7.4,
@@ -19046,16 +19653,7 @@ window.evData = [
         "rating": 7.5
       }
     ],
-    "wikipediaSlug": "VinFast_vf_6_eco",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 35505,
-        "rangeKm": 315,
-        "accel0to100": 10.3,
-        "batteryKwh": 59.6
-      }
-    ]
+    "wikipediaSlug": "VinFast_vf_6_eco"
   },
   {
     "id": "vinfast-vf-6-plus",
@@ -19080,16 +19678,7 @@ window.evData = [
         "rating": 7.6
       }
     ],
-    "wikipediaSlug": "VinFast_vf_6",
-    "variants": [
-      {
-        "name": "Plus",
-        "priceEur": 39755,
-        "rangeKm": 310,
-        "accel0to100": 8.9,
-        "batteryKwh": 59.6
-      }
-    ]
+    "wikipediaSlug": "VinFast_vf_6"
   },
   {
     "id": "vinfast-vf-8-eco-extended-range",
@@ -19114,16 +19703,7 @@ window.evData = [
         "rating": 8.1
       }
     ],
-    "wikipediaSlug": "VinFast_vf_8_eco",
-    "variants": [
-      {
-        "name": "Extended Range",
-        "priceEur": 51840,
-        "rangeKm": 405,
-        "accel0to100": 5.9,
-        "batteryKwh": 87.7
-      }
-    ]
+    "wikipediaSlug": "VinFast_vf_8_eco"
   },
   {
     "id": "vinfast-vf-8-plus-extended-range",
@@ -19148,16 +19728,7 @@ window.evData = [
         "rating": 8.1
       }
     ],
-    "wikipediaSlug": "VinFast_vf_8",
-    "variants": [
-      {
-        "name": "Plus Extended Range",
-        "priceEur": 57790,
-        "rangeKm": 400,
-        "accel0to100": 5.5,
-        "batteryKwh": 87.7
-      }
-    ]
+    "wikipediaSlug": "VinFast_vf_8"
   },
   {
     "id": "volkswagen-e-caravelle-l1-100-kw-64-kwh",
@@ -19182,16 +19753,7 @@ window.evData = [
         "rating": 7.1
       }
     ],
-    "wikipediaSlug": "Volkswagen_e-caravelle_l1",
-    "variants": [
-      {
-        "name": "64 kWh",
-        "priceEur": 66319,
-        "rangeKm": 245,
-        "accel0to100": 12.8,
-        "batteryKwh": 63.8
-      }
-    ]
+    "wikipediaSlug": "Volkswagen_e-caravelle_l1"
   },
   {
     "id": "volkswagen-e-caravelle-l1-160-kw-64-kwh",
@@ -19216,16 +19778,7 @@ window.evData = [
         "rating": 7.3
       }
     ],
-    "wikipediaSlug": "Volkswagen_e-caravelle_l1",
-    "variants": [
-      {
-        "name": "64 kWh",
-        "priceEur": 69499,
-        "rangeKm": 245,
-        "accel0to100": 8.6,
-        "batteryKwh": 63.8
-      }
-    ]
+    "wikipediaSlug": "Volkswagen_e-caravelle_l1"
   },
   {
     "id": "volkswagen-e-caravelle-l1-210-kw-64-kwh",
@@ -19250,16 +19803,7 @@ window.evData = [
         "rating": 7.4
       }
     ],
-    "wikipediaSlug": "Volkswagen_e-caravelle_l1",
-    "variants": [
-      {
-        "name": "64 kWh",
-        "priceEur": 73461,
-        "rangeKm": 245,
-        "accel0to100": 7.4,
-        "batteryKwh": 63.8
-      }
-    ]
+    "wikipediaSlug": "Volkswagen_e-caravelle_l1"
   },
   {
     "id": "volkswagen-e-caravelle-l2-100-kw-64-kwh",
@@ -19284,16 +19828,7 @@ window.evData = [
         "rating": 7.1
       }
     ],
-    "wikipediaSlug": "Volkswagen_e-caravelle_l2",
-    "variants": [
-      {
-        "name": "64 kWh",
-        "priceEur": 67379,
-        "rangeKm": 245,
-        "accel0to100": 12.8,
-        "batteryKwh": 63.8
-      }
-    ]
+    "wikipediaSlug": "Volkswagen_e-caravelle_l2"
   },
   {
     "id": "volkswagen-e-caravelle-l2-160-kw-64-kwh",
@@ -19318,16 +19853,7 @@ window.evData = [
         "rating": 7.3
       }
     ],
-    "wikipediaSlug": "Volkswagen_e-caravelle_l2",
-    "variants": [
-      {
-        "name": "64 kWh",
-        "priceEur": 70559,
-        "rangeKm": 245,
-        "accel0to100": 8.6,
-        "batteryKwh": 63.8
-      }
-    ]
+    "wikipediaSlug": "Volkswagen_e-caravelle_l2"
   },
   {
     "id": "volkswagen-e-caravelle-l2-210-kw-64-kwh",
@@ -19352,16 +19878,7 @@ window.evData = [
         "rating": 7.4
       }
     ],
-    "wikipediaSlug": "Volkswagen_e-caravelle_l2",
-    "variants": [
-      {
-        "name": "64 kWh",
-        "priceEur": 74538,
-        "rangeKm": 245,
-        "accel0to100": 7.4,
-        "batteryKwh": 63.8
-      }
-    ]
+    "wikipediaSlug": "Volkswagen_e-caravelle_l2"
   },
   {
     "id": "volkswagen-e-transporter-kombi-l1-100-kw-64-kwh",
@@ -19386,16 +19903,7 @@ window.evData = [
         "rating": 7.1
       }
     ],
-    "wikipediaSlug": "Volkswagen_e-transporter_kombi_l1",
-    "variants": [
-      {
-        "name": "64 kWh",
-        "priceEur": 62041,
-        "rangeKm": 255,
-        "accel0to100": 12.8,
-        "batteryKwh": 63.8
-      }
-    ]
+    "wikipediaSlug": "Volkswagen_e-transporter_kombi_l1"
   },
   {
     "id": "volkswagen-e-transporter-kombi-l1-160-kw-64-kwh",
@@ -19420,16 +19928,7 @@ window.evData = [
         "rating": 7.4
       }
     ],
-    "wikipediaSlug": "Volkswagen_e-transporter_kombi_l1",
-    "variants": [
-      {
-        "name": "64 kWh",
-        "priceEur": 64553,
-        "rangeKm": 255,
-        "accel0to100": 8.6,
-        "batteryKwh": 63.8
-      }
-    ]
+    "wikipediaSlug": "Volkswagen_e-transporter_kombi_l1"
   },
   {
     "id": "volkswagen-e-transporter-kombi-l1-210-kw-64-kwh",
@@ -19454,16 +19953,7 @@ window.evData = [
         "rating": 7.4
       }
     ],
-    "wikipediaSlug": "Volkswagen_e-transporter_kombi_l1",
-    "variants": [
-      {
-        "name": "64 kWh",
-        "priceEur": 66908,
-        "rangeKm": 255,
-        "accel0to100": 7.4,
-        "batteryKwh": 63.8
-      }
-    ]
+    "wikipediaSlug": "Volkswagen_e-transporter_kombi_l1"
   },
   {
     "id": "volkswagen-e-transporter-kombi-l2-100-kw-64-kwh",
@@ -19488,16 +19978,7 @@ window.evData = [
         "rating": 7.1
       }
     ],
-    "wikipediaSlug": "Volkswagen_e-transporter_kombi_l2",
-    "variants": [
-      {
-        "name": "64 kWh",
-        "priceEur": 63100,
-        "rangeKm": 250,
-        "accel0to100": 12.8,
-        "batteryKwh": 63.8
-      }
-    ]
+    "wikipediaSlug": "Volkswagen_e-transporter_kombi_l2"
   },
   {
     "id": "volkswagen-e-transporter-kombi-l2-160-kw-64-kwh",
@@ -19522,16 +20003,7 @@ window.evData = [
         "rating": 7.3
       }
     ],
-    "wikipediaSlug": "Volkswagen_e-transporter_kombi_l2",
-    "variants": [
-      {
-        "name": "64 kWh",
-        "priceEur": 65581,
-        "rangeKm": 250,
-        "accel0to100": 8.6,
-        "batteryKwh": 63.8
-      }
-    ]
+    "wikipediaSlug": "Volkswagen_e-transporter_kombi_l2"
   },
   {
     "id": "volkswagen-e-transporter-kombi-l2-210-kw-64-kwh",
@@ -19556,16 +20028,7 @@ window.evData = [
         "rating": 7.4
       }
     ],
-    "wikipediaSlug": "Volkswagen_e-transporter_kombi_l2",
-    "variants": [
-      {
-        "name": "64 kWh",
-        "priceEur": 67913,
-        "rangeKm": 250,
-        "accel0to100": 7.4,
-        "batteryKwh": 63.8
-      }
-    ]
+    "wikipediaSlug": "Volkswagen_e-transporter_kombi_l2"
   },
   {
     "id": "volkswagen-id-buzz-lwb-gtx",
@@ -19593,7 +20056,14 @@ window.evData = [
     "wikipediaSlug": "Volkswagen_id._buzz_lwb_gtx",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Pro",
+        "priceEur": 62004,
+        "rangeKm": 390,
+        "accel0to100": 7.9,
+        "batteryKwh": 86
+      },
+      {
+        "name": "GTX",
         "priceEur": 74627,
         "rangeKm": 380,
         "accel0to100": 6.5,
@@ -19632,6 +20102,13 @@ window.evData = [
         "rangeKm": 390,
         "accel0to100": 7.9,
         "batteryKwh": 86
+      },
+      {
+        "name": "GTX",
+        "priceEur": 74627,
+        "rangeKm": 380,
+        "accel0to100": 6.5,
+        "batteryKwh": 86
       }
     ]
   },
@@ -19661,7 +20138,21 @@ window.evData = [
     "wikipediaSlug": "Volkswagen_id._buzz_nwb_gtx",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Pure",
+        "priceEur": 49994,
+        "rangeKm": 265,
+        "accel0to100": 10.7,
+        "batteryKwh": 59
+      },
+      {
+        "name": "Pro",
+        "priceEur": 60924,
+        "rangeKm": 370,
+        "accel0to100": 7.6,
+        "batteryKwh": 79
+      },
+      {
+        "name": "GTX",
         "priceEur": 73547,
         "rangeKm": 360,
         "accel0to100": 6.5,
@@ -19695,10 +20186,24 @@ window.evData = [
     "wikipediaSlug": "Volkswagen_id._buzz_nwb",
     "variants": [
       {
+        "name": "Pure",
+        "priceEur": 49994,
+        "rangeKm": 265,
+        "accel0to100": 10.7,
+        "batteryKwh": 59
+      },
+      {
         "name": "Pro",
         "priceEur": 60924,
         "rangeKm": 370,
         "accel0to100": 7.6,
+        "batteryKwh": 79
+      },
+      {
+        "name": "GTX",
+        "priceEur": 73547,
+        "rangeKm": 360,
+        "accel0to100": 6.5,
         "batteryKwh": 79
       }
     ]
@@ -19729,11 +20234,25 @@ window.evData = [
     "wikipediaSlug": "Volkswagen_id._buzz_nwb_pure",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Pure",
         "priceEur": 49994,
         "rangeKm": 265,
         "accel0to100": 10.7,
         "batteryKwh": 59
+      },
+      {
+        "name": "Pro",
+        "priceEur": 60924,
+        "rangeKm": 370,
+        "accel0to100": 7.6,
+        "batteryKwh": 79
+      },
+      {
+        "name": "GTX",
+        "priceEur": 73547,
+        "rangeKm": 360,
+        "accel0to100": 6.5,
+        "batteryKwh": 79
       }
     ]
   },
@@ -19763,10 +20282,38 @@ window.evData = [
     "wikipediaSlug": "Volkswagen_id.3_gtx_my24-26",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Pure (MY24-26)",
+        "priceEur": 32361,
+        "rangeKm": 325,
+        "accel0to100": 8.2,
+        "batteryKwh": 52
+      },
+      {
+        "name": "Pro (MY24-26)",
+        "priceEur": 37930,
+        "rangeKm": 365,
+        "accel0to100": 7.6,
+        "batteryKwh": 59
+      },
+      {
+        "name": "Pro S",
+        "priceEur": 41611,
+        "rangeKm": 475,
+        "accel0to100": 7.1,
+        "batteryKwh": 79
+      },
+      {
+        "name": "GTX (MY24-26)",
         "priceEur": 49607,
         "rangeKm": 470,
         "accel0to100": 5.9,
+        "batteryKwh": 79
+      },
+      {
+        "name": "GTX Performance (MY24-26)",
+        "priceEur": 49996,
+        "rangeKm": 465,
+        "accel0to100": 5.6,
         "batteryKwh": 79
       }
     ]
@@ -19797,7 +20344,35 @@ window.evData = [
     "wikipediaSlug": "Volkswagen_id.3_gtx_my24-26",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Pure (MY24-26)",
+        "priceEur": 32361,
+        "rangeKm": 325,
+        "accel0to100": 8.2,
+        "batteryKwh": 52
+      },
+      {
+        "name": "Pro (MY24-26)",
+        "priceEur": 37930,
+        "rangeKm": 365,
+        "accel0to100": 7.6,
+        "batteryKwh": 59
+      },
+      {
+        "name": "Pro S",
+        "priceEur": 41611,
+        "rangeKm": 475,
+        "accel0to100": 7.1,
+        "batteryKwh": 79
+      },
+      {
+        "name": "GTX (MY24-26)",
+        "priceEur": 49607,
+        "rangeKm": 470,
+        "accel0to100": 5.9,
+        "batteryKwh": 79
+      },
+      {
+        "name": "GTX Performance (MY24-26)",
         "priceEur": 49996,
         "rangeKm": 465,
         "accel0to100": 5.6,
@@ -19831,11 +20406,39 @@ window.evData = [
     "wikipediaSlug": "Volkswagen_id.3_my24-26",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Pure (MY24-26)",
+        "priceEur": 32361,
+        "rangeKm": 325,
+        "accel0to100": 8.2,
+        "batteryKwh": 52
+      },
+      {
+        "name": "Pro (MY24-26)",
         "priceEur": 37930,
         "rangeKm": 365,
         "accel0to100": 7.6,
         "batteryKwh": 59
+      },
+      {
+        "name": "Pro S",
+        "priceEur": 41611,
+        "rangeKm": 475,
+        "accel0to100": 7.1,
+        "batteryKwh": 79
+      },
+      {
+        "name": "GTX (MY24-26)",
+        "priceEur": 49607,
+        "rangeKm": 470,
+        "accel0to100": 5.9,
+        "batteryKwh": 79
+      },
+      {
+        "name": "GTX Performance (MY24-26)",
+        "priceEur": 49996,
+        "rangeKm": 465,
+        "accel0to100": 5.6,
+        "batteryKwh": 79
       }
     ]
   },
@@ -19865,10 +20468,38 @@ window.evData = [
     "wikipediaSlug": "Volkswagen_id.3_s",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Pure (MY24-26)",
+        "priceEur": 32361,
+        "rangeKm": 325,
+        "accel0to100": 8.2,
+        "batteryKwh": 52
+      },
+      {
+        "name": "Pro (MY24-26)",
+        "priceEur": 37930,
+        "rangeKm": 365,
+        "accel0to100": 7.6,
+        "batteryKwh": 59
+      },
+      {
+        "name": "Pro S",
         "priceEur": 41611,
         "rangeKm": 475,
         "accel0to100": 7.1,
+        "batteryKwh": 79
+      },
+      {
+        "name": "GTX (MY24-26)",
+        "priceEur": 49607,
+        "rangeKm": 470,
+        "accel0to100": 5.9,
+        "batteryKwh": 79
+      },
+      {
+        "name": "GTX Performance (MY24-26)",
+        "priceEur": 49996,
+        "rangeKm": 465,
+        "accel0to100": 5.6,
         "batteryKwh": 79
       }
     ]
@@ -19899,11 +20530,39 @@ window.evData = [
     "wikipediaSlug": "Volkswagen_id.3_pure_my24-26",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Pure (MY24-26)",
         "priceEur": 32361,
         "rangeKm": 325,
         "accel0to100": 8.2,
         "batteryKwh": 52
+      },
+      {
+        "name": "Pro (MY24-26)",
+        "priceEur": 37930,
+        "rangeKm": 365,
+        "accel0to100": 7.6,
+        "batteryKwh": 59
+      },
+      {
+        "name": "Pro S",
+        "priceEur": 41611,
+        "rangeKm": 475,
+        "accel0to100": 7.1,
+        "batteryKwh": 79
+      },
+      {
+        "name": "GTX (MY24-26)",
+        "priceEur": 49607,
+        "rangeKm": 470,
+        "accel0to100": 5.9,
+        "batteryKwh": 79
+      },
+      {
+        "name": "GTX Performance (MY24-26)",
+        "priceEur": 49996,
+        "rangeKm": 465,
+        "accel0to100": 5.6,
+        "batteryKwh": 79
       }
     ]
   },
@@ -19933,7 +20592,28 @@ window.evData = [
     "wikipediaSlug": "Volkswagen_id.4_gtx",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Pure",
+        "priceEur": 40381,
+        "rangeKm": 285,
+        "accel0to100": 9,
+        "batteryKwh": 52
+      },
+      {
+        "name": "Pro",
+        "priceEur": 44048,
+        "rangeKm": 445,
+        "accel0to100": 6.7,
+        "batteryKwh": 77
+      },
+      {
+        "name": "Pro 4MOTION",
+        "priceEur": 50682,
+        "rangeKm": 435,
+        "accel0to100": 6.6,
+        "batteryKwh": 77
+      },
+      {
+        "name": "GTX",
         "priceEur": 56108,
         "rangeKm": 435,
         "accel0to100": 5.4,
@@ -19967,11 +20647,32 @@ window.evData = [
     "wikipediaSlug": "Volkswagen_id.4",
     "variants": [
       {
+        "name": "Pure",
+        "priceEur": 40381,
+        "rangeKm": 285,
+        "accel0to100": 9,
+        "batteryKwh": 52
+      },
+      {
         "name": "Pro",
         "priceEur": 44048,
         "rangeKm": 445,
         "accel0to100": 6.7,
         "batteryKwh": 77
+      },
+      {
+        "name": "Pro 4MOTION",
+        "priceEur": 50682,
+        "rangeKm": 435,
+        "accel0to100": 6.6,
+        "batteryKwh": 77
+      },
+      {
+        "name": "GTX",
+        "priceEur": 56108,
+        "rangeKm": 435,
+        "accel0to100": 5.4,
+        "batteryKwh": 79
       }
     ]
   },
@@ -20001,11 +20702,32 @@ window.evData = [
     "wikipediaSlug": "Volkswagen_id.4_4motion",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Pure",
+        "priceEur": 40381,
+        "rangeKm": 285,
+        "accel0to100": 9,
+        "batteryKwh": 52
+      },
+      {
+        "name": "Pro",
+        "priceEur": 44048,
+        "rangeKm": 445,
+        "accel0to100": 6.7,
+        "batteryKwh": 77
+      },
+      {
+        "name": "Pro 4MOTION",
         "priceEur": 50682,
         "rangeKm": 435,
         "accel0to100": 6.6,
         "batteryKwh": 77
+      },
+      {
+        "name": "GTX",
+        "priceEur": 56108,
+        "rangeKm": 435,
+        "accel0to100": 5.4,
+        "batteryKwh": 79
       }
     ]
   },
@@ -20035,11 +20757,32 @@ window.evData = [
     "wikipediaSlug": "Volkswagen_id.4_pure",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Pure",
         "priceEur": 40381,
         "rangeKm": 285,
         "accel0to100": 9,
         "batteryKwh": 52
+      },
+      {
+        "name": "Pro",
+        "priceEur": 44048,
+        "rangeKm": 445,
+        "accel0to100": 6.7,
+        "batteryKwh": 77
+      },
+      {
+        "name": "Pro 4MOTION",
+        "priceEur": 50682,
+        "rangeKm": 435,
+        "accel0to100": 6.6,
+        "batteryKwh": 77
+      },
+      {
+        "name": "GTX",
+        "priceEur": 56108,
+        "rangeKm": 435,
+        "accel0to100": 5.4,
+        "batteryKwh": 79
       }
     ]
   },
@@ -20069,7 +20812,21 @@ window.evData = [
     "wikipediaSlug": "Volkswagen_id.5_gtx",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Pure",
+        "priceEur": 46262,
+        "rangeKm": 320,
+        "accel0to100": 8.9,
+        "batteryKwh": 52
+      },
+      {
+        "name": "Pro",
+        "priceEur": 52440,
+        "rangeKm": 455,
+        "accel0to100": 6.7,
+        "batteryKwh": 77
+      },
+      {
+        "name": "GTX",
         "priceEur": 56943,
         "rangeKm": 445,
         "accel0to100": 5.4,
@@ -20103,11 +20860,25 @@ window.evData = [
     "wikipediaSlug": "Volkswagen_id.5",
     "variants": [
       {
+        "name": "Pure",
+        "priceEur": 46262,
+        "rangeKm": 320,
+        "accel0to100": 8.9,
+        "batteryKwh": 52
+      },
+      {
         "name": "Pro",
         "priceEur": 52440,
         "rangeKm": 455,
         "accel0to100": 6.7,
         "batteryKwh": 77
+      },
+      {
+        "name": "GTX",
+        "priceEur": 56943,
+        "rangeKm": 445,
+        "accel0to100": 5.4,
+        "batteryKwh": 79
       }
     ]
   },
@@ -20137,11 +20908,25 @@ window.evData = [
     "wikipediaSlug": "Volkswagen_id.5_pure",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Pure",
         "priceEur": 46262,
         "rangeKm": 320,
         "accel0to100": 8.9,
         "batteryKwh": 52
+      },
+      {
+        "name": "Pro",
+        "priceEur": 52440,
+        "rangeKm": 455,
+        "accel0to100": 6.7,
+        "batteryKwh": 77
+      },
+      {
+        "name": "GTX",
+        "priceEur": 56943,
+        "rangeKm": 445,
+        "accel0to100": 5.4,
+        "batteryKwh": 79
       }
     ]
   },
@@ -20171,7 +20956,21 @@ window.evData = [
     "wikipediaSlug": "Volkswagen_ID.7",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Pro",
+        "priceEur": 53916,
+        "rangeKm": 475,
+        "accel0to100": 6.5,
+        "batteryKwh": 77
+      },
+      {
+        "name": "Pro S",
+        "priceEur": 59582,
+        "rangeKm": 525,
+        "accel0to100": 6.6,
+        "batteryKwh": 86
+      },
+      {
+        "name": "GTX",
         "priceEur": 65077,
         "rangeKm": 500,
         "accel0to100": 5.5,
@@ -20210,6 +21009,20 @@ window.evData = [
         "rangeKm": 475,
         "accel0to100": 6.5,
         "batteryKwh": 77
+      },
+      {
+        "name": "Pro S",
+        "priceEur": 59582,
+        "rangeKm": 525,
+        "accel0to100": 6.6,
+        "batteryKwh": 86
+      },
+      {
+        "name": "GTX",
+        "priceEur": 65077,
+        "rangeKm": 500,
+        "accel0to100": 5.5,
+        "batteryKwh": 86
       }
     ]
   },
@@ -20239,10 +21052,24 @@ window.evData = [
     "wikipediaSlug": "Volkswagen_ID.7",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Pro",
+        "priceEur": 53916,
+        "rangeKm": 475,
+        "accel0to100": 6.5,
+        "batteryKwh": 77
+      },
+      {
+        "name": "Pro S",
         "priceEur": 59582,
         "rangeKm": 525,
         "accel0to100": 6.6,
+        "batteryKwh": 86
+      },
+      {
+        "name": "GTX",
+        "priceEur": 65077,
+        "rangeKm": 500,
+        "accel0to100": 5.5,
         "batteryKwh": 86
       }
     ]
@@ -20273,7 +21100,21 @@ window.evData = [
     "wikipediaSlug": "Volkswagen_ID.7",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Pro",
+        "priceEur": 54819,
+        "rangeKm": 470,
+        "accel0to100": 6.6,
+        "batteryKwh": 77
+      },
+      {
+        "name": "Pro S",
+        "priceEur": 60485,
+        "rangeKm": 520,
+        "accel0to100": 6.7,
+        "batteryKwh": 86
+      },
+      {
+        "name": "GTX",
         "priceEur": 65980,
         "rangeKm": 500,
         "accel0to100": 5.5,
@@ -20312,6 +21153,20 @@ window.evData = [
         "rangeKm": 470,
         "accel0to100": 6.6,
         "batteryKwh": 77
+      },
+      {
+        "name": "Pro S",
+        "priceEur": 60485,
+        "rangeKm": 520,
+        "accel0to100": 6.7,
+        "batteryKwh": 86
+      },
+      {
+        "name": "GTX",
+        "priceEur": 65980,
+        "rangeKm": 500,
+        "accel0to100": 5.5,
+        "batteryKwh": 86
       }
     ]
   },
@@ -20341,10 +21196,24 @@ window.evData = [
     "wikipediaSlug": "Volkswagen_ID.7",
     "variants": [
       {
-        "name": "Standard",
+        "name": "Pro",
+        "priceEur": 54819,
+        "rangeKm": 470,
+        "accel0to100": 6.6,
+        "batteryKwh": 77
+      },
+      {
+        "name": "Pro S",
         "priceEur": 60485,
         "rangeKm": 520,
         "accel0to100": 6.7,
+        "batteryKwh": 86
+      },
+      {
+        "name": "GTX",
+        "priceEur": 65980,
+        "rangeKm": 500,
+        "accel0to100": 5.5,
         "batteryKwh": 86
       }
     ]
@@ -20372,16 +21241,7 @@ window.evData = [
         "rating": 7.8
       }
     ],
-    "wikipediaSlug": "Volvo_ec40",
-    "variants": [
-      {
-        "name": "Single Motor",
-        "priceEur": 54052,
-        "rangeKm": 360,
-        "accel0to100": 7.3,
-        "batteryKwh": 67
-      }
-    ]
+    "wikipediaSlug": "Volvo_ec40"
   },
   {
     "id": "volvo-ec40-single-motor-er",
@@ -20406,16 +21266,7 @@ window.evData = [
         "rating": 8
       }
     ],
-    "wikipediaSlug": "Volvo_ec40_er",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 56656,
-        "rangeKm": 420,
-        "accel0to100": 7.3,
-        "batteryKwh": 79
-      }
-    ]
+    "wikipediaSlug": "Volvo_ec40_er"
   },
   {
     "id": "volvo-ec40-twin-motor",
@@ -20522,16 +21373,7 @@ window.evData = [
         "rating": 8.3
       }
     ],
-    "wikipediaSlug": "Volvo_es90",
-    "variants": [
-      {
-        "name": "Single Motor",
-        "priceEur": 73835,
-        "rangeKm": 485,
-        "accel0to100": 6.6,
-        "batteryKwh": 88
-      }
-    ]
+    "wikipediaSlug": "Volvo_es90"
   },
   {
     "id": "volvo-es90-twin-motor",
@@ -20638,16 +21480,7 @@ window.evData = [
         "rating": 8
       }
     ],
-    "wikipediaSlug": "Volvo_ex30_cross_country_my25-26",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 54776,
-        "rangeKm": 335,
-        "accel0to100": 3.7,
-        "batteryKwh": 65
-      }
-    ]
+    "wikipediaSlug": "Volvo_ex30_cross_country_my25-26"
   },
   {
     "id": "volvo-ex30-cross-country-p5-long-range",
@@ -20672,16 +21505,7 @@ window.evData = [
         "rating": 7.9
       }
     ],
-    "wikipediaSlug": "Volvo_ex30_cross_country_p5",
-    "variants": [
-      {
-        "name": "Long Range",
-        "priceEur": 44195,
-        "rangeKm": 350,
-        "accel0to100": 5.4,
-        "batteryKwh": 65
-      }
-    ]
+    "wikipediaSlug": "Volvo_ex30_cross_country_p5"
   },
   {
     "id": "volvo-ex30-cross-country-p8-awd",
@@ -20706,16 +21530,7 @@ window.evData = [
         "rating": 8
       }
     ],
-    "wikipediaSlug": "Volvo_ex30_cross_country_p8",
-    "variants": [
-      {
-        "name": "AWD",
-        "priceEur": 49795,
-        "rangeKm": 330,
-        "accel0to100": 3.7,
-        "batteryKwh": 65
-      }
-    ]
+    "wikipediaSlug": "Volvo_ex30_cross_country_p8"
   },
   {
     "id": "volvo-ex30-p3",
@@ -20904,16 +21719,7 @@ window.evData = [
         "rating": 8
       }
     ],
-    "wikipediaSlug": "Volvo_ex30_p8",
-    "variants": [
-      {
-        "name": "AWD",
-        "priceEur": 47795,
-        "rangeKm": 340,
-        "accel0to100": 3.6,
-        "batteryKwh": 65
-      }
-    ]
+    "wikipediaSlug": "Volvo_ex30_p8"
   },
   {
     "id": "volvo-ex30-single-motor-my24-26",
@@ -20938,16 +21744,7 @@ window.evData = [
         "rating": 7.6
       }
     ],
-    "wikipediaSlug": "Volvo_ex30_my24-26",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 37601,
-        "rangeKm": 275,
-        "accel0to100": 5.7,
-        "batteryKwh": 49
-      }
-    ]
+    "wikipediaSlug": "Volvo_ex30_my24-26"
   },
   {
     "id": "volvo-ex30-single-motor-er-my24-26",
@@ -20972,16 +21769,7 @@ window.evData = [
         "rating": 7.9
       }
     ],
-    "wikipediaSlug": "Volvo_ex30_er_my24-26",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 42611,
-        "rangeKm": 365,
-        "accel0to100": 5.3,
-        "batteryKwh": 65
-      }
-    ]
+    "wikipediaSlug": "Volvo_ex30_er_my24-26"
   },
   {
     "id": "volvo-ex30-twin-motor-performance-my24-26",
@@ -21006,16 +21794,7 @@ window.evData = [
         "rating": 8
       }
     ],
-    "wikipediaSlug": "Volvo_ex30_twin_my24-26",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 49399,
-        "rangeKm": 340,
-        "accel0to100": 3.6,
-        "batteryKwh": 65
-      }
-    ]
+    "wikipediaSlug": "Volvo_ex30_twin_my24-26"
   },
   {
     "id": "volvo-ex40-single-motor",
@@ -21040,16 +21819,7 @@ window.evData = [
         "rating": 7.8
       }
     ],
-    "wikipediaSlug": "Volvo_ex40",
-    "variants": [
-      {
-        "name": "Single Motor",
-        "priceEur": 48728,
-        "rangeKm": 345,
-        "accel0to100": 7.3,
-        "batteryKwh": 67
-      }
-    ]
+    "wikipediaSlug": "Volvo_ex40"
   },
   {
     "id": "volvo-ex40-single-motor-er",
@@ -21074,16 +21844,7 @@ window.evData = [
         "rating": 8
       }
     ],
-    "wikipediaSlug": "Volvo_ex40_er",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 53232,
-        "rangeKm": 400,
-        "accel0to100": 7.3,
-        "batteryKwh": 79
-      }
-    ]
+    "wikipediaSlug": "Volvo_ex40_er"
   },
   {
     "id": "volvo-ex40-twin-motor",
@@ -21190,16 +21951,7 @@ window.evData = [
         "rating": 8.6
       }
     ],
-    "wikipediaSlug": "Volvo_ex60_cross_country_p10",
-    "variants": [
-      {
-        "name": "AWD",
-        "priceEur": 70095,
-        "rangeKm": 490,
-        "accel0to100": 4.7,
-        "batteryKwh": 91
-      }
-    ]
+    "wikipediaSlug": "Volvo_ex60_cross_country_p10"
   },
   {
     "id": "volvo-ex60-p10-awd",
@@ -21224,16 +21976,7 @@ window.evData = [
         "rating": 8.6
       }
     ],
-    "wikipediaSlug": "Volvo_ex60_p10",
-    "variants": [
-      {
-        "name": "AWD",
-        "priceEur": 67274,
-        "rangeKm": 500,
-        "accel0to100": 4.6,
-        "batteryKwh": 91
-      }
-    ]
+    "wikipediaSlug": "Volvo_ex60_p10"
   },
   {
     "id": "volvo-ex60-p12-awd",
@@ -21258,16 +22001,7 @@ window.evData = [
         "rating": 9.1
       }
     ],
-    "wikipediaSlug": "Volvo_ex60_p12",
-    "variants": [
-      {
-        "name": "AWD",
-        "priceEur": 73191,
-        "rangeKm": 610,
-        "accel0to100": 3.9,
-        "batteryKwh": 112
-      }
-    ]
+    "wikipediaSlug": "Volvo_ex60_p12"
   },
   {
     "id": "volvo-ex60-p6",
@@ -21292,16 +22026,7 @@ window.evData = [
         "rating": 8.4
       }
     ],
-    "wikipediaSlug": "Volvo_ex60_p6",
-    "variants": [
-      {
-        "name": "Standard",
-        "priceEur": 64124,
-        "rangeKm": 455,
-        "accel0to100": 5.9,
-        "batteryKwh": 80
-      }
-    ]
+    "wikipediaSlug": "Volvo_ex60_p6"
   },
   {
     "id": "volvo-ex90-single-motor",
@@ -21326,16 +22051,7 @@ window.evData = [
         "rating": 8.2
       }
     ],
-    "wikipediaSlug": "Volvo_ex90",
-    "variants": [
-      {
-        "name": "Single Motor",
-        "priceEur": 88514,
-        "rangeKm": 425,
-        "accel0to100": 6.8,
-        "batteryKwh": 88
-      }
-    ]
+    "wikipediaSlug": "Volvo_ex90"
   },
   {
     "id": "volvo-ex90-twin-motor",
@@ -21524,16 +22240,7 @@ window.evData = [
         "rating": 8.3
       }
     ],
-    "wikipediaSlug": "Voyah_free",
-    "variants": [
-      {
-        "name": "106 kWh",
-        "priceEur": 53990,
-        "rangeKm": 480,
-        "accel0to100": 4.4,
-        "batteryKwh": 100
-      }
-    ]
+    "wikipediaSlug": "Voyah_free"
   },
   {
     "id": "xpeng-g6-awd-performance",
@@ -22154,16 +22861,7 @@ window.evData = [
         "rating": 8.4
       }
     ],
-    "wikipediaSlug": "Zeekr",
-    "variants": [
-      {
-        "name": "AWD",
-        "priceEur": 71970,
-        "rangeKm": 480,
-        "accel0to100": 3.8,
-        "batteryKwh": 94
-      }
-    ]
+    "wikipediaSlug": "Zeekr"
   },
   {
     "id": "zeekr-7gt-core-rwd",
@@ -22188,16 +22886,7 @@ window.evData = [
         "rating": 8.4
       }
     ],
-    "wikipediaSlug": "Zeekr_7gt",
-    "variants": [
-      {
-        "name": "RWD",
-        "priceEur": 47970,
-        "rangeKm": 410,
-        "accel0to100": 5.3,
-        "batteryKwh": 72
-      }
-    ]
+    "wikipediaSlug": "Zeekr_7gt"
   },
   {
     "id": "zeekr-7gt-long-range-rwd",
@@ -22222,16 +22911,7 @@ window.evData = [
         "rating": 8.9
       }
     ],
-    "wikipediaSlug": "Zeekr_7gt",
-    "variants": [
-      {
-        "name": "Long Range RWD",
-        "priceEur": 52970,
-        "rangeKm": 540,
-        "accel0to100": 5.3,
-        "batteryKwh": 96
-      }
-    ]
+    "wikipediaSlug": "Zeekr_7gt"
   },
   {
     "id": "zeekr-7gt-privilege-awd",
@@ -22256,16 +22936,7 @@ window.evData = [
         "rating": 8.9
       }
     ],
-    "wikipediaSlug": "Zeekr_7gt",
-    "variants": [
-      {
-        "name": "AWD",
-        "priceEur": 59470,
-        "rangeKm": 515,
-        "accel0to100": 3.3,
-        "batteryKwh": 96
-      }
-    ]
+    "wikipediaSlug": "Zeekr_7gt"
   },
   {
     "id": "zeekr-7x-core-rwd",
@@ -22290,16 +22961,7 @@ window.evData = [
         "rating": 8.3
       }
     ],
-    "wikipediaSlug": "Zeekr_7x",
-    "variants": [
-      {
-        "name": "RWD",
-        "priceEur": 54970,
-        "rangeKm": 380,
-        "accel0to100": 6,
-        "batteryKwh": 72
-      }
-    ]
+    "wikipediaSlug": "Zeekr_7x"
   },
   {
     "id": "zeekr-7x-long-range-rwd",
@@ -22324,16 +22986,7 @@ window.evData = [
         "rating": 8.7
       }
     ],
-    "wikipediaSlug": "Zeekr_7x",
-    "variants": [
-      {
-        "name": "Long Range RWD",
-        "priceEur": 57970,
-        "rangeKm": 500,
-        "accel0to100": 6,
-        "batteryKwh": 96
-      }
-    ]
+    "wikipediaSlug": "Zeekr_7x"
   },
   {
     "id": "zeekr-7x-privilege-awd",
@@ -22358,16 +23011,7 @@ window.evData = [
         "rating": 8.8
       }
     ],
-    "wikipediaSlug": "Zeekr_7x",
-    "variants": [
-      {
-        "name": "AWD",
-        "priceEur": 64970,
-        "rangeKm": 485,
-        "accel0to100": 3.8,
-        "batteryKwh": 96
-      }
-    ]
+    "wikipediaSlug": "Zeekr_7x"
   },
   {
     "id": "zeekr-x-core-rwd",
@@ -22392,16 +23036,7 @@ window.evData = [
         "rating": 7.6
       }
     ],
-    "wikipediaSlug": "Zeekr_x",
-    "variants": [
-      {
-        "name": "RWD",
-        "priceEur": 38970,
-        "rangeKm": 270,
-        "accel0to100": 5.9,
-        "batteryKwh": 49
-      }
-    ]
+    "wikipediaSlug": "Zeekr_x"
   },
   {
     "id": "zeekr-x-long-range-rwd",
@@ -22426,16 +23061,7 @@ window.evData = [
         "rating": 7.9
       }
     ],
-    "wikipediaSlug": "Zeekr_x",
-    "variants": [
-      {
-        "name": "Long Range RWD",
-        "priceEur": 43470,
-        "rangeKm": 360,
-        "accel0to100": 5.6,
-        "batteryKwh": 65
-      }
-    ]
+    "wikipediaSlug": "Zeekr_x"
   },
   {
     "id": "zeekr-x-privilege-awd",
@@ -22460,151 +23086,6 @@ window.evData = [
         "rating": 8
       }
     ],
-    "wikipediaSlug": "Zeekr_x",
-    "variants": [
-      {
-        "name": "AWD",
-        "priceEur": 48470,
-        "rangeKm": 350,
-        "accel0to100": 3.8,
-        "batteryKwh": 65
-      }
-    ]
+    "wikipediaSlug": "Zeekr_x"
   }
 ];
-
-(function attachWikipediaSlugsToEvData() {
-  const wikipediaTrimTokens = new Set([
-    "standard",
-    "long",
-    "range",
-    "single",
-    "dual",
-    "motor",
-    "extended",
-    "performance",
-    "quattro",
-    "plus",
-    "pro",
-    "design",
-    "comfort",
-    "core",
-    "privilege",
-    "ultimate",
-    "launch",
-    "edition",
-    "line",
-    "sport",
-    "gt",
-    "gts",
-    "awd",
-    "rwd",
-    "fwd",
-    "kwh",
-    "kw",
-    "hp",
-    "electric",
-    "ev"
-  ]);
-
-  const brandSlugAliases = {
-    VW: "Volkswagen",
-    "Mercedes-AMG": "Mercedes-Benz",
-    Mercedes: "Mercedes-Benz"
-  };
-
-  const modelSlugAliases = [
-    { test: /\bmodel\s*3\b/i, slug: "Model_3" },
-    { test: /\bmodel\s*y\b/i, slug: "Model_Y" },
-    { test: /\bmodel\s*s\b/i, slug: "Model_S" },
-    { test: /\bmodel\s*x\b/i, slug: "Model_X" },
-    { test: /\bioniq\s*5\b/i, slug: "Ioniq_5" },
-    { test: /\bioniq\s*6\b/i, slug: "Ioniq_6" },
-    { test: /\bev\s*6\b/i, slug: "EV6" },
-    { test: /\bev\s*3\b/i, slug: "EV3" },
-    { test: /\bev\s*9\b/i, slug: "EV9" },
-    { test: /\bi4\b/i, slug: "i4" },
-    { test: /\bid\.?\s*7\b/i, slug: "ID.7" },
-    { test: /\benyaq\b/i, slug: "Enyaq" },
-    { test: /\bmg\s*4\b|\bmg4\b/i, slug: "MG4_EV" },
-    { test: /\bpolestar\s*2\b/i, slug: "2" },
-    { test: /\bscenic\b/i, slug: "Scenic_E-Tech" },
-    { test: /\beqe\b/i, slug: "EQE_SUV" },
-    { test: /\bseal\b/i, slug: "Seal" },
-    { test: /\bariya\b/i, slug: "Ariya" }
-  ];
-
-  const carIdWikipediaSlugOverrides = {
-    "tesla-model-3-highland": "Tesla_Model_3",
-    "tesla-model-y": "Tesla_Model_Y",
-    "hyundai-ioniq-5": "Hyundai_Ioniq_5",
-    "kia-ev6": "Kia_EV6",
-    "bmw-i4-edrive40": "BMW_i4",
-    "vw-id7-pro": "Volkswagen_ID.7",
-    "volvo-ex30": "Volvo_EX30",
-    "skoda-enyaq-85": "Skoda_Enyaq",
-    "mg4-long-range": "MG4_EV",
-    "polestar-2-long-range": "Polestar_2",
-    "renault-scenic-etec": "Renault_Scenic_E-Tech",
-    "mercedes-eqe-suv": "Mercedes-Benz_EQE_SUV",
-    "byd-seal": "BYD_Seal",
-    "nissan-ariya": "Nissan_Ariya"
-  };
-
-  function normalizeSlugPart(value) {
-    return String(value ?? "")
-      .normalize("NFKD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/&/g, " and ")
-      .replace(/\+/g, " plus ")
-      .replace(/[(),/]/g, " ")
-      .replace(/[^a-zA-Z0-9.\s-]/g, " ")
-      .replace(/\s+/g, " ")
-      .trim();
-  }
-
-  function toSlugTokens(value) {
-    return normalizeSlugPart(value)
-      .toLowerCase()
-      .split(" ")
-      .filter(Boolean);
-  }
-
-  function slugifyPart(value) {
-    return normalizeSlugPart(value).replace(/\s+/g, "_");
-  }
-
-  function getModelAlias(model) {
-    for (const rule of modelSlugAliases) {
-      if (rule.test.test(model)) {
-        return rule.slug;
-      }
-    }
-    return null;
-  }
-
-  function buildWikipediaSlug(car) {
-    const override = carIdWikipediaSlugOverrides[car.id];
-    if (override) return override;
-
-    const brandPart = brandSlugAliases[car.brand] || slugifyPart(car.brand);
-    const aliasedModel = getModelAlias(car.model);
-    if (aliasedModel) {
-      return `${brandPart}_${aliasedModel}`;
-    }
-
-    const modelTokens = toSlugTokens(car.model).filter((token) => {
-      if (wikipediaTrimTokens.has(token)) return false;
-      return !/^\d{2,4}(kwh|kw|hp)?$/.test(token);
-    });
-
-    const modelPart = modelTokens.slice(0, 4).join("_");
-    if (!modelPart) return brandPart;
-    return `${brandPart}_${modelPart}`;
-  }
-
-  window.evData = window.evData.map((car) => ({
-    ...car,
-    wikipediaSlug: car.wikipediaSlug || buildWikipediaSlug(car)
-  }));
-})();
