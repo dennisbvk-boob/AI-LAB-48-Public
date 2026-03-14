@@ -65,10 +65,11 @@
   });
 
   const fallbackCarImage = "./assets/car-placeholder.svg";
+  const wikipediaSummaryApi = "https://en.wikipedia.org/api/rest_v1/page/summary/";
   const wikipediaSearchApi = "https://en.wikipedia.org/w/api.php";
-  const imageCacheStoragePrefix = "ev-verdict-car-image-v1:";
-  const shouldResolveWikipediaImages = cars.length <= 180;
-  const modelNoiseTokens = new Set([
+  const imageCacheStoragePrefix = "ev-verdict-car-image-v2:";
+  const wikipediaModelTrimTokens = new Set([
+    "standard",
     "long",
     "range",
     "single",
@@ -81,53 +82,46 @@
     "pro",
     "design",
     "comfort",
-    "suv",
-    "sedan",
-    "estate",
-    "hatchback",
-    "crossover",
-    "coupe",
-    "coupe",
-    "kwh",
+    "turismo",
+    "core",
+    "privilege",
+    "ultimate",
+    "launch",
+    "edition",
+    "line",
+    "sport",
+    "gt",
+    "gts",
     "awd",
     "rwd",
-    "4matic",
-    "xdrive50",
-    "edrive40",
+    "fwd",
+    "kwh",
+    "kw",
+    "hp",
     "electric",
     "ev"
   ]);
-  const carImageSources = {
-    "tesla-model-3-highland":
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/15-05-23-Berlin-Sachsendamm-Tesla-RalfR-N3S_7354.jpg/960px-15-05-23-Berlin-Sachsendamm-Tesla-RalfR-N3S_7354.jpg",
-    "tesla-model-y":
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Tesla_Model_Y_L_002.jpg/960px-Tesla_Model_Y_L_002.jpg",
-    "hyundai-ioniq-5":
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Hyundai_IONIQ_5_N_eN1_Cup_Car_%285%29.jpg/960px-Hyundai_IONIQ_5_N_eN1_Cup_Car_%285%29.jpg",
-    "kia-ev6":
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Kia_EV6_Auto_Zuerich_2021_IMG_0606.jpg/960px-Kia_EV6_Auto_Zuerich_2021_IMG_0606.jpg",
-    "bmw-i4-edrive40":
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/BMW_i4_Official_Car_of_MotoGP_IAA_2021_1X7A0003.jpg/960px-BMW_i4_Official_Car_of_MotoGP_IAA_2021_1X7A0003.jpg",
-    "vw-id7-pro":
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Volkswagen_ID.7_Auto_Zuerich_2023_1X7A1002.jpg/960px-Volkswagen_ID.7_Auto_Zuerich_2023_1X7A1002.jpg",
-    "volvo-ex30":
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Volvo_EX30_Auto_Zuerich_2023_1X7A0949.jpg/960px-Volvo_EX30_Auto_Zuerich_2023_1X7A0949.jpg",
-    "skoda-enyaq-85":
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/%C5%A0koda_Enyaq_IMG_1190_%28cropped%29.jpg/960px-%C5%A0koda_Enyaq_IMG_1190_%28cropped%29.jpg",
-    "mg4-long-range":
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/MG4_EV_Automesse_Ludwigsburg_2022_1X7A5920.jpg/960px-MG4_EV_Automesse_Ludwigsburg_2022_1X7A5920.jpg",
-    "polestar-2-long-range":
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Polestar_2_BST_Edition_230_Auto_Zuerich_2023_1X7A1303.jpg/960px-Polestar_2_BST_Edition_230_Auto_Zuerich_2023_1X7A1303.jpg",
-    "renault-scenic-etec":
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Renault_Sc%C3%A9nic_Vision_01.png/960px-Renault_Sc%C3%A9nic_Vision_01.png",
-    "mercedes-eqe-suv":
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Mercedes-AMG_EQE_SUV_43_%28X294%29_Auto_Zuerich_2023_1X7A0976.jpg/960px-Mercedes-AMG_EQE_SUV_43_%28X294%29_Auto_Zuerich_2023_1X7A0976.jpg",
-    "byd-seal":
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/BYD_Seal_007.jpg/960px-BYD_Seal_007.jpg",
-    "nissan-ariya":
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Nissan_Ariya_Nismo%2C_Auto_2024%2C_Zurich_%28PANA1011%29.jpg/960px-Nissan_Ariya_Nismo%2C_Auto_2024%2C_Zurich_%28PANA1011%29.jpg"
-  };
-  const resolvedCarImageSources = new Map(Object.entries(carImageSources));
+  const wikipediaVehicleContextTokens = new Set([
+    "car",
+    "cars",
+    "automobile",
+    "vehicle",
+    "electric",
+    "battery",
+    "suv",
+    "crossover",
+    "hatchback",
+    "sedan",
+    "saloon",
+    "wagon",
+    "liftback",
+    "coupe",
+    "pickup",
+    "truck",
+    "van",
+    "mpv"
+  ]);
+  const resolvedCarImageSources = new Map();
   const pendingCarImageRequests = new Map();
   const modelVariantStripPatterns = [
     /\s+(performance|quattro|turismo|scorpionissima|veloce|premium|business|launch\s+edition|limited\s+edition|comfort|design|plus|pro|max|ultra)$/i,
@@ -140,6 +134,11 @@
     /\s+\d+\s*kwh$/i,
     /\s+\d+\s*hp$/i
   ];
+  const wikipediaSummaryBySlug = new Map();
+  const wikipediaSearchByQuery = new Map();
+  const brandedFallbackByCarId = new Map();
+  const lazyCardImageContext = new WeakMap();
+  let lazyCardImageObserver = null;
 
   const state = {
     search: "",
@@ -660,20 +659,44 @@
     return state.scoreMap.get(carId) ?? fallbackScoreDetails;
   }
 
-  function sanitizeForSearch(value) {
+  function sanitizeForSlug(value) {
     return String(value ?? "")
-      .toLowerCase()
+      .normalize("NFKD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/&/g, " and ")
       .replace(/\+/g, " plus ")
-      .replace(/[#:/()]/g, " ")
-      .replace(/[^a-z0-9\s-]/g, " ")
+      .replace(/[(),/]/g, " ")
+      .replace(/[^a-zA-Z0-9.\s-]/g, " ")
       .replace(/\s+/g, " ")
       .trim();
   }
 
-  function toSearchTokens(value) {
-    return sanitizeForSearch(value)
+  function toSlugTokens(value) {
+    return sanitizeForSlug(value)
+      .toLowerCase()
       .split(" ")
       .filter(Boolean);
+  }
+
+  function buildSlugFromRawText(value) {
+    return sanitizeForSlug(value).replace(/\s+/g, "_");
+  }
+
+  function getWikipediaModelTokens(car) {
+    return toSlugTokens(car.model).filter((token) => {
+      if (wikipediaModelTrimTokens.has(token)) return false;
+      if (/^\d{2,4}(kwh|kw|hp)?$/.test(token)) return false;
+      if (/^(xdrive|edrive|4matic|my\d+)$/.test(token)) return false;
+      return true;
+    });
+  }
+
+  function getWikipediaBrandTokens(car) {
+    return toSlugTokens(car.brand);
+  }
+
+  function normalizeWikipediaTitleToSlug(title) {
+    return String(title ?? "").trim().replace(/\s+/g, "_");
   }
 
   function getCarImageCacheKey(carId) {
@@ -704,98 +727,296 @@
     }
   }
 
-  function buildCarImageQueries(car) {
-    const modelTokens = toSearchTokens(car.model).filter(
-      (token) => !modelNoiseTokens.has(token) && !/^\d+$/.test(token)
-    );
+  function escapeForSvg(value) {
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function buildBrandMonogram(brand) {
+    const letters = sanitizeForSlug(brand)
+      .split(" ")
+      .map((chunk) => chunk[0] ?? "")
+      .join("")
+      .slice(0, 3)
+      .toUpperCase();
+    return letters || "EV";
+  }
+
+  function createBrandedFallbackImage(car) {
+    const cached = brandedFallbackByCarId.get(car.id);
+    if (cached) return cached;
+
+    const brand = escapeForSvg(car.brand);
+    const model = escapeForSvg(car.model);
+    const monogram = escapeForSvg(buildBrandMonogram(car.brand));
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="${brand} ${model} placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06142f"/>
+      <stop offset="100%" stop-color="#1f1142"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00e5ff"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" fill="url(#bg)"/>
+  <circle cx="140" cy="120" r="96" fill="#00e5ff" opacity="0.12"/>
+  <circle cx="830" cy="420" r="120" fill="#a855f7" opacity="0.14"/>
+  <rect x="62" y="58" width="132" height="132" rx="26" fill="url(#accent)" opacity="0.92"/>
+  <text x="128" y="140" text-anchor="middle" fill="#f5f7ff" font-size="56" font-weight="700" font-family="Inter, Arial, sans-serif">${monogram}</text>
+  <path d="M150 372h660l-26 62H174z" fill="#0b1227" opacity="0.72"/>
+  <path d="M136 366h653c24 0 44 20 44 44v22c0 17-14 31-31 31h-18c-4-47-42-84-90-84-47 0-85 37-89 84H359c-4-47-42-84-90-84s-86 37-90 84h-17c-17 0-31-14-31-31v-18c0-30 23-55 53-58l58-7 70-95c13-18 33-28 54-28h180c27 0 51 14 65 37l45 71z" fill="url(#accent)"/>
+  <circle cx="271" cy="463" r="56" fill="#111b33"/>
+  <circle cx="271" cy="463" r="28" fill="#90a4bf"/>
+  <circle cx="691" cy="463" r="56" fill="#111b33"/>
+  <circle cx="691" cy="463" r="28" fill="#90a4bf"/>
+  <text x="480" y="84" text-anchor="middle" fill="#d7e4ff" font-size="31" font-weight="600" font-family="Inter, Arial, sans-serif">${brand}</text>
+  <text x="480" y="122" text-anchor="middle" fill="#9fb5d5" font-size="22" font-family="Inter, Arial, sans-serif">${model}</text>
+  <text x="480" y="168" text-anchor="middle" fill="#7f95b3" font-size="18" font-family="Inter, Arial, sans-serif">Wikipedia photo unavailable</text>
+</svg>`;
+
+    const dataUri = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+    brandedFallbackByCarId.set(car.id, dataUri);
+    return dataUri;
+  }
+
+  function buildWikipediaSlugCandidates(car) {
+    const candidates = [];
+    const seen = new Set();
+
+    function pushCandidate(value) {
+      const cleaned = String(value ?? "").trim().replace(/\s+/g, "_");
+      if (!cleaned) return;
+      const dedupeKey = cleaned.toLowerCase();
+      if (seen.has(dedupeKey)) return;
+      seen.add(dedupeKey);
+      candidates.push(cleaned);
+    }
+
+    pushCandidate(car.wikipediaSlug);
+    pushCandidate(`${car.brand}_${car.model}`);
+
+    const brandSlug = buildSlugFromRawText(car.brand);
+    const modelTokens = getWikipediaModelTokens(car);
+
+    if (brandSlug && modelTokens.length) {
+      pushCandidate(`${brandSlug}_${modelTokens.slice(0, 4).join("_")}`);
+      pushCandidate(`${brandSlug}_${modelTokens.slice(0, 3).join("_")}`);
+      pushCandidate(`${brandSlug}_${modelTokens.slice(0, 2).join("_")}`);
+      pushCandidate(`${brandSlug}_${modelTokens[0]}`);
+    }
+
+    return candidates;
+  }
+
+  function buildWikipediaSearchQueries(car) {
+    const modelTokens = getWikipediaModelTokens(car);
     const compactModel = modelTokens.slice(0, 3).join(" ");
-    const rawQueries = [
+    const queries = [
       `${car.brand} ${car.model} electric car`,
+      `${car.brand} ${car.model}`,
       compactModel ? `${car.brand} ${compactModel} electric car` : "",
       compactModel ? `${car.brand} ${compactModel}` : "",
       `${car.brand} electric car`
     ];
-    return [...new Set(rawQueries.map((query) => query.trim()).filter((query) => query.length > 0))];
+    return [...new Set(queries.map((query) => query.trim()).filter(Boolean))];
   }
 
-  async function fetchWikipediaImageCandidates(query) {
+  async function fetchWikipediaSearchCandidates(query) {
+    if (!query) return [];
+    if (wikipediaSearchByQuery.has(query)) {
+      return wikipediaSearchByQuery.get(query);
+    }
+
     const params = new URLSearchParams({
       action: "query",
       format: "json",
       origin: "*",
       generator: "search",
       gsrsearch: query,
-      gsrlimit: "8",
+      gsrlimit: "6",
       gsrnamespace: "0",
-      prop: "pageimages|info",
-      piprop: "thumbnail",
-      pithumbsize: "960",
-      inprop: "url"
+      prop: "info"
     });
-    const response = await fetch(`${wikipediaSearchApi}?${params.toString()}`);
-    if (!response.ok) {
-      throw new Error(`Wikipedia image lookup failed for "${query}" (${response.status}).`);
-    }
-    const data = await response.json();
-    return Object.values(data.query?.pages ?? {}).filter(
-      (page) => page?.thumbnail?.source && page?.title
-    );
+
+    const request = fetch(`${wikipediaSearchApi}?${params.toString()}`)
+      .then((response) => {
+        if (!response.ok) return [];
+        return response.json();
+      })
+      .then((payload) =>
+        Object.values(payload.query?.pages ?? {})
+          .map((page) => page?.title)
+          .filter(Boolean)
+      )
+      .catch(() => []);
+
+    wikipediaSearchByQuery.set(query, request);
+    return request;
   }
 
-  function scoreWikipediaCandidate(page, brandTokens, modelTokens) {
-    const title = sanitizeForSearch(page.title);
+  function scoreWikipediaSearchTitle(title, brandTokens, modelTokens) {
+    const normalizedTitle = toSlugTokens(title).join(" ");
     let score = 0;
 
     brandTokens.forEach((token) => {
-      if (title.includes(token)) {
+      if (normalizedTitle.includes(token)) {
         score += 3;
       }
     });
+
     modelTokens.slice(0, 4).forEach((token, index) => {
-      if (title.includes(token)) {
+      if (normalizedTitle.includes(token)) {
         score += index === 0 ? 4 : 2;
       }
     });
 
-    if (title.includes("disambiguation")) score -= 10;
-    if (title.includes("film") || title.includes("album")) score -= 8;
-    if (title.includes("concept")) score -= 2;
-
+    if (normalizedTitle.includes("disambiguation")) score -= 10;
+    if (normalizedTitle.includes("concept")) score -= 3;
+    if (normalizedTitle.includes("film")) score -= 8;
+    if (normalizedTitle.includes("album")) score -= 8;
+    if (normalizedTitle.includes("song")) score -= 8;
     return score;
   }
 
-  async function resolveWikipediaCarImage(car) {
-    const brandTokens = toSearchTokens(car.brand);
-    const modelTokens = toSearchTokens(car.model).filter(
-      (token) => !modelNoiseTokens.has(token) && !/^\d+$/.test(token)
-    );
-    const queries = buildCarImageQueries(car);
-    let bestCandidate = null;
+  async function resolveWikipediaSlugsViaSearch(car) {
+    const brandTokens = getWikipediaBrandTokens(car);
+    const modelTokens = getWikipediaModelTokens(car);
+    const rankedMatches = [];
+    const seenSlugs = new Set();
+    const queries = buildWikipediaSearchQueries(car);
 
     for (const query of queries) {
-      let candidates = [];
-      try {
-        candidates = await fetchWikipediaImageCandidates(query);
-      } catch (error) {
-        continue;
-      }
+      const titles = await fetchWikipediaSearchCandidates(query);
 
-      candidates.forEach((candidate) => {
-        const score = scoreWikipediaCandidate(candidate, brandTokens, modelTokens);
-        if (!bestCandidate || score > bestCandidate.score) {
-          bestCandidate = {
-            score,
-            url: candidate.thumbnail.source
-          };
-        }
+      titles.forEach((title) => {
+        const score = scoreWikipediaSearchTitle(title, brandTokens, modelTokens);
+        if (score < 3) return;
+        const slug = normalizeWikipediaTitleToSlug(title);
+        const slugKey = slug.toLowerCase();
+        if (!slug || seenSlugs.has(slugKey)) return;
+        seenSlugs.add(slugKey);
+        rankedMatches.push({ slug, score });
       });
 
-      if (bestCandidate?.score >= 7) {
+      if (rankedMatches.some((entry) => entry.score >= 9) && rankedMatches.length >= 4) {
         break;
       }
     }
 
-    return bestCandidate?.url ?? null;
+    return rankedMatches.sort((a, b) => b.score - a.score).slice(0, 8);
+  }
+
+  async function fetchWikipediaSummaryData(slug) {
+    const normalizedSlug = String(slug ?? "").trim().replace(/\s+/g, "_");
+    if (!normalizedSlug) return null;
+
+    if (wikipediaSummaryBySlug.has(normalizedSlug)) {
+      return wikipediaSummaryBySlug.get(normalizedSlug);
+    }
+
+    const request = fetch(`${wikipediaSummaryApi}${encodeURIComponent(normalizedSlug)}`)
+      .then((response) => {
+        if (!response.ok) return null;
+        return response.json();
+      })
+      .then((payload) => {
+        if (!payload || payload.type === "disambiguation") return null;
+        const imageUrl = payload.thumbnail?.source || payload.originalimage?.source || null;
+        if (!imageUrl || !/^https?:\/\//i.test(imageUrl)) return null;
+        return {
+          slug: normalizedSlug,
+          title: payload.title ?? "",
+          description: payload.description ?? "",
+          imageUrl
+        };
+      })
+      .catch(() => null);
+
+    wikipediaSummaryBySlug.set(normalizedSlug, request);
+    return request;
+  }
+
+  function scoreWikipediaSummaryForCar(car, summary, searchScore = 0) {
+    const brandTokens = getWikipediaBrandTokens(car);
+    const modelTokens = getWikipediaModelTokens(car);
+    const titleTokens = toSlugTokens(summary.title);
+    const descriptionTokens = toSlugTokens(summary.description);
+    const combinedTokens = new Set([...titleTokens, ...descriptionTokens]);
+    let score = 0;
+
+    brandTokens.forEach((token) => {
+      if (titleTokens.includes(token)) {
+        score += 3;
+      } else if (combinedTokens.has(token)) {
+        score += 2;
+      }
+    });
+
+    modelTokens.slice(0, 4).forEach((token, index) => {
+      if (titleTokens.includes(token)) {
+        score += index === 0 ? 7 : 3;
+      } else if (combinedTokens.has(token)) {
+        score += index === 0 ? 5 : 2;
+      }
+    });
+
+    if ([...wikipediaVehicleContextTokens].some((token) => combinedTokens.has(token))) {
+      score += 2;
+    }
+
+    if (modelTokens.length && !modelTokens.some((token) => combinedTokens.has(token))) {
+      score -= 8;
+    }
+
+    const normalizedSummaryText = `${summary.title} ${summary.description}`.toLowerCase();
+    if (/disambiguation/.test(normalizedSummaryText)) score -= 10;
+    if (/\b(concept|film|album|song)\b/.test(normalizedSummaryText)) score -= 8;
+
+    // Search relevance still matters, but should never overpower model mismatch checks.
+    score += Math.min(Math.max(searchScore, 0), 4);
+    return score;
+  }
+
+  async function resolveWikipediaCarImage(car) {
+    const minimumSearchMatchScore = 6;
+    const candidates = buildWikipediaSlugCandidates(car);
+    for (const slug of candidates) {
+      const summary = await fetchWikipediaSummaryData(slug);
+      if (summary?.imageUrl) {
+        return summary.imageUrl;
+      }
+    }
+
+    const searchedMatches = await resolveWikipediaSlugsViaSearch(car);
+    let bestSearchMatch = null;
+    for (const match of searchedMatches) {
+      const summary = await fetchWikipediaSummaryData(match.slug);
+      if (!summary) continue;
+      const relevanceScore = scoreWikipediaSummaryForCar(car, summary, match.score);
+      if (!bestSearchMatch || relevanceScore > bestSearchMatch.relevanceScore) {
+        bestSearchMatch = { ...summary, relevanceScore };
+      }
+    }
+
+    if (bestSearchMatch && bestSearchMatch.relevanceScore >= minimumSearchMatchScore) {
+      return bestSearchMatch.imageUrl;
+    }
+
+    return null;
+  }
+
+  function createImageResult(url, source) {
+    return { url, source };
+  }
+
+  function createFallbackImageResult(car) {
+    return createImageResult(createBrandedFallbackImage(car) || fallbackCarImage, "fallback");
   }
 
   function getCarImageUrl(car) {
@@ -805,13 +1026,9 @@
 
     const cachedFromStorage = getCachedCarImageUrl(car.id);
     if (cachedFromStorage) {
-      resolvedCarImageSources.set(car.id, cachedFromStorage);
-      return Promise.resolve(cachedFromStorage);
-    }
-
-    // Avoid firing hundreds of parallel Wikipedia requests on very large datasets.
-    if (!shouldResolveWikipediaImages) {
-      return Promise.resolve(fallbackCarImage);
+      const cachedResult = createImageResult(cachedFromStorage, "wikipedia");
+      resolvedCarImageSources.set(car.id, cachedResult);
+      return Promise.resolve(cachedResult);
     }
 
     if (pendingCarImageRequests.has(car.id)) {
@@ -820,16 +1037,20 @@
 
     const request = resolveWikipediaCarImage(car)
       .then((resolvedUrl) => {
-        const finalUrl = resolvedUrl || fallbackCarImage;
-        resolvedCarImageSources.set(car.id, finalUrl);
         if (resolvedUrl) {
+          const result = createImageResult(resolvedUrl, "wikipedia");
+          resolvedCarImageSources.set(car.id, result);
           setCachedCarImageUrl(car.id, resolvedUrl);
+          return result;
         }
-        return finalUrl;
+        const fallbackResult = createFallbackImageResult(car);
+        resolvedCarImageSources.set(car.id, fallbackResult);
+        return fallbackResult;
       })
       .catch(() => {
-        resolvedCarImageSources.set(car.id, fallbackCarImage);
-        return fallbackCarImage;
+        const fallbackResult = createFallbackImageResult(car);
+        resolvedCarImageSources.set(car.id, fallbackResult);
+        return fallbackResult;
       })
       .finally(() => {
         pendingCarImageRequests.delete(car.id);
@@ -1125,32 +1346,82 @@
     openDetailModal(hashCarId, { updateHash: false });
   }
 
+  function setCardImageAttribution(card, isWikipediaImage) {
+    const attribution = card.querySelector(".image-attribution");
+    if (!attribution) return;
+    attribution.hidden = !isWikipediaImage;
+  }
+
+  function resolveImageForObservedCard(image) {
+    const context = lazyCardImageContext.get(image);
+    if (!context) return;
+    const { card, car } = context;
+
+    getCarImageUrl(car).then((result) => {
+      if (image.dataset.carId !== car.id) return;
+      if (image.src !== result.url) {
+        image.src = result.url;
+      }
+      setCardImageAttribution(card, result.source === "wikipedia");
+    });
+  }
+
+  function getLazyCardImageObserver() {
+    if (lazyCardImageObserver) return lazyCardImageObserver;
+    if (!("IntersectionObserver" in window)) return null;
+
+    lazyCardImageObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          observer.unobserve(entry.target);
+          resolveImageForObservedCard(entry.target);
+        });
+      },
+      { rootMargin: "250px 0px", threshold: 0.05 }
+    );
+
+    return lazyCardImageObserver;
+  }
+
   function setCardImage(card, car) {
     const image = card.querySelector(".car-image");
     if (!image) return;
 
     image.dataset.carId = car.id;
     image.alt = `${car.brand} ${car.model}`;
+    image.loading = "lazy";
+    image.decoding = "async";
+
     image.onerror = () => {
       const failedCarId = image.dataset.carId;
+      const failedCar = failedCarId ? carById.get(failedCarId) : null;
       image.onerror = null;
-      image.src = fallbackCarImage;
+      image.src = failedCar ? createBrandedFallbackImage(failedCar) : fallbackCarImage;
+      setCardImageAttribution(card, false);
       if (failedCarId) {
         resolvedCarImageSources.delete(failedCarId);
         clearCachedCarImageUrl(failedCarId);
       }
     };
 
-    const initialUrl = resolvedCarImageSources.get(car.id);
-    image.src = initialUrl || fallbackCarImage;
-    if (initialUrl) return;
+    const initialResult = resolvedCarImageSources.get(car.id);
+    if (initialResult) {
+      image.src = initialResult.url;
+      setCardImageAttribution(card, initialResult.source === "wikipedia");
+      return;
+    }
 
-    getCarImageUrl(car).then((resolvedUrl) => {
-      if (image.dataset.carId !== car.id) return;
-      if (image.src !== resolvedUrl) {
-        image.src = resolvedUrl;
-      }
-    });
+    image.src = createBrandedFallbackImage(car) || fallbackCarImage;
+    setCardImageAttribution(card, false);
+
+    lazyCardImageContext.set(image, { card, car });
+    const observer = getLazyCardImageObserver();
+    if (observer) {
+      observer.observe(image);
+    } else {
+      resolveImageForObservedCard(image);
+    }
   }
 
   // ── Rendering ───────────────────────────────────────────

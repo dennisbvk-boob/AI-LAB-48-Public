@@ -6,6 +6,63 @@ import path from "node:path";
 
 const EV_DATABASE_URL = "https://ev-database.org/";
 const ALLOWED_AVAILABILITY = new Set(["current", "upcoming"]);
+const WIKIPEDIA_TRIM_TOKENS = new Set([
+  "standard",
+  "long",
+  "range",
+  "single",
+  "dual",
+  "motor",
+  "extended",
+  "performance",
+  "quattro",
+  "plus",
+  "pro",
+  "design",
+  "comfort",
+  "core",
+  "privilege",
+  "ultimate",
+  "launch",
+  "edition",
+  "line",
+  "sport",
+  "gt",
+  "gts",
+  "awd",
+  "rwd",
+  "fwd",
+  "kwh",
+  "kw",
+  "hp",
+  "electric",
+  "ev"
+]);
+const WIKIPEDIA_BRAND_ALIASES = {
+  VW: "Volkswagen",
+  "Mercedes-AMG": "Mercedes-Benz",
+  Mercedes: "Mercedes-Benz"
+};
+const WIKIPEDIA_MODEL_ALIASES = [
+  { test: /\bmodel\s*3\b/i, slug: "Model_3" },
+  { test: /\bmodel\s*y\b/i, slug: "Model_Y" },
+  { test: /\bmodel\s*s\b/i, slug: "Model_S" },
+  { test: /\bmodel\s*x\b/i, slug: "Model_X" },
+  { test: /\bioniq\s*5\b/i, slug: "Ioniq_5" },
+  { test: /\bioniq\s*6\b/i, slug: "Ioniq_6" },
+  { test: /\bev\s*6\b/i, slug: "EV6" },
+  { test: /\bev\s*3\b/i, slug: "EV3" },
+  { test: /\bev\s*9\b/i, slug: "EV9" },
+  { test: /\bi4\b/i, slug: "i4" },
+  { test: /\bid\.?\s*7\b/i, slug: "ID.7" },
+  { test: /\benyaq\b/i, slug: "Enyaq" },
+  { test: /\bmg\s*4\b|\bmg4\b/i, slug: "MG4_EV" },
+  { test: /\bpolestar\s*2\b/i, slug: "2" },
+  { test: /\bscenic\b/i, slug: "Scenic_E-Tech" },
+  { test: /\beqe\b/i, slug: "EQE_SUV" },
+  { test: /\bseal\b/i, slug: "Seal" },
+  { test: /\bariya\b/i, slug: "Ariya" }
+];
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const outputFile = path.join(projectRoot, "data", "evData.js");
@@ -57,6 +114,50 @@ function slugify(text) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "")
     .replace(/-{2,}/g, "-");
+}
+
+function normalizeWikipediaSlugPart(value) {
+  return String(value ?? "")
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/&/g, " and ")
+    .replace(/\+/g, " plus ")
+    .replace(/[(),/]/g, " ")
+    .replace(/[^a-zA-Z0-9.\s-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function toWikipediaSlugTokens(value) {
+  return normalizeWikipediaSlugPart(value)
+    .toLowerCase()
+    .split(" ")
+    .filter(Boolean);
+}
+
+function slugifyWikipediaPart(value) {
+  return normalizeWikipediaSlugPart(value).replace(/\s+/g, "_");
+}
+
+function getWikipediaModelAlias(model) {
+  for (const alias of WIKIPEDIA_MODEL_ALIASES) {
+    if (alias.test.test(model)) return alias.slug;
+  }
+  return null;
+}
+
+function buildWikipediaSlugForVehicle(car) {
+  const brandPart = WIKIPEDIA_BRAND_ALIASES[car.brand] || slugifyWikipediaPart(car.brand);
+  const modelAlias = getWikipediaModelAlias(car.model);
+  if (modelAlias) return `${brandPart}_${modelAlias}`;
+
+  const modelTokens = toWikipediaSlugTokens(car.model).filter((token) => {
+    if (WIKIPEDIA_TRIM_TOKENS.has(token)) return false;
+    return !/^\d{2,4}(kwh|kw|hp)?$/.test(token);
+  });
+  const modelPart = modelTokens.slice(0, 4).join("_");
+  if (!modelPart) return brandPart;
+  return `${brandPart}_${modelPart}`;
 }
 
 function clamp(value, min, max) {
@@ -207,6 +308,7 @@ function completeAndScoreVehicles(vehicles) {
       id: car.id,
       brand: car.brand,
       model: car.model,
+      wikipediaSlug: buildWikipediaSlugForVehicle(car),
       year: car.year,
       bodyType: car.bodyType,
       seats: car.seats,

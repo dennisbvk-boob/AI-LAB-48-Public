@@ -592,6 +592,7 @@ input[type="range"]::-moz-range-thumb {
 .car-image-frame {
   margin: -1.1rem -1.1rem 0.95rem;
   aspect-ratio: 16 / 9;
+  position: relative;
   overflow: hidden;
   border-bottom: 1px solid rgba(99, 179, 237, 0.16);
   background: linear-gradient(140deg, rgba(0, 229, 255, 0.18), rgba(168, 85, 247, 0.12));
@@ -607,6 +608,23 @@ input[type="range"]::-moz-range-thumb {
 
 .car-card:hover .car-image {
   transform: scale(1.04);
+}
+
+.image-attribution {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.45rem;
+  z-index: 1;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(229, 236, 248, 0.92);
+  background: rgba(4, 9, 24, 0.72);
+  border: 1px solid rgba(99, 179, 237, 0.25);
+  border-radius: 999px;
+  padding: 0.16rem 0.42rem;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 /* ── Card header ───────────────────────────────────────── */
