@@ -40,6 +40,22 @@
 
     <main class="container">
 
+      <!-- Live EV news -->
+      <section class="panel ev-news" aria-labelledby="evNewsTitle">
+        <div class="ev-news-head">
+          <div>
+            <h2 id="evNewsTitle">⚡ EV News</h2>
+            <p class="ev-news-attribution">
+              Powered by InsideEVs, Electrek, Move Electric
+            </p>
+          </div>
+          <p id="evNewsStatus" class="ev-news-status" aria-live="polite">
+            Loading latest headlines...
+          </p>
+        </div>
+        <div id="evNewsTrack" class="ev-news-track" role="list"></div>
+      </section>
+
       <!-- Quick stats -->
       <div class="stats-bar" id="statsBar">
         <div class="stat-chip"><strong id="statCarCount">—</strong> model groups</div>
