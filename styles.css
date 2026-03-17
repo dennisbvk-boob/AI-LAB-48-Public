@@ -492,12 +492,25 @@ h1 {
 
 /* ── Panel headings ────────────────────────────────────── */
 .panel h2 {
-  margin: 0 0 1rem;
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
+  margin: 0 0 1.1rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.panel h2::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--cyan), var(--purple));
+  flex-shrink: 0;
 }
 
 /* ── Control grid ──────────────────────────────────────── */
@@ -533,22 +546,29 @@ select {
   width: 100%;
   border-radius: var(--radius-sm);
   border: 1px solid rgba(99, 179, 237, 0.2);
-  background: rgba(4, 10, 25, 0.7);
+  background: rgba(4, 10, 25, 0.75);
   color: var(--text);
-  padding: 0.65rem 0.85rem;
+  padding: 0.7rem 0.9rem;
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
   appearance: none;
   -webkit-appearance: none;
+}
+
+input[type="search"]:hover,
+select:hover {
+  border-color: rgba(0, 229, 255, 0.3);
+  background: rgba(4, 10, 25, 0.85);
 }
 
 input[type="search"]:focus,
 select:focus {
   border-color: var(--cyan);
   box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.12), 0 0 20px rgba(0, 229, 255, 0.08);
+  background: rgba(4, 10, 30, 0.9);
 }
 
-input[type="search"]::placeholder { color: rgba(122, 138, 170, 0.6); }
+input[type="search"]::placeholder { color: rgba(122, 138, 170, 0.5); }
 
 /* Custom select arrow */
 .control:has(select)::after {
@@ -564,43 +584,110 @@ input[type="search"]::placeholder { color: rgba(122, 138, 170, 0.6); }
 .control:has(select) { position: relative; }
 
 /* ── Custom range slider ───────────────────────────────── */
+
+/* Wrapper provides the positioning context for the floating tooltip */
+.range-wrapper {
+  position: relative;
+  padding-top: 1.8rem; /* reserve space above for the tooltip */
+}
+
+/* Floating value tooltip */
+.range-tooltip {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  background: rgba(4, 9, 30, 0.92);
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  color: var(--cyan);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 0.22rem 0.55rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 12px rgba(0, 229, 255, 0.15);
+  z-index: 10;
+}
+
+.range-tooltip.visible {
+  opacity: 1;
+}
+
+/* Arrow beneath tooltip */
+.range-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgba(0, 229, 255, 0.4);
+}
+
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 4px;
+  height: 6px;
   border-radius: 999px;
   outline: none;
   cursor: pointer;
   background: rgba(99, 179, 237, 0.15);
   position: relative;
+  display: block;
+}
+
+input[type="range"]:focus-visible {
+  outline: 2px solid rgba(0, 229, 255, 0.5);
+  outline-offset: 4px;
+  border-radius: 999px;
 }
 
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--cyan), var(--purple));
-  box-shadow: 0 0 12px var(--cyan-glow), 0 0 0 3px rgba(0,229,255,0.2);
+  box-shadow: 0 0 14px var(--cyan-glow), 0 0 0 3px rgba(0,229,255,0.2);
   cursor: grab;
   transition: transform 0.15s var(--ease-spring), box-shadow 0.15s;
 }
 
+input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 20px var(--cyan-glow), 0 0 0 5px rgba(0,229,255,0.25);
+  transform: scale(1.1);
+}
+
 input[type="range"]::-webkit-slider-thumb:active {
   cursor: grabbing;
-  transform: scale(1.25);
-  box-shadow: 0 0 20px var(--cyan-glow), 0 0 0 5px rgba(0,229,255,0.25);
+  transform: scale(1.3);
+  box-shadow: 0 0 24px var(--cyan-glow), 0 0 0 6px rgba(0,229,255,0.3);
 }
 
 input[type="range"]::-moz-range-thumb {
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   border: none;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--cyan), var(--purple));
-  box-shadow: 0 0 12px var(--cyan-glow);
+  box-shadow: 0 0 14px var(--cyan-glow);
   cursor: grab;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.1);
+}
+
+input[type="range"]::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(99, 179, 237, 0.15);
 }
 
 /* ── Weights section ───────────────────────────────────── */
@@ -664,8 +751,8 @@ input[type="range"]::-moz-range-thumb {
 /* ── Results grid ──────────────────────────────────────── */
 .results-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.1rem;
   padding-bottom: 3rem;
   position: relative;
   z-index: 1;
@@ -674,11 +761,11 @@ input[type="range"]::-moz-range-thumb {
 /* ── Car card ──────────────────────────────────────────── */
 .car-card {
   border: 1px solid rgba(99, 179, 237, 0.12);
-  border-radius: var(--radius-md);
-  background: rgba(8, 15, 32, 0.8);
-  padding: 1.1rem;
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border-radius: var(--radius-lg);
+  background: rgba(8, 15, 32, 0.82);
+  padding: 1.2rem;
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -687,6 +774,8 @@ input[type="range"]::-moz-range-thumb {
     transform 0.3s var(--ease-out),
     box-shadow 0.3s var(--ease-out),
     border-color 0.3s;
+  display: flex;
+  flex-direction: column;
 
   /* Entrance animation applied via JS */
   opacity: 0;
@@ -738,12 +827,12 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .car-card:hover {
-  border-color: rgba(0, 229, 255, 0.35);
+  border-color: rgba(0, 229, 255, 0.4);
   box-shadow:
-    0 0 0 1px rgba(0, 229, 255, 0.1),
-    0 12px 40px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(0, 229, 255, 0.08);
-  transform: translateY(-4px) scale(1.01);
+    0 0 0 1px rgba(0, 229, 255, 0.12),
+    0 16px 48px rgba(0, 0, 0, 0.55),
+    0 0 50px rgba(0, 229, 255, 0.1);
+  transform: translateY(-5px) scale(1.015);
 }
 
 .car-card:hover::after { opacity: 1; }
@@ -760,12 +849,13 @@ input[type="range"]::-moz-range-thumb {
 
 /* ── Card image ────────────────────────────────────────── */
 .car-image-frame {
-  margin: -1.1rem -1.1rem 0.95rem;
+  margin: -1.2rem -1.2rem 1rem;
   aspect-ratio: 16 / 9;
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid rgba(99, 179, 237, 0.16);
-  background: linear-gradient(140deg, rgba(0, 229, 255, 0.18), rgba(168, 85, 247, 0.12));
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background: linear-gradient(140deg, rgba(0, 229, 255, 0.15) 0%, rgba(168, 85, 247, 0.1) 60%, rgba(0, 0, 0, 0.3) 100%);
 }
 
 .car-image {
@@ -777,7 +867,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .car-card:hover .car-image {
-  transform: scale(1.04);
+  transform: scale(1.06);
 }
 
 .image-attribution {
@@ -936,12 +1026,15 @@ input[type="range"]::-moz-range-thumb {
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.875rem;
-  padding: 0.35rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 0.85rem;
+  padding: 0.38rem 0.5rem;
+  border-radius: 6px;
+  transition: background 0.15s;
 }
 
-.metric-item:last-child { border-bottom: none; }
+.metric-item:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.025);
+}
 
 .metric-label {
   color: var(--muted);
@@ -949,8 +1042,9 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .metric-value {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text);
+  font-variant-numeric: tabular-nums;
 }
 
 /* ── Segment / tags line ───────────────────────────────── */
@@ -979,13 +1073,20 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .source-chip {
-  color: rgba(147, 197, 253, 0.85);
-  font-size: 0.75rem;
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: rgba(147, 197, 253, 0.9);
+  font-size: 0.73rem;
+  border: 1px solid rgba(59, 130, 246, 0.28);
   border-radius: 999px;
-  padding: 0.2rem 0.55rem;
-  font-weight: 500;
-  background: rgba(59, 130, 246, 0.08);
+  padding: 0.22rem 0.6rem;
+  font-weight: 600;
+  background: rgba(59, 130, 246, 0.1);
+  letter-spacing: 0.02em;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.source-chip:hover {
+  background: rgba(59, 130, 246, 0.18);
+  border-color: rgba(147, 197, 253, 0.5);
 }
 
 .source-link {
@@ -1319,9 +1420,6 @@ input[type="range"]::-moz-range-thumb {
 
 /* ── Responsive ────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .results-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
   .control-grid,
   .weight-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1329,7 +1427,9 @@ input[type="range"]::-moz-range-thumb {
 }
 
 @media (max-width: 680px) {
-  .results-grid,
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
   .control-grid,
   .weight-grid {
     grid-template-columns: 1fr;
@@ -1379,6 +1479,10 @@ input[type="range"]::-moz-range-thumb {
   .detail-source-item {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .range-wrapper {
+    padding-top: 2rem; /* extra space on mobile for easier tooltip visibility */
   }
 }
 
