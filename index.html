@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="nl">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,26 +13,33 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-
-    <!-- Animated aurora background -->
-    <div id="aurora" aria-hidden="true">
-      <div class="aurora-orb"></div>
-      <div class="aurora-orb"></div>
-      <div class="aurora-orb"></div>
-      <div class="aurora-orb"></div>
-    </div>
+    <button
+      type="button"
+      id="themeToggle"
+      class="theme-toggle"
+      aria-label="Schakel kleurmodus"
+      title="Licht / donker"
+    >
+      <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+        </svg>
+      </span>
+      <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+      </span>
+    </button>
 
     <header class="site-header">
       <div class="container">
         <div class="header-inner">
-          <div class="logo-row">
-            <div class="logo-icon" aria-hidden="true">⚡</div>
-            <p class="eyebrow">EV Verdict</p>
-          </div>
-          <h1>Your go-to page for<br>electric car reviews</h1>
+          <p class="site-wordmark">EV Verdict</p>
+          <h1 class="site-title">Jouw overzicht voor elektrische auto-reviews</h1>
           <p class="subtitle">
-            We combine expert reviews and EV specs so you can compare models with
-            one personal match score.
+            We combineren expertreviews en EV-specificaties zodat je modellen kunt vergelijken met één persoonlijke matchscore.
           </p>
         </div>
       </div>
@@ -44,13 +51,13 @@
       <section class="panel ev-news" aria-labelledby="evNewsTitle">
         <div class="ev-news-head">
           <div>
-            <h2 id="evNewsTitle">⚡ EV News</h2>
+            <h2 id="evNewsTitle">⚡ EV-nieuws</h2>
             <p class="ev-news-attribution">
-              Powered by InsideEVs, Electrek, Move Electric
+              Bronnen: InsideEVs, Electrek, Move Electric
             </p>
           </div>
           <p id="evNewsStatus" class="ev-news-status" aria-live="polite">
-            Loading latest headlines...
+            Laatste koppen laden…
           </p>
         </div>
         <div id="evNewsTrack" class="ev-news-track" role="list"></div>
@@ -58,89 +65,95 @@
 
       <!-- Quick stats -->
       <div class="stats-bar" id="statsBar">
-        <div class="stat-chip"><strong id="statCarCount">—</strong> model groups</div>
-        <div class="stat-chip"><strong id="statSourceCount">—</strong> review sources</div>
-        <div class="stat-chip"><strong id="statBrandCount">—</strong> brands</div>
+        <div class="stat-chip"><strong id="statCarCount">—</strong> modelseries</div>
+        <div class="stat-chip"><strong id="statSourceCount">—</strong> reviewbronnen</div>
+        <div class="stat-chip"><strong id="statBrandCount">—</strong> merken</div>
       </div>
 
       <!-- Filters panel -->
       <section class="panel controls" aria-label="Filter controls">
-        <h2>Filter electric cars</h2>
-        <div class="control-grid">
-          <label class="control">
-            <span>Search by model</span>
+        <h2>Filter elektrische auto’s</h2>
+        <div class="control-stack">
+          <label class="control control--full">
+            <span>Zoek op model</span>
             <input
               id="searchInput"
               type="search"
-              placeholder="e.g. Model Y, IONIQ 5, EX30"
+              placeholder="bijv. Model Y, IONIQ 5, EX30"
               autocomplete="off"
             />
           </label>
 
-          <label class="control">
-            <span>Body type</span>
-            <select id="bodyTypeSelect">
-              <option value="all">All body types</option>
-            </select>
-          </label>
+          <div class="filter-pill-block">
+            <span class="filter-pill-label" id="bodyTypePillsLabel">Carrosserie</span>
+            <div
+              id="bodyTypePills"
+              class="filter-pill-row"
+              role="toolbar"
+              aria-labelledby="bodyTypePillsLabel"
+            ></div>
+          </div>
 
-          <label class="control">
-            <span>Review source</span>
-            <select id="sourceSelect">
-              <option value="all">All sources</option>
-            </select>
-          </label>
+          <div class="filter-pill-block">
+            <span class="filter-pill-label" id="sourcePillsLabel">Reviewbron</span>
+            <div
+              id="sourcePills"
+              class="filter-pill-row filter-pill-row--scroll"
+              role="toolbar"
+              aria-labelledby="sourcePillsLabel"
+            ></div>
+          </div>
 
-          <label class="control range-control">
-            <span>Maximum price: <strong id="maxPriceValue"></strong></span>
-            <input id="maxPriceInput" type="range" min="25000" max="130000" step="1000" />
-          </label>
+          <div class="filter-pill-block">
+            <span class="filter-pill-label" id="sortPillsLabel">Sorteren</span>
+            <div
+              id="sortPills"
+              class="filter-pill-row filter-pill-row--scroll"
+              role="toolbar"
+              aria-labelledby="sortPillsLabel"
+            ></div>
+          </div>
 
-          <label class="control range-control">
-            <span>Minimum range: <strong id="minRangeValue"></strong></span>
-            <input id="minRangeInput" type="range" min="250" max="700" step="10" />
-          </label>
+          <div class="control-grid control-grid--sliders">
+            <label class="control range-control">
+              <span>Maximale prijs: <strong id="maxPriceValue"></strong></span>
+              <input id="maxPriceInput" type="range" min="25000" max="130000" step="1000" />
+            </label>
 
-          <label class="control">
-            <span>Sort by</span>
-            <select id="sortSelect">
-              <option value="best-match">Best match</option>
-              <option value="expert-score">Expert score</option>
-              <option value="price-low-high">Price (low to high)</option>
-              <option value="range-high-low">Range (high to low)</option>
-              <option value="acceleration">0-100 km/h (fastest)</option>
-            </select>
-          </label>
+            <label class="control range-control">
+              <span>Minimaal bereik: <strong id="minRangeValue"></strong></span>
+              <input id="minRangeInput" type="range" min="250" max="700" step="10" />
+            </label>
+          </div>
         </div>
       </section>
 
       <!-- Personal match score panel -->
-      <section class="panel weights" aria-label="Personal match score weights">
+      <section class="panel weights" aria-label="Gewichten persoonlijke matchscore">
         <div class="weights-header">
-          <h2>Personal match score</h2>
+          <h2>Persoonlijke matchscore</h2>
           <button id="resetWeightsButton" type="button" class="button-secondary">
-            Reset weights
+            Weights resetten
           </button>
         </div>
         <p class="weights-copy">
-          Set what matters most to you. We combine your priorities with expert
-          review sentiment into one score per car.
+          Stel in wat voor jou telt. We combineren jouw prioriteiten met de sentimenten uit expertreviews tot één score per auto.
         </p>
         <div class="weight-grid">
           <label class="control">
-            <span>Value for money: <strong id="valueWeightValue"></strong></span>
+            <span>Prijs-kwaliteit: <strong id="valueWeightValue"></strong></span>
             <input id="valueWeightInput" type="range" min="0" max="10" step="1" value="7" />
           </label>
           <label class="control">
-            <span>Range: <strong id="rangeWeightValue"></strong></span>
+            <span>Actieradius: <strong id="rangeWeightValue"></strong></span>
             <input id="rangeWeightInput" type="range" min="0" max="10" step="1" value="8" />
           </label>
           <label class="control">
-            <span>Performance: <strong id="performanceWeightValue"></strong></span>
+            <span>Prestaties: <strong id="performanceWeightValue"></strong></span>
             <input id="performanceWeightInput" type="range" min="0" max="10" step="1" value="6" />
           </label>
           <label class="control">
-            <span>Practicality: <strong id="practicalityWeightValue"></strong></span>
+            <span>Praktisch gebruik: <strong id="practicalityWeightValue"></strong></span>
             <input id="practicalityWeightInput" type="range" min="0" max="10" step="1" value="7" />
           </label>
           <label class="control">
@@ -175,55 +188,71 @@
             type="button"
             class="button-secondary detail-back-button"
           >
-            ← Back to overview
+            ← Terug naar overzicht
           </button>
           <button
             id="detailCloseButton"
             type="button"
             class="detail-close-button"
-            aria-label="Close detail view"
+            aria-label="Detailvenster sluiten"
           >
             ✕
           </button>
         </header>
 
-        <div class="car-detail-content">
-          <p class="car-brand detail-brand" id="detailBrand"></p>
-          <h2 class="detail-title" id="detailTitle"></h2>
-
-          <div class="detail-score-row">
-            <div class="score-pill detail-score-pill" id="detailMatchScore"></div>
-            <p class="detail-score-copy" id="detailScoreCopy"></p>
+        <div class="car-detail-layout">
+          <div class="car-detail-media">
+            <div class="detail-image-frame">
+              <img
+                id="detailImage"
+                class="detail-image"
+                src="./assets/car-placeholder.svg"
+                alt=""
+                decoding="async"
+                referrerpolicy="no-referrer"
+              />
+              <span id="detailImageAttribution" class="image-attribution" hidden>Wikimedia Commons</span>
+            </div>
+            <div class="car-detail-intro">
+              <p class="car-brand detail-brand" id="detailBrand"></p>
+              <h2 class="detail-title" id="detailTitle"></h2>
+              <div class="detail-score-row">
+                <div class="score-pill detail-score-pill" id="detailMatchScore"></div>
+              </div>
+              <p class="detail-score-copy" id="detailScoreCopy"></p>
+            </div>
           </div>
 
-          <section class="detail-section" aria-labelledby="detailSpecsHeading">
-            <h3 id="detailSpecsHeading">Full specs</h3>
+          <div class="car-detail-content">
+          <section class="detail-section detail-section--first" aria-labelledby="detailSpecsHeading">
+            <h3 id="detailSpecsHeading">Volledige specificaties</h3>
             <dl class="detail-spec-grid" id="detailSpecs"></dl>
           </section>
 
           <section class="detail-section" aria-labelledby="detailBreakdownHeading">
-            <h3 id="detailBreakdownHeading">Matchscore breakdown</h3>
+            <h3 id="detailBreakdownHeading">Matchscore uitgesplitst</h3>
             <div class="breakdown-list" id="detailBreakdown"></div>
           </section>
 
           <section class="detail-section" aria-labelledby="detailProsConsHeading">
-            <h3 id="detailProsConsHeading">Pros &amp; cons summary</h3>
+            <h3 id="detailProsConsHeading">Voor- en nadelen</h3>
             <div class="pros-cons-grid">
               <div class="pros-cons-block">
-                <h4>Pros</h4>
+                <h4>Voordelen</h4>
                 <ul id="detailPros"></ul>
               </div>
               <div class="pros-cons-block">
-                <h4>Cons</h4>
+                <h4>Nadelen</h4>
                 <ul id="detailCons"></ul>
               </div>
             </div>
           </section>
 
           <section class="detail-section" aria-labelledby="detailSourcesHeading">
-            <h3 id="detailSourcesHeading">Review sources</h3>
+            <h3 id="detailSourcesHeading">Reviewbronnen</h3>
             <ul class="detail-source-list" id="detailSources"></ul>
           </section>
+          </div>
         </div>
       </section>
     </div>
@@ -241,13 +270,13 @@
             referrerpolicy="no-referrer"
           />
           <span class="image-attribution" hidden>Wikimedia Commons</span>
+          <div class="score-pill score-pill--overlay"></div>
         </div>
         <header class="car-card-header">
-          <div>
+          <div class="car-card-header-text">
             <p class="car-brand"></p>
             <h3 class="car-model"></h3>
           </div>
-          <div class="score-pill"></div>
         </header>
         <ul class="metric-list"></ul>
         <div class="segment-line"></div>

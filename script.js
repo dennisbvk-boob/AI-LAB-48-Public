@@ -8,11 +8,12 @@
 
   const elements = {
     searchInput: document.getElementById("searchInput"),
-    bodyTypeSelect: document.getElementById("bodyTypeSelect"),
-    sourceSelect: document.getElementById("sourceSelect"),
+    bodyTypePills: document.getElementById("bodyTypePills"),
+    sourcePills: document.getElementById("sourcePills"),
+    sortPills: document.getElementById("sortPills"),
     maxPriceInput: document.getElementById("maxPriceInput"),
     minRangeInput: document.getElementById("minRangeInput"),
-    sortSelect: document.getElementById("sortSelect"),
+    themeToggle: document.getElementById("themeToggle"),
     maxPriceValue: document.getElementById("maxPriceValue"),
     minRangeValue: document.getElementById("minRangeValue"),
     resultsGrid: document.getElementById("resultsGrid"),
@@ -44,9 +45,21 @@
     detailPros: document.getElementById("detailPros"),
     detailCons: document.getElementById("detailCons"),
     detailSources: document.getElementById("detailSources"),
+    detailImage: document.getElementById("detailImage"),
+    detailImageAttribution: document.getElementById("detailImageAttribution"),
     evNewsTrack: document.getElementById("evNewsTrack"),
     evNewsStatus: document.getElementById("evNewsStatus")
   };
+
+  const THEME_STORAGE_KEY = "ev-verdict-theme";
+
+  const sortOptionDefs = Object.freeze([
+    { value: "best-match", label: "Beste match" },
+    { value: "expert-score", label: "Expertscore" },
+    { value: "price-low-high", label: "Prijs ↑" },
+    { value: "range-high-low", label: "Bereik ↓" },
+    { value: "acceleration", label: "0–100 snelst" }
+  ]);
 
   const defaultWeights = {
     value: 7,
@@ -295,7 +308,7 @@
     const source = document.createElement("p");
     source.className = "ev-news-source";
     const icon = document.createElement("span");
-    icon.className = `ev-news-icon ev-news-icon--${item.sourceSlug}`;
+    icon.className = "ev-news-badge";
     icon.textContent = item.sourceIcon;
     const sourceName = document.createElement("span");
     sourceName.textContent = item.sourceName;
@@ -385,7 +398,7 @@
 
     renderNewsSkeleton();
     if (elements.evNewsStatus) {
-      elements.evNewsStatus.textContent = "Loading latest headlines...";
+      elements.evNewsStatus.textContent = "Laatste koppen laden…";
     }
 
     const responses = await Promise.allSettled(evNewsSources.map(fetchNewsSource));
@@ -404,9 +417,9 @@
     );
 
     if (!loadedItems.length) {
-      renderNewsFallback("No EV headlines available right now. Please try again later.");
+      renderNewsFallback("Geen EV-koppen beschikbaar. Probeer het later opnieuw.");
       if (elements.evNewsStatus) {
-        elements.evNewsStatus.textContent = "All feeds unavailable";
+        elements.evNewsStatus.textContent = "Alle feeds onbereikbaar";
       }
       return;
     }
@@ -421,9 +434,9 @@
     if (elements.evNewsStatus) {
       const sourceLabel =
         successfulSources === evNewsSources.length
-          ? "All sources live"
-          : `${successfulSources}/${evNewsSources.length} sources live`;
-      elements.evNewsStatus.textContent = `Updated ${formatNewsUpdatedAt()} · ${sourceLabel}`;
+          ? "Alle bronnen actief"
+          : `${successfulSources}/${evNewsSources.length} bronnen actief`;
+      elements.evNewsStatus.textContent = `Bijgewerkt ${formatNewsUpdatedAt()} · ${sourceLabel}`;
     }
   }
 
@@ -606,20 +619,45 @@
     return [...new Set(allSourceNames)].sort((a, b) => a.localeCompare(b));
   }
 
-  function setupSelectOptions() {
-    getAllBodyTypes().forEach((type) => {
-      const option = document.createElement("option");
-      option.value = type;
-      option.textContent = type;
-      elements.bodyTypeSelect.append(option);
+  function syncPillRowPressed(container, activeValue) {
+    if (!container) return;
+    container.querySelectorAll(".filter-pill").forEach((button) => {
+      button.setAttribute("aria-pressed", button.dataset.value === activeValue ? "true" : "false");
     });
+  }
 
-    getAllSources().forEach((source) => {
-      const option = document.createElement("option");
-      option.value = source;
-      option.textContent = source;
-      elements.sourceSelect.append(option);
-    });
+  function setupFilterPills() {
+    function bindPillRow(container, items, stateKey, onChange) {
+      if (!container) return;
+      container.innerHTML = "";
+      items.forEach((item) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "filter-pill";
+        button.dataset.value = item.value;
+        button.textContent = item.label;
+        button.setAttribute("aria-pressed", state[stateKey] === item.value ? "true" : "false");
+        button.addEventListener("click", () => {
+          if (state[stateKey] === item.value) return;
+          state[stateKey] = item.value;
+          syncPillRowPressed(container, item.value);
+          onChange();
+        });
+        container.append(button);
+      });
+    }
+
+    const bodyItems = [{ value: "all", label: "Alle" }].concat(
+      getAllBodyTypes().map((type) => ({ value: type, label: type }))
+    );
+    bindPillRow(elements.bodyTypePills, bodyItems, "bodyType", () => render());
+
+    const sourceItems = [{ value: "all", label: "Alle" }].concat(
+      getAllSources().map((source) => ({ value: source, label: source }))
+    );
+    bindPillRow(elements.sourcePills, sourceItems, "source", () => render());
+
+    bindPillRow(elements.sortPills, [...sortOptionDefs], "sortBy", () => render());
   }
 
   // ── Range inputs ────────────────────────────────────────
@@ -657,7 +695,7 @@
     const val = Number(input.value);
     const pct = ((val - min) / (max - min)) * 100;
     input.style.setProperty("--fill-pct", `${pct}`);
-    input.style.background = `linear-gradient(to right, var(--cyan) 0%, var(--purple) ${pct}%, rgba(99,179,237,0.15) ${pct}%)`;
+    input.style.background = `linear-gradient(to right, var(--accent) 0%, var(--range-fill-end) ${pct}%, var(--range-track) ${pct}%)`;
 
     const tooltip = rangeTooltipMap.get(input);
     if (tooltip) {
@@ -957,9 +995,9 @@
   }
 
   function scoreColor(score) {
-    if (score >= 80) return "#00ffa3";
-    if (score >= 60) return "#fbbf24";
-    return "#f87171";
+    if (score >= 80) return "#00d4aa";
+    if (score >= 60) return "#d97706";
+    return "#dc2626";
   }
 
   function getScoreDetails(carId) {
@@ -1059,28 +1097,23 @@
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="${brand} ${model} placeholder">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#06142f"/>
-      <stop offset="100%" stop-color="#1f1142"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#00e5ff"/>
-      <stop offset="100%" stop-color="#a855f7"/>
+      <stop offset="0%" stop-color="#f3f4f6"/>
+      <stop offset="100%" stop-color="#e5e7eb"/>
     </linearGradient>
   </defs>
   <rect width="960" height="540" fill="url(#bg)"/>
-  <circle cx="140" cy="120" r="96" fill="#00e5ff" opacity="0.12"/>
-  <circle cx="830" cy="420" r="120" fill="#a855f7" opacity="0.14"/>
-  <rect x="62" y="58" width="132" height="132" rx="26" fill="url(#accent)" opacity="0.92"/>
-  <text x="128" y="140" text-anchor="middle" fill="#f5f7ff" font-size="56" font-weight="700" font-family="Inter, Arial, sans-serif">${monogram}</text>
-  <path d="M150 372h660l-26 62H174z" fill="#0b1227" opacity="0.72"/>
-  <path d="M136 366h653c24 0 44 20 44 44v22c0 17-14 31-31 31h-18c-4-47-42-84-90-84-47 0-85 37-89 84H359c-4-47-42-84-90-84s-86 37-90 84h-17c-17 0-31-14-31-31v-18c0-30 23-55 53-58l58-7 70-95c13-18 33-28 54-28h180c27 0 51 14 65 37l45 71z" fill="url(#accent)"/>
-  <circle cx="271" cy="463" r="56" fill="#111b33"/>
-  <circle cx="271" cy="463" r="28" fill="#90a4bf"/>
-  <circle cx="691" cy="463" r="56" fill="#111b33"/>
-  <circle cx="691" cy="463" r="28" fill="#90a4bf"/>
-  <text x="480" y="84" text-anchor="middle" fill="#d7e4ff" font-size="31" font-weight="600" font-family="Inter, Arial, sans-serif">${brand}</text>
-  <text x="480" y="122" text-anchor="middle" fill="#9fb5d5" font-size="22" font-family="Inter, Arial, sans-serif">${model}</text>
-  <text x="480" y="168" text-anchor="middle" fill="#7f95b3" font-size="18" font-family="Inter, Arial, sans-serif">Photo not yet available</text>
+  <rect x="72" y="64" width="120" height="120" rx="12" fill="#ffffff" stroke="#e5e7eb" stroke-width="2"/>
+  <text x="132" y="142" text-anchor="middle" fill="#111827" font-size="48" font-weight="700" font-family="Inter, Arial, sans-serif">${monogram}</text>
+  <rect x="120" y="248" width="720" height="200" rx="10" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+  <path d="M200 388h560l-24 52H220z" fill="#f3f4f6"/>
+  <path d="M188 382h572c22 0 40 18 40 40v18c0 15-12 28-28 28h-16c-4-42-38-76-82-76s-78 34-82 76H392c-4-42-38-76-82-76s-78 34-82 76h-16c-16 0-28-13-28-28v-16c0-28 21-50 48-53l54-6 66-88c12-16 30-26 50-26h168c25 0 47 13 60 34l42 66z" fill="#00d4aa" opacity="0.35"/>
+  <circle cx="268" cy="428" r="48" fill="#e5e7eb"/>
+  <circle cx="268" cy="428" r="24" fill="#9ca3af"/>
+  <circle cx="692" cy="428" r="48" fill="#e5e7eb"/>
+  <circle cx="692" cy="428" r="24" fill="#9ca3af"/>
+  <text x="480" y="92" text-anchor="middle" fill="#111827" font-size="30" font-weight="600" font-family="Inter, Arial, sans-serif">${brand}</text>
+  <text x="480" y="128" text-anchor="middle" fill="#6b7280" font-size="21" font-family="Inter, Arial, sans-serif">${model}</text>
+  <text x="480" y="172" text-anchor="middle" fill="#9ca3af" font-size="17" font-family="Inter, Arial, sans-serif">Nog geen foto</text>
 </svg>`;
 
     const dataUri = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
@@ -1352,6 +1385,43 @@
 
   // ── Detail modal ────────────────────────────────────────
 
+  function setDetailPanelImage(car) {
+    const img = elements.detailImage;
+    const attribution = elements.detailImageAttribution;
+    if (!img || !car) return;
+
+    img.dataset.carId = car.id;
+    img.alt = `${car.brand} ${car.model}`;
+
+    img.onerror = () => {
+      const failedId = img.dataset.carId;
+      const failedCar = failedId ? carById.get(failedId) : null;
+      img.onerror = null;
+      img.src = failedCar ? createBrandedFallbackImage(failedCar) : fallbackCarImage;
+      if (attribution) attribution.hidden = true;
+      if (failedId) {
+        resolvedCarImageSources.delete(failedId);
+        clearCachedCarImageUrl(failedId);
+      }
+    };
+
+    const initialResult = resolvedCarImageSources.get(car.id);
+    if (initialResult) {
+      img.src = initialResult.url;
+      if (attribution) attribution.hidden = initialResult.source !== "commons";
+      return;
+    }
+
+    img.src = createBrandedFallbackImage(car) || fallbackCarImage;
+    if (attribution) attribution.hidden = true;
+
+    getCarImageUrl(car).then((result) => {
+      if (img.dataset.carId !== car.id) return;
+      img.src = result.url;
+      if (attribution) attribution.hidden = result.source !== "commons";
+    });
+  }
+
   function renderDetailModal(car) {
     if (!elements.detailModal) return;
 
@@ -1361,22 +1431,22 @@
 
     elements.detailBrand.textContent = `${car.brand} · ${car.year}`;
     elements.detailTitle.textContent = car.model;
-    elements.detailMatchScore.textContent = `${scorePercent} match`;
+    elements.detailMatchScore.textContent = `${scorePercent}% match`;
     setScorePillStyles(elements.detailMatchScore, scorePercent);
     elements.detailScoreCopy.textContent =
       `${car.sources.length} sources · Avg review ${averageSourceRating.toFixed(1)} / 10 · Expert score ${car.expertScore.toFixed(1)} / 10`;
 
     const specs = [
-      ["Price", formatCurrency(car.priceEur)],
-      ["WLTP range", `${formatNumber(car.rangeKm)} km`],
-      ["0-100 km/h", `${car.accel0to100.toFixed(1)} s`],
-      ["Battery", `${formatNumber(car.batteryKwh)} kWh`],
-      ["Fast charging", `${formatNumber(car.fastChargeKw)} kW`],
-      ["Trunk space", `${formatNumber(car.trunkLiters)} L`],
-      ["Seats", String(car.seats)],
-      ["Body type", car.bodyType],
-      ["Comfort score", `${car.comfortScore.toFixed(1)} / 10`],
-      ["Expert score", `${car.expertScore.toFixed(1)} / 10`]
+      ["Prijs", formatCurrency(car.priceEur)],
+      ["WLTP-bereik", `${formatNumber(car.rangeKm)} km`],
+      ["0–100 km/h", `${car.accel0to100.toFixed(1)} s`],
+      ["Accu", `${formatNumber(car.batteryKwh)} kWh`],
+      ["Snelladen", `${formatNumber(car.fastChargeKw)} kW`],
+      ["Kofferbak", `${formatNumber(car.trunkLiters)} L`],
+      ["Zitplaatsen", String(car.seats)],
+      ["Carrosserie", car.bodyType],
+      ["Comfortscore", `${car.comfortScore.toFixed(1)} / 10`],
+      ["Expertscore", `${car.expertScore.toFixed(1)} / 10`]
     ];
 
     elements.detailSpecs.innerHTML = "";
@@ -1386,26 +1456,26 @@
 
     const breakdownRows = [
       {
-        label: "Final match score (80% personal + 20% expert)",
+        label: "Eindmatch (80% persoonlijk + 20% expert)",
         score: scoreDetails.finalScore
       },
       {
-        label: "Value for money",
+        label: "Prijs-kwaliteit",
         score: scoreDetails.valueForMoneyScore,
         weightLabel: `${state.weights.value}/10`
       },
       {
-        label: "Range",
+        label: "Bereik",
         score: scoreDetails.rangeScore,
         weightLabel: `${state.weights.range}/10`
       },
       {
-        label: "Performance",
+        label: "Prestaties",
         score: scoreDetails.performanceScore,
         weightLabel: `${state.weights.performance}/10`
       },
       {
-        label: "Practicality",
+        label: "Praktisch gebruik",
         score: scoreDetails.practicalityScore,
         weightLabel: `${state.weights.practicality}/10`
       },
@@ -1415,9 +1485,9 @@
         weightLabel: `${state.weights.comfort}/10`
       },
       {
-        label: "Expert sentiment",
+        label: "Expertsentiment",
         score: scoreDetails.expertScoreNormalized,
-        weightLabel: "fixed 20%"
+        weightLabel: "vast 20%"
       }
     ];
 
@@ -1447,6 +1517,8 @@
     car.sources.forEach((entry) => {
       elements.detailSources.append(buildDetailSourceItem(entry));
     });
+
+    setDetailPanelImage(car);
   }
 
   function openDetailModal(carId, { updateHash = true } = {}) {
@@ -1610,7 +1682,7 @@
   function renderSummary(filteredGroups) {
     if (!filteredGroups.length) {
       elements.resultsSummary.textContent =
-        "No model groups match the selected filters. Broaden your filters to compare more variants.";
+        "Geen modelseries voldoen aan de filters. Maak het filter ruimer om meer varianten te vergelijken.";
       return;
     }
 
@@ -1620,7 +1692,7 @@
     const averagePrice = average(selectedCars.map((car) => car.priceEur));
     const averageRange = average(selectedCars.map((car) => car.rangeKm));
     elements.resultsSummary.textContent =
-      `${filteredGroups.length} model group(s) found — Avg. selected price ${formatCurrency(averagePrice)} | Avg. selected WLTP range ${formatNumber(averageRange)} km`;
+      `${filteredGroups.length} modelserie(s) — Gem. prijs (selectie) ${formatCurrency(averagePrice)} | Gem. WLTP-bereik ${formatNumber(averageRange)} km`;
   }
 
   function renderCards(sortedGroups, scoreMap) {
@@ -1630,7 +1702,7 @@
       const empty = document.createElement("article");
       empty.className = "empty-state";
       empty.textContent =
-        "No model groups for the current selection. Try increasing the max price or lowering the min range.";
+        "Geen modelseries voor deze selectie. Verhoog de maximumprijs of verlaag het minimale bereik.";
       elements.resultsGrid.append(empty);
       return;
     }
@@ -1662,40 +1734,47 @@
       card.querySelector(".car-card-header > div").append(activeVariantCopy);
 
       const pill = card.querySelector(".score-pill");
-      pill.textContent = `${scorePercent} match`;
+      pill.textContent = `${scorePercent}% match`;
       setScorePillStyles(pill, scorePercent);
 
       if (variants.length > 1) {
-        const variantPicker = document.createElement("label");
+        const variantPicker = document.createElement("div");
         variantPicker.className = "variant-picker";
 
         const variantLabelCopy = document.createElement("span");
         variantLabelCopy.className = "variant-picker-label";
         variantLabelCopy.textContent = "Variant";
 
-        const variantSelect = document.createElement("select");
-        variantSelect.className = "variant-select";
+        const pillRow = document.createElement("div");
+        pillRow.className = "variant-pills";
+        pillRow.setAttribute("role", "tablist");
 
         variants.forEach((variant) => {
-          const option = document.createElement("option");
-          option.value = variant.id;
-          option.textContent = `${getVariantLabel(group, variant)} · ${formatCurrency(variant.priceEur)} · ${formatNumber(variant.rangeKm)} km`;
-          variantSelect.append(option);
+          const pill = document.createElement("button");
+          pill.type = "button";
+          pill.className = "variant-pill";
+          pill.setAttribute("role", "tab");
+          pill.dataset.carId = variant.id;
+          pill.setAttribute("aria-selected", variant.id === selectedCar.id ? "true" : "false");
+          pill.textContent = `${getVariantLabel(group, variant)} · ${formatCurrency(variant.priceEur)} · ${formatNumber(variant.rangeKm)} km`;
+          pill.addEventListener("click", (event) => {
+            event.stopPropagation();
+            state.selectedVariantByGroupId.set(group.id, variant.id);
+            render();
+          });
+          pill.addEventListener("keydown", (event) => {
+            event.stopPropagation();
+          });
+          pillRow.append(pill);
         });
 
-        variantSelect.value = selectedCar.id;
-        ["click", "mousedown", "keydown"].forEach((eventName) => {
-          variantSelect.addEventListener(eventName, (event) => {
+        ["click", "mousedown"].forEach((eventName) => {
+          variantPicker.addEventListener(eventName, (event) => {
             event.stopPropagation();
           });
         });
-        variantSelect.addEventListener("change", (event) => {
-          event.stopPropagation();
-          state.selectedVariantByGroupId.set(group.id, event.target.value);
-          render();
-        });
 
-        variantPicker.append(variantLabelCopy, variantSelect);
+        variantPicker.append(variantLabelCopy, pillRow);
         card.querySelector(".car-card-header").after(variantPicker);
       }
 
@@ -1830,16 +1909,6 @@
       render();
     });
 
-    elements.bodyTypeSelect.addEventListener("change", (event) => {
-      state.bodyType = event.target.value;
-      render();
-    });
-
-    elements.sourceSelect.addEventListener("change", (event) => {
-      state.source = event.target.value;
-      render();
-    });
-
     elements.maxPriceInput.addEventListener("input", (event) => {
       state.maxPrice = Number(event.target.value);
       updateFilterLabelValues();
@@ -1849,11 +1918,6 @@
     elements.minRangeInput.addEventListener("input", (event) => {
       state.minRange = Number(event.target.value);
       updateFilterLabelValues();
-      render();
-    });
-
-    elements.sortSelect.addEventListener("change", (event) => {
-      state.sortBy = event.target.value;
       render();
     });
 
@@ -1905,16 +1969,65 @@
 
   // ── Init ────────────────────────────────────────────────
 
+  function getNightAwareDefaultTheme() {
+    const hour = new Date().getHours();
+    return hour >= 20 || hour < 7 ? "dark" : "light";
+  }
+
+  function readStoredThemePreference() {
+    try {
+      return window.localStorage.getItem(THEME_STORAGE_KEY);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function getEffectiveTheme() {
+    const stored = readStoredThemePreference();
+    if (stored === "light" || stored === "dark") return stored;
+    return getNightAwareDefaultTheme();
+  }
+
+  function applyTheme(theme) {
+    const mode = theme === "dark" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", mode);
+    if (elements.themeToggle) {
+      elements.themeToggle.setAttribute(
+        "aria-label",
+        mode === "dark" ? "Schakel naar lichte modus" : "Schakel naar donkere modus"
+      );
+    }
+  }
+
+  function persistThemePreference(theme) {
+    try {
+      window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+    } catch (error) {
+      // ignore quota / private mode
+    }
+  }
+
+  function initTheme() {
+    applyTheme(getEffectiveTheme());
+    elements.themeToggle?.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+      const next = current === "dark" ? "light" : "dark";
+      persistThemePreference(next);
+      applyTheme(next);
+    });
+  }
+
   function initialize() {
+    initTheme();
     initializeEvNews();
 
     if (!cars.length) {
       elements.resultsSummary.textContent =
-        "No EV data found. Add entries to data/evData.js to show results.";
+        "Geen EV-gegevens gevonden. Voeg items toe aan data/evData.js om resultaten te tonen.";
       return;
     }
 
-    setupSelectOptions();
+    setupFilterPills();
     setupRangeInputs();
     setupWeightSliderTooltips();
     updateFilterLabelValues();
